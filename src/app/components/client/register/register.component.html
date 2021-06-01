@@ -1,0 +1,72 @@
+
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v1 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+
+		<!-- STYLE CSS -->
+		<style>
+			input[type=text], select, textarea
+			 {
+				width: 100%;
+				padding: 12px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				resize: vertical;
+				margin-bottom: 8px;
+			 }
+			 input[type=password], select, textarea
+			 {
+				width: 100%;
+				padding: 12px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				resize: vertical;
+				margin-bottom: 8px;
+			 }
+		</style>
+	</head>
+
+
+		<div class="wrapper" style="background-image: url('../../../../assets/images/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="../../../../assets/images/registration-form-1.jpg" alt="">
+				</div>
+				<form #userform="ngForm" (ngSubmit)="OnSubmit(userform)">
+					<img src="../../../../assets/images/noon-logo.png" style="margin-bottom: 20px;">
+					<div class="form-holder">
+						<i class="zmdi zmdi-account"></i>
+						<input type="text" placeholder="Username" class="form-control"  [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="userModel.username" name="name">
+                        <small class="text-danger"[class.d-none]="name.untouched || name.valid">User Name is required</small>
+					</div>
+					<br>
+					<div class="form-holder">
+						<i class="zmdi zmdi-email"></i>
+						<input type="text" placeholder="Email Address" class="form-control" name="txtEmail" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [class.is-invalid]="email.invalid && email.touched" required #email="ngModel" [(ngModel)]="userModel.email" >
+                        <div *ngIf="email.errors && (email.invalid || email.touched)">
+                            <small class="text-danger" *ngIf="email.errors.required" >Email is required</small>
+                            <small class="text-danger" *ngIf="email.errors.pattern" >Email must be like test@gmail.com</small>
+					   </div>
+					   <br>
+					<div class="form-holder">
+						<i class="zmdi zmdi-lock"></i>
+						<input type="password" placeholder="Password" class="form-control" [class.is-invalid]="password.invalid && password.touched " required #password="ngModel" [(ngModel)]="userModel.password" name="password">
+                        <small class="text-danger"[class.d-none]="password.untouched || password.valid">Password is required</small>
+					</div>
+					<br>
+					<div class="form-holder">
+						<i class="zmdi zmdi-lock"></i>
+						<input type="password" placeholder="Confirm Password" class="form-control" [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched " required #confirmpassword="ngModel" [(ngModel)]="userModel.confirmpassword" name="confirmpassword">
+                        <small class="text-danger"[class.d-none]="confirmpassword.untouched || confirmpassword.valid">Confirm Password is required</small>
+					</div>
+					<br>
+					<button type="submit" [disabled]="!userform.valid">Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+			</div>
+			</form>
+		</div>
+		

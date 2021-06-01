@@ -1,0 +1,25 @@
+<div class="wrapper" style="background-image: url('assets/images/bg-registration-form-1.jpg');">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="assets/images/registration-form-1.jpg" alt="">
+        </div>
+        <form [formGroup]="LoginForm">
+            <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
+            <h3>Login Form</h3>
+            <div class="form-wrapper">
+                <input type="text" formControlName="userEmail" [class.is-invalid]="userEmail.invalid && userEmail.touched" placeholder="Email Address" class="form-control">
+                <i class="zmdi zmdi-email"></i>
+                <div *ngIf="userEmail.invalid && userEmail.touched">
+                    <small class="text-danger" *ngIf="userEmail.errors.required">User Email is required</small>
+                </div>
+            </div>
+            <div class="form-wrapper">
+                <input formControlName="password" type="password" placeholder="Password" class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <button (click)="signIn()" id="login-btn">Login
+                <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>

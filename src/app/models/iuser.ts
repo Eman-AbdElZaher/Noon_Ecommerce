@@ -1,7 +1,8 @@
-export interface Iuser {
-    id:string;
-    passwordHash:string;
-    confirmPassword:string;
-    email:string;
-    fullName:string;
+export class Iuser {
+    constructor(
+       public password:string,
+       public confirmpassword:string,
+       public email:string,
+       public username:string,
+    ){}
 }

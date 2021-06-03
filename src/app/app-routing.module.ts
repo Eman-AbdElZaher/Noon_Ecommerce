@@ -10,7 +10,13 @@ const routes: Routes = [
       .then(mod => mod.LoginModule)
   },
   {path:'unathorized',component:UnathorizedPageComponent},
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
+      .then(mod => mod.AdminModule)
+  },
+  { path: '**', component: PageNotFoundComponent },
+ 
 ];
 
 @NgModule({

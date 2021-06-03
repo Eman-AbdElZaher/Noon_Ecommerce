@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/client/register/register.component';
+import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    UnathorizedPageComponent
   ],
   imports: [
     BrowserModule,

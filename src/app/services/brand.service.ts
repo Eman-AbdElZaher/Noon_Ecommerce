@@ -10,8 +10,7 @@ export class BrandService {
   _url="http://localhost:61135/api/Brands";
   constructor(private http: HttpClient) { }
   addNewBrand(brand:Ibrand): Observable<Ibrand> {
-    let url = `http://localhost:61135/api/Brands`;
-    return this.http.post<Ibrand>(url, brand)
+    return this.http.post<Ibrand>(this._url, brand)
       .pipe(catchError((err) => {
         return throwError(err.message || "Internal Server error contact site adminstarator");
       }

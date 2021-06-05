@@ -5,12 +5,16 @@ import {  RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrandComponent } from './adminpanel/brand/brand.component';
 import { SupplierComponent } from './adminpanel/supplier/supplier.component';
+import { ProductComponent } from './adminpanel/product/product.component';
+import { ImageComponent } from './adminpanel/image/image.component';
 
 const routes:Routes=[
   {path:'panel',component:AdminpanelComponent,
   children:[
     {path:'brand',component:BrandComponent},
-    {path:'supplier',component:SupplierComponent}
+    {path:'supplier',component:SupplierComponent},
+    {path:'product',component:ProductComponent},
+    {path:'image',component:ImageComponent}
   ]
 },
    {path:'',redirectTo:'',pathMatch:'full'}
@@ -20,7 +24,9 @@ const routes:Routes=[
   declarations: [
     AdminpanelComponent,
     BrandComponent,
-    SupplierComponent
+    SupplierComponent,
+    ProductComponent,
+    ImageComponent
   ],
   imports: [
     CommonModule,

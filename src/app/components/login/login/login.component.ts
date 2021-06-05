@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   LoggedUser:ILogin;
   invalidLogin: boolean;
   LoginForm:FormGroup;
+  res:any;
 
   get userEmail ()
   {
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
       password:['',[Validators.required]]
     });
   
-  } 
+  }
+  
   signIn() {  
     this.LoggedUser={
       email:this.userEmail.value,

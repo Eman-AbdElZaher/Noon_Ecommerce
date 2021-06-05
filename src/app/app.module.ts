@@ -6,19 +6,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/client/register/register.component';
+import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
+import { LoginModule } from './components/login/login.module';
+import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
+import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
+import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    UnathorizedPageComponent,
+    CreateReviewComponent,
+    UpdateReviewComponent,
+    ShowReviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

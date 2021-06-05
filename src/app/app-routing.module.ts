@@ -18,6 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
       .then(mod => mod.AdminModule)
   },
+  {path:'unathorized',component:UnathorizedPageComponent},
   { path: '**', component: PageNotFoundComponent },
  
 ];

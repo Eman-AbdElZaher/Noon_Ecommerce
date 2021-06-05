@@ -30,6 +30,7 @@ const routes:Routes=[
     OfferComponent,
     SupplierComponent,
     AdvertisementComponent
+    
   ],
   imports: [
     CommonModule,

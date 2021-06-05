@@ -8,9 +8,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { RegisterComponent } from './components/client/register/register.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { LoginModule } from './components/login/login.module';
-import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
-import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
-import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
+
+import { ReviewModule } from './components/client/review/review.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +17,9 @@ import { ShowReviewComponent } from './components/client/Review/show-review/show
     PageNotFoundComponent,
     RegisterComponent,
     UnathorizedPageComponent,
-    CreateReviewComponent,
-    UpdateReviewComponent,
-    ShowReviewComponent
+    
+    
+ 
   ],
   imports: [
     BrowserModule,
@@ -28,7 +27,8 @@ import { ShowReviewComponent } from './components/client/Review/show-review/show
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

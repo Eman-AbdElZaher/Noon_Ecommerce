@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Review } from 'src/app/models/Classes/Review';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-show-review',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-review.component.scss']
 })
 export class ShowReviewComponent implements OnInit {
-
-  constructor() { }
+  produtReviews:Review[]=[];
+  constructor(private reviewservice:ReviewService) { }
 
   ngOnInit(): void {
+    //this.produtReviews=this.reviewservice.getAllReview(2);
   }
+
+ 
 
 }

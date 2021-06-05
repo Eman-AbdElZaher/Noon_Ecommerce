@@ -12,12 +12,12 @@ const routes: Routes = [
       .then(mod => mod.LoginModule)
   },
   {path:'register',component:RegisterComponent},
-  {path:'unathorized',component:UnathorizedPageComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
       .then(mod => mod.AdminModule)
   },
+  {path:'unathorized',component:UnathorizedPageComponent},
   { path: '**', component: PageNotFoundComponent },
  
 ];

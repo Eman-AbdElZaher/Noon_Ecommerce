@@ -1,20 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { Ibrand } from '../models/Classes/Brand';
 import {catchError} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class BrandService {
   _url="http://localhost:61135/api/Brands";
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
+  }
   constructor(private http: HttpClient) { }
   addNewBrand(brand:Ibrand): Observable<Ibrand> {
     return this.http.post<Ibrand>(this._url, brand)
-      .pipe(catchError((err) => {
-        return throwError(err.message || "Internal Server error contact site adminstarator");
-      }
-      ));
+      .pipe(
+        tap(() =>  {
+          this._refreshNeeded$.next();
+        })
+      )
     }
   getAllBrands():Observable<Ibrand[]>
   {
@@ -31,6 +38,7 @@ export class BrandService {
   }
   updateBrand(id: number, brandToUpdate: Ibrand): Observable<Ibrand>
    {
+    const headers = {'content-type': 'application/json'}  
     let url = `http://localhost:61135/api/Brands/${id}`;
     return this.http.put<Ibrand>(url, brandToUpdate)
       .pipe(catchError((err) => {

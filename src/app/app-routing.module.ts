@@ -18,11 +18,15 @@ const routes: Routes = [
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
       .then(mod => mod.AdminModule)
   },
+<<<<<<< HEAD
   {
     path: 'review',
     loadChildren: () => import('./components/client/review/review.module')
       .then(mod => mod.ReviewModule)
   },
+=======
+  {path:'unathorized',component:UnathorizedPageComponent},
+>>>>>>> e33a549b326b09ce6029962909613df13a85b277
   { path: '**', component: PageNotFoundComponent },
  
 ];

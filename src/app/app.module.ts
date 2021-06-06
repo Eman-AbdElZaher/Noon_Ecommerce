@@ -12,6 +12,7 @@ import { CreateReviewComponent } from './components/client/Review/create-review/
 import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
+import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UploadImageComponent } from './components/sharedComponent/upload-image/
     CreateReviewComponent,
     UpdateReviewComponent,
     ShowReviewComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,

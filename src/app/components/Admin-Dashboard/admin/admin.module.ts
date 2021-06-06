@@ -6,15 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrandComponent } from './adminpanel/brand/brand.component';
 import { OfferComponent } from './adminpanel/offer/offer.component';
 import { SupplierComponent } from './adminpanel/supplier/supplier.component';
+import { MaincategoryComponent } from './maincategory/maincategory.component';
+import { CategoryComponent } from './category/category.component';
+import { SubcategoryComponent } from './subcategory/subcategory.component';
 
 const routes:Routes=[
   {path:'panel',component:AdminpanelComponent,
   children:[
     {path:'brand',component:BrandComponent},
-
+    {path:'maincategory',component:MaincategoryComponent},
     {path:'offer',component:OfferComponent},
     {path:'supplier',component:SupplierComponent}
-
   ]
 },
    {path:'',redirectTo:'',pathMatch:'full'}
@@ -24,15 +26,17 @@ const routes:Routes=[
   declarations: [
     AdminpanelComponent,
     BrandComponent,
-
     OfferComponent,
-    SupplierComponent
+    SupplierComponent,
+    MaincategoryComponent,
+    CategoryComponent,
+    SubcategoryComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-     ReactiveFormsModule
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

@@ -27,7 +27,7 @@ export class ReviewService {
 
   getAllReview(productid:number):Observable<Review[]>
   {
-    let url=`http://localhost:61135/api/Reviews?${productid}`;
+    let url=`http://localhost:61135/api/Reviews?productid=${productid}`;
     return this.http.get<Review[]>(url).pipe
     (
       catchError(

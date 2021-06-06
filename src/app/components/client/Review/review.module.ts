@@ -9,7 +9,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes:Routes=[
   {path:'create',component:CreateReviewComponent},
-   {path:'',redirectTo:'',pathMatch:'full'}
+  {path:'show',component:ShowReviewComponent},
+  {path:'edit/:id',component:UpdateReviewComponent},
+   
 ]
 @NgModule({
   declarations: [

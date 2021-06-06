@@ -25,9 +25,7 @@ export class SupplierService {
      tap(() =>  {​​​​​​​​
      this._refreshNeeded$.next();
              }​​​​​​​​)
-           )
-     
-     
+           ) 
     }
   getAllSupplier():Observable<ISupplier[]>
   {

@@ -11,6 +11,7 @@ import { LoginModule } from './components/login/login.module';
 import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
+import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ShowReviewComponent } from './components/client/Review/show-review/show
     UnathorizedPageComponent,
     CreateReviewComponent,
     UpdateReviewComponent,
-    ShowReviewComponent
+    ShowReviewComponent,   
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,

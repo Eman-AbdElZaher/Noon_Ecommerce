@@ -9,7 +9,8 @@ import { OfferService } from 'src/app/services/offer.service';
   styleUrls: ['./offer.component.scss']
 })
 export class OfferComponent implements OnInit {
-  offer=new IOffer(0,'','',0);
+
+  offer=new IOffer(0,new Date(),new Date(),0);
   constructor(private offerService:OfferService) { }
   offerList:IOffer[]=[];
   ngOnInit(): void {
@@ -37,9 +38,9 @@ export class OfferComponent implements OnInit {
       form.reset();
     this.offer= {
       id:0,
-      startdate:'',
-      enddate:'',
-      offervalue:0
+      startDate:new Date(),
+      endDate:new Date(),
+      offerValue:0
     }
   }
   AddnewOffer(form : NgForm)
@@ -58,7 +59,14 @@ export class OfferComponent implements OnInit {
   {
     this.offerService.deleteOffer(offerId).subscribe(
       data => {
-        this.offer=data;
+        this.offerService.getAllOffer().subscribe(
+          offers=>
+          {
+            this.offerList=offers;
+            console.log(offers.length);
+            console.log(offers[0]);
+          }
+        )
       },
       error=>
       {
@@ -71,7 +79,14 @@ export class OfferComponent implements OnInit {
     this.offerService.updateOffer(offerId,offer).subscribe(
       data => {
         this.offer=data;
-      },
+        this.offerService.getAllOffer().subscribe(
+          offers=>
+          {
+            this.offerList=offers;
+            console.log(offers.length);
+            console.log(offers[0]);
+          }
+        )      },
       error=>
       {
        this.errorMsg = error;
@@ -82,8 +97,8 @@ export class OfferComponent implements OnInit {
   {
      this.offerService.updateOffer(this.offer.id,this.offer).subscribe(
       data => {
-        this.offer=data;
-      },
+                this.offer=data;
+              },
       error=>
       {
        this.errorMsg = error;

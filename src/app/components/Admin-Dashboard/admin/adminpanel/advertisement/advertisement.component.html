@@ -45,11 +45,11 @@ $(document).ready(function(){
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Offers</b></h2>
+						<h2>Manage <b>Advertisements</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Offer</span></a>
-						<a href="#deleteSupplierModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+						<a href="#addAdvertisementModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Advertisement</span></a>
+						<a href="#deleteAdvertisementModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
@@ -63,13 +63,13 @@ $(document).ready(function(){
 							</span>
 						</th>
 						<th>ID</th>
+						<th>Image</th>
 						<th>StartDate</th>
 						<th>EndDate</th>
-						<th>Offer Value</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody *ngFor="let offer of offerList">
+				<tbody *ngFor="let advertisement of AdvertisementList">
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -77,17 +77,15 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-						<td>{{offer.id}}</td>
-						<td>{{offer.startDate.toString()}}</td>
-						<td>{{offer.endDate.toString()}}</td>
-						<td>{{offer.offerValue}}</td>
+						<td>{{advertisement.id}}</td>
+						<td>{{advertisement.image}}</td>
+						<td>{{advertisement.startDate}}</td>
+						<td>{{advertisement.endDate}}</td>
 						<td>
-							<a href="#editSupplierModal" (click)="EditOffer(offer.id,offer)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteSupplierModal"  (click)="DeleteOffer(offer.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<a href="#editAdvertisementModal" (click)="EditAdverisement(advertisement.id,advertisement)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<a href="#deleteAdvertisementModal"  (click)="DeleteAdverisement(advertisement.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
 					</tr>
-				
-						
 				</tbody>
 			</table>
 			<div class="clearfix">
@@ -106,84 +104,101 @@ $(document).ready(function(){
 	</div>        
 </div>
 <!-- Edit Modal HTML -->
-<div id="addSupplierModal" class="modal fade">
+<div id="addAdvertisementModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form #userform="ngForm"  novalidate>
 				<div class="modal-header">						
-					<h4 class="modal-title">Add Offer</h4>
+					<h4 class="modal-title">Add Advertisement</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label >Start Date</label>
-						<input type="date" class="form-control"  [class.is-invalid]="startdate.invalid && startdate.touched " [class.is-invalid]="startdate.invalid && startdate.touched " required #startdate="ngModel" [(ngModel)]="offer.startDate" name="startdate" >
-						<small class="text-danger"[class.d-none]="startdate.untouched || startdate.valid">Offer Start date is required</small>
+						<label>Image</label>
+						<input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="advertisement.image" name="image" >
+						<!-- <small class="text-danger"[class.d-none]="image.untouched||image.valid">Advertisement image is required</small> -->
 					</div>		
                     
-					<div class="form-group">
-						<label >End Date</label>
-						<input type="date" class="form-control"  [class.is-invalid]="enddate.invalid && enddate.touched " [class.is-invalid]="enddate.invalid && enddate.touched " required #enddate="ngModel" [(ngModel)]="offer.endDate" name="enddate" >
-						<small class="text-danger"[class.d-none]="enddate.untouched || enddate.valid">Offer End date is required</small>
-					</div>
-						
-                    <div class="form-group">
-						<label>Offer Value</label>
-						<input type="number" class="form-control" [class.is-invalid]="offervalue.invalid && offervalue.touched " [class.is-invalid]="offervalue.invalid && offervalue.touched " required #offervalue="ngModel" [(ngModel)]="offer.offerValue" name="offervalue">
-						<small class="text-danger"[class.d-none]="offervalue.untouched || offervalue.valid">Offer Value is required</small>
-					</div>				
-				</div>
+						<div class="form-group">
+							<label >startDate</label>
+							<input type="date" name="startDate" [class.is-invalid]="startDate.invalid && startDate.touched" required #startDate="ngModel" [(ngModel)]="advertisement.startDate" class="form-control" >
+							<!-- <div *ngIf="startDate.errors && (startDate.invalid || startDate.touched)">
+								<small class="text-danger" *ngIf="startDate.errors.required" >startDate is required</small>							 
+							 
+							</div> -->
+						</div>
+
+					 
+                        
+                        <div class="form-group">
+							<label >EndDate</label>
+							<input type="date" name="endDate"  [class.is-invalid]="endDate.invalid && endDate.touched" required #endDate="ngModel" [(ngModel)]="advertisement.endDate" class="form-control" >
+							<!-- <div *ngIf="endDate.errors && (endDate.invalid || endDate.touched)">
+								<small class="text-danger" *ngIf="endDate.errors.required" >EndDate is required</small>
+							 </div> -->
+                             </div>
+                             </div>
+                           
+					 
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit"  (click)="AddnewOffer(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
+					<input type="submit" (click)="AddnewAdvertisement(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editSupplierModal" class="modal fade">
+<div id="editAdvertisementModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form #userform="ngForm"  novalidate>
 				<div class="modal-header">						
-					<h4 class="modal-title">Edit Offer</h4>
+					<h4 class="modal-title">Edit Advertisement</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-                    <div class="form-group">
-						<label for="startdate">Start Date</label>
-						<input type="date" class="form-control" bsDatepicker [class.is-invalid]="startdate.invalid && startdate.touched " [class.is-invalid]="startdate.invalid && startdate.touched " required #name="ngModel" [(ngModel)]="offer.startDate" name="startdate" >
-						<small class="text-danger"[class.d-none]="startdate.untouched || startdate.valid">Supplier Start date is required</small>
+					<div class="form-group">
+						<label>Image</label>
+						<input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched" [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="advertisement.image" name="image" >
+						<small class="text-danger"[class.d-none]="image.untouched || image.valid">advertisement Image is required</small>
 					</div>		
+                    <div class="form-group">
+                        <label >startDate</label>
+                        <input type="date" name="startDate"  [class.is-invalid]="startDate.invalid && startDate.touched" required #startDate="ngModel" [(ngModel)]="advertisement.startDate" class="form-control" >
+                        <div *ngIf="startDate.errors && (startDate.invalid || startDate.touched)">
+                            <small class="text-danger" *ngIf="startDate.errors.required" >startDate is required</small>
+                         
+                         
+                        </div>
+                    </div>
                     
                     <div class="form-group">
-						<label for="enddate">EndDate</label>
-						<input type="date" class="form-control" bsDatepicker [class.is-invalid]="enddate.invalid && enddate.touched " [class.is-invalid]="enddate.invalid && enddate.touched " required #name="ngModel" [(ngModel)]="offer.endDate" name="enddate" >
-						<small class="text-danger"[class.d-none]="enddate.untouched || enddate.valid">Supplier End date is required</small>
-					</div>
-						
-                    <div class="form-group">
-						<label>Offer Value</label>
-						<input type="number" class="form-control" [class.is-invalid]="address.invalid && address.touched " [class.is-invalid]="address.invalid && address.touched " required #address="ngModel" [(ngModel)]="offer.offerValue" name="address">
-						<small class="text-danger"[class.d-none]="address.untouched || address.valid">Offer Value is required</small>
-					</div>					
-				</div>
+                        <label >EndDate</label>
+                        <input type="date" name="endDate"  [class.is-invalid]="endDate.invalid && endDate.touched" required #endDate="ngModel" [(ngModel)]="advertisement.endDate" class="form-control" >
+                        <div *ngIf="endDate.errors && (endDate.invalid || endDate.touched)">
+                            <small class="text-danger" *ngIf="endDate.errors.required" >EndDate is required</small>
+                                         
+                        </div>
+                    </div>			
+            </div>
+					 
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="SaveEditOffer(userform)" class="btn btn-info" [disabled]="!userform.valid" value="Save">
+					<input type="submit" (click)="SaveEditAdvertisement(userform)" class="btn btn-info"  value="Save">
 				</div>
 			</form>
+            <!-- //[disabled]="!userform.valid" -->
 		</div>
 	</div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deleteSupplierModal" class="modal fade">
+<div id="deleteAdvertisementModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Delete Offer</h4>
+					<h4 class="modal-title">Delete Advertisement</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
@@ -194,10 +209,12 @@ $(document).ready(function(){
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 					<input type="submit" class="btn btn-danger" value="Delete">
 				</div>
+
 			</form>
 		</div>
 	</div>
 </div>
 </body>
 </html>
+
 

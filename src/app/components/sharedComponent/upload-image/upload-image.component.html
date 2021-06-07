@@ -1,0 +1,9 @@
+<div class="file-upload">
+        <button class="btn btn-outline-primary" type="button" (click)="file.click()"><i class="fas fa-cloud-upload-alt"></i>Add Image</button>
+        <div class="image-upload-wrap" #uploadWrap >
+          <input class="file-upload-input" #file type='file' (change)="uploadFile(file.files);" accept="image/*" hidden />
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" #Imagetitle placeholder="Upload your file" disabled>
+          </div>
+        </div>
+</div>   

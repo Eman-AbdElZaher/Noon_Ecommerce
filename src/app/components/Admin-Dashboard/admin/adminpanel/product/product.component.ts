@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
+import { BrandService } from 'src/app/services/brand.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class ProductComponent implements OnInit {
  product=new IProduct(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
+
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
@@ -21,7 +24,8 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
-    this.resetform();
+    this.reserform();
+  
 
   }
 
@@ -37,7 +41,7 @@ GetAllProduct(){
     })
 }
 
-  resetform(form? : NgForm){
+  reserform(form? : NgForm){
     if(form !=null)
       form.reset();
     this.product= {
@@ -51,8 +55,7 @@ GetAllProduct(){
     subCategoryID:0,
     brandID:0,
    supplierID:0,
-    averageRating:0,
-      
+   averageRating:0
     }
   }
   errorMsg='';
@@ -104,6 +107,8 @@ GetAllProduct(){
       }
      )
     }
+  
+ 
 }
 
 

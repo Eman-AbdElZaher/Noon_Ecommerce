@@ -23,7 +23,7 @@ const routes:Routes=[
 
     {path:'advertisement',component:AdvertisementComponent},
 
-    {path:'offer',component:OfferComponent},
+    {path:'offer',component:OfferComponent}
    
 
 

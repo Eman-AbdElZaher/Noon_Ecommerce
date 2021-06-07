@@ -34,6 +34,9 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
     HttpClientModule,
     LoginModule
   ],
+  exports: [
+    UploadImageComponent// <--- Enable using the component in other modules
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

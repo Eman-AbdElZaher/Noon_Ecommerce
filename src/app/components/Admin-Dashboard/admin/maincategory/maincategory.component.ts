@@ -52,6 +52,7 @@ export class MaincategoryComponent implements OnInit {
       }
     )
   }
+
   AddnewCategory(){
     this.newmainCategory={
       id:0,

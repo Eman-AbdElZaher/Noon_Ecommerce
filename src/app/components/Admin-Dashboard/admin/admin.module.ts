@@ -9,6 +9,7 @@ import { SupplierComponent } from './adminpanel/supplier/supplier.component';
 import { MaincategoryComponent } from './maincategory/maincategory.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { AppModule } from 'src/app/app.module';
 
 const routes:Routes=[
   {path:'panel',component:AdminpanelComponent,
@@ -16,10 +17,12 @@ const routes:Routes=[
     {path:'brand',component:BrandComponent},
     {path:'maincategory',component:MaincategoryComponent},
     {path:'offer',component:OfferComponent},
-    {path:'supplier',component:SupplierComponent}
+    {path:'supplier',component:SupplierComponent},
+    {path:'category',component:CategoryComponent},
+    {path:'subcategory',component:SubcategoryComponent}
   ]
 },
-   {path:'',redirectTo:'',pathMatch:'full'}
+   {path:'',redirectTo:'panel',pathMatch:'full'}
 ]
 
 @NgModule({

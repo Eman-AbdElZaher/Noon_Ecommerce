@@ -222,3 +222,59 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
+.file-upload{
+    position:relative;
+    display: flex;
+}
+.file-upload .btn{
+    margin: .375rem;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+    padding: .84rem 2.14rem;
+	padding:5px;
+    font-size: .81rem;
+}
+.btn i{
+ margin-right: 10px;
+ font-size:19px;
+}
+.btn-outline-primary {
+    color: #4285f4 !important;
+    background-color: transparent !important;
+    border: 2px solid #4285f4 !important;
+}
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.file-path-wrapper {
+    height: 3.7rem;
+    padding-left: 10px;
+    overflow: hidden;
+}
+.file-path-wrapper .file-path {
+    height: 3.5rem;
+    box-sizing: content-box;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+
+}
+.uploadedCompleted{
+    border-bottom:1px solid #4285f4;
+}

@@ -58,6 +58,49 @@ brandForm: FormGroup;
   {
      this.brandService.deleteBrand(brandId).subscribe(
       data => {
+        this.brandService.getAllBrands().subscribe(
+          brands=>
+          {
+            this.brandtList=brands;
+            console.log(brands.length);
+            console.log(brands[0]);
+          }
+        )
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+     )
+  }
+  updateBrand(brandId:number, brands:Ibrand)
+  {
+    this.brandService.updateBrand(brandId,brands).subscribe(
+      data => {
+        
+        this.brand=data;
+        this.brandForm.setValue({
+          name: data.name
+        });
+        this.brandService.getAllBrands().subscribe(
+          brands=>
+          {
+            this.brandtList=brands;
+            console.log(brands.length);
+            console.log(brands[0]);
+          }
+        ) 
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+     )
+  }
+  SaveEditBrand(form : NgForm)
+  {
+     this.brandService.updateBrand(this.brand.id,this.brand).subscribe(
+      data => {
         this.brand=data;
       },
       error=>
@@ -65,20 +108,5 @@ brandForm: FormGroup;
        this.errorMsg = error;
       }
      )
-  }
-  updateBrand(brandId:number)
-  {
-    let brands:Ibrand;
-    this.brandService.updateBrand(brandId,brands).subscribe(
-      data => {
-        this.brandForm.setValue({
-          name: data.name
-        }); 
-      },
-      error=>
-      {
-       this.errorMsg = error;
-      }
-     )
-  }
+    }
 }

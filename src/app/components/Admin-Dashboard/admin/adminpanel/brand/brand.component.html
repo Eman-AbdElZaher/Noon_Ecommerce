@@ -303,7 +303,7 @@ $(document).ready(function(){
 						<td>{{brand.name}}</td>
 					
 						<td>
-							<a href="#editEmployeeModal"  (click)="updateBrand(brand.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<a href="#editEmployeeModal"  (click)="updateBrand(brand.id,brand)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteEmployeeModal" (click)="deleteBrand(brand.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
 					</tr>
@@ -366,7 +366,7 @@ $(document).ready(function(){
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="updateBrand(brand.id)" [disabled]="!userform.valid"   class="btn btn-info" value="Save">
+					<input type="submit" (click)="SaveEditBrand(userform)" [disabled]="!userform.valid"   class="btn btn-info" value="Save">
 				</div>
 			</form>
 		</div>

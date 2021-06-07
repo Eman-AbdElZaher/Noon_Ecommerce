@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { NgForm } from '@angular/forms';
+import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
+=======
+import { FormGroup, NgForm } from '@angular/forms';
+import { Ibrand } from 'src/app/models/Classes/Brand';
+import { IProduct } from 'src/app/models/Interfaces/IProduct';
+import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
+import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
+import { BrandService } from 'src/app/services/brand.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SubcategoryService } from 'src/app/services/subcategory.service';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
   selector: 'app-product',
@@ -9,11 +21,19 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
- product=new IProduct(0,'','',0,0,'',0,0,0,0,0);
+ productForm : FormGroup;
+ product=new IProduct();//(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
+<<<<<<< HEAD
+
   constructor(private productService:ProductService) { }
+=======
+  brandList:Ibrand[]=[];
+  supplier:ISupplier[]=[];
+  subcategory:ISubCategory[]=[];
+  constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 
   ngOnInit(): void {
    
@@ -21,8 +41,52 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
-    this.resetform();
+<<<<<<< HEAD
+    this.reserform();
+  
 
+=======
+    this.resetform();
+   this.getAllBrands();
+   this.getAllSupplier();
+   this.getAllSubCategory();
+  }
+  getAllSubCategory()
+  {
+    this.subCategory.getAllSubCategories().subscribe(
+      serviceData=>
+      {
+        this.subcategory=serviceData;
+      },
+      errorResponse=>
+      {
+       this.errorMsg=errorResponse;
+      })
+  }
+  getAllBrands()
+  {
+    this.brandService.getAllBrands().subscribe(
+      serviceData=>
+      {
+        this.brandList=serviceData;
+      },
+      errorResponse=>
+      {
+       this.errorMsg=errorResponse;
+      })
+  }
+  getAllSupplier()
+  {
+    this.supplierService.getAllSupplier().subscribe(
+      serviceData=>
+      {
+        this.supplier=serviceData;
+      },
+      errorResponse=>
+      {
+       this.errorMsg=errorResponse;
+      })
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
   }
 
 GetAllProduct(){
@@ -37,30 +101,43 @@ GetAllProduct(){
     })
 }
 
-  resetform(form? : NgForm){
+  reserform(form? : NgForm){
     if(form !=null)
       form.reset();
     this.product= {
-       id:0,  
+      id:0,  
       name:'',
-       description:'',
+      description:'',
       quantity:0,
+<<<<<<< HEAD
      price:0,
     color:'', 
     size:0,
     subCategoryID:0,
     brandID:0,
    supplierID:0,
-    averageRating:0,
+   averageRating:0
+=======
+      price:0,
+      color:'', 
+      size:'',
+      SubCategoryID:0,
+      brandID:0,
+      supplierID:0,
+      averageRating:0,
       
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
     }
   }
   errorMsg='';
   AddnewProduct(form : NgForm)
   {
+     console.log(this.product);
      this.productService.addNewProduct(this.product).subscribe(
       data => {
         this.product=data;
+        console.log(data);
+        console.log(this.product);
       },
       error=>
       {
@@ -72,7 +149,14 @@ GetAllProduct(){
   {
     this.productService.deleteProduct(productId).subscribe(
       data => {
-        this.product=data;
+        this.productService.getAllProduct().subscribe(
+          products=>
+          {
+            this.productList=products;
+            console.log(products.length);
+            console.log(products[0]);
+          }
+        )
       },
       error=>
       {
@@ -104,6 +188,8 @@ GetAllProduct(){
       }
      )
     }
+  
+ 
 }
 
 

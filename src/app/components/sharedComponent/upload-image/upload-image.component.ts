@@ -1,5 +1,5 @@
 import { HttpEventType, HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,7 +11,7 @@ export class UploadImageComponent implements OnInit {
 
   @ViewChild('Imagetitle') title: ElementRef;
   message: string;
-
+  @Output() public onUploadFinished = new EventEmitter();
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -27,8 +27,12 @@ export class UploadImageComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
     this.http.post(uploadUrl, formData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
-       if (event.type === HttpEventType.Response) {
+        if (event.type === HttpEventType.UploadProgress){
+           this.title.nativeElement.classList.Add('uploadedCompleted');
+        }
+       else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
+          this.onUploadFinished.emit(event.body);
         }
       });
   }

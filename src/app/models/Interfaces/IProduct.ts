@@ -5,11 +5,11 @@ export class IProduct {
       public description:string,
       public quantity:number,
       public price:number,
-    public color:string, 
-    public size:number,
-    public subCategoryID:number,
-    public brandID:number,
-    public supplierID:number,
-    public averageRating:number
+      public color:string, 
+      public size:number,
+      public subCategoryID:number,
+      public brandID:number,
+      public supplierID:number,
+      public averageRating:number
     ){}
 }

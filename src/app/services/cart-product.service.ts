@@ -24,7 +24,7 @@ export class CartProductService {
 
   getAllCartProduct(cartId:string):Observable<CartProduct[]>
   {
-    let url=`http://localhost:61135/api/CartProducts?cartId=${cartId}`;
+    let url=`http://localhost:61135/api/CartProducts?userid=${cartId}`;
     return this.http.get<CartProduct[]>(url).pipe(
       catchError(
         (err)=>

@@ -24,6 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./components/client/review/review.module')
       .then(mod => mod.ReviewModule)
   },
+  {
+    path: 'cartproduct',
+    loadChildren: () => import('./components/client/cart/cart.module')
+      .then(mod => mod.CartModule)
+  },
+
 
   {path:'unathorized',component:UnathorizedPageComponent},
 

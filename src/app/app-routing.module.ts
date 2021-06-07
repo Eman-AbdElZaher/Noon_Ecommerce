@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 
-const routes: Routes = [
+const routes: Routes = [ 
   {  
     path: 'login',
     loadChildren: () => import('./components/login/login.module')
@@ -18,7 +18,15 @@ const routes: Routes = [
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
       .then(mod => mod.AdminModule)
   },
+
+  {
+    path: 'review',
+    loadChildren: () => import('./components/client/review/review.module')
+      .then(mod => mod.ReviewModule)
+  },
+
   {path:'unathorized',component:UnathorizedPageComponent},
+
   { path: '**', component: PageNotFoundComponent },
  
 ];

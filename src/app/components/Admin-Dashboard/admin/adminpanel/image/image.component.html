@@ -128,7 +128,11 @@ $(document).ready(function(){
                     <div class="modal-body">					
                         <div class="form-group">
                             <label>Image Name</label>
+<<<<<<< HEAD
                             <input type="file" class="form-control-file" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+=======
+                            <input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
                             <small class="text-danger"[class.d-none]="image.untouched || image.valid">Image Name is required</small>
                         </div>		
                     
@@ -161,7 +165,11 @@ $(document).ready(function(){
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Image Name</label>
+<<<<<<< HEAD
 						<input type="file"  class="form-control-file" [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+=======
+						<input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="image.image" name="image" >
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 						<small class="text-danger"[class.d-none]="image.untouched || image.valid">Image Name is required</small>
 					</div>		
 				

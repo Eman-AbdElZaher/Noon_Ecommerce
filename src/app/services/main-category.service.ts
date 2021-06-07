@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IMainCategory } from '../models/Interfaces/IMainCategory';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { ApiController } from '../controller/ApiController';
@@ -14,6 +14,11 @@ export class MainCategoryService {
   constructor(
     private _http:HttpClient
   ) { }
+  private _refreshNeeded$ = new Subject<void>();
+ 
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
+  }
   getAllCategories():Observable<IMainCategory[]> {
     let url = `${ApiController.MainCategory_URL}`;
     return this._http.get<IMainCategory[]>(url).pipe(catchError((err)=>

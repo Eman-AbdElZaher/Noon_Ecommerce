@@ -68,7 +68,14 @@ GetAllImage(){
   {
     this.imageService.deleteImage(imageId).subscribe(
       data => {
-        this.imageobj=data;
+        this.imageService.getAllImages().subscribe(
+          images=>
+          {
+            this.imageList=images;
+            console.log(images.length);
+            console.log(images[0]);
+          }
+        )
       },
       error=>
       {

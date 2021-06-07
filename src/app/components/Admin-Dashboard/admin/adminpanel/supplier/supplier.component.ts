@@ -64,7 +64,14 @@ GetAllSupplier(){
   {
     this.supplierService.deleteSupplier(supplierId).subscribe(
       data => {
-        this.supplier=data;
+        this.supplierService.getAllSupplier().subscribe(
+          supplires=>
+          {
+            this.supplierList=supplires;
+            console.log(supplires.length);
+            console.log(supplires[0]);
+          }
+        )
       },
       error=>
       {
@@ -77,6 +84,14 @@ GetAllSupplier(){
     this.supplierService.updateSupplier(supplierId,supplier).subscribe(
       data => {
         this.supplier=data;
+        this.supplierService.getAllSupplier().subscribe(
+          supplires=>
+          {
+            this.supplierList=supplires;
+            console.log(supplires.length);
+            console.log(supplires[0]);
+          }
+        )
       },
       error=>
       {

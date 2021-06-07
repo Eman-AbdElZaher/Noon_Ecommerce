@@ -20,15 +20,13 @@ export class ProductService {
   }
   constructor(private http: HttpClient) { }
   addNewProduct(product:IProduct): Observable<IProduct> {
-    let url = `http://localhost:61135/api/Product`;
+    let url = `http://localhost:61135/api/Product/CreateProduct`;
     return this.http.post<IProduct>(url, product)
       .pipe(
      tap(() =>  {​​​​​​​​
      this._refreshNeeded$.next();
              }​​​​​​​​)
-           )
-     
-     
+           )  
     }
   getAllProduct():Observable<IProduct[]>
   {

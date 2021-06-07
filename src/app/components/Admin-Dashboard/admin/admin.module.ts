@@ -33,7 +33,6 @@ const routes:Routes=[
   declarations: [
     AdminpanelComponent,
     BrandComponent,
-
     SupplierComponent,
     ProductComponent,
     ImageComponent,

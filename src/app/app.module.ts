@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/client/register/register.compone
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { LoginModule } from './components/login/login.module';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
+import { FooterComponent } from './components/sharedComponent/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UploadImageComponent } from './components/sharedComponent/upload-image/
     PageNotFoundComponent,
     RegisterComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent
+    UploadImageComponent, FooterComponent,
+    
   ],
   imports: [
     BrowserModule,

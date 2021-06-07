@@ -1,10 +1,13 @@
-export interface IProduct{
-  id:number;
-  name:string;
-  price:number;
-  description:string,
-  image:string,
-  quantity:number,
-  subCategoryId:number,
-  color:string
+export class IProduct { 
+      public id:number;
+      public name:string;
+      public description:string;
+      public quantity:number;
+      public price:number;
+      public color:string;
+      public size:string;
+      public SubCategoryID:number;
+      public brandID:number;
+      public supplierID:number;
+      public averageRating:number;   
 }

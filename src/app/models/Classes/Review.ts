@@ -1,9 +1,12 @@
 export class Review
 {
-    ID:number;
-    Comment:string;
-    Rating:string;
-    ProductID:number;
-    UserID:string;
+  
+    constructor(
+       public ID:number,
+       public Comment:string,
+       public Rating:string,
+       public ProductID:number,
+       public UserID:string
+      ){}
 
 }

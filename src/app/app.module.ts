@@ -8,11 +8,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { RegisterComponent } from './components/client/register/register.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { LoginModule } from './components/login/login.module';
+import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
+import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
 import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
-import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
-import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,9 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
     UpdateReviewComponent,
     ShowReviewComponent,
     UploadImageComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    UnathorizedPageComponent,  
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    
   ],
   exports: [
     UploadImageComponent// <--- Enable using the component in other modules

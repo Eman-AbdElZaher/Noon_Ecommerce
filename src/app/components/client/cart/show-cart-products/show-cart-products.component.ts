@@ -44,4 +44,4 @@ export class ShowCartProductsComponent implements OnInit {
     this.ngOnInit();
   }
 
-}
+} 

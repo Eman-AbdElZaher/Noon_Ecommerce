@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { RegisterComponent } from './components/client/register/register.component';
+import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
@@ -12,6 +14,8 @@ const routes: Routes = [
       .then(mod => mod.LoginModule)
   },
   {path:'register',component:RegisterComponent},
+  {path:'wishlist',component:WishlistProductComponent},
+  {path:'productPage/:id',component:ProductDetailsComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
   {
     path: 'dashboard',

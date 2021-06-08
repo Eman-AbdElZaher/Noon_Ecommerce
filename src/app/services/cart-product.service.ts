@@ -12,26 +12,28 @@ export class CartProductService {
   constructor(private http: HttpClient) { }
 
   addCartProduct(productId: number): Observable<CartProduct> {
-    let url =`http://localhost:61135/api/CartProducts`;
-    return this.http.post<CartProduct>(url, productId).pipe(
+    console.log(productId);
+    let url =`http://localhost:61135/api/CartProducts?productid=${productId}`;
+    return this.http.post<CartProduct>(url,productId).pipe(
       catchError(
         (err) => {
           return throwError(err.message);
         }
       )
-    )
+    ) 
   }
 
   getAllCartProduct(cartId:string):Observable<CartProduct[]>
   {
-    let url=`http://localhost:61135/api/CartProducts?userid=${cartId}`;
+    console.log(cartId);
+    let url=`http://localhost:61135/api/CartProducts?cartId=${cartId}`;
     return this.http.get<CartProduct[]>(url).pipe(
       catchError(
         (err)=>
         {
           return throwError(err.message);
         }
-      )
+      ) 
     )
   }
 

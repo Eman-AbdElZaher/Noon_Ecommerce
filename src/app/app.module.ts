@@ -13,6 +13,8 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
 import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
+import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
+import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { ShowReviewComponent } from './components/client/Review/show-review/show
     UploadImageComponent,
     DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent
+    UploadImageComponent, ProductDetailsComponent, WishlistProductComponent
   ],
   imports: [
     BrowserModule,

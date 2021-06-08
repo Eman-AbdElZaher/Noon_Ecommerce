@@ -49,7 +49,7 @@ export class ShowReviewComponent implements OnInit {
     this.ngOnInit();
   }
 
-
+ 
   editeReview(id:number)
   { 
     this.rout.navigate(["/review/edit",id]);

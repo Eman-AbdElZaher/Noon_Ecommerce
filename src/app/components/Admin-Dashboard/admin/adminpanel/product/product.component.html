@@ -68,13 +68,6 @@ $(document).ready(function(){
 						<th>Price</th>
 						<th>Color</th>
                         <th>Size</th>
-<<<<<<< HEAD
-						<th>SubQategory ID</th>
-						<th>Brand ID</th>
-                        <th>Supplier ID</th>
-						<th>Average Rating</th>                       
-=======
->>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
                         <th>Actions</th>
 					</tr>
 				</thead>
@@ -92,13 +85,7 @@ $(document).ready(function(){
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
 						<td>{{product.size}}</td>
-<<<<<<< HEAD
-						<td>{{product.subCategoryID}}</td>
-                        <td>{{product.brandID}}</td>
-                        <td>{{product.supplierID}}</td>
-                       <td>{{product.averageRating}}</td>
-=======
->>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
+
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -175,40 +162,7 @@ $(document).ready(function(){
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
 						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
                     </div>
-<<<<<<< HEAD
 
-                    <div class="form-group">
-						<label>SubCategoryID</label>
-						<input type="number" class="form-control" [class.is-invalid]="subCategoryID.invalid && subCategoryID.touched " required  #subCategoryID="ngModel" [(ngModel)]="product.subCategoryID " name="subCategoryID">
-						<small class="text-danger"[class.d-none]="subCategoryID.untouched || subCategoryID.valid">Product SubCategoryId is required</small>
-                    </div>
-
-                    <div class="form-group">
-						<label>BrandID</label>
-						<input type="number" class="form-control" [class.is-invalid]="brandID.invalid && brandID.touched " [class.is-invalid]="brandID.invalid && brandID.touched " required  #brandID="ngModel" [(ngModel)]="product.brandID " name="brandID">
-						<small class="text-danger"[class.d-none]="brandID.untouched || brandID.valid">Product BrandID is required</small>
-                    </div> 
-
-					<!-- <div class="form-group">
-						<label>Brand Name</label>
-						<select  class="custom-select"  [class.is-invalid]="brandID.invalid && brandID.touched " required  #brandID="ngModel" [(ngModel)]="product.brandID " name="brandID">
-						<option *ngFor="let brand of brandtList" value="{{brand.id}}" >{{brand.name}}
-						</option>
-					</select>
-							<small class="text-danger"[class.d-none]="brandID.untouched || brandID.valid">Product BrandID is required</small>
-                    
-					</div> -->
-
-					<div class="form-group">
-						<label>SupplierID</label>
-						<input type="number" class="form-control"  [class.is-invalid]="supplierID.invalid && supplierID.touched " required  #supplierID="ngModel" [(ngModel)]="product.supplierID " name="supplierID">
-						<small class="text-danger"[class.d-none]="supplierID.untouched || supplierID.valid">Product SupplierID is required</small>
-                    </div> 
-
-				
-
-                   
-=======
                     <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
 						<label>SubCategory</label>
 						<select class="custom-select"  name="subCatID" class="form-control"  [(ngModel)]="product.SubCategoryID" #subCatID="ngModel" [class.is-invalid]="subCatID.invalid && subCatID.touched" required  >
@@ -238,7 +192,6 @@ $(document).ready(function(){
 						</select>
 						<small class="text-danger" [class.d-none]="supplierID.untouched || supplierID.valid" >Supplier is Required</small>
                     </div>
->>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -295,44 +248,6 @@ $(document).ready(function(){
                     
                     <div class="form-group">
 						<label>Size</label>
-<<<<<<< HEAD
-						<input type="number" class="form-control"  [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
-						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
-                        <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p>
-                    </div>
-
-                    <div class="form-group">
-						<label>SubCategoryID</label>
-						<input type="number" class="form-control"  [class.is-invalid]="subCategoryID.invalid && subCategoryID.touched " required  #subCategoryID="ngModel" [(ngModel)]="product.subCategoryID " name="subCategoryID">
-						<small class="text-danger"[class.d-none]="subCategoryID.untouched || subCategoryID.valid">Product SubCategoryId is required</small>
-                    </div>
-                    <div class="form-group">
-						<label>BrandID</label>
-						<input type="number" class="form-control"  [class.is-invalid]="brandID.invalid && brandID.touched " required  #brandID="ngModel" [(ngModel)]="product.brandID " name="brandID">
-						<small class="text-danger"[class.d-none]="brandID.untouched || brandID.valid">Product BrandID is required</small>
-                    </div> 
-
-					<!-- <div class="form-group">
-						<label>Brand Name</label>
-						<select  class="form-control"  [class.is-invalid]="brandID.invalid && brandID.touched " required  #brandID="ngModel" [(ngModel)]="product.brandID " name="brandID">
-						<option *ngFor="let brand of brandtList" value="{{brand.id}}" >{{brand.name}}
-						</option>
-					</select>
-							<small class="text-danger"[class.d-none]="brandID.untouched || brandID.valid">Product BrandID is required</small>
-                    
-					</div> -->
-
-                    <div class="form-group">
-						<label>SupplierID</label>
-						<input type="number" class="form-control"  [class.is-invalid]="supplierID.invalid && supplierID.touched " required  #supplierID="ngModel" [(ngModel)]="product.supplierID " name="supplierID">
-						<small class="text-danger"[class.d-none]="supplierID.untouched || supplierID.valid">Product SupplierID is required</small>
-                    </div>
-
-                    <div class="form-group">
-						<label>Average Rating</label>
-						<input type="number" class="form-control" [class.is-invalid]="averageRating.invalid && averageRating.touched " required  #averageRating="ngModel" [(ngModel)]="product.averageRating " name="averageRating">
-						<small class="text-danger"[class.d-none]="averageRating.untouched || averageRating.valid">Product Average Rating is required</small>
-=======
 						<input type="text" class="form-control" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
 						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
@@ -366,7 +281,6 @@ $(document).ready(function(){
 							</option>
 						</select>
 						<small class="text-danger" [class.d-none]="supplierID.untouched || supplierID.valid" >Supplier is Required</small>
->>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
                     </div>
 				</div>
 				<div class="modal-footer">

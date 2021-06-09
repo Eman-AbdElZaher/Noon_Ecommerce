@@ -37,12 +37,7 @@ export class ImageService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
-  // getSupplierById(id: number): Observable<ISupplier> {
-  //   let url = `http://localhost:61135/api/Suppliers/${id}`;
-  //   return this.http.get<ISupplier>(url).pipe(catchError((err) => {
-  //     return throwError(err.message || "Internal Server error contact site adminstarator");
-  //   }));
-  // }
+  
   updateImage(id: number, imageToUpdate: IImage): Observable<IImage>
    {
     let url = `http://localhost:61135/api/Images/${id}`;

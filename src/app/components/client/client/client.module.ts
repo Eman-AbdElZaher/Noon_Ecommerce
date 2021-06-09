@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SliderComponent } from '../slider/slider.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductshomeComponent } from '../productshome/productshome.component';
+import { OffersComponent } from '../offers/offers.component';
 const routes:Routes=[
   
-  {path:'slider',component:SliderComponent}
+  {path:'offers',component:OffersComponent}
+
 ];
 
 
 @NgModule({
   declarations: [
-    SliderComponent,
-    ProductshomeComponent
+    ProductshomeComponent,OffersComponent
   ],
   imports: [
     CommonModule,

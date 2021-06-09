@@ -85,7 +85,10 @@ $(document).ready(function(){
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
 						<td>{{product.size}}</td>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 072b440fc8634ba1a4f0bc0d3f3233a199de3524
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -162,7 +165,6 @@ $(document).ready(function(){
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
 						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
                     </div>
-
                     <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
 						<label>SubCategory</label>
 						<select class="custom-select"  name="subCatID" class="form-control"  [(ngModel)]="product.SubCategoryID" #subCatID="ngModel" [class.is-invalid]="subCatID.invalid && subCatID.touched" required  >

@@ -30,6 +30,7 @@ const routes:Routes=[
     {path:'product',component:ProductComponent},
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},  
+    {path:'advertisement',component:AdvertisementComponent},
     {path:'offer',component:OfferComponent}, 
   ]
 },

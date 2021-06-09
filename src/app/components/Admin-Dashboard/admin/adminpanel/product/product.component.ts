@@ -5,6 +5,7 @@ import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { BrandService } from 'src/app/services/brand.service';
+
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -19,11 +20,11 @@ export class ProductComponent implements OnInit {
  product=new IProduct();//(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
-
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
+
 
   ngOnInit(): void {
    
@@ -100,7 +101,6 @@ GetAllProduct(){
       brandID:0,
       supplierID:0,
      averageRating:0,
-      
     }
   }
   errorMsg='';

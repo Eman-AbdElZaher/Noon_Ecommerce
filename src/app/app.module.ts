@@ -11,7 +11,8 @@ import { LoginModule } from './components/login/login.module';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
 import { FooterComponent } from './components/sharedComponent/footer/footer.component';
 import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
-import { OffersComponent } from './components/client/offers/offers.component';
+import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
+import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,9 @@ import { OffersComponent } from './components/client/offers/offers.component';
     UploadImageComponent,
     DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent, FooterComponent, OffersComponent,
-    
-    
+    UploadImageComponent, FooterComponent,   
+   ProductDetailsComponent, WishlistProductComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@ export class ProductService {
     {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
-  }
+  } 
   getProductById(id: number): Observable<IProduct> {
     let url = `http://localhost:61135/api/Product/${id}`;
     return this.http.get<IProduct>(url).pipe(catchError((err) => {

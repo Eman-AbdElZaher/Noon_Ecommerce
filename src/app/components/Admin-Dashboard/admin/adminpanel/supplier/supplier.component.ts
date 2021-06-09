@@ -13,6 +13,7 @@ export class SupplierComponent implements OnInit {
   supplier=new ISupplier(0,'','','');
   //errorMsg="";
   supplierList:ISupplier[]=[];
+  hasSuppliers:boolean=false;
   constructor(private supplierService:SupplierService) { }
 
   ngOnInit(): void {
@@ -29,7 +30,11 @@ GetAllSupplier(){
   this.supplierService.getAllSupplier().subscribe(
     serviceData=>
     {
-      this.supplierList=serviceData;
+      if(serviceData.length>0)
+      {
+        this.supplierList=serviceData;
+        this.hasSuppliers=true;
+      }
     },
     errorResponse=>
     {

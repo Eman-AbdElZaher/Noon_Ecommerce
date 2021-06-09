@@ -1,0 +1,33 @@
+
+.cunCrG {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+}
+@media only screen and (min-width: 992px)
+{
+.siteWidthContainer {
+    padding: 0 45px;
+}
+}
+@media only screen and (min-width: 768px)
+{
+.siteWidthContainer {
+    padding: 0 25px;
+    min-width: 768px;
+    max-width: 2000px;
+}
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+.bIQlcL {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

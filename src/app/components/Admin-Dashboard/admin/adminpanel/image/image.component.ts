@@ -14,10 +14,11 @@ export class ImageComponent implements OnInit {
   imageobj=new IImage(0,'',0);
   //errorMsg="";
   imageList:IImage[]=[];
+  hasImages:boolean=false;
   productList:IProduct[]=[];
  
   constructor(private imageService:ImageService,private productService:ProductService) { }
-
+  imageFile!: File;
   ngOnInit(): void {
    
     this.imageService.refreshNeeded$.subscribe(()=>{
@@ -33,7 +34,11 @@ GetAllImage(){
   this.imageService.getAllImages().subscribe(
     serviceData=>
     {
-      this.imageList=serviceData;
+      if(serviceData.length > 0)
+      {
+         this.imageList=serviceData;
+        this.hasImages=true 
+      }
     },
     errorResponse=>
     {
@@ -55,7 +60,8 @@ GetAllImage(){
   AddnewImage(form : NgForm)
   {
      this.imageService.addNewImage(this.imageobj).subscribe(
-      data => {
+      data => 
+      {
         this.imageobj=data;
       },
       error=>
@@ -122,8 +128,7 @@ GetAllImage(){
     ShowValue(productid){
     console.log(productid.value);
       this.imageService.getImageProduct(productid.value).subscribe(
-        data => {
-          
+        data => {   
          this.imageList=data;
         },
         error=>
@@ -131,9 +136,11 @@ GetAllImage(){
          this.errorMsg = error;
         }
       )
-       
-      
-
+    }
+    onFileChange(event: any) {
+      if (event.target.files.length > 0) {
+        this.imageFile = event.target.files[0];
+      }
     }
 }
 

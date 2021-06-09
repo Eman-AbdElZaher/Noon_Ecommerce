@@ -20,6 +20,7 @@ export class SubcategoryComponent implements OnInit {
   Subcategories:ISubCategory[]=[];
   categories:string[]=[];
   errorMsg:string;
+  updatesubCategoryClicked:boolean=false;
   hasCategories:boolean=false;
   SubcategoryForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -93,6 +94,13 @@ export class SubcategoryComponent implements OnInit {
   submitButtonClicked() {
       this.uploadFile(this.imageFile);
   }
+ updateButtonClicked(){
+   this.updatesubCategoryClicked=true;
+   if (this.imageFile === undefined)
+        this.updateSubCategory({ fileName:this.updatedCategory.image});
+      else
+        this.uploadFile(this.imageFile);
+    }
 
   uploadFile(image: File) {
     console.log(image.name);
@@ -100,8 +108,18 @@ export class SubcategoryComponent implements OnInit {
     formDate.append("file", image, image.name);
     this._uploadImageService.uploadImage(formDate).subscribe(
       data => {
+<<<<<<< HEAD
         console.log(data);
       this.AddnewCategory(image.name);
+=======
+        if(this.updatesubCategoryClicked==true)
+        {
+          this.updateSubCategory(image.name);
+        }
+        else{
+           this.AddnewCategory(image.name);  
+        }
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
       },
       error => {
         console.log(error)
@@ -142,12 +160,12 @@ export class SubcategoryComponent implements OnInit {
     
   }
 
-  updateCategory(){
+  updateSubCategory(imgfile){
     console.log(this.categoryId);
     this.updatedCategory={
       id:this.subCategoryId,
       name:this.name.value,
-      image:'',
+      image:imgfile.fileName,
       categoryID:this.categoryId.value
     }
     this._SubcategoryService.updateSubCategory(this.subCategoryId,this.updatedCategory).subscribe(

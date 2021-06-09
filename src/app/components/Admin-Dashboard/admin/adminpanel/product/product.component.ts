@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
 import { FormGroup, NgForm } from '@angular/forms';
 import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
 import { BrandService } from 'src/app/services/brand.service';
+
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -21,11 +28,15 @@ export class ProductComponent implements OnInit {
  product=new IProduct();//(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
+  hasProducts:boolean=false;
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
 
 
@@ -35,8 +46,12 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
+<<<<<<< HEAD
 
     this.reserform();
+=======
+   this.reserform();
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
    this.getAllBrands();
    this.getAllSupplier();
    this.getAllSubCategory();
@@ -76,14 +91,21 @@ export class ProductComponent implements OnInit {
       {
        this.errorMsg=errorResponse;
       })
+<<<<<<< HEAD
 
+=======
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
   }
 
 GetAllProduct(){
   this.productService.getAllProduct().subscribe(
     serviceData=>
     {
-      this.productList=serviceData;
+      if(serviceData.length>0)
+      {
+        this.productList=serviceData;
+        this.hasProducts=true;
+      }
     },
     errorResponse=>
     {
@@ -100,6 +122,7 @@ GetAllProduct(){
       description:'',
       quantity:0,
       price:0,
+<<<<<<< HEAD
      color:'', 
      size:'',
      SubCategoryID:0,
@@ -109,6 +132,14 @@ GetAllProduct(){
 
       
 
+=======
+      color:'', 
+      size:'',
+      SubCategoryID:0,
+      brandID:0,
+      supplierID:0,
+     averageRating:0,
+>>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
     }
   }
   errorMsg='';

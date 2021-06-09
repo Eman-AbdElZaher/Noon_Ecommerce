@@ -10,14 +10,20 @@ import { UnathorizedPageComponent } from './components/unathorized-page/unathori
 import { LoginModule } from './components/login/login.module';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
 import { FooterComponent } from './components/sharedComponent/footer/footer.component';
+import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
+import { OffersComponent } from './components/client/offers/offers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     RegisterComponent,
+    UnathorizedPageComponent,
+    UploadImageComponent,
+    DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent, FooterComponent,
+    UploadImageComponent, FooterComponent, OffersComponent,
+    
     
   ],
   imports: [
@@ -28,6 +34,9 @@ import { FooterComponent } from './components/sharedComponent/footer/footer.comp
     HttpClientModule,
     LoginModule,
     
+  ],
+  exports: [
+    UploadImageComponent// <--- Enable using the component in other modules
   ],
   providers: [],
   bootstrap: [AppComponent]

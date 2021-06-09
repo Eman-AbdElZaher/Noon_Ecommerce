@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+import { NgForm } from '@angular/forms';
+import { Ibrand } from 'src/app/models/Classes/Brand';
+import { IProduct } from 'src/app/models/Interfaces/IProduct';
+=======
 import { FormGroup, NgForm } from '@angular/forms';
 import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 import { BrandService } from 'src/app/services/brand.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
@@ -19,10 +25,15 @@ export class ProductComponent implements OnInit {
  product=new IProduct();//(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
+<<<<<<< HEAD
+
+  constructor(private productService:ProductService) { }
+=======
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 
   ngOnInit(): void {
    
@@ -30,6 +41,11 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
+<<<<<<< HEAD
+    this.reserform();
+  
+
+=======
     this.resetform();
    this.getAllBrands();
    this.getAllSupplier();
@@ -70,6 +86,7 @@ export class ProductComponent implements OnInit {
       {
        this.errorMsg=errorResponse;
       })
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
   }
 
 GetAllProduct(){
@@ -84,7 +101,7 @@ GetAllProduct(){
     })
 }
 
-  resetform(form? : NgForm){
+  reserform(form? : NgForm){
     if(form !=null)
       form.reset();
     this.product= {
@@ -92,6 +109,15 @@ GetAllProduct(){
       name:'',
       description:'',
       quantity:0,
+<<<<<<< HEAD
+     price:0,
+    color:'', 
+    size:0,
+    subCategoryID:0,
+    brandID:0,
+   supplierID:0,
+   averageRating:0
+=======
       price:0,
       color:'', 
       size:'',
@@ -100,6 +126,7 @@ GetAllProduct(){
       supplierID:0,
       averageRating:0,
       
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
     }
   }
   errorMsg='';
@@ -161,6 +188,8 @@ GetAllProduct(){
       }
      )
     }
+  
+ 
 }
 
 

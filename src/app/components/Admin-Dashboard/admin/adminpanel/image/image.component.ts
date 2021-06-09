@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IImage } from 'src/app/models/Interfaces/IImage';
+import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ImageService } from 'src/app/services/image.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-image',
@@ -12,7 +14,9 @@ export class ImageComponent implements OnInit {
   imageobj=new IImage(0,'',0);
   //errorMsg="";
   imageList:IImage[]=[];
-  constructor(private imageService:ImageService) { }
+  productList:IProduct[]=[];
+ 
+  constructor(private imageService:ImageService,private productService:ProductService) { }
 
   ngOnInit(): void {
    
@@ -21,6 +25,7 @@ export class ImageComponent implements OnInit {
     })
     this.GetAllImage();
     this.reserform();
+    this.GetAllProduct();
 
   }
 
@@ -101,6 +106,34 @@ GetAllImage(){
        this.errorMsg = error;
       }
      )
+    }
+
+    GetAllProduct(){
+      this.productService.getAllProduct().subscribe(
+        serviceData=>
+        {
+          this.productList=serviceData;
+        },
+        errorResponse=>
+        {
+         this.errorMsg=errorResponse;
+        })
+    }
+    ShowValue(productid){
+    console.log(productid.value);
+      this.imageService.getImageProduct(productid.value).subscribe(
+        data => {
+          
+         this.imageList=data;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      )
+       
+      
+
     }
 }
 

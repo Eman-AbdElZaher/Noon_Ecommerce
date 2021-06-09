@@ -14,6 +14,7 @@ export class AdvertisementComponent implements OnInit {
   advertisement=new IAdvertisement (0,'','','');
   //errorMsg="";
   AdvertisementList:IAdvertisement[]=[];
+  hasAdvertisements:boolean=false;
   constructor(private AdvertisementService:AdvertisementService) { }
 
   ngOnInit(): void {
@@ -27,7 +28,11 @@ export class AdvertisementComponent implements OnInit {
     this.AdvertisementService.getAllAdvertisement().subscribe(
       serviceData=>
       {
-        this.AdvertisementList=serviceData;
+        if(serviceData.length > 0)
+        {
+           this.AdvertisementList=serviceData;
+           this.hasAdvertisements=true;
+        }
       },
       errorResponse=>
       {

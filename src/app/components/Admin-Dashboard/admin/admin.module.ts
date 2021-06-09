@@ -24,9 +24,9 @@ const routes:Routes=[
     {path:'supplier',component:SupplierComponent},
     {path:'category',component:CategoryComponent},
     {path:'subcategory',component:SubcategoryComponent},
-    {path:'offer',component:OfferComponent},
+
     {path:'supplier',component:SupplierComponent},
-    {path:'supplier',component:SupplierComponent},
+  
     {path:'product',component:ProductComponent},
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},  

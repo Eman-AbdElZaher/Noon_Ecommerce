@@ -11,6 +11,7 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandComponent implements OnInit {
 brand=new Ibrand(0,'');
 brandtList:Ibrand[]=[];
+hasBrand:boolean=false;
 brandForm: FormGroup;
   constructor(private brandService:BrandService) { }
 
@@ -26,7 +27,11 @@ brandForm: FormGroup;
      this.brandService.getAllBrands().subscribe(
       serviceData=>
       {
-        this.brandtList=serviceData;
+        if(serviceData.length>0)
+        {
+           this.brandtList=serviceData;
+           this.hasBrand=true;
+        }
       },
       errorResponse=>
       {

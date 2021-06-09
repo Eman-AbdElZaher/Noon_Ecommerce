@@ -16,25 +16,6 @@
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	
-	// Select/Deselect checkboxes
-	var checkbox = $('table tbody input[type="checkbox"]');
-	$("#selectAll").click(function(){
-		if(this.checked){
-			checkbox.each(function(){
-				this.checked = true;                        
-			});
-		} else{
-			checkbox.each(function(){
-				this.checked = false;                        
-			});
-		} 
-	});
-	checkbox.click(function(){
-		if(!this.checked){
-			$("#selectAll").prop("checked", false);
-		}
-	});
 });
 </script>
 </head>
@@ -64,15 +45,9 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover" *ngIf="hasImages">
 				<thead>
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
 						<th>ID</th>
 						<th>Image Name</th>
 						<th>ProductID</th>
@@ -81,12 +56,6 @@ $(document).ready(function(){
 				</thead>
 				<tbody *ngFor="let imagee of imageList">
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
 						<td>{{imagee.id}}</td>
 						<td>{{imagee.image}}</td>
 						<td>{{imagee.productID}}</td>
@@ -100,20 +69,13 @@ $(document).ready(function(){
 						
 				</tbody>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
-			</div>
 		</div>
-	</div>        
+	</div>
+	<div class="row" *ngIf="!hasImages">
+        <div class="text-center alert alert-danger col-9 mx-auto">
+            There's no Images to show
+        </div>
+    </div>        
 </div>
 <!-- Edit Modal HTML -->
 <div id="addImageModal" class="modal fade">

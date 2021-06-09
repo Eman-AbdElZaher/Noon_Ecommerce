@@ -13,6 +13,10 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
 import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
+import { HeaderComponent } from './components/sharedComponent/header/header.component';
+import { CarouselComponent } from './components/client/carousel/carousel.component';
+import { ShowsubcategoryComponent } from './components/client/showsubcategory/showsubcategory.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +24,14 @@ import { ShowReviewComponent } from './components/client/Review/show-review/show
     PageNotFoundComponent,
     RegisterComponent,
     UnathorizedPageComponent,
-    CreateReviewComponent,
-    UpdateReviewComponent,
-    ShowReviewComponent,
     UploadImageComponent,
     DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent
+    UploadImageComponent,
+     HeaderComponent,
+    CarouselComponent,
+    ShowsubcategoryComponent
+  
   ],
   imports: [
     BrowserModule,

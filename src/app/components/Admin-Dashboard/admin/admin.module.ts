@@ -24,21 +24,15 @@ const routes:Routes=[
     {path:'supplier',component:SupplierComponent},
     {path:'category',component:CategoryComponent},
     {path:'subcategory',component:SubcategoryComponent},
-    {path:'offer',component:OfferComponent},
+
     {path:'supplier',component:SupplierComponent},
-    {path:'supplier',component:SupplierComponent},
+  
     {path:'product',component:ProductComponent},
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},
-<<<<<<< HEAD
 
-    {path:'offer',component:OfferComponent}
-   
+  
 
-
-=======
-    {path:'offer',component:OfferComponent}, 
->>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
   ]
 },
    {path:'',redirectTo:'panel',pathMatch:'full'}

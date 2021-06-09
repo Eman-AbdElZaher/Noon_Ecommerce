@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
+  hasProducts:boolean=false;
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
 
   ngOnInit(): void {
@@ -76,7 +77,11 @@ GetAllProduct(){
   this.productService.getAllProduct().subscribe(
     serviceData=>
     {
-      this.productList=serviceData;
+      if(serviceData.length>0)
+      {
+        this.productList=serviceData;
+        this.hasProducts=true;
+      }
     },
     errorResponse=>
     {

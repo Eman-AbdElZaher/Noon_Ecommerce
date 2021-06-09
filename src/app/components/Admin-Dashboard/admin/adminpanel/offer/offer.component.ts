@@ -13,6 +13,7 @@ export class OfferComponent implements OnInit {
   offer=new IOffer(0,new Date(),new Date(),0);
   constructor(private offerService:OfferService) { }
   offerList:IOffer[]=[];
+  hasOffers:boolean=false;
   ngOnInit(): void {
     this.offerService.refreshNeeded$.subscribe(()=>{
       this.GetAllOffer()
@@ -25,8 +26,12 @@ export class OfferComponent implements OnInit {
     this.offerService.getAllOffer().subscribe(
       serviceData=>
       {
-        this.offerList=serviceData;
-        console.log(this.offerList);
+        if(serviceData.length>0){
+          this.offerList=serviceData;
+          console.log(this.offerList);
+          this.hasOffers=true;
+        }
+        
       },
       errorResponse=>
       {

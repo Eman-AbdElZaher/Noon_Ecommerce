@@ -12,6 +12,7 @@ export class ImageComponent implements OnInit {
   imageobj=new IImage(0,'',0);
   //errorMsg="";
   imageList:IImage[]=[];
+  hasImages:boolean=false;
   constructor(private imageService:ImageService) { }
 
   ngOnInit(): void {
@@ -28,7 +29,11 @@ GetAllImage(){
   this.imageService.getAllImages().subscribe(
     serviceData=>
     {
-      this.imageList=serviceData;
+      if(serviceData.length > 0)
+      {
+         this.imageList=serviceData;
+        this.hasImages=true 
+      }
     },
     errorResponse=>
     {

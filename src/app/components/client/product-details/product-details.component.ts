@@ -19,8 +19,8 @@ export class ProductDetailsComponent implements OnInit {
     {
       this.productId=parseInt(params.get('id'));
     })
-
-    this.productservice.getProductById(this.productId).subscribe(
+//this.productID
+    this.productservice.getProductById(2).subscribe(
       data=>
       {
         this.product=data;

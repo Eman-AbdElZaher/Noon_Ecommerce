@@ -9,7 +9,12 @@ import { RegisterComponent } from './components/client/register/register.compone
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { LoginModule } from './components/login/login.module';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
-import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';@NgModule({
+import { FooterComponent } from './components/sharedComponent/footer/footer.component';
+import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
+import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
+import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
+
+@NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
@@ -18,7 +23,9 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
     UploadImageComponent,
     DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent
+    UploadImageComponent, FooterComponent,   
+   ProductDetailsComponent, WishlistProductComponent,
+
   ],
   imports: [
     BrowserModule,

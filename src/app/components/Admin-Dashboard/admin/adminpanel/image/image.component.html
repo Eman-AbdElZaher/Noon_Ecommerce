@@ -21,6 +21,17 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container-xl">
+	<div class="form-group">
+		<label>Product Name</label>
+		<select  class="custom-select" class="form-control" required #productID >
+			<option *ngFor="let product of productList" [value]="product.id"  >{{product.name}}
+			</option>
+		</select><br><br>
+		<input type="submit" class="btn btn-info" (click)="ShowValue(productID)"  value="Show">
+	</div>	
+
+
+
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -79,7 +90,11 @@ $(document).ready(function(){
                     <div class="modal-body">					
                         <div class="form-group">
                             <label>Image Name</label>
+<<<<<<< HEAD
+                            <input type="file" class="form-control-file" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+=======
                             <input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
                             <small class="text-danger"[class.d-none]="image.untouched || image.valid">Image Name is required</small>
                         </div>		
                     
@@ -87,7 +102,7 @@ $(document).ready(function(){
 						
                     <div class="form-group">
 						<label>ProductID</label>
-						<input type="number" class="form-control" [class.is-invalid]="productID.invalid && productID.touched " [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="image.productID" name="productID">
+						<input type="number" class="form-control" [class.is-invalid]="productID.invalid && productID.touched " [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="imageobj.productID" name="productID">
 						<small class="text-danger"[class.d-none]="productID.untouched || productID.valid">Product ID is required</small>
                    
                     </div>		
@@ -112,22 +127,26 @@ $(document).ready(function(){
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Image Name</label>
+<<<<<<< HEAD
+						<input type="file"  class="form-control-file" [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="imageobj.image" name="image" >
+=======
 						<input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched " [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="image.image" name="image" >
+>>>>>>> 36064ac24b6200d67d4eb66dd6474505ca436268
 						<small class="text-danger"[class.d-none]="image.untouched || image.valid">Image Name is required</small>
 					</div>		
-                    
 				
-						
-                    <div class="form-group">
-						<label>ProductID</label>
-						<input type="number" class="form-control" [class.is-invalid]="productID.invalid && productID.touched " [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="image.productID" name="productID">
-						<small class="text-danger"[class.d-none]="productID.untouched || productID.valid">Product ID is required</small>
-                   
-                    </div>			
+			
+					
+				<div class="form-group">
+					<label>ProductID</label>
+					<input type="number" class="form-control"  [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="imageobj.productID" name="productID">
+					<small class="text-danger"[class.d-none]="productID.untouched || productID.valid">Product ID is required</small>
+			   
+				</div>		
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="SaveEditImage(userform)" class="btn btn-info" [disabled]="!userform.valid" value="Save">
+					<input type="submit" (click)="SaveEditImage(userform)" class="btn btn-info"  value="Save">
 				</div>
 			</form>
 		</div>

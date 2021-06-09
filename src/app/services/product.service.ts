@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
+import { Ibrand } from '../models/Classes/Brand';
 import { IProduct } from '../models/Interfaces/IProduct';
 
 @Injectable({
@@ -33,7 +34,7 @@ export class ProductService {
     {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
-  }
+  } 
   getProductById(id: number): Observable<IProduct> {
     let url = `http://localhost:61135/api/Product/${id}`;
     return this.http.get<IProduct>(url).pipe(catchError((err) => {
@@ -54,6 +55,13 @@ export class ProductService {
     return this.http.delete<any>(url).pipe(catchError((err) => {
       return throwError(err.message || "Internal Server error contact site adminstarator");
       
+    }));
+  }
+  getAllBrands():Observable<Ibrand[]>
+  {
+    return this.http.get<Ibrand[]>(this._url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
  

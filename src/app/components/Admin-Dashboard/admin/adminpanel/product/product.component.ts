@@ -5,6 +5,7 @@ import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { BrandService } from 'src/app/services/brand.service';
+
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -25,13 +26,14 @@ export class ProductComponent implements OnInit {
   hasProducts:boolean=false;
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
 
+
   ngOnInit(): void {
    
     this.productService.refreshNeeded$.subscribe(()=>{
       this.GetAllProduct()
     })
     this.GetAllProduct();
-    this.resetform();
+   this.reserform();
    this.getAllBrands();
    this.getAllSupplier();
    this.getAllSubCategory();
@@ -89,7 +91,7 @@ GetAllProduct(){
     })
 }
 
-  resetform(form? : NgForm){
+  reserform(form? : NgForm){
     if(form !=null)
       form.reset();
     this.product= {
@@ -103,8 +105,7 @@ GetAllProduct(){
       SubCategoryID:0,
       brandID:0,
       supplierID:0,
-      averageRating:0,
-      
+     averageRating:0,
     }
   }
   errorMsg='';
@@ -166,6 +167,8 @@ GetAllProduct(){
       }
      )
     }
+  
+ 
 }
 
 

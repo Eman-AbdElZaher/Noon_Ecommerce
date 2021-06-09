@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IImage } from 'src/app/models/Interfaces/IImage';
+import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ImageService } from 'src/app/services/image.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-image',
@@ -13,8 +15,10 @@ export class ImageComponent implements OnInit {
   //errorMsg="";
   imageList:IImage[]=[];
   hasImages:boolean=false;
-  constructor(private imageService:ImageService) { }
-
+  productList:IProduct[]=[];
+ 
+  constructor(private imageService:ImageService,private productService:ProductService) { }
+  imageFile!: File;
   ngOnInit(): void {
    
     this.imageService.refreshNeeded$.subscribe(()=>{
@@ -22,6 +26,7 @@ export class ImageComponent implements OnInit {
     })
     this.GetAllImage();
     this.reserform();
+    this.GetAllProduct();
 
   }
 
@@ -55,7 +60,8 @@ GetAllImage(){
   AddnewImage(form : NgForm)
   {
      this.imageService.addNewImage(this.imageobj).subscribe(
-      data => {
+      data => 
+      {
         this.imageobj=data;
       },
       error=>
@@ -106,6 +112,35 @@ GetAllImage(){
        this.errorMsg = error;
       }
      )
+    }
+
+    GetAllProduct(){
+      this.productService.getAllProduct().subscribe(
+        serviceData=>
+        {
+          this.productList=serviceData;
+        },
+        errorResponse=>
+        {
+         this.errorMsg=errorResponse;
+        })
+    }
+    ShowValue(productid){
+    console.log(productid.value);
+      this.imageService.getImageProduct(productid.value).subscribe(
+        data => {   
+         this.imageList=data;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      )
+    }
+    onFileChange(event: any) {
+      if (event.target.files.length > 0) {
+        this.imageFile = event.target.files[0];
+      }
     }
 }
 

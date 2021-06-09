@@ -54,6 +54,10 @@ $(document).ready(function(){
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
 						<td>{{product.size}}</td>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 072b440fc8634ba1a4f0bc0d3f3233a199de3524
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -83,26 +87,26 @@ $(document).ready(function(){
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched " [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="product.name" name="name" >
+						<input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="product.name" name="name" >
 						<small class="text-danger"[class.d-none]="name.untouched || name.valid">Product Name is required</small>
 					</div>		
                     
 						
                     <div class="form-group">
 						<label>Description</label>
-						<input type="text" class="form-control" [class.is-invalid]="description.invalid && description.touched " [class.is-invalid]="description.invalid && description.touched " required #description="ngModel" [(ngModel)]="product.description " name="description">
+						<input type="text" class="form-control"  [class.is-invalid]="description.invalid && description.touched " required #description="ngModel" [(ngModel)]="product.description " name="description">
 						<small class="text-danger"[class.d-none]="description.untouched || description.valid">Product description is required</small>
 					</div>	
                     <div class="form-group">
 						<label>Quantity</label>
-						<input type="number" class="form-control" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched " required min="1" max="100" #quantity="ngModel" [(ngModel)]="product.quantity " name="quantity">
+						<input type="number" class="form-control"  [class.is-invalid]="quantity.invalid && quantity.touched " required min="1" max="100" #quantity="ngModel" [(ngModel)]="product.quantity " name="quantity">
 						<small class="text-danger"[class.d-none]="quantity.untouched || quantity.valid">Product Quantity is required</small>
                         <p class="alert alert-danger invalid" *ngIf="quantity.errors">min quantity is 1 & max is 100</p>
                     </div>	
                     
                     <div class="form-group">
 						<label>Price</label>
-						<input type="number" class="form-control" [class.is-invalid]="price.invalid && price.touched " [class.is-invalid]="price.invalid && price.touched " required min="100" max="100000" #price="ngModel" [(ngModel)]="product.price " name="price">
+						<input type="number" class="form-control" [class.is-invalid]="price.invalid && price.touched " required min="100" max="100000" #price="ngModel" [(ngModel)]="product.price " name="price">
 						<small class="text-danger"[class.d-none]="price.untouched || price.valid">Product Price is required</small>
 						<!-- <small class="text-danger" *ngIf="price.errors.min || price.errors.max" >min price is 100 & max is 100000</small> -->
 			
@@ -111,7 +115,7 @@ $(document).ready(function(){
 
                     <div class="form-group">
 						<label>Color</label>
-						<input type="text" class="form-control" [class.is-invalid]="color.invalid && color.touched " [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
+						<input type="text" class="form-control"  [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
 						<small class="text-danger"[class.d-none]="color.untouched || color.valid">Product Color is required</small>
 					</div>
 
@@ -173,26 +177,26 @@ $(document).ready(function(){
                 <div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched " [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="product.name" name="name" >
+						<input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="product.name" name="name" >
 						<small class="text-danger"[class.d-none]="name.untouched || name.valid">Product Name is required</small>
 					</div>		
                     
 						
                     <div class="form-group">
 						<label>Description</label>
-						<input type="text" class="form-control" [class.is-invalid]="description.invalid && description.touched " [class.is-invalid]="description.invalid && description.touched " required #description="ngModel" [(ngModel)]="product.description " name="description">
+						<input type="text" class="form-control" [class.is-invalid]="description.invalid && description.touched " required #description="ngModel" [(ngModel)]="product.description " name="description">
 						<small class="text-danger"[class.d-none]="description.untouched || description.valid">Product description is required</small>
 					</div>	
                     <div class="form-group">
 						<label>Quantity</label>
-						<input type="number" class="form-control" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched " required min="1" max="100" #quantity="ngModel" [(ngModel)]="product.quantity " name="quantity">
+						<input type="number" class="form-control"  [class.is-invalid]="quantity.invalid && quantity.touched " required min="1" max="100" #quantity="ngModel" [(ngModel)]="product.quantity " name="quantity">
 						<small class="text-danger"[class.d-none]="quantity.untouched || quantity.valid">Product Quantity is required</small>
                         <p class="alert alert-danger invalid" *ngIf="quantity.errors">min quantity is 1 & max is 100</p>
                     </div>	
                     
                     <div class="form-group">
 						<label>Price</label>
-						<input type="number" class="form-control" [class.is-invalid]="price.invalid && price.touched " [class.is-invalid]="price.invalid && price.touched " required min="100" max="100000" #price="ngModel" [(ngModel)]="product.price " name="price">
+						<input type="number" class="form-control"  [class.is-invalid]="price.invalid && price.touched " required min="100" max="100000" #price="ngModel" [(ngModel)]="product.price " name="price">
 						<small class="text-danger"[class.d-none]="price.untouched || price.valid">Product Price is required</small>
 						<!-- <small class="text-danger" *ngIf="price.errors.min || price.errors.max" >min price is 100 & max is 100000</small> -->
 			
@@ -201,7 +205,7 @@ $(document).ready(function(){
 
                     <div class="form-group">
 						<label>Color</label>
-						<input type="text" class="form-control" [class.is-invalid]="color.invalid && color.touched " [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
+						<input type="text" class="form-control" [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
 						<small class="text-danger"[class.d-none]="color.untouched || color.valid">Product Color is required</small>
 					</div>
 

@@ -74,7 +74,7 @@ export class ReviewService {
       {
         return throwError(err.message);
       }
-      )
+      ) 
     )
   }
 }

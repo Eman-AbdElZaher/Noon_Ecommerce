@@ -24,6 +24,8 @@ getallProduct()
       products=>
       {
          this.productList=products;
+         console.log(products);
+         console.log(this.productList);
       },
       errorResponse=>
       {

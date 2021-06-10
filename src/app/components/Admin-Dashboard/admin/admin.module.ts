@@ -31,9 +31,13 @@ const routes:Routes=[
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},  
     {path:'advertisement',component:AdvertisementComponent},
+<<<<<<< HEAD
 
   
 
+=======
+    {path:'offer',component:OfferComponent}, 
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
   ]
 },
    {path:'',redirectTo:'panel',pathMatch:'full'}
@@ -53,7 +57,8 @@ const routes:Routes=[
     ImageComponent,
     OfferComponent,
     SupplierComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    
     
   ],
   imports: [

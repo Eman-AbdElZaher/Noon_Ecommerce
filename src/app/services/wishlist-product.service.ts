@@ -13,7 +13,7 @@ export class WishlistProductService {
 
   getAllWishlistProduct(whishlistID:string):Observable<wishListProduct[]>
   {
-    let url=`http://localhost:61135/api/WishListProducts?whishlistID=${whishlistID}`;
+    let url=`http://localhost:61135/api/WishListProducts?wishlistId=${whishlistID}`;
     return this.http.get<wishListProduct[]>(url).pipe(
       catchError(
         (err)=>
@@ -26,7 +26,7 @@ export class WishlistProductService {
 
   addWishlistProduct(productID:number):Observable<wishListProduct>
   {
-    let url =`http://localhost:61135/api/WishListProducts`;
+    let url =`http://localhost:61135/api/WishListProducts?id=${productID}`;
     return this.http.post<wishListProduct>(url,productID).pipe(
       catchError(
         (err)=>
@@ -34,7 +34,7 @@ export class WishlistProductService {
           return throwError(err.message);
         }
       )
-    )
+    ) 
   }
 
   getWishlistProductById(productId:number):Observable<wishListProduct>

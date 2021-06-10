@@ -31,13 +31,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-             
+              "src/styles.scss",
+               "src/assets/carousel/css/bootstrap.min.css",
+               "src/assets/carousel/css/bootstrap.min.css.map",
+               "src/assets/carousel/css/owl.carousel.min.css",
+               "src/assets/carousel/css/style.css"
             ],
             "scripts": [
-              
-            
-              "src/assets/js/panel.js"
+              "src/assets/js/panel.js",
+              "src/assets/carousel/js/bootstrap.min.js",
+              "src/assets/carousel/js/jquery-3.3.1.min.js",
+              "src/assets/carousel/js/main.js",
+              "src/assets/carousel/js/owl.carousel.min.js",
+              "src/assets/carousel/js/popper.min.js"
             ]
           },
           "configurations": {

@@ -108,8 +108,18 @@ export class SubcategoryComponent implements OnInit {
     formDate.append("file", image, image.name);
     this._uploadImageService.uploadImage(formDate).subscribe(
       data => {
+<<<<<<< HEAD
         console.log(data);
       this.AddnewCategory(image.name);
+=======
+        if(this.updatesubCategoryClicked==true)
+        {
+          this.updateSubCategory(image.name);
+        }
+        else{
+           this.AddnewCategory(image.name);  
+        }
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
       },
       error => {
         console.log(error)

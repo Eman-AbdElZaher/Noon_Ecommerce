@@ -31,13 +31,9 @@ const routes:Routes=[
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},  
     {path:'advertisement',component:AdvertisementComponent},
-<<<<<<< HEAD
 
   
 
-=======
-    {path:'offer',component:OfferComponent}, 
->>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
   ]
 },
    {path:'',redirectTo:'panel',pathMatch:'full'}

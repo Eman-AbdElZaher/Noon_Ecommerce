@@ -54,14 +54,7 @@ $(document).ready(function(){
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
 						<td>{{product.size}}</td>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 072b440fc8634ba1a4f0bc0d3f3233a199de3524
->>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -131,12 +124,9 @@ $(document).ready(function(){
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
 						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
                     </div>
-<<<<<<< HEAD
 
 				
 
-=======
->>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
                     <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
 						<label>SubCategory</label>
 						<select class="custom-select"  name="subCatID" class="form-control"  [(ngModel)]="product.SubCategoryID" #subCatID="ngModel" [class.is-invalid]="subCatID.invalid && subCatID.touched" required  >
@@ -166,11 +156,7 @@ $(document).ready(function(){
 						</select>
 						<small class="text-danger" [class.d-none]="supplierID.untouched || supplierID.valid" >Supplier is Required</small>
                     </div>
-<<<<<<< HEAD
 					</div>
-=======
-				</div>
->>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 					<input type="submit"  (click)="AddnewProduct(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
@@ -226,21 +212,12 @@ $(document).ready(function(){
                     
                     <div class="form-group">
 						<label>Size</label>
-<<<<<<< HEAD
 						<input type="number" class="form-control"  [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
 						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
                         <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p>
                     </div>
 
 					<div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
-=======
-						<input type="text" class="form-control" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
-						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
-                        <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
-						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
-                    </div>
-                    <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
->>>>>>> a15de4e87d434a2f3342033317a3635666b0973b
 						<label>SubCategory</label>
 						<select class="custom-select"  name="subCatID" class="form-control"  [(ngModel)]="product.SubCategoryID" #subCatID="ngModel" [class.is-invalid]="subCatID.invalid && subCatID.touched" required  >
 							<option *ngFor="let item of subcategory" [value]="item.id">

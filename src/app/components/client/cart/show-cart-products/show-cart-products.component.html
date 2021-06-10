@@ -139,7 +139,7 @@
             <aside class="col-lg-9">
                 <div class="card">
                     <div class="table-responsive">
-                        <table class="table table-borderless table-shopping-cart">
+                        <table class="table table-borderless table-shopping-cart" >
                             <thead class="text-muted">
                                 <tr class="small text-uppercase">
                                     <th scope="col">Product</th>
@@ -148,15 +148,17 @@
                                     <th scope="col" class="text-right d-none d-md-block" width="200"></th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let cartProduct of cartProducts">
-                                <tr>
+                            
+                            <tbody *ngFor="let Product of Products" >
+                            
+                                <tr> 
                                     <td>
                                         <figure class="itemside align-items-center">
                                             <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
                                                     class="img-sm"></div>
                                             <figcaption class="info"> <a href="#" class="title text-dark"
-                                                    data-abc="true">{{cartProduct.productId}}</a>
-                                                <p class="text-muted small">SIZE: L <br> Brand: MAXTRA</p>
+                                                    data-abc="true">{{Product.name}}</a>
+                                                <p class="text-muted small">SIZE:{{Product.size}}<br> Brand: MAXTRA</p>
                                             </figcaption>
                                         </figure>
                                     </td>
@@ -167,13 +169,13 @@
                                             <option>4</option>
                                         </select> </td>
                                     <td>
-                                        <div class="price-wrap"> <var class="price">{{cartProduct.netPrice}}</var> <small
-                                                class="text-muted"> $9.20 each </small> </div>
+                                        <div *ngFor="let cartProduct of cartProducts" class="price-wrap"> <var class="price"*ngIf="cartProduct.productId==Product.id" >{{cartProduct.netPrice}}</var> <small
+                                                class="text-muted" *ngIf="cartProduct.productId==Product.id"> ${{Product.price}} each </small> </div>
                                     </td>
-                                    <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(cartProduct.productId)" data-original-title="Save to Wishlist"
+                                    <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(Product.id)" data-original-title="Save to Wishlist"
                                             title="" href="" class="btn btn-light" data-toggle="tooltip"
                                             data-abc="true"> <i class="fa fa-heart"></i></a> <a href="#"
-                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(cartProduct.productId)">Remove</a> 
+                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(Product.id)">Remove</a> 
                                     </td>
                                 </tr>
                                
@@ -199,7 +201,7 @@
                     <div class="card-body">
                         <dl class="dlist-align">
                             <dt>Total price:</dt>
-                            <dd class="text-right ml-3">$69.97</dd>
+                            <dd class="text-right ml-3">${{cart.totalPrice}}</dd>
                         </dl>
                         <dl class="dlist-align">
                             <dt>Discount:</dt>
@@ -207,7 +209,7 @@
                         </dl>
                         <dl class="dlist-align">
                             <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
+                            <dd class="text-right text-dark b ml-3"><strong>${{cart.totalPrice}}</strong></dd>
                         </dl>
                         <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make
                             Purchase </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2"

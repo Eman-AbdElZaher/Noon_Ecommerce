@@ -1,11 +1,11 @@
 export class CartProduct
 {
     constructor(
-        public ID :number,
+        public id :number,
         public productId:number,
-        public CartID :string,
+        public cartID :string,
         public quintity:number = 1,
-        public NetPrice:number
+        public netPrice:number
 
     )
     {}

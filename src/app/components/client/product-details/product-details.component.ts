@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/Classes/Product';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
+import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailsComponent implements OnInit {
  public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
   productId:number;
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService) { 
+  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService,private whislistservice:WishlistProductService) { 
     console.log(this.product)
   }
  
@@ -23,8 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     {
       this.productId=parseInt(params.get('id'));
     })
-
-    this.productservice.getProductById(2).subscribe(
+ 
+    this.productservice.getProductById(this.productId).subscribe(
       data=>
       {
         this.product=data;
@@ -56,6 +57,20 @@ export class ProductDetailsComponent implements OnInit {
         
       }
       
+    )
+  }
+  addToWishist(productid:number)
+  {
+    this.whislistservice.addWishlistProduct(productid).subscribe
+    (
+      data=>
+      {
+        console.log(data)
+      },
+      error=>
+      {
+        console.log(error)
+      }
     )
   }
 }

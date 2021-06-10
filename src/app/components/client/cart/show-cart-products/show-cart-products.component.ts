@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartProduct } from 'src/app/models/Classes/CartProduct';
 import { CartProductService } from 'src/app/services/cart-product.service';
+import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -9,11 +10,11 @@ import { CartProductService } from 'src/app/services/cart-product.service';
 })
 export class ShowCartProductsComponent implements OnInit {
 
-  constructor(private cartsevice:CartProductService) {
+  constructor(private cartsevice:CartProductService,private wishlistServicr:WishlistProductService) {
     console.log(this.cartProducts)
    }
   cartProducts:CartProduct[]=[];
-  cartid="a03fce4b-a211-4abb-8b41-9f89a467968d";
+  cartid="e2622172-be88-4483-8585-6649a8f956c2";
   mmsgerr="";
   ngOnInit(): void {
     this.cartsevice.getAllCartProduct(this.cartid).subscribe(
@@ -42,6 +43,17 @@ export class ShowCartProductsComponent implements OnInit {
       
     )
     this.ngOnInit();
+  }
+
+  addToWishlist(productid:number)
+  {
+    this.wishlistServicr.addWishlistProduct(productid).subscribe(
+      error=>
+      {
+         return error;
+      }
+    )
+
   }
 
 } 

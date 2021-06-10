@@ -8,6 +8,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Snippet - GoSNippets</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    
+    
     <link href='' rel='stylesheet'>
     <style>
         body {
@@ -75,7 +79,7 @@
     <div class="container">
         <div class="col-lg-8 border p-3 main-section bg-white">
             <div class="row hedding m-0 pl-3 pt-0 pb-3">
-                Product Detail Design Using Bootstrap 4.0
+                {{product|json}}
             </div>
             <div class="row m-0">
                 <div class="col-lg-4 left-side-product-box pb-3">
@@ -91,10 +95,20 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <span>Who What Wear</span>
-                                <p class="m-0 p-0">Women's Velvet Dress</p>
+                                <a  data-original-title="Save to Wishlist"
+                                            title="" href="" class="btn btn-light" data-toggle="tooltip"
+                                            data-abc="true"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+                                <p class="m-0 p-0">Name: {{product.name}}
+                                    {{product.id}}
+                                    {{product.price}}
+                                    {{product.description}}
+                                    {{product.mainImage}}
+                                    {{product.color}}
+                                    {{product.size}}
+                                </p>
                             </div>
                             <div class="col-lg-12">
-                                <p class="m-0 p-0 price-pro">$30</p>
+                                <p class="m-0 p-0 price-pro"></p>
                                 <hr class="p-0 m-0">
                             </div>
                             <div class="col-lg-12 pt-2">
@@ -115,7 +129,7 @@
                             <div class="col-lg-12 mt-3">
                                 <div class="row">
                                     <div class="col-lg-6 pb-2">
-                                        <a  (click)="addToCart(1002)" class="btn btn-danger w-100">Add To Cart</a>
+                                        <a  (click)="addToCart(2)" class="btn btn-danger w-100">Add To Cart</a>
                                     </div>
                                     <div class="col-lg-6">
                                         <a href="#" class="btn btn-success w-100">Shop Now</a>

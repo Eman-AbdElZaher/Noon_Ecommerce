@@ -2,11 +2,11 @@ export class Review
 {
   
     constructor(
-       public ID:number,
-       public Comment:string,
-       public Rating:string,
-       public ProductID:number,
-       public UserID:string
+       public id:number,
+       public comment:string,
+       public rating:string,
+       public productID:number,
+       public userID:string
       ){}
 
 }

@@ -167,13 +167,13 @@
                                             <option>4</option>
                                         </select> </td>
                                     <td>
-                                        <div class="price-wrap"> <var class="price">$10.00</var> <small
+                                        <div class="price-wrap"> <var class="price">{{cartProduct.netPrice}}</var> <small
                                                 class="text-muted"> $9.20 each </small> </div>
                                     </td>
-                                    <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist"
+                                    <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(cartProduct.productId)" data-original-title="Save to Wishlist"
                                             title="" href="" class="btn btn-light" data-toggle="tooltip"
                                             data-abc="true"> <i class="fa fa-heart"></i></a> <a href="#"
-                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(cartProduct.id)">Remove</a> 
+                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(cartProduct.productId)">Remove</a> 
                                     </td>
                                 </tr>
                                

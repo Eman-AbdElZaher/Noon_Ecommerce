@@ -4,7 +4,8 @@ export class CartProduct
         public ID :number,
         public productId:number,
         public CartID :string,
-        public quintity:number = 1
+        public quintity:number = 1,
+        public NetPrice:number
 
     )
     {}

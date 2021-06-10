@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Product } from 'src/app/models/Classes/Product';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -9,10 +10,13 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
+
 export class ProductDetailsComponent implements OnInit {
-  product: IProduct;
+ public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
   productId:number;
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService) { }
+  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService) { 
+    console.log(this.product)
+  }
  
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
@@ -20,12 +24,12 @@ export class ProductDetailsComponent implements OnInit {
       this.productId=parseInt(params.get('id'));
     })
 
-    this.productservice.getProductById(this.productId).subscribe(
+    this.productservice.getProductById(2).subscribe(
       data=>
       {
         this.product=data;
         console.log(data);
-        console.log("local"+this.product);
+        console.log(this.product);
 
       },
       error=>
@@ -34,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
     console.log("local"+this.product);
-    console.log(this.productId);
+     
 
   }
 

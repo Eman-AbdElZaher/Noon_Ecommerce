@@ -10,7 +10,7 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class UpdateReviewComponent implements OnInit {
   reviewId:number;
-  reviewe:Review;
+  public reviewe:Review={id:0,comment:"",productID:0,rating:"",userID:""};
   errormsg="";
   constructor(private activatedRoute:ActivatedRoute,private reviweSrvice:ReviewService) { }
 
@@ -24,6 +24,7 @@ export class UpdateReviewComponent implements OnInit {
       data=>
       {
         this.reviewe=data;
+        
       },
       error=>
       {
@@ -32,8 +33,20 @@ export class UpdateReviewComponent implements OnInit {
     )
   }
 
-  updateComment()
-  {}
+  updateReview()
+  {
+    console.log(this.reviewe)
+    console.log(this.reviewe.id)
+    this.reviweSrvice.updateReview(this.reviewe.id,this.reviewe).subscribe(
+
+    error=>
+    {
+      console.log(error);
+      
+    }
+      
+    )
+  }
 
 
 

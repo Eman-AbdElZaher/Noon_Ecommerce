@@ -1,1 +1,108 @@
-<p>wishlist-product works!</p>
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Snippet - BBBootstrap</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background: #eee
+        }
+
+        .ratings i {
+            font-size: 16px;
+            color: red
+        }
+
+        .strike-text {
+            color: red;
+            text-decoration: line-through
+        }
+
+        .product-image {
+            width: 100%
+        }
+
+        .dot {
+            height: 7px;
+            width: 7px;
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-top: 3px;
+            background-color: blue;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .spec-1 {
+            color: #938787;
+            font-size: 15px
+        }
+
+        h5 {
+            font-weight: 400
+        }
+
+        .para {
+            font-size: 16px
+        }
+    </style>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript'
+        src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript'></script>
+</head>
+
+<body oncontextmenu='return false' class='snippet-body'>
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+           
+            <div *ngFor="let Product of Products" class="col-md-10"  >
+                
+               
+                <div class="row p-2 bg-white border rounded mt-2" >
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+                            src="https://i.imgur.com/HO8e9b8.jpg"></div>
+                    <div class="col-md-6 mt-1">
+                        <h5>{{Product.name}}</h5>
+                        <div class="d-flex flex-row">
+                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                    class="fa fa-star"></i><i class="fa fa-star"></i></div><span>110</span>
+                        </div>
+                        <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light
+                                weight</span><span class="dot"></span><span>Best finish<br></span></div>
+                        <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For
+                                men</span><span class="dot"></span><span>Casual<br></span></div>
+                        <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem
+                            Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                            or randomised words which don't look even slightly believable.<br><br></p>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="mr-1">${{Product.price}}</h4><span class="strike-text">$21.99</span>
+                        </div>
+                        <h6 class="text-success">Free shipping</h6>
+                        <div class="d-flex flex-column mt-4">
+                            <button  class="btn btn-primary btn-sm" type="button"><a href="productPage/{{Product.id}}" style="color: aliceblue;">Details</a></button>
+                            <button (click)="addToCart(Product.id)" class="btn btn-outline-primary btn-sm mt-2" type="button">Add to Cart</button></div>
+                            <a  (click)="deletewishlistProduct(Product.id)" style="margin-left: 50px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

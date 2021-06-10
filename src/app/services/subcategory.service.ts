@@ -10,13 +10,13 @@ import { ISubCategory } from '../models/Interfaces/ISubCategory';
   providedIn: 'root'
 })
 export class SubcategoryService {
+  refreshNeeded$: any;
 
   constructor(
     private _http:HttpClient
   ) { }
   getAllSubCategories():Observable<ISubCategory[]> {
-    // let url = `${ApiController.SubCategory_URL}`;
-    let url="http://localhost:61135/api/SubCategory";
+    let url = `${ApiController.SubCategory_URL}`;
     return this._http.get<ISubCategory[]>(url).pipe(catchError((err)=>
     {
       return throwError(err.message ||"Internal Server error contact site adminstarator");
@@ -66,4 +66,6 @@ export class SubcategoryService {
       return throwError(err.message ||"Internal Server error contact site adminstarator");
     }));
   }
+ 
+  
 }

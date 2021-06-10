@@ -18,6 +18,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -25,6 +26,9 @@
                         <tr *ngFor="let category of Subcategories;let i= index">
                             <td>{{category.name}}</td>
                             <td>{{categories[i]}}</td>
+                            <td>
+                                <img src='http://localhost:61135/Resources/Images/{{category.image}}' width="100px" height="100"/>
+                            </td>
                             <td>
                                 <a href="#editEmployeeModal"  (click)="assignFormControlsToCategoryData(category.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a class="delete" (click)="deleteCategory(category.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -56,15 +60,13 @@
                                 <small class="text-danger" *ngIf="name.errors.required">name is required</small>
                             </div>
                         </div>
-                        <div class="file-upload form-group">
-                            <button class="btn btn-outline-primary" type="button" (click)="file.click()"><i class="fas fa-cloud-upload-alt"></i>Add Image</button>
-                            <div class="image-upload-wrap" >
-                              <input class="file-upload-input" formControlName="image" #file type='file' (change)="onFileChange($event)" accept="image/*" hidden />
-                              <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" #Imagetitle placeholder="Upload your file" disabled>
-                              </div>
+                        <div class="form-group">
+                            <label>Image: </label><br>
+                            <input type="file" [class.is-invalid]="image?.invalid && image?.touched" formControlName="image" (change)="onFileChange($event)">
+                            <div *ngIf="image?.errors && image?.touched">
+                                <small class="text-danger" *ngIf="image?.errors?.required">Image is required</small>
                             </div>
-                    </div>   
+                        </div>
                         <div class="form-group">
                             <label>Category: </label>
                             <select class="custom-select" [class.is-invalid]="categoryId?.invalid && categoryId?.touched" formControlName="categoryId">
@@ -83,7 +85,8 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+     
+    <div id="editEmployeeModal" class="modal fade"> 
         <div class="modal-dialog">
             <div class="modal-content">
                 <form [formGroup]='SubcategoryForm'>
@@ -97,15 +100,10 @@
                             <input formControlName="name"  type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched "  >
                             <small class="text-danger"[class.d-none]="name.untouched || name.valid">Sub category Name is required</small>
                         </div>
-                        <div class="file-upload form-group">
-                            <button class="btn btn-outline-primary" type="button" (click)="file.click()"><i class="fas fa-cloud-upload-alt"></i>Add Image</button>
-                            <div class="image-upload-wrap" >
-                              <input class="file-upload-input" formControlName="image" #file type='file' (change)="onFileChange($event)" accept="image/*" hidden />
-                              <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" #Imagetitle placeholder="Upload your file" disabled>
-                              </div>
-                            </div>
-                        </div>   
+                        <div class="form-group">
+                            <label>Image: </label><br>
+                            <input type="file" formControlName="image" (change)="onFileChange($event)">
+                        </div>
                         <div class="form-group">
                             <label>Category: </label>
                             <select class="custom-select" [class.is-invalid]="categoryId?.invalid && categoryId?.touched" formControlName="categoryId">
@@ -117,7 +115,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="button" data-dismiss="modal" (click)="updateCategory()" class="btn btn-info" value="Save">
+                        <input type="button" data-dismiss="modal" (click)="updateButtonClicked()" class="btn btn-info" value="Save">
                     </div>
                 </form>
             </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormGroup, NgForm } from '@angular/forms';
 import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
@@ -24,6 +23,7 @@ export class ProductComponent implements OnInit {
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
+  hasProducts:boolean=false;
   constructor(private productService:ProductService,private brandService:BrandService,private supplierService:SupplierService,private subCategory:SubcategoryService) { }
 
 
@@ -33,8 +33,7 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
-
-    this.reserform();
+   this.reserform();
    this.getAllBrands();
    this.getAllSupplier();
    this.getAllSubCategory();
@@ -74,14 +73,17 @@ export class ProductComponent implements OnInit {
       {
        this.errorMsg=errorResponse;
       })
-
   }
 
 GetAllProduct(){
   this.productService.getAllProduct().subscribe(
     serviceData=>
     {
-      this.productList=serviceData;
+      if(serviceData.length>0)
+      {
+        this.productList=serviceData;
+        this.hasProducts=true;
+      }
     },
     errorResponse=>
     {
@@ -97,16 +99,13 @@ GetAllProduct(){
       name:'',
       description:'',
       quantity:0,
-
       price:0,
       color:'', 
       size:'',
       SubCategoryID:0,
       brandID:0,
       supplierID:0,
-      averageRating:0,
-      
-
+     averageRating:0,
     }
   }
   errorMsg='';

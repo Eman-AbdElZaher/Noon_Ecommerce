@@ -9,12 +9,14 @@ import { RegisterComponent } from './components/client/register/register.compone
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { LoginModule } from './components/login/login.module';
 import { UploadImageComponent } from './components/sharedComponent/upload-image/upload-image.component';
+import { FooterComponent } from './components/sharedComponent/footer/footer.component';
 import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
-import { CreateReviewComponent } from './components/client/Review/create-review/create-review.component';
-import { UpdateReviewComponent } from './components/client/Review/update-review/update-review.component';
-import { ShowReviewComponent } from './components/client/Review/show-review/show-review.component';
+import { HeaderComponent } from './components/sharedComponent/header/header.component';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
+// import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
+import { HomeComponent } from './components/home/home.component';
+import {ClientModule} from './components/client/client/client.module'
 
 @NgModule({
   declarations: [
@@ -22,11 +24,12 @@ import { WishlistProductComponent } from './components/client/wishlist-product/w
     PageNotFoundComponent,
     RegisterComponent,
     UnathorizedPageComponent,
-    
     UploadImageComponent,
     DeleteModalComponent,
     UnathorizedPageComponent,  
-    UploadImageComponent, ProductDetailsComponent, WishlistProductComponent
+    UploadImageComponent, FooterComponent,   
+   ProductDetailsComponent, WishlistProductComponent,
+  HeaderComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +38,10 @@ import { WishlistProductComponent } from './components/client/wishlist-product/w
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
-    
+    ClientModule
   ],
   exports: [
-    UploadImageComponent// <--- Enable using the component in other modules
+    UploadImageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

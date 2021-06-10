@@ -18,7 +18,8 @@ export class AuthenticationService {
   }
   constructor(
     private _http:HttpClient,
-    private router: Router
+    private router: Router,
+    
     ) { }
 
   login(credentials:ILogin):Observable<any>
@@ -99,4 +100,5 @@ public isLoggedIn() {
       }
       return null;
   }
+
 }

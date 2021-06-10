@@ -17,7 +17,6 @@ import { WishlistProductComponent } from './components/client/wishlist-product/w
 // import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
 import { HomeComponent } from './components/home/home.component';
 import {ClientModule} from './components/client/client/client.module'
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -12,12 +12,11 @@ import { UploadImageComponent } from './components/sharedComponent/upload-image/
 import { FooterComponent } from './components/sharedComponent/footer/footer.component';
 import { DeleteModalComponent } from './components/sharedComponent/delete-modal/delete-modal.component';
 import { HeaderComponent } from './components/sharedComponent/header/header.component';
-import { CarouselComponent } from './components/client/carousel/carousel.component';
-import { ShowsubcategoryComponent } from './components/client/showsubcategory/showsubcategory.component';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
-import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
-
+// import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
+import { HomeComponent } from './components/home/home.component';
+import {ClientModule} from './components/client/client/client.module'
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcate
     UnathorizedPageComponent,  
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
-  HeaderComponent,CarouselComponent
+  HeaderComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +38,10 @@ import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcate
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
-    
+    ClientModule
   ],
   exports: [
-    UploadImageComponent// <--- Enable using the component in other modules
+    UploadImageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { RegisterComponent } from './components/client/register/register.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
-
 const routes: Routes = [ 
   {  
     path: 'login',
@@ -22,7 +22,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')
       .then(mod => mod.AdminModule)
   },
-
   {
     path: 'review',
     loadChildren: () => import('./components/client/review/review.module')
@@ -39,6 +38,8 @@ const routes: Routes = [
       .then(mod => mod.ClientModule)
   },
   {path:'unathorized',component:UnathorizedPageComponent},
+  {path:'home',component:HomeComponent},
+  {path:'',redirectTo:'home',pathMatch:'full'},
   { path: '**', component: PageNotFoundComponent },
  
 ];

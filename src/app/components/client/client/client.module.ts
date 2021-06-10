@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductshomeComponent } from '../productshome/productshome.component';
 import { OffersComponent } from '../offers/offers.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { ShowsubcategoryComponent } from '../showsubcategory/showsubcategory.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent}
@@ -11,7 +13,10 @@ const routes:Routes=[
 ];
 @NgModule({
   declarations: [
-    ProductshomeComponent,OffersComponent
+    ProductshomeComponent,
+    OffersComponent,
+    CarouselComponent,
+    ShowsubcategoryComponent
   ],
   imports: [
     CommonModule,

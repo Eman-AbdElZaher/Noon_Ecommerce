@@ -53,6 +53,8 @@ $(document).ready(function(){
 						<td>{{product.quantity}}</td>
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
+					    <td>{{product.size}}</td>
+
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

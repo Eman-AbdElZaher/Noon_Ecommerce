@@ -51,7 +51,8 @@ const routes:Routes=[
     ImageComponent,
     OfferComponent,
     SupplierComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    
     
   ],
   imports: [

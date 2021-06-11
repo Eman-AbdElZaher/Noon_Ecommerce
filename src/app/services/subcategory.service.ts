@@ -66,6 +66,9 @@ export class SubcategoryService {
       return throwError(err.message ||"Internal Server error contact site adminstarator");
     }));
   }
+<<<<<<< HEAD
+=======
  
   
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
 }

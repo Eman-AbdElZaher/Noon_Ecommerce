@@ -20,6 +20,11 @@ export class ProductComponent implements OnInit {
  product=new IProduct();//(0,'','',0,0,'',0,0,0,0,0);
   //errorMsg="";
   productList:IProduct[]=[];
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
   brandList:Ibrand[]=[];
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
@@ -33,7 +38,12 @@ export class ProductComponent implements OnInit {
       this.GetAllProduct()
     })
     this.GetAllProduct();
+<<<<<<< HEAD
+
+    this.reserform();
+=======
    this.reserform();
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
    this.getAllBrands();
    this.getAllSupplier();
    this.getAllSubCategory();
@@ -73,7 +83,12 @@ export class ProductComponent implements OnInit {
       {
        this.errorMsg=errorResponse;
       })
+<<<<<<< HEAD
+    }
+
+=======
   }
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
 
 GetAllProduct(){
   this.productService.getAllProduct().subscribe(
@@ -100,12 +115,24 @@ GetAllProduct(){
       description:'',
       quantity:0,
       price:0,
+<<<<<<< HEAD
+     color:'', 
+     size:'',
+     SubCategoryID:0,
+    brandID:0,
+   supplierID:0,
+   averageRating:0
+
+      
+
+=======
       color:'', 
       size:'',
       SubCategoryID:0,
       brandID:0,
       supplierID:0,
      averageRating:0,
+>>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
     }
   }
   errorMsg='';

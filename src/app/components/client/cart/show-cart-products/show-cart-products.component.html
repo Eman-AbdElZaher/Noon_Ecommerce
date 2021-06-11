@@ -156,9 +156,16 @@
                                         <figure class="itemside align-items-center">
                                             <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
                                                     class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark"
+                                            <figcaption class="info" > <a href="#" class="title text-dark"
                                                     data-abc="true">{{Product.name}}</a>
-                                                <p class="text-muted small">SIZE:{{Product.size}}<br> Brand: MAXTRA</p>
+                                                <p class="text-muted small">SIZE:{{Product.size}}</p>
+                                                <br>
+
+                                               <div *ngFor="let brand of Brands">
+                                                <p  class="text-muted small" *ngIf="brand.id==Product.brandID"> Brand:
+                                                    {{brand.name}}
+                                                </p>
+                                               </div>
                                             </figcaption>
                                         </figure>
                                     </td>

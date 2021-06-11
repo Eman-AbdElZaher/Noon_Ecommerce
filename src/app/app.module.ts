@@ -14,9 +14,14 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
 import { HeaderComponent } from './components/sharedComponent/header/header.component';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
-// import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
 import { HomeComponent } from './components/home/home.component';
 import {ClientModule} from './components/client/client/client.module'
+import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
+import { CartModule } from './components/client/cart/cart.module';
+import { ReviewModule } from './components/client/review/review.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { OwlModule } from 'ngx-owl-carousel';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,7 @@ import {ClientModule} from './components/client/client/client.module'
     UnathorizedPageComponent,  
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
-  HeaderComponent, HomeComponent
+  HeaderComponent, HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,12 @@ import {ClientModule} from './components/client/client/client.module'
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
-    ClientModule
+    ClientModule,
+    AdminModule,
+    CartModule,
+    ReviewModule,
+    CarouselModule,
+    OwlModule,
   ],
   exports: [
     UploadImageComponent

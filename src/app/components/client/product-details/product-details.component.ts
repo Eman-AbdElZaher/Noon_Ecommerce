@@ -39,8 +39,6 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
     console.log("local"+this.product);
-     
-
   }
 
   addToCart(ProductId:number)

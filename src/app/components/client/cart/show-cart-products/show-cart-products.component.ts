@@ -19,7 +19,7 @@ export class ShowCartProductsComponent implements OnInit {
   public Products: Product[] = [];
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
-  constructor(private brandService:BrandService, private cartsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService) {
+  constructor(private brandService:BrandService, private cartsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];

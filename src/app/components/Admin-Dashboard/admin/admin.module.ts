@@ -13,6 +13,8 @@ import { AppModule } from 'src/app/app.module';
 import { ProductComponent } from './adminpanel/product/product.component';
 import { ImageComponent } from './adminpanel/image/image.component';
 import { AdvertisementComponent } from './adminpanel/advertisement/advertisement.component';
+import { OrderComponent } from './adminpanel/order/order.component';
+import { OrderDetailsComponent } from './adminpanel/order-details/order-details.component';
 
 
 const routes:Routes=[
@@ -31,13 +33,9 @@ const routes:Routes=[
     {path:'image',component:ImageComponent},
     {path:'advertisement',component:AdvertisementComponent},  
     {path:'advertisement',component:AdvertisementComponent},
-<<<<<<< HEAD
-
-  
-
-=======
     {path:'offer',component:OfferComponent}, 
->>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
+    {path:'order',component:OrderComponent},
+    {path:'orderdetails/:id',component:OrderDetailsComponent},
   ]
 },
    {path:'',redirectTo:'panel',pathMatch:'full'}
@@ -58,6 +56,8 @@ const routes:Routes=[
     OfferComponent,
     SupplierComponent,
     AdvertisementComponent,
+    OrderComponent,
+    OrderDetailsComponent,
     
     
   ],

@@ -6,6 +6,7 @@ import { CartProductService } from 'src/app/services/cart-product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
+import{OrderService} from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -15,7 +16,7 @@ import { WishlistProductService } from 'src/app/services/wishlist-product.servic
 export class ShowCartProductsComponent implements OnInit {
   public Products: Product[] = [];
   public cart:Cart={userID:"",totalPrice:0};
-  constructor(private cartsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService) {
+  constructor(private cartsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];
@@ -85,6 +86,17 @@ export class ShowCartProductsComponent implements OnInit {
       }
     )
 
+  }
+  CheckOut()
+  {
+    if(confirm('Are you sure'))
+    {
+    this.orderService.CheckoutOrder().subscribe(
+     data=>{console.log(data);
+
+     }
+    )
+    }
   }
 
 }

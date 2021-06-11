@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Iuser } from 'src/app/models/Interfaces/iuser';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
   userModel=new Iuser('','','','');
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit {
       userData=>
       {
         console.log(userData);
+        this.router.navigate(['home']);
       },
       errorResponse=>
       {

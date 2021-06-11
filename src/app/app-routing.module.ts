@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {path:'register',component:RegisterComponent},
   {path:'wishlist',component:WishlistProductComponent},
-  {path:'productPage/:id',component:ProductDetailsComponent},
+  {path:'home/productPage/:id',component:ProductDetailsComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
   {path:'check',component: CheckoutOrderComponent},
   {
@@ -43,7 +43,6 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   { path: '**', component: PageNotFoundComponent },
- 
 ];
 
 @NgModule({

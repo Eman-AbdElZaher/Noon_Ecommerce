@@ -14,12 +14,15 @@ import { DeleteModalComponent } from './components/sharedComponent/delete-modal/
 import { HeaderComponent } from './components/sharedComponent/header/header.component';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
-// import { SubcategoryComponent } from './components/Admin-Dashboard/admin/subcategory/subcategory.component';
 import { HomeComponent } from './components/home/home.component';
-import {ClientModule} from './components/client/client/client.module';
-import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component'
-import { CartModule } from './components/client/cart/cart.module';
+import {ClientModule} from './components/client/client/client.module'
 import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
+import { CartModule } from './components/client/cart/cart.module';
+import { ReviewModule } from './components/client/review/review.module';
+import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
+import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
+
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,9 @@ import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
     UnathorizedPageComponent,  
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
-  HeaderComponent, HomeComponent
+  HeaderComponent, HomeComponent,
+  ShowReviewComponent,
+  NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +46,11 @@ import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
     HttpClientModule,
     LoginModule,
     ClientModule,
-    AdminModule
-     
+    AdminModule,
+    CartModule,
+    ReviewModule,
+   
+  
   ],
   exports: [
     UploadImageComponent

@@ -6,9 +6,10 @@ import { ProductshomeComponent } from '../productshome/productshome.component';
 import { OffersComponent } from '../offers/offers.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { ShowsubcategoryComponent } from '../showsubcategory/showsubcategory.component';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
-  {path:'producthome',component:ProductshomeComponent}
+  {path:'producthome',component:ProductshomeComponent},
 
 ];
 @NgModule({
@@ -23,6 +24,13 @@ const routes:Routes=[
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    
+  ],
+  exports:[
+    CarouselComponent,
+    ShowsubcategoryComponent,
+    ProductshomeComponent,
+   OffersComponent
   ]
 })
 export class ClientModule { }

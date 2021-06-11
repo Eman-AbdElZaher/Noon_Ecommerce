@@ -31,11 +31,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss" 
+              "src/styles.scss"
               
             ],
             "scripts": [
-              "src/assets/js/panel.js" 
              
             ]
           },

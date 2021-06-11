@@ -20,6 +20,7 @@ import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
 import { CartModule } from './components/client/cart/cart.module';
 import { ReviewModule } from './components/client/review/review.module';
 import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
+import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -34,7 +35,8 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
   HeaderComponent, HomeComponent,
-  ShowReviewComponent
+  ShowReviewComponent,
+  NavbarComponent
   ],
   imports: [
     BrowserModule,

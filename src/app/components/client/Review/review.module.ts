@@ -17,7 +17,7 @@ const routes:Routes=[
   declarations: [
     CreateReviewComponent,
     UpdateReviewComponent,
-    ShowReviewComponent
+    
   ],
   imports: [
     CommonModule,

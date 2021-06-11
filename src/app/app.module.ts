@@ -19,8 +19,8 @@ import {ClientModule} from './components/client/client/client.module'
 import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
 import { CartModule } from './components/client/cart/cart.module';
 import { ReviewModule } from './components/client/review/review.module';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { OwlModule } from 'ngx-owl-carousel';
+import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
+
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
   HeaderComponent, HomeComponent,
+  ShowReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +47,8 @@ import { OwlModule } from 'ngx-owl-carousel';
     AdminModule,
     CartModule,
     ReviewModule,
-    CarouselModule,
-    OwlModule,
+   
+  
   ],
   exports: [
     UploadImageComponent

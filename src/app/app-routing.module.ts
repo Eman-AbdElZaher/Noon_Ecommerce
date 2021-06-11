@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
+import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component';
 const routes: Routes = [ 
   {  
     path: 'login',
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'wishlist',component:WishlistProductComponent},
   {path:'home/productPage/:id',component:ProductDetailsComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
+  {path:'check',component: CheckoutOrderComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')

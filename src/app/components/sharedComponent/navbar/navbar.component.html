@@ -1,0 +1,273 @@
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body class="background">
+	 <div class="content">
+		<ul class="exo-menu">
+            <li class="mega-drop-down" (mouseover)='getAllMainCategory()'><a href="#" class='trigger'>All Categories</a>
+				<div class="animated fadeIn mega-menu">
+                    <div class="mega-menu-wrap">
+						<div class="menu">
+							<div class="menuContent">
+							  <div class="catsColumn">
+								<p class="heading">Categories</p>
+								<ul>
+								  <li *ngFor="let cat of MainCategoryList">
+                                      <a href="#">{{cat.name}}</a>
+                                  </li>
+								</ul>
+							  </div>
+                        </div>
+                </div>
+            </div>
+        </li>
+			<li class="mega-drop-down"><a href="#">Electronics</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="mega-menu-wrap">
+						<div class="menu">
+							<div class="menuContent">
+							  <div class="catsColumn">
+								<p class="heading">Categories</p>
+								<ul>
+								  <li>
+									<a href="/egypt-en/television"
+									  >TVs, Satellites &amp; Accessories</a
+									>
+								  </li>
+								  <li><a href="/egypt-en/laptops">Laptops &amp; Accessories</a></li>
+								  <li>
+									<a href="/egypt-en/audio">Audio &amp; Home Entertainment</a>
+								  </li>
+								  <li><a href="/egypt-en/video-games">Video Games</a></li>
+								  <li><a href="/egypt-en/cameras">Cameras &amp; Accessories</a></li>
+								  <li>
+									<a href="/egypt-en/all-printers-eg">Printers &amp; Accessories</a>
+								  </li>
+								  <li>
+									<a
+									  href="/egypt-en/electronics-and-mobiles/computers-and-accessories/networking-products-16523"
+									  >Networking Products</a
+									>
+								  </li>
+								  <li>
+									<a
+									  href="/egypt-en/electronics-and-mobiles/computers-and-accessories/data-storage"
+									  >Data Storage</a
+									>
+								  </li>
+								  <li>
+									<a
+									  href="/egypt-en/electronics-and-mobiles/computers-and-accessories/computer-components-15997"
+									  >Computer Components</a
+									>
+								  </li>
+								  <li>
+									<a
+									  href="/egypt-en/electronics-and-mobiles/computers-and-accessories/cables-and-accessories"
+									  >Computer Accessories</a
+									>
+								  </li>
+								</ul>
+							  </div>
+							  <div class="brandsColumn">
+								<p class="heading">Top Brands</p>
+								<ul>
+								  <li>
+									<a href="/egypt-en/samsung/eg-electronics-brands">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-06.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/electronics-and-mobiles/lg">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-09.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/sony">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-03.png"
+										alt="url"
+									/></a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/lenovo">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-01.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/dell">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-08.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/hp">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-04.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/apple/eg-electronics-brands">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-05.png"
+										alt="url"
+									/></a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/canon">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-02.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								  <li>
+									<a href="/egypt-en/cager">
+									  <img
+										src="https://z.nooncdn.com/cms/pages/20210408/9852ea7d5c33973a1761053b129a047b/drop-brand-07.png"
+										alt="url"
+									  />
+									</a>
+								  </li>
+								</ul>
+							  </div>
+							  <div class="bannersColumn">
+								<div class="banner">
+								  <a href="/egypt-en/smart-tv-eg">
+									<img
+									  src="https://z.nooncdn.com/cms/pages/20210408/2792ffeaded707bd95f25bd124a83af9/en_drop-01.png"
+									  alt="/smart-tv-eg"
+									/>
+								  </a>
+								</div>
+								<div class="banner">
+								  <a
+									href="/egypt-en/electronics-and-mobiles/computers-and-accessories/laptops/acer/msi/dell/lenovo/hp/asus/microsoft?f[laptop_ram_size]=8_gb&amp;f[laptop_ram_size]=12_gb&amp;f[laptop_ram_size]=16_gb&amp;f[laptop_ram_size]=32_gb_more&amp;f[laptop_type]=notebook"
+								  >
+									<img
+									  src="https://z.nooncdn.com/cms/pages/20210408/2792ffeaded707bd95f25bd124a83af9/en_drop-02.png"
+									  alt="/electronics-and-mobiles/computers-and-accessories/laptops/acer/msi/dell/lenovo/hp/asus/microsoft?f[laptop_type]=notebook&amp;f[laptop_ram_size]=8_gb&amp;f[laptop_ram_size]=12_gb&amp;f[laptop_ram_size]=16_gb&amp;f[laptop_ram_size]=32_gb_more"
+									/>
+								  </a>
+								</div>
+							  </div>
+							</div>
+						  </div>
+					</div>	
+				</div>
+			</li>
+			<li class="mega-drop-down"><a href="#"> Mobiles</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="menu">
+						<div class="menuContent">
+							<div class="catsColumn">
+								<p class="heading">Categories</p>
+								<ul>
+									<li><a href="/egypt-en/eg-mobile-offers?sort[by]=new_arrivals&amp;sort[dir]=desc">Mobile New Arrivals</a>
+									</li>
+									<li>
+										<a href="/egypt-en/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905?f[is_fbn]=1">All Mobile Phones</a></li><li><a href="/egypt-en/electronics-and-mobiles/computers-and-accessories/tablets">All Tablets</a>
+										</li>
+										<li>
+											<a href="/egypt-en/electronics-and-mobiles/wearable-technology/smart-watches-and-accessories">Smartwatches &amp; Accessories</a>
+										</li>
+										<li>
+											<a href="/egypt-en/electronics-and-mobiles/portable-audio-and-video/headphones-24056?f[audio_headphone_type]=in_ear&amp;f[connection_type]=bluetooth&amp;f[connection_type]=wireless&amp;f[connection_type]=bluetooth_wireless">Wireless Earphones</a></li>
+											<li>
+												<a href="/egypt-en/electronics-and-mobiles/portable-audio-and-video/headphones-24056?f[audio_headphone_type]=in_ear&amp;f[connection_type]=wired">Earphones</a></li><li><a href="/egypt-en/electronics-and-mobiles/mobiles-and-accessories/accessories-16176/power-banks">Power Banks</a></li>
+												<li>
+													<a href="/egypt-en/eg-chargers-cables">Chargers &amp; Cables</a>
+												</li>
+												<li>
+													<a href="/egypt-en/eg-mobile-mounts">Selfie Sticks &amp; Holders</a>
+												</li>
+												<li><a href="/egypt-en/eg-mobile-covers">Covers &amp; Screen protectors</a>
+												</li>
+												<li><a href="/egypt-en/eg-vr-controllers">Mobile Gaming &amp; VR Gadgets</a>
+												</li>
+												<li>
+													<a href="/egypt-en/electronics-and-mobiles/mobiles-and-accessories/accessories-16176/micro-sd-cards-25125">Micro SD Cards</a>
+												</li>
+											</ul>
+											</div>
+											<div class="brandsColumn"><p class="heading">Top Brands</p><ul><li><a href="/egypt-en/samsung/eg-mobile-brands"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-01.png" alt="url"></a></li><li><a href="/egypt-en/xiaomi/eg-mobile-brands"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-02.png" alt="url"></a></li><li><a href="/egypt-en/apple/eg-mobile-brands"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-03.png" alt="url"></a></li><li><a href="/egypt-en/huawei/eg-mobile-brands"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-04.png" alt="url"></a></li><li><a href="/egypt-en/oppo"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-05.png" alt="url"></a></li><li><a href="/egypt-en/nokia"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-06.png" alt="url"></a></li><li><a href="/egypt-en/electronics-and-mobiles/honor"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-07.png" alt="url"></a></li><li><a href="/egypt-en/real_me/realme"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-08.png" alt="url"></a></li><li><a href="/egypt-en/infinix"><img src="https://z.nooncdn.com/cms/pages/20210410/2a23ead9569718f23f16e78305f07230/drop-brand-09.png" alt="url"></a></li></ul></div>
+											<div class="bannersColumn"><div class="banner"><a href="/egypt-en/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905?f[price][min]=10000"><img src="https://z.nooncdn.com/cms/pages/20210413/05e3cb23daf67ccd318c9e9aca852093/en_drop-01.png" alt="/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905?f[price][min]=10000"></a></div><div class="banner"><a href="/egypt-en/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905?f[price][max]=50000&amp;f[price][min]=1000"><img src="https://z.nooncdn.com/cms/pages/20210413/05e3cb23daf67ccd318c9e9aca852093/en_drop-02.png" alt="/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905?f[price][max]=50000&amp;f[price][min]=1000"></a></div></div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li  class="mega-drop-down"><a  href="#"></i> Fashion</a>
+				<div class="Images animated fadeIn">
+					<div class="menu">
+						<div class="menuContent"></div>
+					</div>
+				</div>
+			
+			</li>
+			<li class="mega-drop-down"><a href="#">Home</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="menu">
+						<div class="menuContent"></div>
+					</div>
+				</div>
+			</li>
+			<li class="mega-drop-down"><a href="#">Beauty</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="menu">
+						<div class="menuContent">
+
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="mega-drop-down"><a href="#">Baby&Toys</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="menu">
+						<div class="menuContent"></div>
+					</div>
+				</div>
+			</li>
+			<li class="mega-drop-down"><a href="#">supermarket</a>
+				<div class="animated fadeIn mega-menu">
+					<div class="menu">
+						<div class="menuContent"></div>
+					</div>
+				</div>
+			</li>
+			<a href="#" class="toggle-menu visible-xs-block">|||</a>		
+	</ul>
+	 
+	 
+	 </div>
+	 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>      
+	
+        $(function () {
+        $('.toggle-menu').click(function(){
+            $('.exo-menu').toggleClass('display');
+            
+        });
+        
+        });
+    </script>
+</body> -->

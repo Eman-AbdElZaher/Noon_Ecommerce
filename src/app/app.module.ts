@@ -22,6 +22,7 @@ import { ReviewModule } from './components/client/review/review.module';
 import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
 import { CreateReviewComponent } from './components/client/review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/review/update-review/update-review.component';
+import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -38,7 +39,13 @@ import { UpdateReviewComponent } from './components/client/review/update-review/
     HeaderComponent, HomeComponent,
     ShowReviewComponent,
     CreateReviewComponent,
-    UpdateReviewComponent
+    UpdateReviewComponent,
+    UnathorizedPageComponent,  
+    UploadImageComponent, FooterComponent,   
+   ProductDetailsComponent, WishlistProductComponent,
+  HeaderComponent, HomeComponent,
+  ShowReviewComponent,
+  NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
- 
+
         body {
             background-color: #eeeeee;
             font-family: 'Open Sans', serif;
@@ -148,10 +148,10 @@
                                     <th scope="col" class="text-right d-none d-md-block" width="200"></th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody *ngFor="let Product of Products" >
-                            
-                                <tr> 
+
+                                <tr>
                                     <td>
                                         <figure class="itemside align-items-center">
                                             <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
@@ -182,11 +182,11 @@
                                     <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(Product.id)" data-original-title="Save to Wishlist"
                                             title="" href="" class="btn btn-light" data-toggle="tooltip"
                                             data-abc="true"> <i class="fa fa-heart"></i></a> <a href="#"
-                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(Product.id)">Remove</a> 
+                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(Product.id)">Remove</a>
                                     </td>
                                 </tr>
-                               
-                                
+
+
                             </tbody>
                         </table>
                     </div>
@@ -218,10 +218,12 @@
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>${{cart.totalPrice}}</strong></dd>
                         </dl>
-                        <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make
-                            Purchase </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2"
+                        <hr> <button  type="button" class="btn btn-out btn-primary btn-square btn-main" (click)="CheckOut()" data-abc="true"> Make
+                            Purchase </button> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2"
                             data-abc="true">Continue Shopping</a>
+                            <!-- <button type="button" class="btn btn-success btn-lg btn-block" (click)="CheckOut()">Pay</button> -->
                     </div>
+                    <!-- <app-checkout-order></app-checkout-order> -->
                 </div>
             </aside>
         </div>

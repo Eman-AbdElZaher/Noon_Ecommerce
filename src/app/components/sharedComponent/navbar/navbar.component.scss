@@ -46,7 +46,7 @@ a{
 	background: rgb(252, 251, 244);
     border-bottom: 1px solid rgb(226, 229, 241);
 }
-.exo-menu > li {display: inline-block;float:left;}
+.exo-menu > li {display: inline-block;}
 .exo-menu > li > a{
 	color: #000;
 	font-weight: 700;
@@ -89,13 +89,6 @@ li.drop-down>ul{
 
 }
 .drop-down-ul{display:none;}
-.flyout-right>ul,
-.flyout-left>ul{
-  top: 0;
-  min-width: 230px;
-  display: none;
-  border-left: 1px solid #365670;
-  }
 
 li.drop-down>ul>li>a,
 .flyout-right ul>li>a ,
@@ -116,7 +109,9 @@ li.drop-down>ul>li>a,
 	border-bottom: 1px dotted #B8C7BC;
 }
 
-
+.mega-menu{
+    z-index: 9999;
+}
 /*Flyout Mega*/
 .flyout-mega-wrap {
 	top: 0;
@@ -160,6 +155,7 @@ h4.row.mega-title {
   display:none;
   padding-top: 0;
   min-height: 100%;
+  z-index: 999;
 
 }
 h4.row.mega-title {
@@ -261,7 +257,7 @@ ul.icon-des li {
 .flyout-left ul>li>a,
 .flyout-mega-wrap,
 .mega-menu{
-	background-color: #547787;
+	background-color: #e2edf1;
 }
 
 /*hover*/
@@ -302,7 +298,7 @@ li.flyout-mega>a:hover +.flyout-mega-wrap{
 
 	.exo-menu {
 		min-height: 58px;
-		background-color: #23364B;
+		background-color: #fff;
 		width: 100%;
 	}
 	
@@ -433,9 +429,12 @@ ul{
         border-color: rgb(56, 102, 223) transparent transparent;
         border-image: initial;
         margin-top: 7px;
+        margin-left: 20px;
+        position: absolute;
+        top:15px;
         transition: transform 0.25s ease-in-out 0s;
     }
-    .dPxiHT .menu .category {
+     .menu .category {
         background-color: rgb(252, 251, 244);
         padding: 15px 10px;
         width: 226px;
@@ -443,46 +442,48 @@ ul{
         flex-direction: column;
         border-right: 1px solid rgb(226, 229, 241);
     }
-    .dPxiHT .menu .category .selected {
+    .menu .category .selected {
         color: rgb(56, 102, 223);
     }
-    .dPxiHT .menu .category span {
+     .menu .category span {
         padding: 8px 15px;
         cursor: pointer;
     }
-    .dPxiHT .menu .detail {
+     .menu .detail {
         padding: 15px;
         min-width: 500px;
         display: flex;
         flex-direction: column;
     }
-    .dPxiHT .menu .detail .topBar {
+     .menu .detail .topBar {
         border-bottom: 1px solid rgb(241, 243, 249);
         padding-bottom: 10px;
         font-size: 1.25rem;
         font-weight: 700;
         color: rgb(64, 69, 83);
     }
-    .dPxiHT .menu .detail .subCats {
+    .menu .detail .subCats {
         display: flex;
         padding-top: 10px;
     }
-    .dPxiHT .menu .detail .subCats .column {
+    .menu .detail .subCats .column {
         flex: 1 1 250px;
     }
-    .dPxiHT .menu .detail .subCats .subtitle {
+     .menu .detail .subCats .subtitle {
         font-weight: 700;
         cursor: default;
     }
-    .dPxiHT .menu .detail .subCats .column .list {
+     .menu .detail .subCats .column .list {
         display: flex;
         flex-direction: column;
     }
-    .dPxiHT .menu .detail .subCats .column .list a {
+     .menu .detail .subCats .column .list a {
         cursor: pointer;
         margin-top: 15px;
     }
-    .dPxiHT .menu .show{
+     .menu .show{
     display:flex;
     }
-    
+    .dPxiHT{
+        width:400px;
+    }

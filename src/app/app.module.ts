@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -15,11 +15,13 @@ import { HeaderComponent } from './components/sharedComponent/header/header.comp
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
 import { HomeComponent } from './components/home/home.component';
-import {ClientModule} from './components/client/client/client.module'
+import { ClientModule } from './components/client/client/client.module'
 import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
 import { CartModule } from './components/client/cart/cart.module';
 import { ReviewModule } from './components/client/review/review.module';
 import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
+import { CreateReviewComponent } from './components/client/review/create-review/create-review.component';
+import { UpdateReviewComponent } from './components/client/review/update-review/update-review.component';
 import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,6 +33,13 @@ import { NavbarComponent } from './components/sharedComponent/navbar/navbar.comp
     UnathorizedPageComponent,
     UploadImageComponent,
     DeleteModalComponent,
+    UnathorizedPageComponent,
+    UploadImageComponent, FooterComponent,
+    ProductDetailsComponent, WishlistProductComponent,
+    HeaderComponent, HomeComponent,
+    ShowReviewComponent,
+    CreateReviewComponent,
+    UpdateReviewComponent,
     UnathorizedPageComponent,  
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
@@ -49,11 +58,13 @@ import { NavbarComponent } from './components/sharedComponent/navbar/navbar.comp
     AdminModule,
     CartModule,
     ReviewModule,
-   
-  
+
+
   ],
   exports: [
-    UploadImageComponent
+    UploadImageComponent,
+    CreateReviewComponent,
+    UpdateReviewComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

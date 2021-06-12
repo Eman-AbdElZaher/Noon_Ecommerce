@@ -15,8 +15,7 @@ const routes:Routes=[
 ]
 @NgModule({
   declarations: [
-    CreateReviewComponent,
-    UpdateReviewComponent,
+    
     
   ],
   imports: [

@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllMainCategory();
   }
   getAllMainCategory(){
     this._maincategoryservice.getAllCategories().subscribe(

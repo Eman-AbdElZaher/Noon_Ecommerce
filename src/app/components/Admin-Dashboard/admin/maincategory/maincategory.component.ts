@@ -27,11 +27,16 @@ export class MaincategoryComponent implements OnInit {
   massage: string;
 
   ngOnInit(): void {
-    // this._maincategoryservice.refreshNeeded$.subscribe(()=>{
-    //   this.getAllMainCategory();
-    // })
+    this._maincategoryservice.getMainCategoriesCount().subscribe(
+      data => {
+        this.MaincategoriesCount = data;
+        this.numberOfPages = Math.ceil(this.MaincategoriesCount / this.pageSize);
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      })
     this.getSelectedPage(1);
-    //this.getAllMainCategory();
     this.maincategoryForm=this.fb.group({
       name :['',[Validators.required]]
     });
@@ -121,8 +126,8 @@ private getCategoriesCount(){
     data => {
       this.MaincategoriesCount = data;
       console.log(this.MaincategoriesCount)
-      this.numberOfPages = Math.ceil(this.MaincategoriesCount / this.pageSize)
-      
+      this.numberOfPages = Math.ceil(this.MaincategoriesCount / this.pageSize);
+      console.log(this.numberOfPages);
     },
     error=>
     {

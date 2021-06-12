@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
-<meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -19,7 +18,7 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body>
+
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
@@ -53,11 +52,7 @@ $(document).ready(function(){
 						<td>{{product.quantity}}</td>
                         <td>{{product.price}}</td>
 						<td>{{product.color}}</td>
-<<<<<<< HEAD
-						<td>{{product.size}}</td>
-=======
 					    <td>{{product.size}}</td>
->>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
 
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -128,11 +123,6 @@ $(document).ready(function(){
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
 						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
                     </div>
-<<<<<<< HEAD
-
-				
-=======
->>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
 
                     <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
 						<label>SubCategory</label>
@@ -219,21 +209,18 @@ $(document).ready(function(){
                     
                     <div class="form-group">
 						<label>Size</label>
-<<<<<<< HEAD
 						<input type="number" class="form-control"  [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
 						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
                         <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p>
                     </div>
 
 					<div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
-=======
 						<input type="text" class="form-control" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched " required min="5" max="10000" #size="ngModel" [(ngModel)]="product.size " name="size">
 						<small class="text-danger"[class.d-none]="size.untouched || size.valid">Product Size is required</small>
                         <!-- <small class="text-danger" *ngIf="size.errors.min || size.errors.max" >min quantity is 5 & max is 10000</small> -->
 						<!-- <p class="alert alert-danger invalid" *ngIf="size.errors">min quantity is 5 & max is 10000</p> -->
                     </div>
                     <div class="form-group" [class.has-error]="subCatID.touched && subCatID.invalid">
->>>>>>> 9fe22d8322a4ec51e4fe79c8c069fd66a49cc8cf
 						<label>SubCategory</label>
 						<select class="custom-select"  name="subCatID" class="form-control"  [(ngModel)]="product.SubCategoryID" #subCatID="ngModel" [class.is-invalid]="subCatID.invalid && subCatID.touched" required  >
 							<option *ngFor="let item of subcategory" [value]="item.id">
@@ -292,7 +279,5 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-</body>
-</html>
 
 

@@ -65,5 +65,13 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+  getAllProductsDevices()
+  {
+    let _url="http://localhost:61135/api/Product/AllProductDevices";
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
  
 }

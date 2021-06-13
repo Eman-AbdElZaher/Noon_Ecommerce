@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -20,8 +20,10 @@ import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
 import { CartModule } from './components/client/cart/cart.module';
 import { ReviewModule } from './components/client/review/review.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { OwlModule } from 'ngx-owl-carousel';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './services/user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import { OwlModule } from 'ngx-owl-carousel';
   HeaderComponent, HomeComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -47,12 +50,18 @@ import { OwlModule } from 'ngx-owl-carousel';
     CartModule,
     ReviewModule,
     CarouselModule,
-    OwlModule,
+  
   ],
   exports: [
     UploadImageComponent
   ],
-  providers: [],
+  providers: [
+    UserService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

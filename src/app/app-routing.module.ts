@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { ProductDetailsComponent } from './components/client/product-details/product-details.component';
 import { RegisterComponent } from './components/client/register/register.component';
 import { WishlistProductComponent } from './components/client/wishlist-product/wishlist-product.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
       .then(mod => mod.LoginModule)
   },
   {path:'register',component:RegisterComponent},
-  {path:'wishlist',component:WishlistProductComponent},
+  {path:'wishlist',component:WishlistProductComponent,canActivate: [AuthGuard]},
   {path:'home/productPage/:id',component:ProductDetailsComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
   {

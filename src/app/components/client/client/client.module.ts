@@ -6,11 +6,14 @@ import { ProductshomeComponent } from '../productshome/productshome.component';
 import { OffersComponent } from '../offers/offers.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { ShowsubcategoryComponent } from '../showsubcategory/showsubcategory.component';
-import { OwlModule } from 'ngx-owl-carousel';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubcategoryproductComponent } from '../subcategoryproduct/subcategoryproduct.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
+  {path:'subcategoryProduct',component:SubcategoryproductComponent}
 
 ];
 @NgModule({
@@ -18,14 +21,17 @@ const routes:Routes=[
     ProductshomeComponent,
     OffersComponent,
     CarouselComponent,
-    ShowsubcategoryComponent
+    ShowsubcategoryComponent,
+    SubcategoryproductComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    OwlModule
+    CarouselModule,
+    BrowserAnimationsModule
+    
   ],
   exports:[
     CarouselComponent,

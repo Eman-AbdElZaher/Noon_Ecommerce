@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -11,23 +11,29 @@ export class CartProductService {
 
   constructor(private http: HttpClient) { }
 
-  addCartProduct(productId: number): Observable<CartProduct> {
+  addCartProduct(productId: number) {
     console.log(productId);
+    // const token=localStorage.getItem('token');
+    // const headers = { 'Authorization': `Bearer ${token}` };
+    // const token={headers:new HttpHeaders(
+    //   {"Authorization":"Bearer "+localStorage.getItem('token')})};
     let url =`http://localhost:61135/api/CartProducts?productid=${productId}`;
-    return this.http.post<CartProduct>(url,productId).pipe(
+    return this.http.post(url,"",{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
         (err) => {
           return throwError(err.message);
         }
       )
-    ) 
+      )
   }
 
   getAllCartProduct(cartId:string):Observable<CartProduct[]>
   {
     console.log(cartId);
     let url=`http://localhost:61135/api/CartProducts?cartId=${cartId}`;
-    return this.http.get<CartProduct[]>(url).pipe(
+    return this.http.get<CartProduct[]>(url,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
         (err)=>
         {
@@ -40,7 +46,8 @@ export class CartProductService {
   getCartProductById(productId:number):Observable<CartProduct>
   {
     let url=`http://localhost:61135/api/CartProducts/${productId}`;
-    return this.http.get<CartProduct>(url).pipe(
+    return this.http.get<CartProduct>(url,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
         (err)=>
         {

@@ -17,7 +17,7 @@ export class ShowReviewComponent implements OnInit {
     console.log(this.produtReviews)
 
   }
-
+ 
   msgerror = "";
   ngOnInit() {
     this.reviewservice.getAllReview(2).subscribe(

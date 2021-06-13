@@ -9,32 +9,41 @@ import { MainCategoryService } from 'src/app/services/main-category.service';
   styleUrls: ['./maincategory.component.scss']
 })
 export class MaincategoryComponent implements OnInit {
-  hasMainCategories:boolean = false;
-  MainCategoryList:IMainCategory[]=[]; 
-  errorMsg:string;
-  categoryId:number;
-  maincategoryForm : FormGroup;
-  loading = false;
-  newmainCategory:IMainCategory;
-  massage: string;
-  get name ()
-  {
-    return this.maincategoryForm.get('name');
-  }
-
   constructor(
     private _maincategoryservice:MainCategoryService,
     private fb:FormBuilder
   ) { }
+  hasMainCategories:boolean = false;
+  MainCategoryList:IMainCategory[]=[]; 
+  errorMsg:string;
+  categoryId:number;
+  maincategoryForm :FormGroup;
+  loading = false;
+  newmainCategory:IMainCategory;
+  MaincategoriesCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
+  massage: string;
 
   ngOnInit(): void {
-    this._maincategoryservice.refreshNeeded$.subscribe(()=>{
-      this.getAllMainCategory();
-    })
-    this.getAllMainCategory();
+    this._maincategoryservice.getMainCategoriesCount().subscribe(
+      data => {
+        this.MaincategoriesCount = data;
+        this.numberOfPages = Math.ceil(this.MaincategoriesCount / this.pageSize);
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      })
+    this.getSelectedPage(1);
     this.maincategoryForm=this.fb.group({
       name :['',[Validators.required]]
     });
+  }
+  get name ()
+  {
+    return this.maincategoryForm.get('name');
   }
   getAllMainCategory(){
     this._maincategoryservice.getAllCategories().subscribe(
@@ -111,6 +120,42 @@ export class MaincategoryComponent implements OnInit {
       this.getAllMainCategory();
     });  
   }  
-}  
+} 
+private getCategoriesCount(){
+  this._maincategoryservice.getMainCategoriesCount().subscribe(
+    data => {
+      this.MaincategoriesCount = data;
+      console.log(this.MaincategoriesCount)
+      this.numberOfPages = Math.ceil(this.MaincategoriesCount / this.pageSize);
+      console.log(this.numberOfPages);
+    },
+    error=>
+    {
+     this.errorMsg = error;
+    }
+  ) 
+}
+// pagination
+counter(i: number) {
+  return new Array(i);
+}
+getSelectedPage(currentPageNumber:number){
+  this._maincategoryservice.getCategoriesByPage(this.pageSize,currentPageNumber).subscribe(
+    data => {
+      this.MainCategoryList= data
+      this.currentPageNumber = currentPageNumber;
+      console.log(this.currentPageNumber)
+      if(data.length != 0)
+        this.hasMainCategories = true;
+      else
+        this.hasMainCategories = false;
+
+    },
+    error=>
+    {
+     this.errorMsg = error;
+    }
+  ) 
+}
 
 }

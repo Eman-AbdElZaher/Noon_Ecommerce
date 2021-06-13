@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -13,11 +13,11 @@
         </div>
         <div class="form-group">
             <input type="text" class="form-control" name="ratetext" #rating="ngModel" [(ngModel)]="review.rating" style="width: 300px;"/> 
-            <!-- <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"  [(ngModel)]="review.Rating" ></span>
+             <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"  [(ngModel)]="review.Rating" ></span>
             <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"></span>
             <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"></span>
             <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"></span>
-            <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"></span> -->
+            <span class="fa fa-star" name="star1" (click)="Checked(true)" [ngClass]="{'checked':isChecked}"></span> 
     
         </div>
         <div>
@@ -25,4 +25,93 @@
             <button type="submit" class="btn btn-info">Update Review</button>
         </div>
     </form>
-</div>
+</div> -->
+
+
+
+
+<script type="text/javascript"
+    src="chrome-extension://kajfghlhfkcocafkcjlajldicbikpgnp/catcher.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Expanding review and rating box - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+        .animated {
+            -webkit-transition: height 0.2s;
+            -moz-transition: height 0.2s;
+            transition: height 0.2s;
+        }
+
+        .stars {
+            margin: 20px 0;
+            font-size: 24px;
+            color: #d17581;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+           
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css) {
+            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $(document).ready(function () {
+            var iframe_height = parseInt($('html').height());
+            window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+
+
+    <div class="container">
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-6">
+                <div class="well well-sm">
+                   
+
+                    <div class="row" id="post-review-box" >
+                        <div class="col-md-12">
+                            <form accept-charset="UTF-8" action="" method="post">
+                                <input id="ratings-hidden" name="rating" type="hidden">
+                                <textarea class="form-control animated" cols="50" id="new-review" name="comment"
+                                    placeholder="Enter your review here..." rows="5"
+                                    style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 54px;"></textarea>
+
+                                <div class="text-right">
+                                    <div class="stars starrr" data-rating="0"><span
+                                            class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span><span
+                                            class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span><span
+                                            class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span><span
+                                            class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span><span
+                                            class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span></div>
+                                   
+                                    <button class="btn btn-success btn-lg" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+       
+      
+
+           
+
+            $('.starrr').on('starrr:change', function (e, value) {
+                ratingsField.val(value);
+            });
+        </script>
+
+
+    

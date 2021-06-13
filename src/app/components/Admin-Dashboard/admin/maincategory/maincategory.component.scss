@@ -221,4 +221,22 @@ table.table .avatar {
 }	
 .modal form label {
 	font-weight: normal;
+}
+nav 
+{
+  padding:10px;
+}
+.pagination{
+	background-color: #fff;
+	border-radius: 10px;
+	width:80%;
+	margin: 0 auto;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.pagination .page-item{
+  margin:10px;
+  border:none;
+}
+.pagination .page-item .page-link{
+   border:none;
 }	

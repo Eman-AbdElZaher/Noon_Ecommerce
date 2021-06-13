@@ -19,12 +19,14 @@ import { ClientModule } from './components/client/client/client.module'
 import { AdminModule } from './components/Admin-Dashboard/admin/admin.module';
 import { CartModule } from './components/client/cart/cart.module';
 import { ReviewModule } from './components/client/review/review.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './services/user.service';
+import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
 import { CreateReviewComponent } from './components/client/review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/review/update-review/update-review.component';
-import { NavbarComponent } from './components/sharedComponent/navbar/navbar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserService } from './services/user.service';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -43,7 +45,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
   HeaderComponent, HomeComponent,
-  NavbarComponent
+  NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -56,13 +58,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ClientModule,
     AdminModule,
     CartModule,
-    ReviewModule,
-
-
+     ReviewModule,
+    CarouselModule,
   ],
   exports: [
     UploadImageComponent,
-    CreateReviewComponent,
+     CreateReviewComponent,
     UpdateReviewComponent
   ],
   providers: [

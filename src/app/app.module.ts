@@ -67,7 +67,7 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
     UpdateReviewComponent
   ],
   providers: [
-    UserService, {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true

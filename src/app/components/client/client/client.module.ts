@@ -13,7 +13,6 @@ import { SubcategoryproductComponent } from '../subcategoryproduct/subcategorypr
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
-  {path:'subcategoryProduct',component:SubcategoryproductComponent}
 
 ];
 @NgModule({
@@ -22,7 +21,6 @@ const routes:Routes=[
     OffersComponent,
     CarouselComponent,
     ShowsubcategoryComponent,
-    SubcategoryproductComponent
   ],
   imports: [
     CommonModule,

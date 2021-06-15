@@ -1,54 +1,78 @@
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<owl-carousel-o [options]="customOptions" >
-	<ng-template carouselSlide *ngFor="let product of productList" >
-	  <div class="slide">
-		<div class="swiper-slide" style="width: 182.8px; margin-right: 15px;text-decoration: none;display: inline-block;" >
-			<div class="sc-bXDlPE jFuWAH"  routerLink="productPage/{{product.id}}">
-				<a  id="productBox-N43459560A">
-					<div class="kcs0h5-0 diNcmV grid" title="GRACO Evo Travel System Mineral ">
-						<div class="e3js0d-0 cVjNKv">
-							<div data-qa-id="productImagePLP_Evo Travel System Mineral ">
-								<div class="sc-1xjgu8-0 jRkpWF">
-									<div class="lazyload-wrapper">
-										<div class="sc-1xjgu8-2 lgLLLe">
-											<img width="100%" height="100%" src="https://z.nooncdn.com/products/tr:n-t_240/v1610497802/N43459560A_1.jpg" alt="Evo Travel System Mineral ">
-											<div class="card-img-overlay d-flex justify-content-end" style="height: 40px;">
-												<a href="#" class="card-link text-danger like">
-												  <i  class="fa fa-heart" style="color: rgb(141, 139, 139);font-weight: bold;" ></i>
-												</a>
-											  </div>
-										</div></div></div></div><div class="e3js0d-1 efqIDW">
-											<button type="button" class="e3js0d-3 yzKfW">
-												<img src="https://z.nooncdn.com/s/app/com/noon/icons/wishlist.svg" alt="wishlist">
-											</button></div><div class="e3js0d-4 gXZEZv">
+<owl-carousel-o [options]="customOptions">
+	<ng-template carouselSlide *ngFor="let product of productList">
+		<div class="slide">
+			<div class="swiper-slide"
+				style="width: 182.8px; margin-right: 15px;text-decoration: none;display: inline-block;">
+				<div class="sc-bXDlPE jFuWAH" routerLink="productPage/{{product.id}}">
+					<a id="productBox-N43459560A">
+						<div class="kcs0h5-0 diNcmV grid" title="GRACO Evo Travel System Mineral ">
+							<div class="e3js0d-0 cVjNKv">
+								<div data-qa-id="productImagePLP_Evo Travel System Mineral ">
+									<div class="sc-1xjgu8-0 jRkpWF">
+										<div class="lazyload-wrapper">
+											<div class="sc-1xjgu8-2 lgLLLe">
+												<img width="100%" height="100%"
+													src="https://z.nooncdn.com/products/tr:n-t_240/v1610497802/N43459560A_1.jpg"
+													alt="Evo Travel System Mineral ">
+												<div class="card-img-overlay d-flex justify-content-end"
+													style="height: 40px;">
+													<a href="#" class="card-link text-danger like">
+														<i class="fa fa-heart"
+															style="color: rgb(141, 139, 139);font-weight: bold;"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="e3js0d-1 efqIDW">
+									<button type="button" class="e3js0d-3 yzKfW">
+										<img src="https://z.nooncdn.com/s/app/com/noon/icons/wishlist.svg"
+											alt="wishlist">
+									</button>
+								</div>
+								<div class="e3js0d-4 gXZEZv">
 
-											</div></div><div class="e3js0d-6 iKEZJh">
-												<div data-qa="product-name" class="e3js0d-7 jULUCI">
-													<span width="0"><span>
-														<span>{{product.name}}</span><br>
-														<span>{{product.description}} </span>
-													</span><span style="position: fixed; visibility: hidden; top: 0px; left: 0px;">…</span>
-												</span></div><div class="e3js0d-8 jtiosv">
-													<div class="sxpmji-0 cZUObc">
-														<div class="sxpmji-1 dCYttU">
-															<span class="currency">EGP </span><strong>{{product.price}}$</strong>
-														</div><div class="sxpmji-2 fCLCee"><span class="oldPrice">EGP 8500</span>
-															<span class="discount">11% Off</span>
-														</div></div></div><div class="e3js0d-9 kDpjlW">
-															 <div data-qa="product-noon-express" class="e3js0d-10 dSISfG">
-																 <div class="u8zs36-0 kRPdZJ">
-																	 <img src="https://z.nooncdn.com/s/app/com/noon/images/fulfilment_express_v2-en.svg" alt="noon-express" height="20px" width="80px">
-																	</div><div class="e3js0d-11 ktDxXK"></div></div></div></div></div></a></div></div>
-	  </div>
+								</div>
+							</div>
+							<div class="e3js0d-6 iKEZJh">
+								<div data-qa="product-name" class="e3js0d-7 jULUCI">
+									<span width="0"><span>
+											<span>{{product.name}}</span><br>
+											<span>{{product.description}} </span>
+										</span><span
+											style="position: fixed; visibility: hidden; top: 0px; left: 0px;">…</span>
+									</span>
+								</div>
+								<div class="e3js0d-8 jtiosv">
+									<div class="sxpmji-0 cZUObc">
+										<div class="sxpmji-1 dCYttU">
+											<span class="currency">EGP </span><strong>{{product.price}}$</strong>
+										</div>
+										<div class="sxpmji-2 fCLCee"><span class="oldPrice">EGP 8500</span>
+											<span class="discount">11% Off</span>
+										</div>
+									</div>
+								</div>
+								<div class="e3js0d-9 kDpjlW">
+									<div data-qa="product-noon-express" class="e3js0d-10 dSISfG">
+										<div class="u8zs36-0 kRPdZJ">
+											<img src="https://z.nooncdn.com/s/app/com/noon/images/fulfilment_express_v2-en.svg"
+												alt="noon-express" height="20px" width="80px">
+										</div>
+										<div class="e3js0d-11 ktDxXK"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 	</ng-template>
-	
-  </owl-carousel-o>
 
-
-
-
-
-  
+</owl-carousel-o>

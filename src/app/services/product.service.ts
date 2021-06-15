@@ -73,5 +73,11 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+  getAllProductBySubCategoryId(id:number): Observable<IProduct[]> {
+    let url = `http://localhost:61135/api/Product/AllProductBySubCategoryId/${id}`;
+    return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
+      return throwError(err.message || "Internal Server error contact site adminstarator");
+    }));
+  }
  
 }

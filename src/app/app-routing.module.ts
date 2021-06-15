@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component';
+import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 const routes: Routes = [ 
   {  
     path: 'login',
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'wishlist',component:WishlistProductComponent,canActivate: [AuthGuard]},
   {path:'home/productPage/:id',component:ProductDetailsComponent},
+  {path:'subcategoryProduct/:id',component:SubcategoryproductComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
   {path:'check',component: CheckoutOrderComponent},
   {

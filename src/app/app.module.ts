@@ -27,6 +27,7 @@ import { NavbarComponent } from './components/sharedComponent/navbar/navbar.comp
 import { CreateReviewComponent } from './components/client/review/create-review/create-review.component';
 import { UpdateReviewComponent } from './components/client/review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
+import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -45,7 +46,8 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
     UploadImageComponent, FooterComponent,   
    ProductDetailsComponent, WishlistProductComponent,
   HeaderComponent, HomeComponent,
-  NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent
+  NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent,
+  SubcategoryproductComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -67,7 +69,7 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
     UpdateReviewComponent
   ],
   providers: [
-    UserService, {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true

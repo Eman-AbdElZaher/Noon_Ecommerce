@@ -31,7 +31,7 @@ export class WishlistProductService {
     return this.http.post<wishListProduct>(url,"",{headers:new HttpHeaders(
       {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
-        (err)=>
+        (err)=> 
         {
           return throwError(err.message);
         }

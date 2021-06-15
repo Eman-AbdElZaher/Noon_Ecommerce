@@ -7,6 +7,9 @@ import { OffersComponent } from '../offers/offers.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { ShowsubcategoryComponent } from '../showsubcategory/showsubcategory.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubcategoryproductComponent } from '../subcategoryproduct/subcategoryproduct.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
@@ -17,13 +20,15 @@ const routes:Routes=[
     ProductshomeComponent,
     OffersComponent,
     CarouselComponent,
-    ShowsubcategoryComponent
+    ShowsubcategoryComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule,
+    BrowserAnimationsModule
     
   ],
   exports:[

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -14,7 +14,8 @@ export class WishlistProductService {
   getAllWishlistProduct(whishlistID:string):Observable<wishListProduct[]>
   {
     let url=`http://localhost:61135/api/WishListProducts?wishlistId=${whishlistID}`;
-    return this.http.get<wishListProduct[]>(url).pipe(
+    return this.http.get<wishListProduct[]>(url,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
         (err)=>
         {
@@ -27,9 +28,10 @@ export class WishlistProductService {
   addWishlistProduct(productID:number):Observable<wishListProduct>
   {
     let url =`http://localhost:61135/api/WishListProducts?id=${productID}`;
-    return this.http.post<wishListProduct>(url,productID).pipe(
+    return this.http.post<wishListProduct>(url,"",{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
-        (err)=>
+        (err)=> 
         {
           return throwError(err.message);
         }
@@ -40,7 +42,8 @@ export class WishlistProductService {
   getWishlistProductById(productId:number):Observable<wishListProduct>
   {
     let url=`http://localhost:61135/api/WishListProducts/${productId}`;
-    return this.http.get<wishListProduct>(url).pipe(
+    return this.http.get<wishListProduct>(url,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
       catchError(
         (err)=>
         {

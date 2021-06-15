@@ -152,11 +152,11 @@
                             <tbody *ngFor="let Product of Products" >
 
                                 <tr>
-                                    <td>
+                                    <td routerLink="/home/productPage/{{Product.id}}">
                                         <figure class="itemside align-items-center">
                                             <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
                                                     class="img-sm"></div>
-                                            <figcaption class="info" > <a href="#" class="title text-dark"
+                                            <figcaption class="info" > <a  class="title text-dark"
                                                     data-abc="true">{{Product.name}}</a>
                                                 <p class="text-muted small">SIZE:{{Product.size}}</p>
                                                 <br>
@@ -169,20 +169,24 @@
                                             </figcaption>
                                         </figure>
                                     </td>
-                                    <td> <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select> </td>
-                                    <td>
+                                    <td > 
+
+                                       <div *ngFor="let cartProduct of cartProducts">
+                                        <select class="form-control" *ngIf="cartProduct.productId==Product.id" (change)="updateCartProductQuintity(Product.id,$event.target.value)">
+                                            <option *ngFor="let in of counter(Product.quantity) ;let i = index"   [selected]="i+1==cartProduct.quintity" >
+                                                {{i+1}}
+                                            </option>
+                                        </select> 
+                                       </div>
+                                    </td>
+                                    <td> 
                                         <div *ngFor="let cartProduct of cartProducts" class="price-wrap"> <var class="price"*ngIf="cartProduct.productId==Product.id" >{{cartProduct.netPrice}}</var> <small
                                                 class="text-muted" *ngIf="cartProduct.productId==Product.id"> ${{Product.price}} each </small> </div>
                                     </td>
-                                    <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(Product.id)" data-original-title="Save to Wishlist"
-                                            title="" href="" class="btn btn-light" data-toggle="tooltip"
-                                            data-abc="true"> <i class="fa fa-heart"></i></a> <a href="#"
-                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(Product.id)">Remove</a>
+                                    <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(Product.id)" style="color: aliceblue;" data-original-title="Save to Wishlist"
+                                            title="" class="btn btn-light" data-toggle="tooltip"
+                                            data-abc="true"> <i class="fa fa-heart"></i></a> <a 
+                                            class="btn btn-light" data-abc="true" (click)="delteCartProduct(Product.id)" style="color: aliceblue;">Remove</a>
                                     </td>
                                 </tr>
 

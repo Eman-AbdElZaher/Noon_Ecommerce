@@ -87,7 +87,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     box-sizing: border-box;
 }
 .hIlhDX {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: rgb(64, 69, 83);
 }
@@ -99,7 +99,7 @@ p {
     margin-inline-end: 0px;
 }
 .iTFxkS {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: rgb(126, 133, 155);
     margin-top: 4px;
 }
@@ -183,7 +183,7 @@ svg:not(:root) {
 }
 .cjqJLo {
     display: block;
-    font-size: 0.83333rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
@@ -232,7 +232,7 @@ element.style {
 }
 .cjqJLo {
     display: block;
-    font-size: 0.83333rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
@@ -249,6 +249,7 @@ element.style {
     border-top: 1px solid rgb(226, 229, 241);
     flex-flow: column wrap;
     background-color: white;
+    margin-left: 10px;
 }
 .qvnSQ {
     flex: 1 1 0%;
@@ -266,11 +267,12 @@ element.style {
     font-weight: bold;
     text-transform: uppercase;
     padding-bottom: 12px;
-    font-size: 1.1rem;
+    font-size: 2.1rem;
 }
 .dmjhnE a.categoryLink {
     text-transform: capitalize;
     padding-bottom: 10px;
+    font-size: 14px;
 }
 a {
     text-decoration: none;
@@ -406,6 +408,8 @@ img {
 }
 .gaachV {
     color: rgb(126, 133, 155);
+    font-size: 12px;
+    margin-left: 20px;
 }
 .exbIKQ {
     cursor: pointer;
@@ -530,4 +534,25 @@ a {
     flex: 1 1 0%;
     margin-left: 20px;
 }
-
+.kuwHKR {
+    border-top: 1px solid rgb(226, 229, 241);
+    flex-flow: column wrap;
+    background-color: white;
+}
+.qvnSQ {
+    flex: 1 1 0%;
+    padding: 20px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: auto;
+}
+.djsqkl > a {
+    display: block;
+    padding: 7px 10px 0px;
+    font-size: 13px;
+}
+a:link, a:visited {
+    text-decoration: none;
+    display: inline-block;
+  }

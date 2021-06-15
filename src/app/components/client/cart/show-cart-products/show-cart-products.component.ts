@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 import{OrderService} from 'src/app/services/order.service';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -19,11 +20,12 @@ export class ShowCartProductsComponent implements OnInit {
   public Products: Product[] = [];
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
-  constructor(private brandService:BrandService, private cartsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
+  
+  constructor(private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];
-  cartid = "e092a660-b913-453b-a3be-f1e6f3eca47b";
+  cartid = "fe6f0592-9d7b-4acc-b606-f660d80e8dc7";//this.cart.userID;//
   mmsgerr = "";
   ngOnInit(): void {
 
@@ -40,7 +42,7 @@ export class ShowCartProductsComponent implements OnInit {
   }
 
   getCartProducts() {
-    this.cartsevice.getAllCartProduct(this.cartid).subscribe(
+    this.cartProductsevice.getAllCartProduct(this.cartid).subscribe(
       data => {
         this.cartProducts = data;
 
@@ -63,13 +65,26 @@ export class ShowCartProductsComponent implements OnInit {
     console.log(brandId);
     this.brandService.getBrandById(brandId).subscribe(
       data => {
-        this.Brands.forEach(brand=>{
-          if(brand.id!=data.id)
-          {
-            this.Brands.push(data);
-            console.log(data)
-          }
-        })
+       
+            if(this.Brands.length==0)
+            {
+              this.Brands.push(data);
+              console.log("frist time")
+            }
+            else 
+            {
+              this.Brands.forEach(b=>
+                {
+                  if(data.name!=b.name)
+                  {
+                    this.Brands.push(data);
+              console.log("second time")
+                  }
+                })
+              
+            }
+           
+        
       },
       error => {
         return error;
@@ -81,6 +96,7 @@ export class ShowCartProductsComponent implements OnInit {
     this.productservice.getProductById(productId).subscribe(
       data => {
         this.Products.push(data);
+        console.log("brand id "+data.brandID)
         this.getBrnd(data.brandID)
       },
       error => {
@@ -92,13 +108,13 @@ export class ShowCartProductsComponent implements OnInit {
   }
   delteCartProduct(cartProductID: number) {
     console.log(cartProductID);
-    this.cartsevice.deleteCartProduct(cartProductID).subscribe(
+    this.cartProductsevice.deleteCartProduct(cartProductID).subscribe(
       error => {
         return error;
       }
 
     )
-    this.ngOnInit();
+    
   }
 
   addToWishlist(productid: number) {
@@ -119,6 +135,28 @@ export class ShowCartProductsComponent implements OnInit {
      }
     )
     }
+  }
+
+
+  counter(i: number) {
+    return new Array(i);
+  }
+
+ 
+  updateCartProductQuintity(ProductID:number,newQuintity:number)
+  {
+    this.cartProductsevice.getCartProductById(ProductID).subscribe(
+      data=>
+      {
+        data.quintity=newQuintity;
+        this.cartProductsevice.updateCartProduct(data).subscribe(
+          data=>
+          {
+            console.log(data);
+          }
+        )
+      }
+    )
   }
 
 }

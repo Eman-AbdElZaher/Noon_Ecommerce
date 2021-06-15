@@ -5,7 +5,6 @@ import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { BrandService } from 'src/app/services/brand.service';
-
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -51,6 +50,30 @@ export class ProductComponent implements OnInit {
    this.getAllSupplier();
    this.getAllSubCategory();
   }
+  
+loadAllCategories(){
+  this.productService.getAllProduct().subscribe(
+    data =>
+    {
+       this.productList=data;
+       if(data.length !=0)
+       {
+         this.hasProducts=true;
+       }
+       this.productList.forEach(pro => {
+        this.productService.getProductById(pro.id).subscribe(
+          data => {
+             //this.products.push(data.name) 
+          }
+        );
+      });
+    },
+    err =>
+    {
+      this.errorMsg=err;
+    }
+  )
+}
   getAllSubCategory()
   {
     this.subCategory.getAllSubCategories().subscribe(
@@ -128,7 +151,7 @@ GetAllProduct(){
     $('#close').click();
   }
   errorMsg='';
-  AddnewProduct(form : NgForm)
+  AddnewProduct(data:any)
   {
      console.log(this.product);
      this.productService.addNewProduct(this.product).subscribe(
@@ -153,6 +176,7 @@ GetAllProduct(){
             this.productList=products;
             console.log(products.length);
             console.log(products[0]);
+            this.init();
           }
         )
       },
@@ -162,6 +186,7 @@ GetAllProduct(){
       }
     )
   }
+  
   EditProduct(productId:number,product:IProduct)
   {
     this.productService.updateProduct(productId,product).subscribe(
@@ -240,6 +265,3 @@ GetAllProduct(){
     }
  
 }
-
-
-  

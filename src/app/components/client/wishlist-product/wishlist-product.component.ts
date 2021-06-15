@@ -13,7 +13,7 @@ import { WishlistProductService } from 'src/app/services/wishlist-product.servic
 export class WishlistProductComponent implements OnInit {
   public Products: Product[] = [];
   public wishlistProducts:wishListProduct[]=[];
-  wishlistid = "e092a660-b913-453b-a3be-f1e6f3eca47b";
+  wishlistid = "fe6f0592-9d7b-4acc-b606-f660d80e8dc7";
   mmsgerr = "";
   constructor(private cartService:CartProductService ,private productservice:ProductService, private wishlistService:WishlistProductService) { }
 

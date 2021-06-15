@@ -29,17 +29,19 @@ export class AuthenticationService {
       password: credentials.password,
       grant_type:'password'
     }
+    console.log(body);
     return this._http.post(`${ApiController.Account_URL}`,body)
     .pipe(map(res => {
       console.log(res);
+      
       this.saveToken(res);
   }));
    }
-
    private saveToken(authResult) {
-    const expiresAt = authResult.token.result.expiration;
-    localStorage.setItem('token', authResult.token.result.token);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt));
+    //const expiresAt = authResult.token.expiration;
+    console.log(authResult);
+    localStorage.setItem('token', authResult.token.token);
+   //localStorage.setItem("expires_at", JSON.stringify(expiresAt));
    }  
 
    logout() {

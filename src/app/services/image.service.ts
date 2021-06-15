@@ -71,6 +71,20 @@ export class ImageService {
      }
      ));
   }
+  getImagesntCount():Observable<number>{
+    let url = `http://localhost:61135/api/Images/count`;
+    return this.http.get<number>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+  getImagesByPage(pageSize:number, pageNumber:number):Observable<IImage[]>{
+    let url = `http://localhost:61135/api/Images/${pageSize}/${pageNumber}`;
+    return this.http.get<IImage[]>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
  
 }
 

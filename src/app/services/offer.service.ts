@@ -53,5 +53,19 @@ export class OfferService {
         return throwError(err.message || "Internal Server error contact site adminstarator");      
       }));
     }
+    getOfferCount():Observable<number>{
+      let url = `http://localhost:61135/api/Offer/count`;
+      return this.http.get<number>(url).pipe(catchError((err)=>
+      {
+        return throwError(err.message ||"Internal Server error contact site adminstarator");
+      }));
+    }
+    getOfferByPage(pageSize:number, pageNumber:number):Observable<IOffer[]>{
+      let url = `http://localhost:61135/api/Offer/${pageSize}/${pageNumber}`;
+      return this.http.get<IOffer[]>(url).pipe(catchError((err)=>
+      {
+        return throwError(err.message ||"Internal Server error contact site adminstarator");
+      }));
+    }
    
 }

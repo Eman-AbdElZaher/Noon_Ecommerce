@@ -74,7 +74,7 @@ export class ProductService {
     }));
   }
   getAllProductBySubCategoryId(id:number): Observable<IProduct[]> {
-    let url = `http://localhost:61135/api/Product/AllProductBySubCategoryId/${id}`;
+    let url = `http://localhost:61135/api/Product/AllProductBySubCategoryId?id=${id}`;
     return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
       return throwError(err.message || "Internal Server error contact site adminstarator");
     }));

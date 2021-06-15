@@ -87,7 +87,7 @@
                         </div>
                         <h6 class="text-success">Free shipping</h6>
                         <div class="d-flex flex-column mt-4">
-                            <button  class="btn btn-primary btn-sm" type="button"><a href="productPage/{{Product.id}}" style="color: aliceblue;">Details</a></button>
+                            <button  class="btn btn-primary btn-sm" type="button"><a routerLink="productPage/{{Product.id}}" style="color: aliceblue;">Details</a></button>
                             <button (click)="addToCart(Product.id)" class="btn btn-outline-primary btn-sm mt-2" type="button">Add to Cart</button></div>
                             <a  (click)="deletewishlistProduct(Product.id)" style="margin-left: 50px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"

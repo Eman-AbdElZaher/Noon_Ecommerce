@@ -65,6 +65,26 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+  getProductsCount():Observable<number>{
+    let url = `http://localhost:61135/api/Product/count`;
+    return this.http.get<number>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+  getAllProductBySubCategoryId(id:number): Observable<IProduct[]> {
+    let url = `http://localhost:61135/api/Product/AllProductBySubCategoryId?id=${id}`;
+    return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
+      return throwError(err.message || "Internal Server error contact site adminstarator");
+    })
+    )}
+  getProductByPage(pageSize:number, pageNumber:number):Observable<IProduct[]>{
+    let url = `http://localhost:61135/api/Product/${pageSize}/${pageNumber}`;
+    return this.http.get<IProduct[]>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
   getAllProductsDevices()
   {
     let _url="http://localhost:61135/api/Product/AllProductDevices";
@@ -73,11 +93,4 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
-  getAllProductBySubCategoryId(id:number): Observable<IProduct[]> {
-    let url = `http://localhost:61135/api/Product/AllProductBySubCategoryId?id=${id}`;
-    return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
-      return throwError(err.message || "Internal Server error contact site adminstarator");
-    }));
-  }
- 
 }

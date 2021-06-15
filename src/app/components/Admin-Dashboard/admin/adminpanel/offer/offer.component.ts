@@ -14,11 +14,17 @@ export class OfferComponent implements OnInit {
   constructor(private offerService:OfferService) { }
   offerList:IOffer[]=[];
   hasOffers:boolean=false;
+  OffersCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
   ngOnInit(): void {
-    this.offerService.refreshNeeded$.subscribe(()=>{
-      this.GetAllOffer()
-    })
-    this.GetAllOffer();
+    // this.offerService.refreshNeeded$.subscribe(()=>{
+    //   this.GetAllOffer()
+    // })
+    // this.GetAllOffer();
+    this.getOfferCount();
+    this.getSelectedPage(1);
     this.reserform();
   }
   errorMsg='';
@@ -53,6 +59,9 @@ export class OfferComponent implements OnInit {
      this.offerService.addNewOffer(this.offer).subscribe(
       data => {
         this.offer=data;
+        this.reserform();
+        this.getOfferCount();
+        this.getSelectedPage(this.currentPageNumber);
       },
       error=>
       {
@@ -103,11 +112,48 @@ export class OfferComponent implements OnInit {
      this.offerService.updateOffer(this.offer.id,this.offer).subscribe(
       data => {
                 this.offer=data;
+                this.getOfferCount();
+                this.getSelectedPage(this.currentPageNumber);
+                this.reserform();
               },
       error=>
       {
        this.errorMsg = error;
       }
      )
+    }
+    private getOfferCount(){
+      this.offerService.getOfferCount().subscribe(
+        data => {
+          this.OffersCount = data;
+          this.numberOfPages = Math.ceil(this.OffersCount / this.pageSize);
+          console.log(this.numberOfPages);
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    // pagination
+    counter(i: number) {
+      return new Array(i);
+    }
+    getSelectedPage(currentPageNumber:number){
+      this.offerService.getOfferByPage(this.pageSize,currentPageNumber).subscribe(
+        data => {
+          this.offerList= data;
+          this.currentPageNumber = currentPageNumber;
+          console.log(this.currentPageNumber)
+          if(data.length != 0)
+            this.hasOffers = true;
+          else
+            this.hasOffers = false;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
     }
 }

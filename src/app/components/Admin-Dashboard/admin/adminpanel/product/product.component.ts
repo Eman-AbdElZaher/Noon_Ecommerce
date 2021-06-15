@@ -1,17 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Ibrand } from 'src/app/models/Classes/Brand';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
 import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { BrandService } from 'src/app/services/brand.service';
-import { UploadImageService } from '../../../../../services/upload-image.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
-import { ApiController } from 'src/app/controller/ApiController';
-import { HttpClient } from '@angular/common/http';
-
+import { UploadImageService } from 'src/app/services/upload-image.service';
+declare var $: any;
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -26,69 +24,33 @@ export class ProductComponent implements OnInit {
   supplier:ISupplier[]=[];
   subcategory:ISubCategory[]=[];
   hasProducts:boolean=false;
-  productId:any;
-  @ViewChild('Imagetitle') title: ElementRef;
-  message: string;
+  ProductCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
   imageFile!: File;
-  imagePath:any;
-  products:string[]=[];
-  productsForm = this.fb.group({
-    name: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-    quantity: [, [Validators.required]],
-    price:[,[Validators.required]],
-    color:[,[Validators.required]],
-    size:[,[Validators.required]],
-    SubCategoryID:[,[Validators.required]],
-    brandID:[,[Validators.required]],
-    mainImage:[,[Validators.required]],
-    supplierID:[,[Validators.required]],
-  });
-  path:any=ApiController.ImagePath;
   constructor(
     private productService:ProductService,
     private brandService:BrandService,
     private supplierService:SupplierService,
     private subCategory:SubcategoryService,
-    private fb: FormBuilder,
-    private _uploadImageService:UploadImageService,
-    private http:HttpClient
-    )
-     { }
+    private _uploadImageService:UploadImageService) { }
 
 
   ngOnInit(): void {
    
-    this.productService.refreshNeeded$.subscribe(()=>{
-      this.GetAllProduct()
-    })
-    this.GetAllProduct();
+    // this.productService.refreshNeeded$.subscribe(()=>{
+    //   this.GetAllProduct()
+    // })
+    // this.GetAllProduct();
+    this.getProductsCount();
+    this.getSelectedPage(1);
    this.reserform();
    this.getAllBrands();
    this.getAllSupplier();
    this.getAllSubCategory();
   }
-  get image (){
-    return this.productsForm.get('image');
-  }
-  submitButtonClicked() {
-    this.uploadFile(this.imageFile);
-}
-uploadFile(image: File) {
-  console.log(image.name);
-  const formDate = new FormData();
-  formDate.append("file", image, image.name);
-  this._uploadImageService.uploadImage(formDate).subscribe(
-    data => {
-      console.log(data);
-      this.AddnewProduct(image.name);
-      //this.title.nativeElement.Value=data.fileName;
-    },
-    error => {
-      console.log(error)
-    }
-  );
-}
+  
 loadAllCategories(){
   this.productService.getAllProduct().subscribe(
     data =>
@@ -101,7 +63,7 @@ loadAllCategories(){
        this.productList.forEach(pro => {
         this.productService.getProductById(pro.id).subscribe(
           data => {
-             this.products.push(data.name) 
+             //this.products.push(data.name) 
           }
         );
       });
@@ -183,6 +145,11 @@ GetAllProduct(){
      mainImage:''
     }
   }
+  init(){
+    this.getProductsCount();
+    this.getSelectedPage(1);
+    $('#close').click();
+  }
   errorMsg='';
   AddnewProduct(data:any)
   {
@@ -190,8 +157,8 @@ GetAllProduct(){
      this.productService.addNewProduct(this.product).subscribe(
       data => {
         this.product=data;
-        console.log(data);
         console.log(this.product);
+        this.init();
       },
       error=>
       {
@@ -209,6 +176,7 @@ GetAllProduct(){
             this.productList=products;
             console.log(products.length);
             console.log(products[0]);
+            this.init();
           }
         )
       },
@@ -218,29 +186,7 @@ GetAllProduct(){
       }
     )
   }
-  assignFormControlsToCategoryData(id:number) {
-    this.productId=id;
-    this.productService.getProductById(id).subscribe(
-      data =>{
-        this.productsForm.get("name")?.setValue(data.name);
-        this.productsForm.get("mainImage")?.setValue(data.mainImage);
-        this.title.nativeElement.value=data.mainImage;
-        this.productsForm.get("subCategoryID")?.setValue(data.subCategoryID);
-        this.productsForm.get("brandID")?.setValue(data.brandID);
-        this.productsForm.get("description")?.setValue(data.description);
-        this.productsForm.get("supplierID")?.setValue(data.supplierID);
-        this.productsForm.get("color")?.setValue(data.color);
-        this.productsForm.get("price")?.setValue(data.price);
-        this.productsForm.get("quantity")?.setValue(data.quantity);
-        this.productsForm.get("size")?.setValue(data.size);
-      },
-      error =>
-      {
-        console.log(`update error is ${error}`)
-      }
-    )
-    
-  }
+  
   EditProduct(productId:number,product:IProduct)
   {
     this.productService.updateProduct(productId,product).subscribe(
@@ -258,12 +204,59 @@ GetAllProduct(){
      this.productService.updateProduct(this.product.id,this.product).subscribe(
       data => {
         this.product=data;
+        this.init();
       },
       error=>
       {
        this.errorMsg = error;
       }
      )
+    }
+    private getProductsCount(){
+      this.productService.getProductsCount().subscribe(
+        data => {
+          this.ProductCount = data;
+          this.numberOfPages = Math.ceil(this.ProductCount / this.pageSize);
+          console.log(this.numberOfPages);
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    // pagination
+    counter(i: number) {
+      return new Array(i);
+    }
+    getSelectedPage(currentPageNumber:number){
+      this.productService.getProductByPage(this.pageSize,currentPageNumber).subscribe(
+        data => {
+          this.productList= data;
+          this.currentPageNumber = currentPageNumber;
+          console.log(this.currentPageNumber)
+          if(data.length != 0)
+            this.hasProducts= true;
+          else
+            this.hasProducts = false;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    uploadFile() {
+      const formDate = new FormData();
+      formDate.append("file", this.imageFile, this.imageFile.name);
+      this._uploadImageService.uploadImage(formDate).subscribe(
+        data => {
+         this.product.mainImage=this.imageFile.name;
+        },
+        error => {
+          console.log(error)
+        }
+      );
     }
     onFileChange(event: any) {
       if (event.target.files.length > 0) {
@@ -272,6 +265,3 @@ GetAllProduct(){
     }
  
 }
-
-
-  

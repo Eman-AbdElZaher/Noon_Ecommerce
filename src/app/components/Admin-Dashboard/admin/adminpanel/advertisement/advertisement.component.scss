@@ -56,7 +56,7 @@ table.table tr th, table.table tr td {
 	vertical-align: middle;
 }
 table.table tr th:first-child {
-	width: 60px;
+	width: 50px;
 }
 table.table tr th:last-child {
 	width: 100px;
@@ -101,94 +101,7 @@ table.table .avatar {
 	vertical-align: middle;
 	margin-right: 10px;
 }
-.pagination {
-	float: right;
-	margin: 0 0 5px;
-}
-.pagination li a {
-	border: none;
-	font-size: 13px;
-	min-width: 30px;
-	min-height: 30px;
-	color: #999;
-	margin: 0 2px;
-	line-height: 30px;
-	border-radius: 2px !important;
-	text-align: center;
-	padding: 0 6px;
-}
-.pagination li a:hover {
-	color: #666;
-}	
-.pagination li.active a, .pagination li.active a.page-link {
-	background: #03A9F4;
-}
-.pagination li.active a:hover {        
-	background: #0397d6;
-}
-.pagination li.disabled i {
-	color: #ccc;
-}
-.pagination li i {
-	font-size: 16px;
-	padding-top: 6px
-}
-.hint-text {
-	float: left;
-	margin-top: 10px;
-	font-size: 13px;
-}    
-/* Custom checkbox */
-.custom-checkbox {
-	position: relative;
-}
-.custom-checkbox input[type="checkbox"] {    
-	opacity: 0;
-	position: absolute;
-	margin: 5px 0 0 3px;
-	z-index: 9;
-}
-.custom-checkbox label:before{
-	width: 18px;
-	height: 18px;
-}
-.custom-checkbox label:before {
-	content: '';
-	margin-right: 10px;
-	display: inline-block;
-	vertical-align: text-top;
-	background: white;
-	border: 1px solid #bbb;
-	border-radius: 2px;
-	box-sizing: border-box;
-	z-index: 2;
-}
-.custom-checkbox input[type="checkbox"]:checked + label:after {
-	content: '';
-	position: absolute;
-	left: 6px;
-	top: 3px;
-	width: 6px;
-	height: 11px;
-	border: solid #000;
-	border-width: 0 3px 3px 0;
-	transform: inherit;
-	z-index: 3;
-	transform: rotateZ(45deg);
-}
-.custom-checkbox input[type="checkbox"]:checked + label:before {
-	border-color: #03A9F4;
-	background: #03A9F4;
-}
-.custom-checkbox input[type="checkbox"]:checked + label:after {
-	border-color: #fff;
-}
-.custom-checkbox input[type="checkbox"]:disabled + label:before {
-	color: #b8b8b8;
-	cursor: auto;
-	box-shadow: none;
-	background: #ddd;
-}
+
 /* Modal styles */
 .modal .modal-dialog {
 	max-width: 400px;
@@ -221,4 +134,18 @@ table.table .avatar {
 }	
 .modal form label {
 	font-weight: normal;
+}	
+.pagination{
+	width:80%;
+	margin: 0 auto;
+}
+.pagination .page-item{
+  margin:7px;
+  width:35px;
+  height:35px;
+  line-height: 35px;
+}
+.pagination .page-item .page-link{
+   border:none;
+   font-weight: 700;
 }	

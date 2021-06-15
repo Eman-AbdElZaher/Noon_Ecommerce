@@ -69,4 +69,16 @@ export class CartProductService {
       )
     )
   }
+  updateCartProduct(cartProduct:CartProduct):Observable<CartProduct>
+  {
+    let url= `http://localhost:61135/api/CartProducts`;
+    return this.http.put<CartProduct>(url,cartProduct).pipe(
+      catchError(
+        (err)=>
+        {
+          return throwError(err.message);
+        }
+      )
+    )
+  }
 }

@@ -56,5 +56,19 @@ export class SupplierService {
       
     }));
   }
+  getSuppliersCount():Observable<number>{
+    let url = `http://localhost:61135/api/Suppliers/count`;
+    return this.http.get<number>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+  getSupplierByPage(pageSize:number, pageNumber:number):Observable<ISupplier[]>{
+    let url = `http://localhost:61135/api/Suppliers/${pageSize}/${pageNumber}`;
+    return this.http.get<ISupplier[]>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
  
 }

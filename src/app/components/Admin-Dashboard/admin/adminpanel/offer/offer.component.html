@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-<script>
-$(document).ready(function(){
-	// Activate tooltip
-	$('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-</head>
-<body>
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
@@ -37,19 +15,19 @@ $(document).ready(function(){
 			<table class="table table-striped table-hover" *ngIf="hasOffers">
 				<thead>
 					<tr>
-						<th>ID</th>
+						<th>#</th>
+						<th>Offer Value</th>
 						<th>StartDate</th>
 						<th>EndDate</th>
-						<th>Offer Value</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody *ngFor="let offer of offerList">
+				<tbody *ngFor="let offer of offerList;let i=index">
 					<tr>
-						<td>{{offer.id}}</td>
+					    <th scope="row">{{i+(pageSize*(currentPageNumber-1))+1}}</th>
+						<td>{{offer.offerValue}}%</td>
 						<td>{{offer.startDate.toString()}}</td>
 						<td>{{offer.endDate.toString()}}</td>
-						<td>{{offer.offerValue}}</td>
 						<td>
 							<a href="#editSupplierModal" (click)="EditOffer(offer.id,offer)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteSupplierModal"  (click)="DeleteOffer(offer.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -60,6 +38,23 @@ $(document).ready(function(){
 				</tbody>
 			</table>
 		</div>
+		<nav aria-label="..." *ngIf=hasOffers>
+            <ul class="pagination justify-content-center">
+                <li class="page-item" [ngClass]="{disabled:currentPageNumber <=1, cursorNotAllowed:currentPageNumber <=1}">
+                    <button class="page-link" [disabled]="currentPageNumber <=1"
+                        (click)="getSelectedPage(currentPageNumber-1)"><<</button>
+                </li>
+                <li class="page-item" *ngFor='let x of counter(numberOfPages) ;let i = index'
+                    [class.active]="currentPageNumber == (i+1)">
+                    <a class="page-link" (click)="getSelectedPage(i+1)">{{i+1}} </a>
+                </li>
+                <li class="page-item"
+                    [ngClass]="{disabled:currentPageNumber >=numberOfPages, cursorNotAllowed:currentPageNumber >=numberOfPages}">
+                    <button class="page-link" [disabled]="currentPageNumber >= numberOfPages"
+                        (click)="getSelectedPage(currentPageNumber+1)">>></button>
+                </li>
+            </ul>
+      </nav>        
 	</div>
 	<div class="row" *ngIf="!hasOffers">
         <div class="text-center alert alert-danger col-9 mx-auto">
@@ -160,6 +155,4 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-</body>
-</html>
 

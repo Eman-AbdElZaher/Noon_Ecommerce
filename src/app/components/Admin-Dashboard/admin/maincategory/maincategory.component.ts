@@ -27,6 +27,17 @@ export class MaincategoryComponent implements OnInit {
   massage: string;
 
   ngOnInit(): void {
+    this.getMainCategoryCount();
+    this.getSelectedPage(1);
+    this.maincategoryForm=this.fb.group({
+      name :['',[Validators.required]]
+    });
+  }
+  get name ()
+  {
+    return this.maincategoryForm.get('name');
+  }
+  private getMainCategoryCount(){
     this._maincategoryservice.getMainCategoriesCount().subscribe(
       data => {
         this.MaincategoriesCount = data;
@@ -36,14 +47,6 @@ export class MaincategoryComponent implements OnInit {
       {
        this.errorMsg = error;
       })
-    this.getSelectedPage(1);
-    this.maincategoryForm=this.fb.group({
-      name :['',[Validators.required]]
-    });
-  }
-  get name ()
-  {
-    return this.maincategoryForm.get('name');
   }
   getAllMainCategory(){
     this._maincategoryservice.getAllCategories().subscribe(
@@ -73,6 +76,8 @@ export class MaincategoryComponent implements OnInit {
          this.hasMainCategories=true;
          this.MainCategoryList.push(data);
          this.maincategoryForm.reset(); 
+         this.getMainCategoryCount();
+         this.getSelectedPage(this.numberOfPages);
       },
       error => {
         console.log(error);
@@ -103,7 +108,8 @@ export class MaincategoryComponent implements OnInit {
     this._maincategoryservice.updateMainCategory(this.categoryId,this.newmainCategory).subscribe(
       (res)=>
       {
-        this.getAllMainCategory();
+        //this.getAllMainCategory();
+        this.getSelectedPage(this.currentPageNumber);
         this.maincategoryForm.reset(); 
       },
     
@@ -117,7 +123,7 @@ export class MaincategoryComponent implements OnInit {
     if (confirm("Are you sure you want to delete this category ?")) {   
     this._maincategoryservice.deleteMainCategory(categoryId).subscribe(() => {  
       this.massage = 'Record Deleted Succefully';  
-      this.getAllMainCategory();
+      this.getCategoriesCount();
     });  
   }  
 } 

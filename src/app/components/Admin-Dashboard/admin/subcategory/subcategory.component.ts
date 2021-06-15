@@ -15,7 +15,6 @@ import { SubcategoryService } from './../../../../services/subcategory.service';
   styleUrls: ['./subcategory.component.scss']
 })
 export class SubcategoryComponent implements OnInit {
-
   CategoryList:ICategory[]=[];
   Subcategories:ISubCategory[]=[];
   categories:string[]=[];
@@ -27,12 +26,15 @@ export class SubcategoryComponent implements OnInit {
     image: ['', [Validators.required]],
     categoryId: [, [Validators.required]]
   });
-  @ViewChild('Imagetitle') title: ElementRef;
   message: string;
   imageFile!: File;
   imagePath:any;
   subCategoryId: any;
   updatedCategory:ISubCategory;
+  SubcategoriesCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
   constructor(
     private fb: FormBuilder,
     private _SubcategoryService:SubcategoryService,
@@ -42,7 +44,8 @@ export class SubcategoryComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loadAllSubCategories();
+    this.getCategoriesCount();
+    this.getSelectedPage(1);
     this.getAllCategory();
   }
   get name ()
@@ -93,10 +96,10 @@ export class SubcategoryComponent implements OnInit {
   }
   submitButtonClicked() {
       this.uploadFile(this.imageFile);
+      this.getCategoriesCount();
   }
  updateButtonClicked(){
-   this.updatesubCategoryClicked=true;
-   if (this.imageFile === undefined)
+   if (this.imageFile == undefined)
         this.updateSubCategory({ fileName:this.updatedCategory.image});
       else
         this.uploadFile(this.imageFile);
@@ -108,12 +111,13 @@ export class SubcategoryComponent implements OnInit {
     formDate.append("file", image, image.name);
     this._uploadImageService.uploadImage(formDate).subscribe(
       data => {
-        if(this.updatesubCategoryClicked==true)
+        if(this.updatesubCategoryClicked===true)
         {
-          this.updateSubCategory(image.name);
+          this.updateSubCategory(data);
+          this.updatesubCategoryClicked=false;
         }
         else{
-           this.AddnewCategory(image.name);  
+           this.AddnewCategory(data);  
         }
       },
       error => {
@@ -126,12 +130,12 @@ export class SubcategoryComponent implements OnInit {
     var category : ISubCategory= {
       id: 0,
       name: this.name.value,
-      image: data,
+      image: data.fileName,
       categoryID:this.categoryId.value
     }
     this._SubcategoryService.addNewSubCategory(category).subscribe(
       data => {
-        this.loadAllSubCategories();
+        this.getCategoriesCount();
       },
       error => {
         console.log(error)
@@ -139,12 +143,11 @@ export class SubcategoryComponent implements OnInit {
     );
   }
   assignFormControlsToCategoryData(id:number) {
+    this.updatesubCategoryClicked=true;
     this.subCategoryId=id;
     this._SubcategoryService.getSubCategoryById(id).subscribe(
       data =>{
         this.SubcategoryForm.get("name")?.setValue(data.name);
-        this.SubcategoryForm.get("image")?.setValue(data.image);
-        this.title.nativeElement.value=data.image;
         this.SubcategoryForm.get("categoryId")?.setValue(data.categoryID);
       },
       error =>
@@ -155,18 +158,17 @@ export class SubcategoryComponent implements OnInit {
     
   }
 
-  updateSubCategory(imgfile){
-    console.log(this.categoryId);
+  updateSubCategory(data:any){
     this.updatedCategory={
       id:this.subCategoryId,
       name:this.name.value,
-      image:imgfile.fileName,
+      image:data.fileName,
       categoryID:this.categoryId.value
     }
     this._SubcategoryService.updateSubCategory(this.subCategoryId,this.updatedCategory).subscribe(
       (res)=>
       {
-        this.loadAllSubCategories();
+        this.getSelectedPage(1);
         this.SubcategoryForm.reset(); 
       },
     
@@ -181,7 +183,7 @@ export class SubcategoryComponent implements OnInit {
     if (confirm("Are you sure you want to delete this category ?")) {   
     this._SubcategoryService.deleteSubCategory(categoryId).subscribe(() => {  
       this.message = 'Record Deleted Succefully';  
-      this.loadAllSubCategories();
+      this.getSelectedPage(1);
     });  
   }  
 }  
@@ -191,5 +193,47 @@ export class SubcategoryComponent implements OnInit {
       this.imageFile = event.target.files[0];
     }
   }
-
+  private getCategoriesCount(){
+    this._SubcategoryService.getSubCategoriesCount().subscribe(
+      data => {
+        this.SubcategoriesCount = data;
+        this.numberOfPages = Math.ceil(this.SubcategoriesCount / this.pageSize);
+        console.log(this.numberOfPages);
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+    ) 
+  }
+  // pagination
+  counter(i: number) {
+    return new Array(i);
+  }
+  getSelectedPage(currentPageNumber:number){
+    this._SubcategoryService.getSubCategoriesByPage(this.pageSize,currentPageNumber).subscribe(
+      data => {
+        this.Subcategories= data;
+        this.Subcategories.forEach(cat => {
+          this._categoryservice.getCategoryById(cat.categoryID).subscribe(
+            data => {
+               this.categories.push(data.name) 
+            }
+          );
+        });
+        this.currentPageNumber = currentPageNumber;
+        console.log(this.currentPageNumber)
+        if(data.length != 0)
+          this.hasCategories = true;
+        else
+          this.hasCategories = false;
+  
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+    ) 
+  }
+  
 }

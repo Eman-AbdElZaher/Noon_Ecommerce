@@ -4,7 +4,8 @@ import { IImage } from 'src/app/models/Interfaces/IImage';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ImageService } from 'src/app/services/image.service';
 import { ProductService } from 'src/app/services/product.service';
-
+import { UploadImageService } from 'src/app/services/upload-image.service';
+declare var $:any;
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
@@ -16,18 +17,32 @@ export class ImageComponent implements OnInit {
   imageList:IImage[]=[];
   hasImages:boolean=false;
   productList:IProduct[]=[];
+  ImagesCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
  
-  constructor(private imageService:ImageService,private productService:ProductService) { }
+  constructor(
+    private imageService:ImageService
+    ,private productService:ProductService,
+    private _uploadImageService:UploadImageService) { }
   imageFile!: File;
   ngOnInit(): void {
    
-    this.imageService.refreshNeeded$.subscribe(()=>{
-      this.GetAllImage()
-    })
-    this.GetAllImage();
+    // this.imageService.refreshNeeded$.subscribe(()=>{
+    //   this.GetAllImage()
+    // })
+    // this.GetAllImage();
+    this.getImageCount();
+    this.getSelectedPage(1);
     this.reserform();
     this.GetAllProduct();
 
+  }
+  init(){
+    this.getImageCount();
+    this.getSelectedPage(1);
+    $('#close').click();
   }
 
 GetAllImage(){
@@ -63,6 +78,7 @@ GetAllImage(){
       data => 
       {
         this.imageobj=data;
+        this.init();
       },
       error=>
       {
@@ -80,6 +96,7 @@ GetAllImage(){
             this.imageList=images;
             console.log(images.length);
             console.log(images[0]);
+            this.init();
           }
         )
       },
@@ -106,6 +123,7 @@ GetAllImage(){
      this.imageService.updateImage(this.imageobj.id,this.imageobj).subscribe(
       data => {
         this.imageobj=data;
+        this.init();
       },
       error=>
       {
@@ -141,6 +159,52 @@ GetAllImage(){
       if (event.target.files.length > 0) {
         this.imageFile = event.target.files[0];
       }
+    }
+    private getImageCount(){
+      this.imageService.getImagesntCount().subscribe(
+        data => {
+          this.ImagesCount = data;
+          this.numberOfPages = Math.ceil(this.ImagesCount / this.pageSize);
+          console.log(this.numberOfPages);
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    // pagination
+    counter(i: number) {
+      return new Array(i);
+    }
+    getSelectedPage(currentPageNumber:number){
+      this.imageService.getImagesByPage(this.pageSize,currentPageNumber).subscribe(
+        data => {
+          this.imageList= data;
+          this.currentPageNumber = currentPageNumber;
+          console.log(this.currentPageNumber)
+          if(data.length != 0)
+            this.hasImages = true;
+          else
+            this.hasImages = false;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    uploadFile() {
+      const formDate = new FormData();
+      formDate.append("file", this.imageFile, this.imageFile.name);
+      this._uploadImageService.uploadImage(formDate).subscribe(
+        data => {
+         this.imageobj.image=this.imageFile.name;
+        },
+        error => {
+          console.log(error)
+        }
+      );
     }
 }
 

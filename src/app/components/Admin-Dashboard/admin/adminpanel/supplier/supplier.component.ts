@@ -14,6 +14,10 @@ export class SupplierComponent implements OnInit {
   //errorMsg="";
   supplierList:ISupplier[]=[];
   hasSuppliers:boolean=false;
+  SuppliersCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
   constructor(private supplierService:SupplierService) { }
 
   ngOnInit(): void {
@@ -109,12 +113,49 @@ GetAllSupplier(){
      this.supplierService.updateSupplier(this.supplier.id,this.supplier).subscribe(
       data => {
         this.supplier=data;
+        this.getProductsCount();
+        this.getSelectedPage(this.currentPageNumber);
+        this.reserform();
       },
       error=>
       {
        this.errorMsg = error;
       }
      )
+    }
+    private getProductsCount(){
+      this.supplierService.getSuppliersCount().subscribe(
+        data => {
+          this.SuppliersCount= data;
+          this.numberOfPages = Math.ceil(this.SuppliersCount / this.pageSize);
+          console.log(this.numberOfPages);
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
+    }
+    // pagination
+    counter(i: number) {
+      return new Array(i);
+    }
+    getSelectedPage(currentPageNumber:number){
+      this.supplierService.getSupplierByPage(this.pageSize,currentPageNumber).subscribe(
+        data => {
+          this.supplierList= data;
+          this.currentPageNumber = currentPageNumber;
+          console.log(this.currentPageNumber)
+          if(data.length != 0)
+            this.hasSuppliers= true;
+          else
+            this.hasSuppliers = false;
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+      ) 
     }
 }
 

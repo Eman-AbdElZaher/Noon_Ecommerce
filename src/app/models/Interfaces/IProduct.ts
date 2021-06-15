@@ -9,5 +9,6 @@ export class IProduct {
       public SubCategoryID:number;
       public brandID:number;
       public supplierID:number;
-      public averageRating:number;   
+      public averageRating:number;
+      public mainImage:string;   
 }

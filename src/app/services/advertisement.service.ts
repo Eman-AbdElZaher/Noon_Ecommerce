@@ -56,5 +56,19 @@ export class AdvertisementService {
       
     }));
   }
+  getAdvertisementCount():Observable<number>{
+    let url = `http://localhost:61135/api/Advertisements/count`;
+    return this.http.get<number>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+  getAdvertisementByPage(pageSize:number, pageNumber:number):Observable<IAdvertisement[]>{
+    let url = `http://localhost:61135/api/Advertisements/${pageSize}/${pageNumber}`;
+    return this.http.get<IAdvertisement[]>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
  
 }

@@ -35,6 +35,13 @@ export class OrderService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));  
   }
+  getOrderbyID(id:number):Observable<Order>
+  {
+    return this.http.get<Order>(`http://localhost:61135/api/Order/${id}`).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));  
+  }
   CheckoutOrder()
   {
     return this.http.get(this.Url).pipe(catchError((err)=>

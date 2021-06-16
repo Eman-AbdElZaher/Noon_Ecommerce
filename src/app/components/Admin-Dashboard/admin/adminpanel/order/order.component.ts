@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import {Order} from 'src/app/models/Classes/Order';
 import{OrderService} from 'src/app/services/order.service';
+import {UserService } from 'src/app/services/user.service';
+import {Iuser} from 'src/app/models/Interfaces/iuser';
 
 @Component({
   selector: 'app-order',
@@ -13,21 +15,21 @@ export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
   //errorMsg="";
  OrderList:Order[]=[];
-  OrderCount:number;
-  pageSize:number = 4;
-  currentPageNumber:number = 1;
-  numberOfPages:number; 
+ User:Iuser= {
+  userName:"",
+  email:"",
+  password:"",
+  confirmpassword:""
+}
 
-  constructor(private orderService:OrderService) { }
-
+  constructor(private orderService:OrderService,private userservice:UserService) { }
+  
  
   ngOnInit(): void {
     // this.orderService.refreshNeeded$.subscribe(()=>{
     //   this.GetAllOrders();
     // })
-    // this.GetAllOrders();
-    this.getOrderCount();
-    this.getSelectedPage(1);
+    this.GetAllOrders();
     this.reserform();
   }
   GetAllOrders(){
@@ -35,7 +37,13 @@ export class OrderComponent implements OnInit {
       serviceData=>
       {
         this.OrderList=serviceData;
-      },
+      
+      serviceData.forEach(element => {
+        this.getUserByid(element.userID);
+        // serviceData=this.getUserByid(userID)
+
+      });
+    },
       errorResponse=>
       {
        this.errorMsg=errorResponse;
@@ -53,39 +61,18 @@ export class OrderComponent implements OnInit {
       }
     }
     errorMsg='';
-    private getOrderCount(){
-      this.orderService.getOrderCount().subscribe(
+    getUserByid(userID:string) {
+
+      this.userservice.getUserByid(userID).subscribe(
         data => {
-          this.OrderCount = data;
-          this.numberOfPages = Math.ceil(this.OrderCount / this.pageSize);
-          console.log(this.numberOfPages);
+          this.User=data;
+          console.log(data);
         },
-        error=>
-        {
-         this.errorMsg = error;
+        error => {
+          return error;
         }
-      ) 
+      )
     }
-    // pagination
-    counter(i: number) {
-      return new Array(i);
-    }
-    getSelectedPage(currentPageNumber:number){
-      this.orderService.getOrderByPage(this.pageSize,currentPageNumber).subscribe(
-        data => {
-          this.OrderList= data;
-          this.currentPageNumber = currentPageNumber;
-          console.log(this.currentPageNumber)
-          // if(data.length != 0)
-          //   this.= true;
-          // else
-          //   this.hasOffers = false;
-        },
-        error=>
-        {
-         this.errorMsg = error;
-        }
-      ) 
-    }
+  
 
 }

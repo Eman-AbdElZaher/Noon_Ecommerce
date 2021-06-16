@@ -21,9 +21,48 @@
 					<tr>
 						<td>{{item.quantity}}</td>
 						<td>{{item.productID}}</td>
-						<td>{{item.orderID}}</td>	 
+						<td>{{item.orderID}}</td>
+						 
+
+						 
 					</tr>
+					
 				</tbody>
+				 
+				 
+             <p> date {{order.orderDate}}</p>
+			 <p> total {{order.totalPrice}}</p>
+				<div *ngFor="let Product of Products" >
+					 
+
+					<tr>
+						 
+						 
+								<div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
+										class="img-sm"></div>
+								<figcaption class="info" > <a  class="title text-dark"
+										data-abc="true">{{Product.name}}</a>
+									<p class="text-muted small">SIZE:{{Product.size}}</p>
+									<br>
+                              </figcaption>
+							<!-- <p> {{orderDetailsList[0].quantity}}</p> -->
+							<div *ngFor="let item of orderDetailsList">
+							 
+								<p *ngIf="item.productID==Product.id">{{item.quantity}}</p> 
+							<span *ngIf="item.productID==Product.id">
+								 net price={{item.quantity*Product.price}}
+							</span>
+
+								 
+								<!-- </p> -->
+							   </div>
+
+</tr>
+				</div>
+
+
+
+
 			</table>
 		</div>
 	</div>        

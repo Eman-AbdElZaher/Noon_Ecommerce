@@ -42,6 +42,7 @@ export class AuthenticationService {
     console.log(authResult);
     localStorage.setItem('token', authResult.token.token);
    //localStorage.setItem("expires_at", JSON.stringify(expiresAt));
+   
    }  
 
    logout() {
@@ -83,7 +84,9 @@ public isLoggedIn() {
           let decodedJwtJsonData = window.atob(jwtData)
 
           let decodedJwtData = JSON.parse(decodedJwtJsonData)
-          return decodedJwtData.role;
+          let role=decodedJwtData['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+          return role;
       }
       return "No Role";
     }
@@ -102,5 +105,19 @@ public isLoggedIn() {
       }
       return null;
   }
+  getUserName(){
+    if(localStorage.getItem('token')){
+        let token = localStorage.getItem('token');
+
+        let jwtData = token.split('.')[1]
+
+        let decodedJwtJsonData = window.atob(jwtData)
+
+        let decodedJwtData = JSON.parse(decodedJwtJsonData)
+        let name=decodedJwtData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+        return name;
+    }
+    return null;
+}
 
 }

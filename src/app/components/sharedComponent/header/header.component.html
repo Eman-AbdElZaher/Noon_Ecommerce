@@ -31,7 +31,7 @@
                     <div class="ns0dni-1 gjoLGR">
                         <div class="sc-1v3soed-0 cJpSfr"  *ngIf="loggedIn">
                             <button type="button" class="trigger">
-                                <span class="userText"><span class="userName" data-qa="dd_userName">Ahlan ! Reham</span>
+                                <span class="userText"><span class="userName" data-qa="dd_userName">Ahlan ! {{username}}</span>
                                 <div class="dropdown">
                                     <a class="">My Acount</a>
                                     
@@ -42,7 +42,7 @@
                                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                           </svg>
                                       </a>
-                                      <a href="#" click="LoggedOut()">
+                                      <a href="#" (click)="LoggedOut()">
                                           Logout
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>

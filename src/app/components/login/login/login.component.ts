@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean;
   LoginForm:FormGroup;
   res:any;
-
   get userEmail ()
   {
     return this.LoginForm.get('userEmail');
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
       userEmail :['',[Validators.required]],
       password:['',[Validators.required]]
     });
-  
+   
   }
   
   signIn() {  
@@ -45,8 +44,19 @@ export class LoginComponent implements OnInit {
     this.accountservice.login(this.LoggedUser)  
           .subscribe(
               data => {
-                  console.log(data);
-                  this.router.navigate(['home']);
+                  console.log(data);  
+                  // this.router.navigate(['/home']); 
+                  console.log(this.accountservice.getRole());
+                  if(this.accountservice.getRole()=="User")
+                  {
+                    console.log(this.accountservice.getRole());
+                  this.router.navigate(['/home']);
+                  }
+                  else if(this.accountservice.getRole()=="Admin")
+                  {
+                    console.log(this.accountservice.getRole());
+                    this.router.navigate(['/dashboard/panel']);
+                  }
               },
               error => {
                   console.log(error);

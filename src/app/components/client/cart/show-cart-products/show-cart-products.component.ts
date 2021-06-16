@@ -159,4 +159,13 @@ export class ShowCartProductsComponent implements OnInit {
     )
   }
 
+  clearCart(cartID:string)
+  {
+    this.cartservice.ClearCart(cartID).subscribe(
+      error => {
+        return error;
+      }
+    )
+  }
+
 }

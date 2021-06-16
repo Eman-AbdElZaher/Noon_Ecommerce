@@ -25,4 +25,17 @@ export class CartService {
     )
 
   }
+
+  ClearCart(cartID:string)
+  {
+    let url=`http://localhost:61135/api/CartProducts/ClearCart?ccartID=${cartID}`
+    return this.http.delete(url).pipe(
+      catchError(
+        (err)=>
+        {
+          return throwError(err.message);
+        }
+      )
+    )
+  }
 }

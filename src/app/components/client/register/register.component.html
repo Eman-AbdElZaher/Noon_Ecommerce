@@ -38,7 +38,7 @@
 					<img src="../../../../assets/images/noon-logo.png" style="margin-bottom: 20px;">
 					<div class="form-holder">
 						<i class="zmdi zmdi-account"></i>
-						<input type="text" placeholder="Username" class="form-control"  [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="userModel.username" name="name">
+						<input type="text" placeholder="Username" class="form-control"  [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="userModel.userName" name="name">
                         <small class="text-danger"[class.d-none]="name.untouched || name.valid">User Name is required</small>
 					</div>
 					<br>

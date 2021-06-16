@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     if(form !=null)
       form.reset();
     this.userModel= {
-      username : '',
+      userName : '',
       password : '',
       email:'',
       confirmpassword :''

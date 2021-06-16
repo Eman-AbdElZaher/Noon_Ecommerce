@@ -1,6 +1,6 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiController } from 'src/app/controller/ApiController';
 import { ICategory } from 'src/app/models/Interfaces/ICategory';
 import { IMainCategory } from 'src/app/models/Interfaces/IMainCategory';
@@ -21,18 +21,19 @@ export class CategoryComponent implements OnInit {
   categories:string[]=[];
   errorMsg:string;
   hasCategories:boolean=false;
-  categoryForm = this.fb.group({
-    name: ['', [Validators.required]],
-    image: ['', [Validators.required]],
-    maincategoryId: [, [Validators.required]]
-  });
-  @ViewChild('Imagetitle') title: ElementRef;
+  categoryForm: FormGroup;
   message: string;
+  updateCategoryClicked:boolean=false;
   imageFile!: File;
   imagePath:any;
   path:any=ApiController.ImagePath;
   categoryId: any;
   updatedCategory:ICategory;
+  categoriesCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
+  get formFields() { return this.categoryForm.controls;}
   constructor(
     private fb: FormBuilder,
     private _categoryService:CategoryService,
@@ -42,19 +43,14 @@ export class CategoryComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loadAllCategories();
+    this.categoryForm= this.fb.group({
+      name: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      maincategoryId: [, [Validators.required]]
+    });
+    this.getCategoriesCount();
+    this.getSelectedPage(1);
     this.getAllMainCategory();
-  }
-  get name ()
-  {
-    return this.categoryForm.get('name');
-  }
-  get maincategoryId ()
-  {
-    return this.categoryForm.get('maincategoryId');
-  }
-  get image (){
-    return this.categoryForm.get('image');
   }
   getAllMainCategory(){
     this._maincategoryservice.getAllCategories().subscribe(
@@ -94,16 +90,26 @@ export class CategoryComponent implements OnInit {
   submitButtonClicked() {
       this.uploadFile(this.imageFile);
   }
-
+  updateButtonClicked(){
+    if (this.imageFile == undefined)
+         this.updateCategory({ fileName:this.updatedCategory.image});
+       else
+         this.uploadFile(this.imageFile);
+     }
   uploadFile(image: File) {
     console.log(image.name);
     const formDate = new FormData();
     formDate.append("file", image, image.name);
     this._uploadImageService.uploadImage(formDate).subscribe(
       data => {
-        console.log(data);
-        this.AddnewCategory(image.name);
-        //this.title.nativeElement.Value=data.fileName;
+        if(this.updateCategoryClicked===true)
+        {
+          this.updateCategory(data);
+          this.updateCategoryClicked=false;
+        }
+        else{
+           this.AddnewCategory(data);  
+        }
       },
       error => {
         console.log(error)
@@ -112,16 +118,15 @@ export class CategoryComponent implements OnInit {
   }
   
   AddnewCategory(data:any){
-    //console.log(this.imagePath.fileName);
     var category : ICategory= {
       id: 0,
-      name: this.name.value,
-      image: data,
-      mainCategoryID:this.maincategoryId.value
+      name: this.formFields.name.value,
+      image: data.fileName,
+      mainCategoryID:this.formFields.maincategoryId.value
     }
     this._categoryService.addNewCategory(category).subscribe(
       data => {
-        this.loadAllCategories();
+        this.getSelectedPage(1);
       },
       error => {
         console.log(error)
@@ -129,12 +134,11 @@ export class CategoryComponent implements OnInit {
     );
   }
   assignFormControlsToCategoryData(id:number) {
+    this.updateCategoryClicked=true;
     this.categoryId=id;
     this._categoryService.getCategoryById(id).subscribe(
       data =>{
         this.categoryForm.get("name")?.setValue(data.name);
-        this.categoryForm.get("image")?.setValue(data.image);
-        this.title.nativeElement.value=data.image;
         this.categoryForm.get("maincategoryId")?.setValue(data.mainCategoryID);
       },
       error =>
@@ -145,18 +149,18 @@ export class CategoryComponent implements OnInit {
     
   }
 
-  updateCategory(){
+  updateCategory(data:any){
     console.log(this.categoryId);
     this.updatedCategory={
       id:this.categoryId,
-      name:this.name.value,
-      image:'',
-      mainCategoryID:this.maincategoryId.value
+      name:this.formFields.name.value,
+      image:data.fileName,
+      mainCategoryID:this.formFields.maincategoryId.value
     }
     this._categoryService.updateCategory(this.categoryId,this.updatedCategory).subscribe(
       (res)=>
       {
-        this.loadAllCategories();
+        this.getSelectedPage(1);
         this.categoryForm.reset(); 
       },
     
@@ -171,7 +175,7 @@ export class CategoryComponent implements OnInit {
     if (confirm("Are you sure you want to delete this category ?")) {   
     this._categoryService.deleteCategory(categoryId).subscribe(() => {  
       this.message = 'Record Deleted Succefully';  
-      this.loadAllCategories();
+      this.getSelectedPage(1);
     });  
   }  
 }  
@@ -180,5 +184,47 @@ export class CategoryComponent implements OnInit {
     if (event.target.files.length > 0) {
       this.imageFile = event.target.files[0];
     }
+  }
+  private getCategoriesCount(){
+    this._categoryService.getCategoriesCount().subscribe(
+      data => {
+        this.categoriesCount = data;
+        console.log(this.categoriesCount)
+        this.numberOfPages = Math.ceil(this.categoriesCount / this.pageSize);
+        console.log(this.numberOfPages);
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+    ) 
+  }
+  // pagination
+  counter(i: number) {
+    return new Array(i);
+  }
+  getSelectedPage(currentPageNumber:number){
+    this._categoryService.getCategoriesByPage(this.pageSize,currentPageNumber).subscribe(
+      data => {
+        this.CategoryList= data;
+        this.CategoryList.forEach(cat => {
+          this._maincategoryservice.getMainCategoryById(cat.mainCategoryID).subscribe(
+            data => {
+               this.categories.push(data.name) 
+            }
+          )});
+        this.currentPageNumber = currentPageNumber;
+        console.log(this.currentPageNumber)
+        if(data.length != 0)
+          this.hasCategories = true;
+        else
+          this.hasCategories = false;
+  
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+    ) 
   }
 }

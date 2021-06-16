@@ -52,5 +52,19 @@ export class BrandService {
       return throwError(err.message || "Internal Server error contact site adminstarator");
     }));
   }
+  getBrandsCount():Observable<number>{
+    let url = `http://localhost:61135/api/Brands/count`;
+    return this.http.get<number>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+  getBrandByPage(pageSize:number, pageNumber:number):Observable<Ibrand[]>{
+    let url = `http://localhost:61135/api/Brands/${pageSize}/${pageNumber}`;
+    return this.http.get<Ibrand[]>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
 
 }

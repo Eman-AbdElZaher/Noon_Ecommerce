@@ -75,10 +75,10 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>{{order.id}}</td>
-						<td>{{User[0].userName}}</td>
+						<td >{{order.userID}}</td>
 						<td>{{order.orderDate}}</td>
 						<td>{{order.totalPrice}}</td>
-						
+						<td>{{User[0].userName}}</td>
 						<td> <a class="nav-link" routerLink="/dashboard/panel/orderdetails/{{order.id}}">Details</a></td>
 					</tr>
 				</tbody>

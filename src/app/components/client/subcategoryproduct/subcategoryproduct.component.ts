@@ -13,25 +13,33 @@ export class SubcategoryproductComponent implements OnInit {
   subCategoryId:number;
   productList:IProduct[]=[]
   public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0};
+  hasSubCayegoryProduct:boolean=false;
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
     {
       this.subCategoryId=parseInt(params.get('id'));
-    })
-    this.productservice.getAllProductBySubCategoryId(this.subCategoryId).subscribe(
-      data=>
-      {
-        this.productList=data;
-        console.log(data);
-        console.log(this.productList);
-      },
-      error=>
-      {
-        return error;
-      }
-    )
-    console.log("local"+this.productList);
+    }) 
+    this.getAllProductInaSpecificSaubCategory();
   }
+getAllProductInaSpecificSaubCategory()
+{
+  this.productservice.getAllProductBySubCategoryId(this.subCategoryId).subscribe(
+    data=>
+    {
 
+      this.productList=data;
+      if(data.length!=0)
+      {
+        this.hasSubCayegoryProduct=true;
+      }
+      console.log(data);
+      console.log(this.productList);
+    },
+    error=>
+    {
+      return error;
+    }
+  )
+}
 }

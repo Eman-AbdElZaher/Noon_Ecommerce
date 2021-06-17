@@ -261,6 +261,7 @@ GetAllProduct(){
     onFileChange(event: any) {
       if (event.target.files.length > 0) {
         this.imageFile = event.target.files[0];
+        this.uploadFile();
       }
     }
  

@@ -4,7 +4,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IAdvertisement } from 'src/app/models/Interfaces/IAdvertisement';
 import{AdvertisementService} from 'src/app/services/advertisement.service';
 import { UploadImageService } from 'src/app/services/upload-image.service';
-
+declare var $:any
 @Component({
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
@@ -35,6 +35,11 @@ export class AdvertisementComponent implements OnInit {
     this.getSelectedPage(1);
 
     this.reserform();
+  }
+  init(){
+    this.getAdvertisementCount();
+    this.getSelectedPage(this.currentPageNumber);
+    $('.close').click();
   }
   GetAllAdvertisements(){
     this.AdvertisementService.getAllAdvertisement().subscribe(
@@ -68,8 +73,7 @@ export class AdvertisementComponent implements OnInit {
        this.AdvertisementService.addNewAdvertisement(this.advertisement).subscribe(
         data => {
           this.advertisement=data;
-          this.getAdvertisementCount();
-          this.getSelectedPage(1);
+          this.init();
         },
         error=>
         {
@@ -82,7 +86,7 @@ export class AdvertisementComponent implements OnInit {
       this.AdvertisementService.deleteAdvertisement(AdvertisId).subscribe(
         data => {
           this.advertisement=data;
-          this.getAdvertisementCount();
+          this.init();
         },
         error=>
         {
@@ -107,8 +111,7 @@ export class AdvertisementComponent implements OnInit {
        this.AdvertisementService.updateAdvertisement(this.advertisement.id,this.advertisement).subscribe(
         data => {
           this.advertisement=data;
-          this.getAdvertisementCount();
-          this.getSelectedPage(this.currentPageNumber);
+          this.init();
         },
         error=>
         {
@@ -167,6 +170,7 @@ export class AdvertisementComponent implements OnInit {
       onFileChange(event: any) {
         if (event.target.files.length > 0) {
           this.imageFile = event.target.files[0];
+          this.uploadFile();
         }
       }
   }

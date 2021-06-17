@@ -222,7 +222,7 @@
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>${{cart.totalPrice}}</strong></dd>
                         </dl>
-                        <hr> <button  type="button" class="btn btn-out btn-primary btn-square btn-main" (click)="CheckOut()" data-abc="true"> Make
+                        <hr> <button  type="button" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"  routerLink="/payment"> Make
                             Purchase </button> <a routerLink="/home" class="btn btn-out btn-success btn-square btn-main mt-2"
                             data-abc="true">Continue Shopping</a>
                             <a style="color: aliceblue;" (click)="clearCart(cart.userID)" class="btn btn-out btn-success btn-square btn-main mt-2"
@@ -230,6 +230,7 @@
                             <!-- <button type="button" class="btn btn-success btn-lg btn-block" (click)="CheckOut()">Pay</button> -->
                     </div>
                     <!-- <app-checkout-order></app-checkout-order> -->
+                    <!--(click)="CheckOut()" -->
                 </div>
             </aside>
         </div>

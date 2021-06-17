@@ -16,7 +16,7 @@ export class UserService {
   }
   getUserByid(id:string):Observable<Iuser>
   {
-    return this.http.get<Iuser>(`http://localhost:61135/api/Account?id=${id}`).pipe(catchError((err)=>
+    return this.http.get<Iuser>(`http://localhost:61135/api/Account/${id}`).pipe(catchError((err)=>
     {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));  

@@ -61,7 +61,7 @@ $(document).ready(function(){
 						</th>
 						<th>ID</th>
 						<th>buyer</th>
-						<th>Date</th>
+						<th>DateTime</th>
 						<th>TotalPrice</th>
 						<th>Actions</th>
 					</tr>
@@ -75,10 +75,9 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>{{order.id}}</td>
-						<td >{{order.userID}}</td>
+						<td>{{User.userName}}</td>
 						<td>{{order.orderDate}}</td>
-						<td>{{order.totalPrice}}</td>
-						<td>{{User[0].userName}}</td>
+						<td>{{order.totalPrice}}</td>					
 						<td> <a class="nav-link" routerLink="/dashboard/panel/orderdetails/{{order.id}}">Details</a></td>
 					</tr>
 				</tbody>

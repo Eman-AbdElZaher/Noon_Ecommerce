@@ -1,0 +1,194 @@
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snippet - BBBootstrap</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <style>body {
+        background: #f5f5f5
+    }
+    
+    .rounded {
+        border-radius: 1rem
+    }
+    
+    .nav-pills .nav-link {
+        color: #555
+    }
+    
+    .nav-pills .nav-link.active {
+        color: white
+    }
+    
+    input[type="radio"] {
+        margin-right: 5px
+    }
+    
+    .bold {
+        font-weight: bold
+    }</style>
+ </head>
+ <body oncontextmenu="return false" class="snippet-body">
+    <div class="container py-5">
+<!-- For demo purpose -->
+<div class="row mb-4">
+<div class="col-lg-8 mx-auto text-center">
+<h1 class="display-6">Payment</h1>
+</div>
+</div> <!-- End -->
+<div class="row">
+<div class="col-lg-6 mx-auto">
+<div class="card ">
+<div class="card-header">
+<div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+<!-- Credit card form tabs -->
+<ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+<li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active show"> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> </li>
+<li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link"> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
+<li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> </li>
+</ul>
+</div> <!-- End -->
+<!-- Credit card form content -->
+<div class="tab-content">
+<!-- credit card info onsubmit="event.preventDefault()"--> 
+<div id="credit-card" class="tab-pane fade pt-3 active show">
+<form  [formGroup]="PayForm" method="POST"> 
+    <div class="form-group" > <label for="UserName">
+            <h6>Card Owner</h6>
+        </label> <input type="text" placeholder="Card Owner Name" formControlName="UserName"  [class.is-invalid]="UserName.invalid && UserName.touched "  
+           class="form-control ">
+        <div *ngIf="UserName.invalid && UserName.touched">
+            <small class="text-danger" *ngIf="UserName.errors.required">name is required</small>
+        </div>
+     </div>
+    <div class="form-group"> <label for="cardNumber">
+            <h6>Card number</h6>
+        </label>
+        <div class="input-group"> <input type="text"  name="CardNumber" placeholder="0000-0000-0000-0000" maxlength="16"  class="form-control"  [class.is-invalid]="CardNumber.invalid &&CardNumber.touched" formControlName="CardNumber"
+            [class.is-valid]="CardNumber.valid">
+         <div *ngIf="CardNumber.invalid && CardNumber.touched">
+            <small *ngIf="CardNumber.errors.required" class="text-danger">
+                CardNumber is required</small>
+            <small *ngIf="CardNumber.errors.minlength" class="text-danger">
+                Invaild card number
+            </small>
+        </div>
+            <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group"> <label><span class="hidden-xs">
+                        <h6>Expiration Date</h6>
+                    </span></label>
+                <div class="input-group"> <input  placeholder="MM" name="ExpireMonth"  [class.is-invalid]="ExpireMonth.invalid &&ExpireMonth.touched" formControlName="ExpireMonth" type="text"
+                      class="form-control" >
+                 <div *ngIf="ExpireMonth.invalid &&ExpireMonth.touched">
+                    <small *ngIf="ExpireMonth.errors.required" class="text-danger">
+                        ExpireMonth required</small>                
+                </div> <input type="text" placeholder="YY" class="form-control" [class.is-invalid]="ExpireYear.invalid &&ExpireYear.touched" formControlName="ExpireYear"  
+                 name="ExpireYear" >
+           <div *ngIf="ExpireYear.invalid &&ExpireYear.touched">
+              <small *ngIf="ExpireYear.errors.required" class="text-danger">
+                ExpireYear required</small>  </div>  </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group mb-4"> <label data-toggle="tooltip" title="" data-original-title="Three digit CV code on the back of your card">
+                    <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                </label> <input type="text"  class="form-control" placeholder="&#9679;&#9679;&#9679;&#9679;"
+                [class.is-invalid]="CVV.invalid &&CVV.touched" formControlName="CVV" maxlength="4" 
+                [class.is-valid]="CVV.valid"  >
+             <div *ngIf="CVV.invalid && CVV.touched">
+                <small *ngIf="CVV.errors.required" class="text-danger">
+                    CVV is required</small>
+            </div> 
+
+                   </div>
+        </div>
+    </div>
+    <div class="card-footer"> <button type="submit" [disabled]="PayForm.invalid"  class="subscribe btn btn-primary btn-block shadow-sm third" (click)="CheckOut()" data-toggle="modal" data-target="#myModal" > Confirm Payment </button>
+        <!--data-toggle="modal" data-target="#myModal" -->
+
+</div></form>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Proceed Order</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         Success Order
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</div> <!-- End -->
+<!-- Paypal info -->
+<div id="paypal" class="tab-pane fade pt-3 ">
+<h6 class="pb-2">Select your paypal account type</h6>
+<div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked=""> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
+<p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
+<p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+</div> <!-- End -->
+<!-- bank transfer info -->
+<div id="net-banking" class="tab-pane fade pt-3">
+<div class="form-group "> <label for="Select Your Bank">
+    <h6>Select your Bank</h6>
+</label> <select class="form-control" id="ccmonth">
+    <option value="" selected="" disabled="">--Please select your Bank--</option>
+    <option>بنك مصر </option>
+    <option>بنك مصر الاهلى </option>
+    <option>بنك قطر </option>
+    <option>بنك فيصل الاسلامى </option>
+    <option>بنك الاسكندرية </option>
+    <option>بنك الزراعى المصرى </option>
+    <option>بنك التعمير والاسكان </option>
+    <option>بنك العقارى المصرى </option>
+    <!-- <option>Bank 9</option>
+    <option>Bank 10</option> -->
+</select> </div>
+<div class="form-group">
+<p> <button type="button" class="btn btn-primary" ><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
+</div>
+<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+</div> <!-- End -->
+<!-- End -->
+</div>
+</div>
+</div>
+</div>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">$(function() {
+$('[data-toggle="tooltip"]').tooltip()
+});
+document.querySelector(".third").addEventListener('click', function(){
+  Swal.fire("Our First Alert", "With some body text and success icon!", "success");
+});
+</script>
+    
+</div></div></body>

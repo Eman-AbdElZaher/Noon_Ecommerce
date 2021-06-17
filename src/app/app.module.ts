@@ -64,6 +64,7 @@ import { PaymentComponent } from './components/client/payment/payment.component'
     CartModule,
      ReviewModule,
     CarouselModule,
+    
   ],
   exports: [
     UploadImageComponent,

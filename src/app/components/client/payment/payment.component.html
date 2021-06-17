@@ -53,16 +53,29 @@
 </div> <!-- End -->
 <!-- Credit card form content -->
 <div class="tab-content">
-<!-- credit card info-->
+<!-- credit card info onsubmit="event.preventDefault()"--> 
 <div id="credit-card" class="tab-pane fade pt-3 active show">
-<form role="form" onsubmit="event.preventDefault()">
-    <div class="form-group"> <label for="username">
+<form  [formGroup]="PayForm" method="POST"> 
+    <div class="form-group" > <label for="UserName">
             <h6>Card Owner</h6>
-        </label> <input type="text" name="username" placeholder="Card Owner Name" required="" class="form-control "> </div>
+        </label> <input type="text" placeholder="Card Owner Name" formControlName="UserName"  [class.is-invalid]="UserName.invalid && UserName.touched "  
+           class="form-control ">
+        <div *ngIf="UserName.invalid && UserName.touched">
+            <small class="text-danger" *ngIf="UserName.errors.required">name is required</small>
+        </div>
+     </div>
     <div class="form-group"> <label for="cardNumber">
             <h6>Card number</h6>
         </label>
-        <div class="input-group"> <input type="text"  name="cardNumber" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19" class="form-control " required="">
+        <div class="input-group"> <input type="text"  name="CardNumber" placeholder="0000-0000-0000-0000"  class="form-control"  [class.is-invalid]="CardNumber.invalid &&CardNumber.touched" formControlName="CardNumber"
+            [class.is-valid]="CardNumber.valid">
+         <div *ngIf="CardNumber.invalid && CardNumber.touched">
+            <small *ngIf="CardNumber.errors.required" class="text-danger">
+                CardNumber is required</small>
+            <small *ngIf="CardNumber.errors.minlength" class="text-danger">
+                Invaild card number
+            </small>
+        </div>
             <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
         </div>
     </div>
@@ -77,10 +90,21 @@
         <div class="col-sm-4">
             <div class="form-group mb-4"> <label data-toggle="tooltip" title="" data-original-title="Three digit CV code on the back of your card">
                     <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
-                </label> <input type="text" required="" class="form-control" placeholder="&#9679;&#9679;&#9679;"minlength="3" maxlength="3" > </div>
+                </label> <input type="text"  class="form-control" placeholder="&#9679;&#9679;&#9679;"
+                [class.is-invalid]="CVV.invalid &&CVV.touched" formControlName="CVV"  
+                [class.is-valid]="CVV.valid"  >
+             <div *ngIf="CVV.invalid && CVV.touched">
+                <small *ngIf="CVV.errors.required" class="text-danger">
+                    CVV is required</small>
+                <small *ngIf="Name.errors.minlength" class="text-danger">
+                  Invaild CVV
+                </small>
+            </div> 
+
+                   </div>
         </div>
     </div>
-    <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm third"> Confirm Payment </button>
+    <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm third" (click)="CheckOut()"> Confirm Payment </button>
 
 </div></form>
 </div> <!-- End -->

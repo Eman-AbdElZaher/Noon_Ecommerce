@@ -20,7 +20,7 @@
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
                                     <div class="sc-6mc8i3-0 bRBWNx"><label for="is_fbn_1"><input id="is_fbn_1"
-                                                type="checkbox"><img class="chkbox"
+                                                type="checkbox"><img 
                                                 src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
                                                 alt="">
                                             <div class="u8zs36-0 kRPdZJ"><img
@@ -189,12 +189,16 @@
                                     </div>
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div class="bialit-0 enUhaf"><input type="number" name="min" class="textInput"
-                                            aria-label="min" data-qa="filter-min-input" value="3"><span
-                                            class="between to">To</span><input type="number" name="max"
+                                    <div class="bialit-0 enUhaf">
+                                        <input type="number" #minprice name="min" class="textInput"
+                                            aria-label="min" data-qa="filter-min-input" value="0">
+                                        <span
+                                            class="between to">To</span>
+                                        <input type="number" #maxprice name="max"
                                             class="textInput" aria-label="max" data-qa="filter-max-input"
-                                            value="12730"><button class="between" type="button"
-                                            data-qa="filter-price-btn">go</button></div>
+                                        value="0">
+                                            <button class="between" type="button"
+                                            data-qa="filter-price-btn" (click)="getProductbuSubCategory(minprice.value,maxprice.value)">go</button></div>
                                 </div>
                             </div>
                         </div>
@@ -581,9 +585,9 @@
 
     </section>
 
-    <section style="margin-left: 10px;">
-        <div class="container mydiv">
-            <div style="margin: 5px;float: left;" class="productContainer" *ngFor="let product of productList"><a
+    <section style="margin-left:10px;float:left;">
+        <div class="container mydiv" >
+            <div style="margin: 5px;float:left;" class="productContainer" *ngFor="let product of productList"><a
                     href="/egypt-en/100-pure-coconut-oil-200ml/N14428169A/p?o=faba2a8780159cfc&amp;gclid=CjwKCAjw2ZaGBhBoEiwA8pfP_sKOUF_loPcTUDIQ2LoOiRskLCtiEsDD9RevPF0i1BYM8wfj0HL9OxoCGdkQAvD_BwE"
                     id="productBox-N14428169A">
                     <div class="kcs0h5-0 diNcmV grid" title="Parachute 100% Pure Coconut Oil 200ml ">
@@ -652,12 +656,13 @@
 </div>
 
 
-
 <section *ngIf="!hasSubCayegoryProduct" class="wp1b4p-1 gcGfip">
     <div class="srmyyt-0 elsAqw"><img src="https://z.nooncdn.com/s/app/com/noon/images/empty-state-cart.svg"
             alt="Your shopping cart looks empty" class="srmyyt-1 fvQlVB">
-        <p class="srmyyt-2 gsMyLW">There is No Product in this SubCategory </p>
+        <p class="srmyyt-2 gsMyLW">{{content}} </p>
         <p class="srmyyt-3 bKKIna">What are you waiting for?</p><button routerLink="/home" type="button" aria-label="Start Shopping"
             class="srmyyt-4 euzQzm">Start Shopping</button>
     </div>
 </section>
+
+

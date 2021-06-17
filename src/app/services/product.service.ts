@@ -93,4 +93,12 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+  getAllProductinSubCategoryBetweenTwoprice(id:number,minprice:any,maxprice:any):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/AllProductsBetweenTwoPrice?id=${id}&min_price=${minprice}&max_price=${maxprice}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
 }

@@ -45,14 +45,14 @@ export class PaymentComponent implements OnInit {
   }
   CheckOut()
   {
-    if(confirm('Are you sure'))
-    {
+    // if(confirm('Are you sure'))
+    // {
     this.orderService.CheckoutOrder().subscribe(
      data=>{console.log(data);
 
      }
     )
-    }
+    // }
   }
 
 }

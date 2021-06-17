@@ -14,8 +14,10 @@ export class PaymentComponent implements OnInit {
     {
     UserName: ['', [Validators.required]],
     CardNumber:['',[Validators.required,Validators.minLength(16),Validators.maxLength(16)]],
-    CVV:['',[Validators.required,Validators.minLength(3),Validators.maxLength(3)]],
-    ExpireDate:['',Validators.required]
+    CVV:['',[Validators.required,Validators.minLength(4),Validators.maxLength(4)]],
+    ExpireMonth:['',Validators.required],
+    ExpireYear:['',Validators.required],
+
     }
     );
 
@@ -33,9 +35,13 @@ export class PaymentComponent implements OnInit {
   {
     return this.PayForm.get('CVV');
   }
-  get ExpireDate ()
+  get  ExpireMonth ()
   {
-    return this.PayForm.get('ExpireDate');
+    return this.PayForm.get('ExpireMonth');
+  }
+  get ExpireYear()
+  {
+    return this.PayForm.get('ExpireYear');
   }
   CheckOut()
   {

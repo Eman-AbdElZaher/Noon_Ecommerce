@@ -28,6 +28,7 @@ import { CreateReviewComponent } from './components/client/review/create-review/
 import { UpdateReviewComponent } from './components/client/review/update-review/update-review.component';
 import { ShowReviewComponent } from './components/client/review/show-review/show-review.component';
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
+import { PaymentComponent } from './components/client/payment/payment.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -47,7 +48,8 @@ import { SubcategoryproductComponent } from './components/client/subcategoryprod
    ProductDetailsComponent, WishlistProductComponent,
   HeaderComponent, HomeComponent,
   NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent,
-  SubcategoryproductComponent
+  SubcategoryproductComponent,
+  PaymentComponent
   ],
   imports: [
     BrowserAnimationsModule,

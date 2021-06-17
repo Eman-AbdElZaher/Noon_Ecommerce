@@ -10,9 +10,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UnathorizedPageComponent } from './components/unathorized-page/unathorized-page.component';
 import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component';
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
+import { PaymentComponent } from './components/client/payment/payment.component';
 const routes: Routes = [ 
   {  
-    path: 'login',
+    path: 'login', 
     loadChildren: () => import('./components/login/login.module')
       .then(mod => mod.LoginModule)
   },
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'subcategoryProduct/:id',component:SubcategoryproductComponent},
   {path:'unathorized',component:UnathorizedPageComponent},
   {path:'check',component: CheckoutOrderComponent},
+  {path:'payment',component:PaymentComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')

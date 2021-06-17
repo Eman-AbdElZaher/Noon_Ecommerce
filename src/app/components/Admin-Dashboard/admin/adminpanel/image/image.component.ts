@@ -42,7 +42,7 @@ export class ImageComponent implements OnInit {
   init(){
     this.getImageCount();
     this.getSelectedPage(1);
-    $('#close').click();
+    $('.close').click();
   }
 
 GetAllImage(){
@@ -158,6 +158,7 @@ GetAllImage(){
     onFileChange(event: any) {
       if (event.target.files.length > 0) {
         this.imageFile = event.target.files[0];
+        this.uploadFile();
       }
     }
     private getImageCount(){

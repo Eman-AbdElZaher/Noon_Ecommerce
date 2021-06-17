@@ -67,7 +67,7 @@
         </div>
     </div>        
 </div>
-<!-- Edit Modal HTML -->
+<!-- Add Modal HTML -->
 <div id="addImageModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -81,8 +81,6 @@
                         <div class="form-group">
                             <label>Image</label>
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
-						<button (click)="uploadFile()" 
-                                class="btn btn-success">upload Image</button>
                         </div>		
                     <div class="form-group">
 						<label>ProductID</label>
@@ -112,8 +110,6 @@
 					<div class="form-group">
 						<label>Image</label>
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
-						<button (click)="uploadFile()" 
-                                class="btn btn-success">upload Image</button>
 					</div>		
 				<div class="form-group">
 					<label>ProductID</label>

@@ -59,7 +59,7 @@
 					There's no Advertisement to show
 				</div>
 			</div>	
-<!-- Edit Modal HTML -->
+<!-- Add Modal HTML -->
 <div id="addAdvertisementModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -72,10 +72,6 @@
 					<div class="form-group">
 						<label>Image</label>
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
-						<button (click)="uploadFile()" 
-                                class="btn btn-success">
-                                                     Upload image
-                              </button>
 					</div>		
                     
 						<div class="form-group">
@@ -121,10 +117,6 @@
 						<label>Image</label>
 						<!-- <input type="file" class="form-control" [class.is-invalid]="image.invalid && image.touched" [class.is-invalid]="image.invalid && image.touched " required #image="ngModel" [(ngModel)]="advertisement.image" name="image" > -->
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
-						<button (click)="uploadFile()" 
-                                class="btn btn-success">
-                                                     Upload image
-                              </button>
 						<!-- <small class="text-danger"[class.d-none]="image.untouched || image.valid">advertisement Image is required</small> -->
 					</div>		
                     <div class="form-group">

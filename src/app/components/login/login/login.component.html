@@ -1,26 +1,42 @@
-<div class="wrapper" style="background-image: url('assets/images/bg-registration-form-1.jpg');">
-    <div class="inner">
-        <div class="image-holder">
-            <img src="assets/images/registration-form-1.jpg" alt="">
-        </div>
-        <form [formGroup]="LoginForm">
-            <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
-            <h3>Login Form</h3>
-            <div class="form-wrapper">
-                <input type="text" formControlName="userEmail" [class.is-invalid]="userEmail.invalid && userEmail.touched" placeholder="Email Address" class="form-control">
-                <i class="zmdi zmdi-email"></i>
-                <div *ngIf="userEmail.invalid && userEmail.touched">
-                    <small class="text-danger" *ngIf="userEmail.errors.required">User Email is required</small>
+<div class="limiter">
+    <div class="alert" *ngIf="invalidLogin">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Error: Email or Password incorrect!</span>
+     </div>
+        <div class="container-login100">
+            <div class="logo-wrapper text-center">
+                <div id="logo">
+                    <img src="assets/images/noon-logo.png">
                 </div>
+                <div id="txt_signin_welcome">Welcome back!</div>
+        </div>
+            <div class="wrap-login100">
+                <form [formGroup]="LoginForm" class="login100-form validate-form">
+    
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                        <input class="input100 form-control" type="text" required name="email" formControlName="userEmail" [class.is-invalid]="userEmail.invalid && userEmail.touched" >
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="far fa-eye"></i>
+                        </span>
+                        <input class="input100" type="password" name="pass" formControlName="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+                    <button class='text-center' [disabled]="!LoginForm.valid"  (click)="signIn()" id="login-btn" >sign In
+                    </button>
+    
+                    <div class="text-center p-t-115">
+                        <span class="txt1">
+                            Don’t have an account?
+                        </span>
+    
+                        <a class="txt2" a routerLink="/register">
+                            Sign Up
+                        </a>
+                    </div>
+                </form>
             </div>
-            <div class="form-wrapper">
-                <input formControlName="password" type="password" placeholder="Password" class="form-control">
-                <i class="zmdi zmdi-lock"></i>
-            </div>
-            <button (click)="signIn()" id="login-btn" >Login
-                <i class="zmdi zmdi-arrow-right"></i>
-            </button>
-           <span > If You Havn't an account</span><a routerLink="/register">Sign Up</a>
-        </form>
+        </div>
     </div>
-</div>

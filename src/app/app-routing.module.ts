@@ -11,6 +11,7 @@ import { UnathorizedPageComponent } from './components/unathorized-page/unathori
 import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component';
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 import { PaymentComponent } from './components/client/payment/payment.component';
+
 const routes: Routes = [ 
   {  
     path: 'login', 

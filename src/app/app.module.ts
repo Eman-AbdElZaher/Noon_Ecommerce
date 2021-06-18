@@ -50,6 +50,7 @@ import { PaymentComponent } from './components/client/payment/payment.component'
   NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent,
   SubcategoryproductComponent,
   PaymentComponent
+ 
   ],
   imports: [
     BrowserAnimationsModule,

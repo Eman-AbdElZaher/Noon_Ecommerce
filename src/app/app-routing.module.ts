@@ -11,7 +11,7 @@ import { UnathorizedPageComponent } from './components/unathorized-page/unathori
 import { CheckoutOrderComponent } from './components/client/checkout-order/checkout-order.component';
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 import { PaymentComponent } from './components/client/payment/payment.component';
-
+import { AllProductsComponent } from './components/client/all-products/all-products.component';
 const routes: Routes = [ 
   {  
     path: 'login', 
@@ -40,6 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/client/cart/cart.module')
       .then(mod => mod.CartModule)
   },
+  {path:'AllProduct',component:AllProductsComponent},
   {
     path: 'client',
     loadChildren: () => import('./components/client/client/client.module')

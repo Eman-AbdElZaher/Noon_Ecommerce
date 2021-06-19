@@ -101,4 +101,22 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+
+  getAllProductInSpacificBrand(subcategoryId:number,brandId:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/AllProductsInAspecificBrand?subcategoryid=${subcategoryId}&brandid=${brandId}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+
+  getAllProductInSpacificSize(subcategoryId:number,size:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductfilteredBySize?subcategoryid=${subcategoryId}&size=${size}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
 }

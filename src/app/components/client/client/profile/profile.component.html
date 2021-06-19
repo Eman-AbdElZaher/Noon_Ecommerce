@@ -1,0 +1,86 @@
+<nav>
+    <ul>
+        <li><a routerLink='/home'><i class="fas fa-home"></i></a></li>
+        <li><a routerLink='/cartproduct/show' ><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a routerLink='/wishlist'><i class="fas fa-heart"></i></a></li>
+        <li><a ><i class="fas fa-clipboard-list"></i></a></li>
+        <li><a (click)="signout()"><i class="fas fa-sign-out-alt"></i></a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="personal-info">
+        <div class="greeting-msg d-flex">
+            <div class='txt'>
+                <h2>Hello {{userName}}</h2>
+               <p>Lets Go to browse latest products</p>
+            </div>
+            <div class="img">
+                <img src="assets/images/add-cart.png" alt="welcome" width='200' hight='150'>
+            </div>
+        </div>
+        <div class="security-info d-flex">
+            <div class="email flex-grow-1">
+                <i class="fas fa-envelope"></i><span class="email-detail ml-2">{{userEmail}}</span>
+            </div>
+            <div class="reset-password">
+                <i class="fas fa-unlock"></i><span class='ml-2 reset-txt'><a href="#resetModal" data-toggle="modal">reset Password</a></span>
+            </div>
+        </div>
+    </div>
+    <div id="resetModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <h4 class="modal-title text-center">Reset Password</h4>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form #resetPaswordform="ngForm" (ngSubmit)="OnSubmit(resetPaswordform)">
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="far fa-eye"></i>
+                        </span>
+                        <input 
+                        class="input100"
+                         type="password"
+                          [class.is-invalid]="currentPassword.invalid && currentPassword.touched "
+                           required #currentPassword="ngModel" [(ngModel)]="userModel.currentPassword" name="currentPassword">
+                        <span class="focus-input100" data-placeholder=" Current Password"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="new password">
+                        <input 
+                        class="input100" 
+                        type="password" 
+                        [class.is-invalid]="newPassword.invalid && newPassword.touched " 
+                        required #newPassword="ngModel" [(ngModel)]="userModel.newPassword" name="newPassword">
+                        <span class="focus-input100" data-placeholder="New Password"></span>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <input
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                  value="Cancel"
+                />
+                <input
+                  type="submit"
+                  class="btn btn-success"
+                  value="Save"
+                  [disabled]="!resetPaswordform.valid"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { RestablePassword} from 'src/app/models/Classes/RestablePassword';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { ResetPasswordDto } from 'src/app/models/Interfaces/resetPassword';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -10,17 +11,26 @@ declare var $:any;
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  userModel=new RestablePassword('','');
   userName:string;
   userEmail:string;
+  userPassword:ResetPasswordDto;
+  PasswordChanged:boolean=false;
 
-  constructor(private _authentication:AuthenticationService) { }
+  constructor(
+    private _authentication:AuthenticationService,
+    private _router:Router,
+    private fb:FormBuilder
+    ) { }
 
   ngOnInit(): void {
-    this.resetForm();
     this.userName=this._authentication.getUserName();
     this.userEmail=this._authentication.getUserEmail();
   }
+  resetPaswordform=this.fb.group({
+    OldPassword:['',Validators.required],
+    newPassword:['',[Validators.required,Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$")]]
+  })
+  get formFields() { return this.resetPaswordform.controls; }
   ngAfterViewInit(){
     $(document).ready(function(){
       $('.input100').each(function(){
@@ -55,15 +65,25 @@ export class ProfileComponent implements OnInit {
     });
   }
   
-  resetForm(form? : NgForm){
-    if(form !=null)
-      form.reset();
-    this.userModel= {
-      currentPassword : '',
-      newPassword : ''
+  ResetPassword()
+  {
+    this.userPassword={
+      "currentPassword":this.formFields.OldPassword.value,
+      "newPassword":this.formFields.newPassword.value,
+     } 
+     console.log(this.userPassword);
+     this._authentication.ChangePassword(this.userPassword).subscribe(data=>{
+      if(data){
+        console.log(" Password changed successfully");
+        this.PasswordChanged=true;
+        this._authentication.logout();
+        this._router.navigate(["/login/login"]);
+      }
+    },(err)=>
+    {
+      console.log("not correct");
+    })
     }
-  }
-  OnSubmit(form : NgForm){}
   signout(){
     this._authentication.logout();
   }

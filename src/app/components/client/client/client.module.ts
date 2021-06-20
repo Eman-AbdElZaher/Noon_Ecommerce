@@ -10,10 +10,12 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubcategoryproductComponent } from '../subcategoryproduct/subcategoryproduct.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
-
+  {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]}
 ];
 @NgModule({
   declarations: [
@@ -21,15 +23,14 @@ const routes:Routes=[
     OffersComponent,
     CarouselComponent,
     ShowsubcategoryComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule,
-    BrowserAnimationsModule
-    
+    CarouselModule
   ],
   exports:[
     CarouselComponent,

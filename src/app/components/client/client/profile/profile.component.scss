@@ -1,0 +1,294 @@
+
+    $shadow-black-100:0 5px 15px rgba(0,0,0,0.1);
+    @font-face {
+        font-family: "Poppins-Regular";
+        src: url('/assets/fonts/poppins/Poppins-Regular.ttf');
+    }
+    @font-face {
+        font-family: "Poppins-SemiBold";
+        src: url('/assets/fonts/poppins/Poppins-SemiBold.ttf')
+    }
+    @font-face {
+        font-family:"Poppins-Medium";
+        src: url('/assets/fonts/poppins/Poppins-Medium.ttf'); 
+      }
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box
+}
+
+nav {
+    position: fixed;
+    width: 60px;
+    margin-top: 150px;
+    transition: all 0.3s linear;
+    border-radius:0 10px 10px 0;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .4);
+    overflow: hidden;
+    background-color:rgba(0, 0, 0, 0.9);
+}
+
+nav ul {
+    margin-top: 0;
+    margin-bottom: 0rem
+}
+
+nav li {
+    height: 50px;
+    position: relative
+}
+
+nav li a {
+    color: #fff !important;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 50px;
+    padding-left: 25%;
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+    transition: all .3s linear;
+    text-decoration: none !important
+}
+
+nav li a i {
+    position: absolute;
+    top: 14px;
+    left: 24px;
+    font-size: 15px;
+    transition: all 0.3s ease-in;
+}
+nav li:hover a i{
+    transform: scale(1.1);
+    color:#fcef40;
+}
+
+nav a:hover {
+    z-index: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3)
+}
+.container{
+    width:75%;
+    margin-left: 25%;
+    font-family: Poppins-Regular;
+    .greeting-msg{
+       margin-top: 70px;
+       padding:25px; 
+       background-color: #eaedf3;
+       border-radius: 10px;
+       width: 80%;
+       height:130px;
+       .txt{
+           flex:80%;
+        h2{
+            margin-bottom:20px;
+            font-size: 20px;
+        }
+        p{
+            font-size: 13px;
+        }
+       }
+    }
+}
+.img img{
+    max-width: 200px;
+    width:100%;
+    transform:translatey(-80px)
+}
+.security-info{
+    width:80%;
+    max-height:70px;
+    padding:15px;
+    font-size:13px;
+    margin-top:50px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+     i{
+        color:rgba(0, 132, 255, 0.836);
+        font-size:17px;
+    }
+    .reset-txt a:hover{
+         border:none;
+}
+}
+/* Modal styles */
+.modal .modal-dialog {
+	max-width: 400px;
+    margin: 200px auto;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}
+input {
+	outline: none;
+	border: none;
+}
+ input:focus {
+  border-color: transparent !important;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+input::-webkit-input-placeholder { color: #adadad;}
+input:-moz-placeholder { color: #adadad;}
+input::-moz-placeholder { color: #adadad;}
+input:-ms-input-placeholder { color: #adadad;}
+
+/*---------------------------------------------*/
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #e2e5f1;
+  margin-bottom: 37px;
+}
+
+.input100 {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: block;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  padding: 0 5px;
+}
+
+/*---------------------------------------------*/ 
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.focus-input100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  background: #6a7dfe;
+  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+  background: -o-linear-gradient(left, #21d4fd, #b721ff);
+  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
+  background: linear-gradient(left, #21d4fd, #b721ff);
+}
+
+.focus-input100::after {
+  font-family: Poppins-Regular;
+  color: #7e859b;
+  font-size: 13px;
+  line-height: 1.2;
+
+  content: attr(data-placeholder);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+  padding-left: 5px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100::after {
+  top: -19px;
+}
+
+.input100:focus + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 + .focus-input100::after {
+  top: -19px;
+}
+
+.has-val.input100 + .focus-input100::before {
+  width: 100%;
+}
+
+/*---------------------------------------------*/
+.btn-show-pass {
+  font-size: 15px;
+  color: #999999;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.btn-show-pass:hover {
+  color: #6a7dfe;
+  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+  color: -o-linear-gradient(left, #21d4fd, #b721ff);
+  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
+  color: linear-gradient(left, #21d4fd, #b721ff);
+}
+
+.btn-show-pass.active {
+  color: #6a7dfe;
+  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+  color: -o-linear-gradient(left, #21d4fd, #b721ff);
+  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
+  color: linear-gradient(left, #21d4fd, #b721ff);
+}

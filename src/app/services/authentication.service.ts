@@ -38,10 +38,10 @@ export class AuthenticationService {
   }));
    }
    private saveToken(authResult) {
-    //const expiresAt = authResult.token.expiration;
+    const expiresAt = authResult.token.expiration;
     console.log(authResult);
     localStorage.setItem('token', authResult.token.token);
-   //localStorage.setItem("expires_at", JSON.stringify(expiresAt));
+   localStorage.setItem("expires_at", JSON.stringify(expiresAt));
    
    }  
 
@@ -119,5 +119,19 @@ public isLoggedIn() {
     }
     return null;
 }
+ getUserEmail(){
+  if(localStorage.getItem('token')){
+    let token = localStorage.getItem('token');
+
+    let jwtData = token.split('.')[1]
+
+    let decodedJwtJsonData = window.atob(jwtData)
+
+    let decodedJwtData = JSON.parse(decodedJwtJsonData)
+    let email=decodedJwtData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
+    return email;
+}
+return null;
+ }
 
 }

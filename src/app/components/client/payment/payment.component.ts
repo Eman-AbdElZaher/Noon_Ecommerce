@@ -8,8 +8,13 @@ import{OrderService} from 'src/app/services/order.service';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+  Isvaild:Boolean=false;
+  
+  
 
-  constructor(private ffb:FormBuilder,private orderService:OrderService) { }
+  constructor(private ffb:FormBuilder,private orderService:OrderService) {
+
+   }
   PayForm=this.ffb.group(
     {
     UserName: ['', [Validators.required]],
@@ -49,6 +54,8 @@ export class PaymentComponent implements OnInit {
     // {
     this.orderService.CheckoutOrder().subscribe(
      data=>{console.log(data);
+      this.Isvaild=true;
+      
 
      }
     )

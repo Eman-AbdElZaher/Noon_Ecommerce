@@ -36,13 +36,9 @@ export class OrderComponent implements OnInit {
     this.orderService.getAllOrders().subscribe(
       serviceData=>
       {
-        this.OrderList=serviceData;
-      
+        this.OrderList=serviceData;     
       serviceData.forEach(element => {
         this.getUserByid(element.userID);
-
-
-        
         // serviceData=this.getUserByid(userID)
 
       });

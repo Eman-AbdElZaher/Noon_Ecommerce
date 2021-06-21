@@ -106,7 +106,7 @@
     width: 260px;
     height: 100%;
     max-height: 100%;
-    // position: fixed;
+    position: fixed;
     top: 0;
     left: -300px;
     // z-index: 999;
@@ -131,9 +131,9 @@
     position: relative;
   }
   
-  .sidebar-content.desktop {
-    overflow-y: hidden;
-  }
+  // .sidebar-content.desktop {
+  //   overflow-y: hidden;
+  // }
   
   /*--------------------sidebar-brand----------------------*/
   
@@ -157,7 +157,7 @@
   
   .sidebar-wrapper .sidebar-header {
     padding: 20px;
-    overflow: hidden;
+    // overflow: hidden;
   }
   
   .sidebar-wrapper .sidebar-header .user-pic {
@@ -168,7 +168,6 @@
     margin-right: 15px;
     overflow: hidden;
   }
-  
   .sidebar-wrapper .sidebar-header .user-pic img {
     object-fit: cover;
     height: 100%;
@@ -354,7 +353,7 @@
     display: inline-block;
     width: 100%;
     padding-left: 0px;
-    padding-top: 20px;
+    padding-top: 100px;
   }
   
   .page-wrapper .page-content > div {

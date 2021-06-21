@@ -21,8 +21,8 @@ export class ProductshomeComponent implements OnInit {
     autoplayTimeout: 3000,
 		autoplayHoverPause: true,
     dots: false,
-    autoplay:true,
-    navSpeed: 600,
+    autoplay:false,
+    navSpeed: 40,
     navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {

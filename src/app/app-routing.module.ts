@@ -12,6 +12,7 @@ import { CheckoutOrderComponent } from './components/client/checkout-order/check
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 import { PaymentComponent } from './components/client/payment/payment.component';
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Routes = [ 
   {  
     path: 'login', 
@@ -48,12 +49,14 @@ const routes: Routes = [
   },
   {path:'unathorized',component:UnathorizedPageComponent},
   {path:'home',component:HomeComponent},
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

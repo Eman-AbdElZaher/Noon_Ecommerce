@@ -35,7 +35,7 @@
                                     class="sc-1fy0rx2-1 liJOhO">
                                     <div class="sc-1fy0rx2-3 cfEypk">
                                         <div class="sc-1fy0rx2-3 cfEypk">
-                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Category</span></div><img
+                                            <div class="sc-1fy0rx2-3 cfEypk"><span>SubCategory</span></div><img
                                                 class="open"
                                                 src="https://z.nooncdn.com/s/app/com/noon/icons/down-chevron.svg"
                                                 alt="Category">
@@ -46,63 +46,15 @@
                                     <div class="sc-1uri7ei-0 bqLnwt">
                                         <ul class="level01">
                                             <li>
-                                                <div class="categoryLinkContainer  parent"><button type="button"
+                                                <div class="categoryLinkContainer  parent " *ngFor="let subcategory of subcategoryList"><button type="button"
                                                         data-qa="filter-cat-Beauty &amp; Health" id="beauty-and-health"
-                                                        class="categoryLink"><span id="beauty-and-health"
-                                                            class="linkText">Beauty &amp;
-                                                            Health</span><span id="beauty-and-health"
+                                                        class="categoryLink"><a routerLink="/subcategoryProduct/{{subcategory.id}}"><div id="beauty-and-health"  (click)="getAllProductInaSpecificSaubCategory()"
+                                                            class="linkText">{{subcategory.name}}</div></a><span id="beauty-and-health"
                                                             class="counter">(1548)</span></button></div>
-                                                <ul class="level02">
-                                                    <li>
-                                                        <div class="categoryLinkContainer  "
-                                                            title="Beauty &amp; Fragrance"><button type="button"
-                                                                data-qa="filter-cat-Beauty &amp; Fragrance"
-                                                                id="beauty-and-health/beauty" class="categoryLink"><span
-                                                                    id="beauty-and-health/beauty"
-                                                                    class="linkText">Beauty &amp;
-                                                                    Fragrance</span><span id="beauty-and-health/beauty"
-                                                                    class="counter">(1548)</span></button></div>
-                                                    </li>
-                                                </ul>
+                                              
+                                              
                                             </li>
-                                            <li>
-                                                <div class="categoryLinkContainer  parent"><button type="button"
-                                                        data-qa="filter-cat-Fashion" id="fashion"
-                                                        class="categoryLink"><span id="fashion"
-                                                            class="linkText">Fashion</span><span id="fashion"
-                                                            class="counter">(1441)</span></button></div>
-                                                <ul class="level02">
-                                                    <li>
-                                                        <div class="categoryLinkContainer  " title="Men's Fashion">
-                                                            <button type="button" data-qa="filter-cat-Men's Fashion"
-                                                                id="fashion/men-31225" class="categoryLink"><span
-                                                                    id="fashion/men-31225" class="linkText">Men's
-                                                                    Fashion</span><span id="fashion/men-31225"
-                                                                    class="counter">(819)</span></button>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="categoryLinkContainer  " title="Women's Clothing">
-                                                            <button type="button" data-qa="filter-cat-Women's Clothing"
-                                                                id="fashion/women-31229/clothing-16021"
-                                                                class="categoryLink"><span
-                                                                    id="fashion/women-31229/clothing-16021"
-                                                                    class="linkText">Women's Clothing</span><span
-                                                                    id="fashion/women-31229/clothing-16021"
-                                                                    class="counter">(379)</span></button>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="categoryLinkContainer  " title="Women's Fashion">
-                                                            <button type="button" data-qa="filter-cat-Women's Fashion"
-                                                                id="fashion/women-31229" class="categoryLink"><span
-                                                                    id="fashion/women-31229" class="linkText">Women's
-                                                                    Fashion</span><span id="fashion/women-31229"
-                                                                    class="counter">(495)</span></button>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                         
                                         </ul>
                                     </div>
                                 </div>
@@ -126,50 +78,12 @@
                                                     src="https://z.nooncdn.com/s/app/com/noon/icons/search.svg"
                                                     alt="search"></div><input type="text" placeholder="Search "
                                                 value="">
-                                        </div><label for="brand_adidas" data-qa="brand_adidas"
-                                            class="vcf78e-2 bXceLU"><span
+                                        </div><label for="brand_adidas" data-qa="brand_adidas" *ngFor="let brand of brandList"
+                                            class="vcf78e-2 bXceLU"><span 
                                                 style="display: flex; align-items: center;"><input id="brand_adidas"
                                                     type="checkbox" value="adidas" checked=""><img
                                                     src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">adidas</span><span>&nbsp;(70)</span></label><label
-                                            for="brand_maybelline_new_york" data-qa="brand_MAYBELLINE NEW YORK"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="brand_maybelline_new_york" type="checkbox"
-                                                    value="maybelline_new_york" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">MAYBELLINE NEW
-                                                YORK</span><span>&nbsp;(69)</span></label><label for="brand_reebok"
-                                            data-qa="brand_Reebok" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_reebok"
-                                                    type="checkbox" value="reebok" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Reebok</span><span>&nbsp;(33)</span></label><label
-                                            for="brand_casio" data-qa="brand_Casio" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_casio"
-                                                    type="checkbox" value="casio" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Casio</span><span>&nbsp;(29)</span></label><label
-                                            for="brand_essence" data-qa="brand_essence" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_essence"
-                                                    type="checkbox" value="essence" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">essence</span><span>&nbsp;(25)</span></label><label
-                                            for="brand_puma" data-qa="brand_PUMA" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_puma"
-                                                    type="checkbox" value="puma" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">PUMA</span><span>&nbsp;(24)</span></label><label
-                                            for="brand_garnier" data-qa="brand_GARNIER" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_garnier"
-                                                    type="checkbox" value="garnier" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">GARNIER</span><span>&nbsp;(19)</span></label><label
-                                            for="brand_skechers" data-qa="brand_SKECHERS" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="brand_skechers"
-                                                    type="checkbox" value="skechers" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">SKECHERS</span><span>&nbsp;(18)</span></label><button
+                                                    alt=""><span (click)="getProductsInBrand(brand.id)">{{brand.name}}</span></span><span>&nbsp;(70)</span></label><button
                                             type="button" data-qa="btn-see-all" class="limitToggle"
                                             aria-label="See All">See All</button>
                                     </div>
@@ -253,55 +167,13 @@
                                         </div>
                                     </div>
                                 </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div class="sc-1h366nc-0 dkdIPr">
+                                <div open="" class="sc-1fy0rx2-2 jiOBmh" >
+                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let product of productList">
                                         <div class="sc-1h366nc-1 fYgmSf"><label for="os"
-                                                class="sc-1h366nc-2 iwkAEu"><span class="sc-1h366nc-5 iURKir"><input
-                                                        type="checkbox" id="os" value="os" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>One Size </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(29)</span></p>
-                                                </span></label><label for="xs" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="xs"
-                                                        value="xs" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>XS </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(254)</span></p>
-                                                </span></label><label for="s" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="s" value="s"
-                                                        checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>S </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(375)</span></p>
-                                                </span></label><label for="m" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="m" value="m"
-                                                        checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>M </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(406)</span></p>
-                                                </span></label><label for="l" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="l" value="l"
-                                                        checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>L </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(342)</span></p>
-                                                </span></label><label for="xl" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="xl"
-                                                        value="xl" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>XL </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(302)</span></p>
-                                                </span></label><label for="2xl" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="2xl"
-                                                        value="2xl" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>2XL </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(220)</span></p>
-                                                </span></label><label for="3xl" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="3xl"
-                                                        value="3xl" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>3XL </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(115)</span></p>
-                                                </span></label><label for="4xl" class="sc-1h366nc-2 iwkAEu"><span
-                                                    class="sc-1h366nc-5 iURKir"><input type="checkbox" id="4xl"
-                                                        value="4xl" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>4XL </b><span
-                                                            class="sc-1h366nc-4 ehqPQo">(30)</span></p>
-                                                </span></label></div><button type="button" class="limitToggle"
-                                            aria-label="See All">See All</button>
+                                            (click)="getProductInSize(product.size)"
+                                                class="sc-1h366nc-2 iwkAEu"><span   class="sc-1h366nc-5 iURKir">
+                                                    <p class="sc-1h366nc-3 ciTngV"><b>{{product.size}}</b></p>
+                                                </span></label></div>
                                     </div>
                                 </div>
                             </div>

@@ -722,13 +722,13 @@ img {
     align-items: center;
 }
 .VwxqG.grid .productContainer {
-    flex: 0 0 33.3333%;
+   flex: 0 0 33.3333%;
     padding-left: 8px;
-   
 }
 
 .VwxqG .productContainer {
     padding-top: 8px;
+   
 }
 a {
     text-decoration: none;
@@ -741,7 +741,10 @@ a {
 }
 
 .diNcmV {
+    width: 30%;
     // height: 100%;
+    display: flex;
+    float: left;
     background-color: rgb(255, 255, 255);
     color: rgb(64, 69, 83);
     padding: 15px;
@@ -1145,55 +1148,4 @@ img {
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
-}
-.jbdANf {
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    margin: 12px 0px 5px;
-    -webkit-box-align: center;
-    align-items: center;
-}
-.gTtIeq {
-    display: flex;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 24px;
-}
-.izmBnU {
-    font-size: 1.16667rem;
-}
-.gGBkjq {
-    display: inline;
-}
-.gxmMDH {
-    display: inline;
-    margin: 6px;
-    font-weight: bold;
-}
-.gKfkyH {
-    display: flex;
-    flex-direction: row;
-    text-transform: uppercase;
-    font-size: 0.8571rem;
-}
-.ipYdIl {
-    display: flex;
-    justify-items: flex-end;
-}
-.dQUgnA {
-    display: flex;
-    flex-direction: row;
-}
-.hoBSmH {
-    white-space: nowrap;
-}
-.lbqSfp {
-    margin: 0px 10px;
-    font-weight: 800;
-    color: rgb(178, 187, 210);
 }

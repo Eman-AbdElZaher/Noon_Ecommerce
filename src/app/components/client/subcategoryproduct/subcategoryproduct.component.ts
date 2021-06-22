@@ -5,10 +5,12 @@ import { Product } from 'src/app/models/Classes/Product';
 import { ICategory } from 'src/app/models/Interfaces/ICategory';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ISubCategory } from 'src/app/models/Interfaces/ISubCategory';
+import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { BrandService } from 'src/app/services/brand.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
   selector: 'app-subcategoryproduct',
@@ -18,15 +20,17 @@ import { SubcategoryService } from 'src/app/services/subcategory.service';
 export class SubcategoryproductComponent implements OnInit {
   errorMsg='';
   subCategoryId:number;
- 
+ isfound:boolean=false;
   productList:IProduct[]=[];
+  productList2:IProduct[]=[];
   subcategoryList:ISubCategory[]=[];
   brandList:Ibrand[]=[];
   public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0};
   hasSubCayegoryProduct:boolean=false;
   content:string='';
   products:boolean=false;
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService) { }
+  supplierList:ISupplier[]=[];
+  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
     {
@@ -38,6 +42,7 @@ export class SubcategoryproductComponent implements OnInit {
     this.getAllProductInaSpecificSaubCategory();
     this.getAllSubCategory();
     this.getAllBrand();
+    this.GetAllSupplier();
     // this.getProductbuSubCategory(this.minprice,this.maxprice);
   }
 getAllProductInaSpecificSaubCategory()
@@ -47,6 +52,7 @@ getAllProductInaSpecificSaubCategory()
     {
 
       this.productList=data;
+      this.productList2=data;
       if(data.length!=0)
       {
         console.log(this.subCategoryId);
@@ -131,6 +137,12 @@ getProductsInBrand( brandID:number){
         this.productList=serviceData;
        console.log(brandID);
        console.log(this.subCategoryId);
+       this.isfound=true;
+      }
+      else{
+        console.log("befor.....");
+        this.isfound=false;
+        console.log("after.....");
       }
     },
     errorResponse=>
@@ -155,5 +167,20 @@ getProductInSize(productSize:number)
      this.errorMsg=errorResponse;
     })
   
+}
+GetAllSupplier(){
+  this.supplierService.getAllSupplier().subscribe(
+    serviceData=>
+    {
+      if(serviceData.length>0)
+      {
+        this.supplierList=serviceData;
+        
+      }
+    },
+    errorResponse=>
+    {
+     this.errorMsg=errorResponse;
+    })
 }
 }

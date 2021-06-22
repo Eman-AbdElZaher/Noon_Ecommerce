@@ -16,11 +16,13 @@ export class ImageComponent implements OnInit {
   //errorMsg="";
   imageList:IImage[]=[];
   hasImages:boolean=false;
+  noimageinproduct:boolean=false;
   productList:IProduct[]=[];
   ImagesCount:number;
   pageSize:number = 4;
   currentPageNumber:number = 1;
   numberOfPages:number; 
+  productsNames:string[]=[];
  
   constructor(
     private imageService:ImageService
@@ -32,7 +34,7 @@ export class ImageComponent implements OnInit {
     // this.imageService.refreshNeeded$.subscribe(()=>{
     //   this.GetAllImage()
     // })
-    // this.GetAllImage();
+    this.GetAllImage();
     this.getImageCount();
     this.getSelectedPage(1);
     this.reserform();
@@ -40,6 +42,7 @@ export class ImageComponent implements OnInit {
 
   }
   init(){
+    this.reserform();
     this.getImageCount();
     this.getSelectedPage(1);
     $('.close').click();
@@ -53,7 +56,16 @@ GetAllImage(){
       {
          this.imageList=serviceData;
         this.hasImages=true 
-      }
+        serviceData.forEach(image => {
+          this.productService.getProductById(image.productID).subscribe(
+            data => {
+               this.productsNames.push(data.name) 
+               console.log(this.productsNames);
+               console.log(data.name);
+            }
+          );
+        });
+      }     
     },
     errorResponse=>
     {
@@ -67,8 +79,7 @@ GetAllImage(){
     this.imageobj= {
       id:0,
       image:'',
-      productID:0
-      
+      productID:0     
     }
   }
   errorMsg='';
@@ -143,11 +154,15 @@ GetAllImage(){
          this.errorMsg=errorResponse;
         })
     }
-    ShowValue(productid){
+    imagesByProductsId(productid){
     console.log(productid.value);
       this.imageService.getImageProduct(productid.value).subscribe(
         data => {   
          this.imageList=data;
+         if(data.length==0)
+         {
+           this.noimageinproduct=true;
+         }
         },
         error=>
         {

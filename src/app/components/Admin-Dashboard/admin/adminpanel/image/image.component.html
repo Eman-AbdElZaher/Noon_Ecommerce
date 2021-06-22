@@ -1,11 +1,11 @@
 <div class="container-xl">
 	<div class="form-group">
-		<label>Product Name</label>
+		<label style="font-weight: bold;">Product Name</label>
 		<select  class="custom-select" class="form-control" required #productID >
 			<option *ngFor="let product of productList" [value]="product.id"  >{{product.name}}
 			</option>
 		</select><br><br>
-		<input type="submit" class="btn btn-info" (click)="ShowValue(productID)"  value="Show">
+		<input type="submit" class="btn btn-success" (click)="imagesByProductsId(productID)"  value="Show">
 	</div>	
 	<div class="table-responsive">
 		<div class="table-wrapper">
@@ -20,12 +20,12 @@
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover" *ngIf="hasImages">
+			<table class="table table-striped table-hover" *ngIf="hasImages ">
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Image</th>
-						<th>ProductID</th>
+						<th>Product</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -33,7 +33,7 @@
 					<tr>
 						<th scope="row">{{i+(pageSize*(currentPageNumber-1))+1}}</th>
 						<td><img src='http://localhost:61135/Resources/Images/{{imagee.image}}' width="50" height="50"/></td>
-						<td>{{imagee.productID}}</td>
+						<td>{{productsNames[i]}}</td>
 					
 						<td>
 							<a href="#editImageModal" (click)="EditImage(imagee.id,imagee)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -61,11 +61,12 @@
             </ul>
       </nav>        
 	</div>
-	<div class="row" *ngIf="!hasImages">
+	<div class="row" *ngIf="!hasImages || noimageinproduct">
         <div class="text-center alert alert-danger col-9 mx-auto">
             There's no Images to show
         </div>
-    </div>        
+    </div>   
+	
 </div>
 <!-- Add Modal HTML -->
 <div id="addImageModal" class="modal fade">
@@ -82,12 +83,15 @@
                             <label>Image</label>
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
                         </div>		
-                    <div class="form-group">
-						<label>ProductID</label>
-						<input type="number" class="form-control" [class.is-invalid]="productID.invalid && productID.touched " [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="imageobj.productID" name="productID">
-						<small class="text-danger"[class.d-none]="productID.untouched || productID.valid">Product ID is required</small>
-                   
-                    </div>		
+						<div class="form-group" [class.has-error]="product.touched && product.invalid">
+							<label>Product</label>
+							<select class="custom-select"  name="product" class="form-control"  [(ngModel)]="imageobj.productID" #product="ngModel" [class.is-invalid]="product.invalid && product.touched" required  >
+								<option *ngFor="let item of productList" [value]="item.id">
+									{{item.name}}
+								</option>
+							</select>
+							<small class="text-danger" [class.d-none]="product.untouched || product.valid" >Product is Required</small>
+						</div>		
 				</div>
 				<div class="modal-footer">
 					<input type="button" id='close' class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -111,12 +115,15 @@
 						<label>Image</label>
 						<input type="file" class="form-control" required name="image" (change)="onFileChange($event)" >
 					</div>		
-				<div class="form-group">
-					<label>ProductID</label>
-					<input type="number" class="form-control"  [class.is-invalid]="productID.invalid && productID.touched " required  #productID="ngModel" [(ngModel)]="imageobj.productID" name="productID">
-					<small class="text-danger"[class.d-none]="productID.untouched || productID.valid">Product ID is required</small>
-			   
-				</div>		
+					<div class="form-group" [class.has-error]="product.touched && product.invalid">
+						<label>Product</label>
+						<select class="custom-select"  name="product" class="form-control"  [(ngModel)]="imageobj.productID" #product="ngModel" [class.is-invalid]="product.invalid && product.touched" required  >
+							<option *ngFor="let item of productList" [value]="item.id">
+								{{item.name}}
+							</option>
+						</select>
+						<small class="text-danger" [class.d-none]="product.untouched || product.valid" >Product is Required</small>
+					</div>			
 				</div>
 				<div class="modal-footer">
 					<input type="button" id='close' class="btn btn-default" data-dismiss="modal" value="Cancel">

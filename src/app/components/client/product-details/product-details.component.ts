@@ -5,7 +5,7 @@ import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
-
+declare var $:any;
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -71,4 +71,13 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
   }
+  ngAfterViewInit(){
+    $(document).ready(function(){
+      $(document).ready(function () {
+        $(function () {
+          $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+        });
+      });
+    })}
+
 }

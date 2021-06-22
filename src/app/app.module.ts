@@ -30,6 +30,7 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 import { PaymentComponent } from './components/client/payment/payment.component';
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
+import { HeaderadminComponent } from './components/sharedComponent/headeradmin/headeradmin.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -51,7 +52,8 @@ import { AllProductsComponent } from './components/client/all-products/all-produ
   NavbarComponent,ShowReviewComponent,UpdateReviewComponent,CreateReviewComponent,
   SubcategoryproductComponent,
   PaymentComponent,
-  AllProductsComponent
+  AllProductsComponent,
+  HeaderadminComponent
   ],
   imports: [
     BrowserAnimationsModule,

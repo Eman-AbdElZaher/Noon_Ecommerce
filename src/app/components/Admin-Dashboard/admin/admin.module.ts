@@ -40,7 +40,8 @@ const routes:Routes=[
     {path:'orderdetails/:id',component:OrderDetailsComponent},
   ]
 },
-   {path:'',redirectTo:'panel',pathMatch:'full'}
+{path:'registeradmin',component:RegisteradminComponent},
+{path:'',redirectTo:'panel',pathMatch:'full'}
 ]
 
 @NgModule({

@@ -77,6 +77,7 @@ export class ProfileComponent implements OnInit {
         console.log(" Password changed successfully");
         this.PasswordChanged=true;
         this._authentication.logout();
+        
         this._router.navigate(["/login/login"]);
       }
     },(err)=>

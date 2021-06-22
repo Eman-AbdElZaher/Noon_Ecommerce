@@ -119,4 +119,57 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+
+  getAllProductInBrand(brandId:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductFilteredByBrandID?id=${brandId}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+
+  getAllProductInSize(size:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductFilteredBySizeonly?size=${size}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+
+  getAllProductInColor(color:string):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductFilteredByColor?color=${color}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+
+  getAllProductInTwoPrice(minprice:any,maxprice:any):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductFilteredByPrice?min_price=${minprice}&max_price=${maxprice}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+
+  getAllProductInSupplier(supplierId:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductFilteredBySupplier?supplierId=${supplierId}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
+   getAllProductCountInSubCategory(subCategoryId:number):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/GetAllProductCountinSubCategory?id=${subCategoryId}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
 }

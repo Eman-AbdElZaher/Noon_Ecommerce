@@ -168,7 +168,7 @@
                                     </div>
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh" >
-                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let product of productList">
+                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let product of productList2">
                                         <div class="sc-1h366nc-1 fYgmSf"><label for="os"
                                             (click)="getProductInSize(product.size)"
                                                 class="sc-1h366nc-2 iwkAEu"><span   class="sc-1h366nc-5 iURKir">
@@ -209,7 +209,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sc-1y4n57f-0 juQrmL">
+                        <!-- <div class="sc-1y4n57f-0 juQrmL">
                             <div data-qa="Department" class="sc-1fy0rx2-0 eSqSED"><button type="button"
                                     class="sc-1fy0rx2-1 liJOhO">
                                     <div class="sc-1fy0rx2-3 cfEypk">
@@ -451,10 +451,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-
+                </div>
+            </div>
+        </div>
     </section>
 
     <section style="margin-left:10px;float:left;">
@@ -469,6 +471,7 @@
                                     <div class="lazyload-wrapper">
                                         <div class="sc-1xjgu8-2 lgLLLe"><img width="100%" height="100%"
                                                 src="https://z.nooncdn.com/products/tr:n-t_240/v1602304052/N14428169A_1.jpg"
+                                            
                                                 alt="100% Pure Coconut Oil 200ml "></div>
                                     </div>
                                 </div>
@@ -523,9 +526,36 @@
                         </div>
                     </div>
                 </a></div>
+
         </div>
+     
     </section>
+   
+ 
+<!--     
+ <div class="modal" tabindex="-1" role="dialog"  *ngIf="!isfound">
+        <div class="modal-dialog" role="document" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Don't Found Products in this SubCategory with This Brand</p>
+            </div>
+            <div class="modal-footer">
+             
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>   -->
 </div>
+   
+
+
 
 
 <section *ngIf="!hasSubCayegoryProduct" class="wp1b4p-1 gcGfip">

@@ -172,4 +172,12 @@ export class ProductService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
+  getNewArrivalProduct(number:number):Observable<IProduct[]>
+  {
+     let _url=`http://localhost:61135/api/Product/LatestArrivals/${number}`
+     return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+     {
+       return throwError(err.message ||"Server Has Error Plz Try Again");
+     }));
+  }
 }

@@ -252,6 +252,7 @@ GetAllProduct(){
       this._uploadImageService.uploadImage(formDate).subscribe(
         data => {
          this.product.mainImage=this.imageFile.name;
+         console.log(this.imageFile);
         },
         error => {
           console.log(error)

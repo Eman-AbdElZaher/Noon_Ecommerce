@@ -168,11 +168,11 @@
                                     </div>
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh" >
-                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let product of productList2">
+                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let size of UniqeSize">
                                         <div class="sc-1h366nc-1 fYgmSf"><label for="os"
                                             (click)="getProductInSize(product.size)"
                                                 class="sc-1h366nc-2 iwkAEu"><span   class="sc-1h366nc-5 iURKir">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>{{product.size}}</b></p>
+                                                    <p class="sc-1h366nc-3 ciTngV"><b>{{size}}</b></p>
                                                 </span></label></div>
                                     </div>
                                 </div>
@@ -461,7 +461,7 @@
 
     <section style="margin-left:10px;float:left;">
         <div class="container mydiv" >
-            <div style="margin: 5px;float:left;" class="productContainer" *ngFor="let product of productList"><a
+            <div style="margin: 5px;display: flex;" class="productContainer" *ngFor="let product of productList"><a
                     href="/egypt-en/100-pure-coconut-oil-200ml/N14428169A/p?o=faba2a8780159cfc&amp;gclid=CjwKCAjw2ZaGBhBoEiwA8pfP_sKOUF_loPcTUDIQ2LoOiRskLCtiEsDD9RevPF0i1BYM8wfj0HL9OxoCGdkQAvD_BwE"
                     id="productBox-N14428169A">
                     <div class="kcs0h5-0 diNcmV grid" title="Parachute 100% Pure Coconut Oil 200ml ">
@@ -470,7 +470,7 @@
                                 <div class="sc-1xjgu8-0 jRkpWF">
                                     <div class="lazyload-wrapper">
                                         <div class="sc-1xjgu8-2 lgLLLe"><img width="100%" height="100%"
-                                                src="https://z.nooncdn.com/products/tr:n-t_240/v1602304052/N14428169A_1.jpg"
+                                                src="http://localhost:61135/Resources/Images/{{product.mainImage}}"
                                             
                                                 alt="100% Pure Coconut Oil 200ml "></div>
                                     </div>
@@ -532,26 +532,8 @@
     </section>
    
  
-<!--     
- <div class="modal" tabindex="-1" role="dialog"  *ngIf="!isfound">
-        <div class="modal-dialog" role="document" >
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Don't Found Products in this SubCategory with This Brand</p>
-            </div>
-            <div class="modal-footer">
-             
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>   -->
+    
+  
 </div>
    
 

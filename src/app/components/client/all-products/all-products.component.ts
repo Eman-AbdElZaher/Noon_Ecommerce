@@ -74,18 +74,7 @@ export class AllProductsComponent implements OnInit {
         {
           
         this.productList=data;
-       
-      
-        // for(let i=0;i<this.productList.length;i++)
-        // {
-        //   console.log(this.productList.length);
-        //   if(this.productList[i].size!==data[i+1].size)
-        //   {
-        //     console.log(this.productList.length);
-        //     this.productList2[i].size=this.productList[i].size;
-        //   }
-        // }
-         this.productList2=data;
+        this.productList2=data;
         console.log(this.productList);
         console.log(this.productList2);
         }

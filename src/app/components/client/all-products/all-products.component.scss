@@ -741,7 +741,7 @@ a {
 }
 
 .diNcmV {
-    width: 30%;
+    // width: 30%;
     // height: 100%;
     display: flex;
     float: left;
@@ -888,7 +888,8 @@ body {
 
 .mydiv {
     margin-top: 50px;
-    margin-bottom: 50px
+    margin-bottom: 50px;;
+    display: flex;
 }
 
 .cross {

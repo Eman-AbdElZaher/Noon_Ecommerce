@@ -30,19 +30,20 @@ export class SubcategoryproductComponent implements OnInit {
   content:string='';
   products:boolean=false;
   supplierList:ISupplier[]=[];
+  Allsize:string[]=[];
+  UniqeSize:string[]=[];
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
     {
       this.subCategoryId=parseInt(params.get('id'));
     })
-
-  
-
     this.getAllProductInaSpecificSaubCategory();
     this.getAllSubCategory();
     this.getAllBrand();
     this.GetAllSupplier();
+    this.getAllSizes();
+    console.log(this.Allsize);
     // this.getProductbuSubCategory(this.minprice,this.maxprice);
   }
 getAllProductInaSpecificSaubCategory()
@@ -55,7 +56,11 @@ getAllProductInaSpecificSaubCategory()
       this.productList2=data;
       if(data.length!=0)
       {
-        console.log(this.subCategoryId);
+          console.log(this.subCategoryId);
+          data.forEach(element=>{
+          this.Allsize.push(element.size);
+      })
+      this.UniqeSize = this.Allsize.filter((x, i, a) => a.indexOf(x) === i)
         this.hasSubCayegoryProduct=true;
       }
       else
@@ -132,17 +137,16 @@ getProductsInBrand( brandID:number){
   this.productservice.getAllProductInSpacificBrand(this.subCategoryId,brandID).subscribe(
     serviceData=>
     {
-      if(serviceData.length>0)
+      this.productList=serviceData;
+      if(serviceData.length==0)
       {
-        this.productList=serviceData;
-       console.log(brandID);
-       console.log(this.subCategoryId);
-       this.isfound=true;
+        this.hasSubCayegoryProduct=false;
+          this.content=`There is No Product in This Brand` ;
       }
-      else{
-        console.log("befor.....");
-        this.isfound=false;
-        console.log("after.....");
+        else
+        {
+         
+          this.hasSubCayegoryProduct=true;
       }
     },
     errorResponse=>
@@ -182,5 +186,14 @@ GetAllSupplier(){
     {
      this.errorMsg=errorResponse;
     })
+}
+getAllSizes()
+{
+  this.productList2.forEach(element=>{
+      this.Allsize.push(element.size);
+  })
+  console.log(this.productList2);
+  console.log(this.Allsize);
+  
 }
 }

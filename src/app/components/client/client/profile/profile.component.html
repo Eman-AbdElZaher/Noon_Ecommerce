@@ -1,0 +1,96 @@
+<nav>
+    <ul>
+        <li><a routerLink='/home'><i class="fas fa-home"></i></a></li>
+        <li><a routerLink='/cartproduct/show' ><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a routerLink='/wishlist'><i class="fas fa-heart"></i></a></li>
+        <li><a ><i class="fas fa-clipboard-list"></i></a></li>
+        <li><a (click)="signout()"><i class="fas fa-sign-out-alt"></i></a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="personal-info">
+        <div class="greeting-msg d-flex">
+            <div class='txt'>
+                <h2>Hello {{userName}}</h2>
+               <p>Lets Go to browse latest products</p>
+            </div>
+            <div class="img d-sm-none">
+                <img src="assets/images/add-cart.png" alt="welcome" width='200' hight='150'>
+            </div>
+        </div>
+        <div class="security-info d-flex">
+            <div class="email flex-md-grow-1">
+                <i class="fas fa-envelope"></i><span class="email-detail ml-2">{{userEmail}}</span>
+            </div>
+            <div class="reset-password">
+                <i class="fas fa-unlock"></i><span class='ml-2 reset-txt'><a href="#resetModal" data-toggle="modal">reset Password</a></span>
+            </div>
+        </div>
+    </div>
+    <div id="resetModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-center">Reset Password</h4>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]='resetPaswordform'>
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="far fa-eye"></i>
+                        </span>
+                        <input 
+                        class="input100"
+                         type="password"
+                         formControlName="OldPassword"
+                         name="OldPassword">
+                        <span class="focus-input100" data-placeholder=" Current Password"></span>
+                        <div class='validation' *ngIf="formFields.OldPassword.invalid && formFields.OldPassword.touched">
+                          <small class="text-danger" *ngIf="formFields.OldPassword.errors?.required"> Old Password Is
+                              Required</small>
+                      </div>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="new password">
+                        <input 
+                        class="input100" 
+                        type="password"
+                        formControlName='newPassword'
+                         name="newPassword">
+                        <span class="focus-input100" data-placeholder="New Password"></span>
+                        <div *ngIf="formFields.newPassword.invalid && formFields.newPassword.touched">
+                          <small class="text-danger" *ngIf="formFields.newPassword.errors?.required"> New Password Is Required</small>
+                          <small class="text-danger" *ngIf="formFields.newPassword.errors?.pattern"> Password should more
+                              than 7 letter and have UpperCase Letter & LowerCase Letter & nonalphaChar & number</small>
+      
+                      </div>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <input
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                  value="Cancel"
+                />
+                <input
+                  type="button"
+                  (click)='ResetPassword()'
+                  class="btn btn-success"
+                  value="Change"
+                  data-dismiss="modal"
+                  [disabled]="!resetPaswordform.valid"
+                />
+              </div>
+          </div>
+        </div>
+      </div>
+</div>

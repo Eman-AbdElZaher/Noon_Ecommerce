@@ -1,11 +1,12 @@
 <div *ngIf="!isAdmin">
-<!-- <div> -->
+<div>
 <app-header></app-header>
-<!-- <app-navbar></app-navbar>
-</div> -->
+<app-navbar></app-navbar>
+</div>
 <router-outlet></router-outlet>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>
 </div>
 <div *ngIf="isAdmin">
+    <app-headeradmin></app-headeradmin>
     <router-outlet></router-outlet>
 </div>

@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { ApiController } from '../controller/ApiController';
 import { ILogin } from '../models/Interfaces/ILogin';
+import { ResetPasswordDto } from '../models/Interfaces/resetPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -38,10 +40,10 @@ export class AuthenticationService {
   }));
    }
    private saveToken(authResult) {
-    //const expiresAt = authResult.token.expiration;
+    const expiresAt = authResult.token.expiration;
     console.log(authResult);
     localStorage.setItem('token', authResult.token.token);
-   //localStorage.setItem("expires_at", JSON.stringify(expiresAt));
+   localStorage.setItem("expires_at", JSON.stringify(expiresAt));
    
    }  
 
@@ -118,6 +120,28 @@ public isLoggedIn() {
         return name;
     }
     return null;
+}
+ getUserEmail(){
+  if(localStorage.getItem('token')){
+    let token = localStorage.getItem('token');
+
+    let jwtData = token.split('.')[1]
+
+    let decodedJwtJsonData = window.atob(jwtData)
+
+    let decodedJwtData = JSON.parse(decodedJwtJsonData)
+    let email=decodedJwtData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
+    return email;
+}
+  return null;
+ }
+ ChangePassword(userPassword){
+   let url=`${environment.API_URL}/api/Account/ResetPassword`;
+  return this._http.post<ResetPasswordDto>(url,userPassword).pipe(catchError(err=>
+    {
+        console.log(err);
+        return throwError(err.message||"an error occur")})
+  );
 }
 
 }

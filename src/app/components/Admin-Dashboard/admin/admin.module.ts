@@ -15,10 +15,12 @@ import { ImageComponent } from './adminpanel/image/image.component';
 import { AdvertisementComponent } from './adminpanel/advertisement/advertisement.component';
 import { OrderComponent } from './adminpanel/order/order.component';
 import { OrderDetailsComponent } from './adminpanel/order-details/order-details.component';
-
-
+import { RegisteradminComponent } from './adminpanel/registeradmin/registeradmin.component';
+import { AuthGuard } from 'src/app/auth/auth.guard';
+import { UserRoles } from 'src/app/models/Enums/UserRoles';
 const routes:Routes=[
-  {path:'panel',component:AdminpanelComponent,
+  {path:'panel',component:AdminpanelComponent,canActivate: [AuthGuard],
+  canActivateChild : [AuthGuard],data:{role: UserRoles.Admin},
   children:[
     {path:'brand',component:BrandComponent},
     {path:'maincategory',component:MaincategoryComponent},
@@ -58,6 +60,7 @@ const routes:Routes=[
     AdvertisementComponent,
     OrderComponent,
     OrderDetailsComponent,
+    RegisteradminComponent,
     
     
   ],

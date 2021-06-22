@@ -14,6 +14,11 @@ export class UserService {
   {
     return this.http.post(this._url,user);
   }
+  registerAdmin(user:Iuser)
+  {
+    let url="http://localhost:61135/api/Account/AdminRegister";
+    return this.http.post(url,user);
+  }
   getUserByid(id:string):Observable<Iuser>
   {
     return this.http.get<Iuser>(`http://localhost:61135/api/Account/${id}`).pipe(catchError((err)=>

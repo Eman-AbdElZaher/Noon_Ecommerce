@@ -49,6 +49,8 @@ export class AuthenticationService {
 
    logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("count");
+    localStorage.removeItem("countwishlist");
     localStorage.removeItem("expires_at");
     this.router.navigate(['/login/login']);
 }

@@ -62,7 +62,7 @@ export class RegisteradminComponent implements OnInit {
       userData=>
       {
         console.log(userData);
-        this.router.navigate(['dashboard/panel']);
+        this.router.navigate(['/login/login']);
       },
       errorResponse=>
       {

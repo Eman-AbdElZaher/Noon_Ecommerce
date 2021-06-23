@@ -167,15 +167,37 @@
                                         </div>
                                     </div>
                                 </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh" >
-                                    <div class="sc-1h366nc-0 dkdIPr" *ngFor="let size of UniqeSize">
-                                        <div class="sc-1h366nc-1 fYgmSf"><label for="os"
-                                            (click)="getProductInSize(product.size)"
-                                                class="sc-1h366nc-2 iwkAEu"><span   class="sc-1h366nc-5 iURKir">
-                                                    <p class="sc-1h366nc-3 ciTngV"><b>{{size}}</b></p>
-                                                </span></label></div>
+
+                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
+                                    <div data-qa="colour-filter" class="sc-1idsysv-0 kNNjWn">
+                                        <div class="sc-1idsysv-1 iYQcOb"><label *ngFor="let size of UniqeSize" for="black" data-qa="color-filter-Black"
+                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
+                                                        type="checkbox" id="black" value="black" checked=""><span
+                                                        class="sc-1idsysv-3 iDKSuK"></span>
+                                                    <div class="displayLableWrapper" (click)="getProductInSize(size)">
+                                                        <div class="displayLabel" >{{size}}</div>
+                                                        <div class="countWrapper">(405)</div>
+                                                    </div>
+                                                </span></label></div><button type="button" data-qa="btn-see-all"
+                                            class="limitToggle" aria-label="See All">See All</button>
                                     </div>
                                 </div>
+
+                                <!-- <div open="" class="sc-1fy0rx2-2 jiOBmh">
+                                    <div >
+                                        <div class="sc-1h366nc-1 fYgmSf"><label *ngFor="let size of UniqeSize" for="black" data-qa="color-filter-Black"
+                                            class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
+                                                    type="checkbox" id="black" value="black" checked=""><span
+                                                    class="sc-1idsysv-3 iDKSuK"><img
+                                                        src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/black.svg"
+                                                        alt="Black"></span>
+                                                <div class="displayLableWrapper">
+                                                    <div class="displayLabel" (click)="getProductInSize(size)">{{size}}</div>
+                                                    <div class="countWrapper">(405)</div>
+                                                </div>
+                                            </span></label></div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="sc-1y4n57f-0 juQrmL">
@@ -209,78 +231,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="sc-1y4n57f-0 juQrmL">
-                            <div data-qa="Department" class="sc-1fy0rx2-0 eSqSED"><button type="button"
-                                    class="sc-1fy0rx2-1 liJOhO">
-                                    <div class="sc-1fy0rx2-3 cfEypk">
-                                        <div class="sc-1fy0rx2-3 cfEypk">
-                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Department</span></div><img
-                                                class="open"
-                                                src="https://z.nooncdn.com/s/app/com/noon/icons/down-chevron.svg"
-                                                alt="Department">
-                                        </div>
-                                    </div>
-                                </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG"><label
-                                            for="fashion_department_women" data-qa="fashion_department_Women"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_women" type="checkbox" value="women"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Women</span><span>&nbsp;(473)</span></label><label
-                                            for="fashion_department_men" data-qa="fashion_department_Men"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_men" type="checkbox" value="men"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Men</span><span>&nbsp;(799)</span></label><label
-                                            for="fashion_department_girls" data-qa="fashion_department_Girls"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_girls" type="checkbox" value="girls"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Girls</span><span>&nbsp;(58)</span></label><label
-                                            for="fashion_department_boys" data-qa="fashion_department_Boys"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_boys" type="checkbox" value="boys"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Boys</span><span>&nbsp;(71)</span></label><label
-                                            for="fashion_department_baby_girls" data-qa="fashion_department_Baby Girls"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_baby_girls" type="checkbox"
-                                                    value="baby_girls" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Baby Girls</span><span>&nbsp;(2)</span></label><label
-                                            for="fashion_department_unisex" data-qa="fashion_department_Unisex"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_unisex" type="checkbox" value="unisex"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Unisex</span><span>&nbsp;(29)</span></label><label
-                                            for="fashion_department_kids_unisex"
-                                            data-qa="fashion_department_Kids Unisex" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="fashion_department_kids_unisex" type="checkbox"
-                                                    value="kids_unisex" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Kids Unisex</span><span>&nbsp;(9)</span></label></div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="sc-1y4n57f-0 juQrmL">
                             <div data-qa="Colour" class="sc-1fy0rx2-0 eSqSED"><button type="button"
                                     class="sc-1fy0rx2-1 liJOhO">
                                     <div class="sc-1fy0rx2-3 cfEypk">
                                         <div class="sc-1fy0rx2-3 cfEypk">
-                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Colour</span></div><img class="open"
+                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Color</span></div><img class="open"
                                                 src="https://z.nooncdn.com/s/app/com/noon/icons/down-chevron.svg"
                                                 alt="Colour">
                                         </div>
@@ -288,96 +245,15 @@
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
                                     <div data-qa="colour-filter" class="sc-1idsysv-0 kNNjWn">
-                                        <div class="sc-1idsysv-1 iYQcOb"><label for="black" data-qa="color-filter-Black"
+                                        <div class="sc-1idsysv-1 iYQcOb"><label *ngFor="let color of UniqeColor" for="black" data-qa="color-filter-Black"
                                                 class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
                                                         type="checkbox" id="black" value="black" checked=""><span
                                                         class="sc-1idsysv-3 iDKSuK"><img
                                                             src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/black.svg"
                                                             alt="Black"></span>
                                                     <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Black</div>
+                                                        <div class="displayLabel">{{color}}</div>
                                                         <div class="countWrapper">(405)</div>
-                                                    </div>
-                                                </span></label><label for="white" data-qa="color-filter-White"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="white" value="white" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/white.svg"
-                                                            alt="White"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">White</div>
-                                                        <div class="countWrapper">(266)</div>
-                                                    </div>
-                                                </span></label><label for="blue" data-qa="color-filter-Blue"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="blue" value="blue" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/blue.svg"
-                                                            alt="Blue"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Blue</div>
-                                                        <div class="countWrapper">(245)</div>
-                                                    </div>
-                                                </span></label><label for="multicolour"
-                                                data-qa="color-filter-Multicolour" class="sc-1idsysv-2 jFWaGI"><span
-                                                    class="sc-1idsysv-4 ekLmob"><input type="checkbox" id="multicolour"
-                                                        value="multicolour" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/multicolour.svg"
-                                                            alt="Multicolour"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Multicolour</div>
-                                                        <div class="countWrapper">(213)</div>
-                                                    </div>
-                                                </span></label><label for="grey" data-qa="color-filter-Grey"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="grey" value="grey" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/grey.svg"
-                                                            alt="Grey"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Grey</div>
-                                                        <div class="countWrapper">(168)</div>
-                                                    </div>
-                                                </span></label><label for="beige" data-qa="color-filter-Beige"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="beige" value="beige" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/beige.svg"
-                                                            alt="Beige"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Beige</div>
-                                                        <div class="countWrapper">(155)</div>
-                                                    </div>
-                                                </span></label><label for="brown" data-qa="color-filter-Brown"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="brown" value="brown" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/brown.svg"
-                                                            alt="Brown"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Brown</div>
-                                                        <div class="countWrapper">(115)</div>
-                                                    </div>
-                                                </span></label><label for="pink" data-qa="color-filter-Pink"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="pink" value="pink" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/pink.svg"
-                                                            alt="Pink"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Pink</div>
-                                                        <div class="countWrapper">(111)</div>
-                                                    </div>
-                                                </span></label><label for="green" data-qa="color-filter-Green"
-                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
-                                                        type="checkbox" id="green" value="green" checked=""><span
-                                                        class="sc-1idsysv-3 iDKSuK"><img
-                                                            src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/green.svg"
-                                                            alt="Green"></span>
-                                                    <div class="displayLableWrapper">
-                                                        <div class="displayLabel">Green</div>
-                                                        <div class="countWrapper">(78)</div>
                                                     </div>
                                                 </span></label></div><button type="button" data-qa="btn-see-all"
                                             class="limitToggle" aria-label="See All">See All</button>
@@ -397,65 +273,25 @@
                                     </div>
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG"><label for="partner_p_1"
-                                            data-qa="partner_noon" class="vcf78e-2 bXceLU"><span
+                                    <div>
+                                    <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG" *ngFor="let supplier of supplierList"><label for="partner_p_1"
+                                            data-qa="partner_noon" class="vcf78e-2 bXceLU" (click)="getAllProductsInSupplier(supplier.id)"><span
                                                 style="display: flex; align-items: center;"><input id="partner_p_1"
                                                     type="checkbox" value="p_1" checked=""><img
                                                     src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">noon</span><span>&nbsp;(323)</span></label><label
-                                            for="partner_p_17736" data-qa="partner_Defacto"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_17736"
-                                                    type="checkbox" value="p_17736" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Defacto</span><span>&nbsp;(2207)</span></label><label
-                                            for="partner_p_9405" data-qa="partner_noon Fashion"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_9405"
-                                                    type="checkbox" value="p_9405" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">noon Fashion</span><span>&nbsp;(895)</span></label><label
-                                            for="partner_p_9404" data-qa="partner_noon" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_9404"
-                                                    type="checkbox" value="p_9404" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">noon</span><span>&nbsp;(694)</span></label><label
-                                            for="partner_p_19044" data-qa="partner_CAESAR" class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_19044"
-                                                    type="checkbox" value="p_19044" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">CAESAR</span><span>&nbsp;(225)</span></label><label
-                                            for="partner_p_23834" data-qa="partner_Limitlessmarket"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_23834"
-                                                    type="checkbox" value="p_23834" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Limitlessmarket</span><span>&nbsp;(191)</span></label><label
-                                            for="partner_p_14618" data-qa="partner_El Mesery"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_14618"
-                                                    type="checkbox" value="p_14618" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">El Mesery</span><span>&nbsp;(179)</span></label><label
-                                            for="partner_p_9503" data-qa="partner_noon Grocery"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input id="partner_p_9503"
-                                                    type="checkbox" value="p_9503" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">noon
-                                                Grocery</span><span>&nbsp;(172)</span></label><button type="button"
+                                                    alt="">{{supplier.name}}</span><span>&nbsp;(323)</span></label>
+                                                </div>
+                                                    <button type="button"
                                             data-qa="btn-see-all" class="limitToggle" aria-label="See All">See
                                             All</button></div>
                                 </div>
                             </div>
                         </div>
+                  
                     </div>
                 </div>
-            </div> -->
-
-        </div>
-                </div>
             </div>
+            
         </div>
     </section>
 

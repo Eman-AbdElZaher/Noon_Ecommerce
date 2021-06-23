@@ -164,14 +164,17 @@
                                     </div>
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div class="sc-1h366nc-0 dkdIPr" >
-                                        <div class="sc-1h366nc-1 fYgmSf" *ngFor="let product of productList2"><label for="os"
-                                                class="sc-1h366nc-2 iwkAEu"><span class="sc-1h366nc-5 iURKir"><input
-                                                        type="checkbox" id="os" value="os" checked="">
-                                                    <p class="sc-1h366nc-3 ciTngV"><span
-                                                            class="sc-1h366nc-4 ehqPQo" (click)="getAllProductsInsize(product.size)">{{product.size}} </span></p>
-                                                </span></label></div><button type="button" class="limitToggle"
-                                            aria-label="See All">See All</button>
+                                    <div data-qa="colour-filter" class="sc-1idsysv-0 kNNjWn">
+                                        <div class="sc-1idsysv-1 iYQcOb"><label *ngFor="let size of UniqeSize" for="black" data-qa="color-filter-Black"
+                                                class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
+                                                        type="checkbox" id="black" value="black" checked=""><span
+                                                        class="sc-1idsysv-3 iDKSuK"></span>
+                                                    <div class="displayLableWrapper" (click)="getAllProductsInsize(size)">
+                                                        <div class="displayLabel" >{{size}}</div>
+                                                        <div class="countWrapper">(405)</div>
+                                                    </div>
+                                                </span></label></div><button type="button" data-qa="btn-see-all"
+                                            class="limitToggle" aria-label="See All">See All</button>
                                     </div>
                                 </div>
                             </div>
@@ -221,14 +224,14 @@
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
                                     <div data-qa="colour-filter" class="sc-1idsysv-0 kNNjWn">
-                                        <div class="sc-1idsysv-1 iYQcOb" *ngFor="let product of productList2"><label for="black" data-qa="color-filter-Black"
+                                        <div class="sc-1idsysv-1 iYQcOb"><label *ngFor="let color of UniqeColor" for="black" data-qa="color-filter-Black"
                                                 class="sc-1idsysv-2 jFWaGI"><span class="sc-1idsysv-4 ekLmob"><input
                                                         type="checkbox" id="black" value="black" checked=""><span
                                                         class="sc-1idsysv-3 iDKSuK"><img
                                                             src="https://z.nooncdn.com/cms/pages/20181025/0ce4c3a5d392155933d4571ef91fc179/black.svg"
                                                             alt="Black"></span>
-                                                    <div class="displayLableWrapper" (click)="getAllProductsInColor(product.color)">
-                                                        <div class="displayLabel" >{{product.color}}</div>
+                                                    <div class="displayLableWrapper" (click)="getAllProductsInColor(color)">
+                                                        <div class="displayLabel">{{color}}</div>
                                                         <div class="countWrapper">(405)</div>
                                                     </div>
                                                 </span></label></div><button type="button" data-qa="btn-see-all"

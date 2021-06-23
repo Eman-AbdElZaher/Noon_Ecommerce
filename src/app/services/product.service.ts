@@ -111,7 +111,7 @@ export class ProductService {
     }));
   }
 
-  getAllProductInSpacificSize(subcategoryId:number,size:number):Observable<IProduct[]>
+  getAllProductInSpacificSize(subcategoryId:number,size:any):Observable<IProduct[]>
   {
     let _url=`http://localhost:61135/api/Product/GetAllProductfilteredBySize?subcategoryid=${subcategoryId}&size=${size}`;
     return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
@@ -129,7 +129,7 @@ export class ProductService {
     }));
   }
 
-  getAllProductInSize(size:number):Observable<IProduct[]>
+  getAllProductInSize(size:any):Observable<IProduct[]>
   {
     let _url=`http://localhost:61135/api/Product/GetAllProductFilteredBySizeonly?size=${size}`;
     return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>

@@ -32,6 +32,8 @@ export class SubcategoryproductComponent implements OnInit {
   supplierList:ISupplier[]=[];
   Allsize:string[]=[];
   UniqeSize:string[]=[];
+  Allcolor:string[]=[];
+  UniqeColor:string[]=[];
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
@@ -42,7 +44,7 @@ export class SubcategoryproductComponent implements OnInit {
     this.getAllSubCategory();
     this.getAllBrand();
     this.GetAllSupplier();
-    this.getAllSizes();
+    //this.getAllSizes();
     console.log(this.Allsize);
     // this.getProductbuSubCategory(this.minprice,this.maxprice);
   }
@@ -59,8 +61,10 @@ getAllProductInaSpecificSaubCategory()
           console.log(this.subCategoryId);
           data.forEach(element=>{
           this.Allsize.push(element.size);
+          this.Allcolor.push(element.color);
       })
-      this.UniqeSize = this.Allsize.filter((x, i, a) => a.indexOf(x) === i)
+      this.UniqeSize = this.Allsize.filter((x, i, a) => a.indexOf(x) === i);
+      this.UniqeColor=this.Allcolor.filter((x, i, a) => a.indexOf(x) === i);
         this.hasSubCayegoryProduct=true;
       }
       else
@@ -154,7 +158,7 @@ getProductsInBrand( brandID:number){
      this.errorMsg=errorResponse;
     })
 }
-getProductInSize(productSize:number)
+getProductInSize(productSize:any)
 {
   this.productservice.getAllProductInSpacificSize(this.subCategoryId,productSize).subscribe(
     serviceData=>
@@ -187,13 +191,28 @@ GetAllSupplier(){
      this.errorMsg=errorResponse;
     })
 }
-getAllSizes()
+getAllProductsInSupplier(SupplierId:number)
 {
-  this.productList2.forEach(element=>{
-      this.Allsize.push(element.size);
-  })
-  console.log(this.productList2);
-  console.log(this.Allsize);
-  
-}
+  this.productservice.getAllProductInSpacificSupplier(this.subCategoryId,SupplierId).subscribe(
+    serviceData=>
+    {
+      this.productList=serviceData;
+      console.log(this.subCategoryId);
+      console.log(SupplierId);
+      if(serviceData.length==0)
+      {
+        this.hasSubCayegoryProduct=false;
+          this.content=`There is No Product in This Supplier` ;
+      }
+        else
+        {
+         
+          this.hasSubCayegoryProduct=true;
+      }
+    },
+    errorResponse=>
+    {
+     this.errorMsg=errorResponse;
+    })
+  }
 }

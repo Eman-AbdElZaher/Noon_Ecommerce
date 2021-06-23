@@ -26,6 +26,10 @@ export class AllProductsComponent implements OnInit {
   products:boolean=false;
   supplierList:ISupplier[]=[];
   count:number;
+  Allsize:string[]=[];
+  UniqeSize:string[]=[];
+  Allcolor:string[]=[];
+  UniqeColor:string[]=[];
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService) { }
 
   ngOnInit(): void {
@@ -77,7 +81,18 @@ export class AllProductsComponent implements OnInit {
         this.productList2=data;
         console.log(this.productList);
         console.log(this.productList2);
+        data.forEach(element=>{
+          this.Allsize.push(element.size);
+          this.Allcolor.push(element.color);
+      })
+      this.UniqeSize = this.Allsize.filter((x, i, a) => a.indexOf(x) === i);
+      this.UniqeColor=this.Allcolor.filter((x, i, a) => a.indexOf(x) === i);
+        this.hasSubCayegoryProduct=true;
+
+
         }
+
+        
       },
       errorResponse=>
       {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ProductService } from 'src/app/services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+declare var $:any;
 @Component({
   selector: 'app-productshome',
   templateUrl: './productshome.component.html',
@@ -16,13 +17,13 @@ export class ProductshomeComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    stagePadding:330,
+    stagePadding:310,
     margin:0,
     autoplayTimeout: 3000,
 		autoplayHoverPause: true,
     dots: false,
-    autoplay:false,
-    navSpeed: 40,
+    autoplay:true,
+    navSpeed: 600,
     navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {
@@ -50,6 +51,7 @@ export class ProductshomeComponent implements OnInit {
     })
     this.getallProduct();
   }
+ 
 getallProduct()
 {
   this.serviceProduct.getAllProduct().subscribe(

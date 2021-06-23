@@ -31,6 +31,7 @@ import { SubcategoryproductComponent } from './components/client/subcategoryprod
 import { PaymentComponent } from './components/client/payment/payment.component';
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
 import { HeaderadminComponent } from './components/sharedComponent/headeradmin/headeradmin.component';
+import { NewarrivalComponent } from './components/client/newarrival/newarrival.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -53,7 +54,8 @@ import { HeaderadminComponent } from './components/sharedComponent/headeradmin/h
   SubcategoryproductComponent,
   PaymentComponent,
   AllProductsComponent,
-  HeaderadminComponent
+  HeaderadminComponent,
+  NewarrivalComponent
   ],
   imports: [
     BrowserAnimationsModule,

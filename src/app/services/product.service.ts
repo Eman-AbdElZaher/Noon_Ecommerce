@@ -180,4 +180,8 @@ export class ProductService {
        return throwError(err.message ||"Server Has Error Plz Try Again");
      }));
   }
+  // getAllProductInSpacificSupplier(subCategoryId:number,SupplierId)
+  // {
+
+  // }
 }

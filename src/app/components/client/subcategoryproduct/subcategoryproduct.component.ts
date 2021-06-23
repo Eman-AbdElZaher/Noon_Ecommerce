@@ -191,28 +191,28 @@ GetAllSupplier(){
      this.errorMsg=errorResponse;
     })
 }
-getAllProductsInSupplier(SupplierId:number)
-{
-  this.productservice.getAllProductInSpacificSupplier(this.subCategoryId,SupplierId).subscribe(
-    serviceData=>
-    {
-      this.productList=serviceData;
-      console.log(this.subCategoryId);
-      console.log(SupplierId);
-      if(serviceData.length==0)
-      {
-        this.hasSubCayegoryProduct=false;
-          this.content=`There is No Product in This Supplier` ;
-      }
-        else
-        {
+// getAllProductsInSupplier(SupplierId:number)
+// {
+//   this.productservice.getAllProductInSpacificSupplier(this.subCategoryId,SupplierId).subscribe(
+//     serviceData=>
+//     {
+//       this.productList=serviceData;
+//       console.log(this.subCategoryId);
+//       console.log(SupplierId);
+//       if(serviceData.length==0)
+//       {
+//         this.hasSubCayegoryProduct=false;
+//           this.content=`There is No Product in This Supplier` ;
+//       }
+//         else
+//         {
          
-          this.hasSubCayegoryProduct=true;
-      }
-    },
-    errorResponse=>
-    {
-     this.errorMsg=errorResponse;
-    })
-  }
+//           this.hasSubCayegoryProduct=true;
+//       }
+//     },
+//     errorResponse=>
+//     {
+//      this.errorMsg=errorResponse;
+//     })
+//   }
 }

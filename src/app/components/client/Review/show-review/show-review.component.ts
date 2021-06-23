@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HubConnection } from '@aspnet/signalr';
 
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/models/Classes/Review';
@@ -31,10 +32,7 @@ export class ShowReviewComponent implements OnInit {
         this.msgerror = error;
 
       }
-
-
     )
-
   }
 
   deleteReview(id:number)

@@ -166,6 +166,7 @@ export class ShowCartProductsComponent implements OnInit {
         return error;
       }
     )
+    localStorage.setItem('count',JSON.stringify(0));
   }
 
 }

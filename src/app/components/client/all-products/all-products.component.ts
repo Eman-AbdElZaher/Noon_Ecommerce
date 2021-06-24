@@ -8,6 +8,7 @@ import { BrandService } from 'src/app/services/brand.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
+import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 
 @Component({
   selector: 'app-all-products',
@@ -30,7 +31,7 @@ export class AllProductsComponent implements OnInit {
   UniqeSize:string[]=[];
   Allcolor:string[]=[];
   UniqeColor:string[]=[];
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService) { }
+  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService,private whishlistservice:WishlistProductService) { }
 
   ngOnInit(): void {
    
@@ -38,6 +39,7 @@ export class AllProductsComponent implements OnInit {
     this.getAllBrand();
     this.getAllProducts();
     this.GetAllSupplier();
+   
     
   }
   getAllSubCategory(){
@@ -310,4 +312,21 @@ getProductCountInSubCategory(subcategoryId:number){
     }
    )
 }
+
+addToWishist(productid:number)
+{
+  this.whishlistservice.addWishlistProduct(productid).subscribe
+  (
+    data=>
+    {
+      console.log(data);
+      console.log(productid);
+    },
+    error=>
+    {
+      console.log(error);
+    }
+  )
+}
+
 }

@@ -1,9 +1,10 @@
 <div class="sc-gsxnyZ eMyRzl"><div class="sc-gsTCUz bhdLno"><h3 class="sc-dlfnbm eFXxew">New Arrivals</h3><div class="sc-hKgILt jIlrKS"><a routerLink="/AllProduct">Shop Now</a></div></div></div>
 <div class="row">
-        <div  style="display: flex;" class="productContainer col-md-3" *ngFor="let newArrival of newArrivals"><a
-                href="/egypt-en/100-pure-coconut-oil-200ml/N14428169A/p?o=faba2a8780159cfc&amp;gclid=CjwKCAjw2ZaGBhBoEiwA8pfP_sKOUF_loPcTUDIQ2LoOiRskLCtiEsDD9RevPF0i1BYM8wfj0HL9OxoCGdkQAvD_BwE"
+        <div  style="display: flex;" class="productContainer col-md-3" *ngFor="let newArrival of newArrivals"><a 
+            routerLink="productPage/{{newArrival.id}}"
+             
                 id="productBox-N14428169A">
-                <div class="kcs0h5-0 diNcmV grid" title="Parachute 100% Pure Coconut Oil 200ml ">
+                <div class="kcs0h5-0 diNcmV grid"  title="Parachute 100% Pure Coconut Oil 200ml ">
                     <div class="e3js0d-0 cVjNKv">
                         <div data-qa-id="productImagePLP_100% Pure Coconut Oil 200ml ">
                             <div class="sc-1xjgu8-0 jRkpWF">
@@ -14,7 +15,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="e3js0d-1 efqIDW"><button type="button" class="e3js0d-3 lcZUZz"><img
+                        <div class="e3js0d-1 efqIDW"><button type="button" class="e3js0d-3 lcZUZz" (click)="addToWishist(newArrival.id)"><img
                                     src="https://z.nooncdn.com/s/app/com/noon/icons/wishlist.svg"
                                     alt="wishlist"></button></div>
                         <div class="e3js0d-4 gXZEZv"></div>

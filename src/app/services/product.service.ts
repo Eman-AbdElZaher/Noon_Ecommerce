@@ -180,7 +180,6 @@ export class ProductService {
        return throwError(err.message ||"Server Has Error Plz Try Again");
      }));
   }
-<<<<<<< HEAD
 
   getAllProductInSpacificSupplier(subcategoryId:number,supplierId:number):Observable<IProduct[]>
   {
@@ -190,10 +189,4 @@ export class ProductService {
        return throwError(err.message ||"Server Has Error Plz Try Again");
      }));
   }
-=======
-  // getAllProductInSpacificSupplier(subCategoryId:number,SupplierId)
-  // {
-
-  // }
->>>>>>> 0862584747fb595ac0f2bd35deca9aea4fbce94a
 }

@@ -13,6 +13,7 @@ import {Iuser} from 'src/app/models/Interfaces/iuser';
 })
 export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
+ isLoading:boolean=true;
   //errorMsg="";
  OrderList:Order[]=[];
  User:Iuser= {
@@ -37,6 +38,7 @@ export class OrderComponent implements OnInit {
       serviceData=>
       {
         this.OrderList=serviceData;
+        this.isLoading=false;
       
       serviceData.forEach(element => {
         this.getUserByid(element.userID);

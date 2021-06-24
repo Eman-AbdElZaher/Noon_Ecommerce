@@ -23,6 +23,7 @@ export class ImageComponent implements OnInit {
   currentPageNumber:number = 1;
   numberOfPages:number; 
   productsNames:string[]=[];
+  isLoading: boolean=true;
  
   constructor(
     private imageService:ImageService
@@ -197,6 +198,7 @@ GetAllImage(){
       this.imageService.getImagesByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.imageList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)

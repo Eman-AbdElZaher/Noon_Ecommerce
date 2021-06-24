@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   currentPageNumber:number = 1;
   numberOfPages:number; 
   imageFile!: File;
+  isLoading:boolean=true;
   constructor(
     private productService:ProductService,
     private brandService:BrandService,
@@ -233,6 +234,7 @@ GetAllProduct(){
       this.productService.getProductByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.productList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)

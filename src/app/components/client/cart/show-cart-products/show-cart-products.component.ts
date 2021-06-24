@@ -21,6 +21,7 @@ export class ShowCartProductsComponent implements OnInit {
   public Products: Product[] = [];
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
+  isLoading:boolean=true;
   
   constructor(private AuthService:AuthenticationService, private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
@@ -47,7 +48,7 @@ export class ShowCartProductsComponent implements OnInit {
     this.cartProductsevice.getAllCartProduct(this.cartid).subscribe(
       data => {
         this.cartProducts = data;
-
+        this.isLoading=false;
         data.forEach(element => {
           this.getProduct(element.productId);
 

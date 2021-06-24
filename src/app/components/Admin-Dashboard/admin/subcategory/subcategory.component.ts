@@ -21,6 +21,7 @@ export class SubcategoryComponent implements OnInit {
   errorMsg:string;
   updatesubCategoryClicked:boolean=false;
   hasCategories:boolean=false;
+  isLoading:boolean=true;
   SubcategoryForm = this.fb.group({
     name: ['', [Validators.required]],
     image: ['', [Validators.required]],
@@ -218,6 +219,7 @@ export class SubcategoryComponent implements OnInit {
           this._categoryservice.getCategoryById(cat.categoryID).subscribe(
             data => {
                this.categories.push(data.name) 
+               this.isLoading=false;
             }
           );
         });

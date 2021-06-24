@@ -35,6 +35,7 @@ export class SubcategoryproductComponent implements OnInit {
   UniqeSize:string[]=[];
   Allcolor:string[]=[];
   UniqeColor:string[]=[];
+  isLoading:boolean=true;
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService,private whislistservice:WishlistProductService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
@@ -56,6 +57,7 @@ getAllProductInaSpecificSaubCategory()
     {
 
       this.productList=data;
+      this.isLoading=false;
       this.productList2=data;
       if(data.length!=0)
       {
@@ -88,6 +90,7 @@ getProductbuSubCategory(minprice,maxprice)
     data=>
     {
       this.productList=data;
+      this.isLoading=false;
       if(data.length==0)
       {
         this.hasSubCayegoryProduct=false;

@@ -17,6 +17,7 @@ brandForm: FormGroup;
   pageSize:number = 4;
   currentPageNumber:number = 1;
   numberOfPages:number; 
+  isLoading:boolean=true;
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
@@ -137,6 +138,7 @@ brandForm: FormGroup;
       this.brandService.getBrandByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.brandtList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)

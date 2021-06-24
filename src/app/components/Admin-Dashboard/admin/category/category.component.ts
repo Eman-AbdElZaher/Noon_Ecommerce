@@ -33,6 +33,7 @@ export class CategoryComponent implements OnInit {
   pageSize:number = 4;
   currentPageNumber:number = 1;
   numberOfPages:number; 
+  isLoading:boolean=true;
   get formFields() { return this.categoryForm.controls;}
   constructor(
     private fb: FormBuilder,
@@ -211,6 +212,7 @@ export class CategoryComponent implements OnInit {
           this._maincategoryservice.getMainCategoryById(cat.mainCategoryID).subscribe(
             data => {
                this.categories.push(data.name) 
+               this.isLoading=false;
             }
           )});
         this.currentPageNumber = currentPageNumber;

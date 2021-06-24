@@ -20,6 +20,7 @@ export class OrderDetailsComponent implements OnInit {
   errorMsg: any;
   order=new Order (0,'','',0);
   orderId:number;
+  isLoading:boolean=true;
 
 
   constructor(private activatedRoute:ActivatedRoute,private orderservice:OrderService,private cartProductsevice: CartProductService, private productservice: ProductService,private cartservice:CartService) { }
@@ -53,6 +54,7 @@ export class OrderDetailsComponent implements OnInit {
       this.orderservice.getAllOrderDetailsByOrderID(this.id).subscribe(
        data=>{
          this.orderDetailsList=data;
+         this.isLoading=false;
         //  console.log("in "+p);//for test
         //  console.log(this.orderDetailsList)//for test
         data.forEach(element => {

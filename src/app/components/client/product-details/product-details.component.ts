@@ -15,6 +15,7 @@ declare var $:any;
 export class ProductDetailsComponent implements OnInit {
  public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
   productId:number;
+  isLoading:boolean=true;
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService,private whislistservice:WishlistProductService) { 
     console.log(this.product)
   }
@@ -29,6 +30,7 @@ export class ProductDetailsComponent implements OnInit {
       data=>
       {
         this.product=data;
+        this.isLoading=false;
         console.log(data);
         console.log(this.product);
 

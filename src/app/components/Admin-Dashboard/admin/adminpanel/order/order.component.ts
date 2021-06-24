@@ -13,6 +13,7 @@ import {Iuser} from 'src/app/models/Interfaces/iuser';
 })
 export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
+ names:string[];
   //errorMsg="";
  OrderList:Order[]=[];
  User:Iuser= {
@@ -21,6 +22,7 @@ export class OrderComponent implements OnInit {
   password:"",
   confirmpassword:""
 }
+users:Iuser[]=[];
 
   constructor(private orderService:OrderService,private userservice:UserService) { }
   
@@ -30,39 +32,31 @@ export class OrderComponent implements OnInit {
     //   this.GetAllOrders();
     // })
     this.GetAllOrders();
-    this.reserform();
+ 
+    
   }
   GetAllOrders(){
     this.orderService.getAllOrders().subscribe(
-      serviceData=>
-      {
-        this.OrderList=serviceData;     
-      serviceData.forEach(element => {
-        this.getUserByid(element.userID);
-        // serviceData=this.getUserByid(userID)
+data => {
+this.OrderList = data
+data.forEach(element => {
 
-      });
-     
-    },
-      errorResponse=>
-      {
-       this.errorMsg=errorResponse;
-      })
+ this.userservice.getUserByid(element.userID).subscribe(
+data => {this.users.push(data)},
+error => {console.log(error)}
+);
+
+
+ });
+},
+error => {console.log(error)}
+);
+    
   }
   
-    reserform(form? : NgForm){
-      if(form !=null)
-        form.reset();
-      this.order= {
-        id:0,
-        userID:'',
-        orderDate:'',
-        totalPrice:0
-      }
-    }
+    
     errorMsg='';
     getUserByid(userID:string) {
-
       this.userservice.getUserByid(userID).subscribe(
         data => {
           this.User=data;
@@ -73,6 +67,17 @@ export class OrderComponent implements OnInit {
         }
       )
     }
-  
-
+    getUsername(userID:string) {
+      let name;
+      this.userservice.getUserName(userID).subscribe(
+        data => {
+          name=data;
+          console.log(data);
+        },
+        error => {
+          return error;
+        }
+      )
+      return name;
+    }
 }

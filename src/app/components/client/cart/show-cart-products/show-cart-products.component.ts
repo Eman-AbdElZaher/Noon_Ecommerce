@@ -25,7 +25,7 @@ export class ShowCartProductsComponent implements OnInit {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];
-  cartid = "5025ae85-b5f2-432a-8573-4667b7ce7e11";//this.cart.userID;//
+  cartid = "53d9e636-b14f-4d65-844d-d93bdb037cba";//this.cart.userID;//
   mmsgerr = "";
   ngOnInit(): void {
 
@@ -162,10 +162,12 @@ export class ShowCartProductsComponent implements OnInit {
   clearCart(cartID:string)
   {
     this.cartservice.ClearCart(cartID).subscribe(
+
       error => {
         return error;
       }
     )
+    
   }
 
 }

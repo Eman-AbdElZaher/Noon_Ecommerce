@@ -180,4 +180,13 @@ export class ProductService {
        return throwError(err.message ||"Server Has Error Plz Try Again");
      }));
   }
+
+  getAllProductInSpacificSupplier(subcategoryId:number,supplierId:number):Observable<IProduct[]>
+  {
+     let _url=`http://localhost:61135/api/Product/AllProductsInAspecificSupplier?subcategoryid=${subcategoryId}&supplierid=${supplierId}`
+     return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+     {
+       return throwError(err.message ||"Server Has Error Plz Try Again");
+     }));
+  }
 }

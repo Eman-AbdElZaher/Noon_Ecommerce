@@ -148,7 +148,7 @@ GetAllProduct(){
   init(){
     this.getProductsCount();
     this.getSelectedPage(1);
-    $('#close').click();
+    this.reserform();
   }
   errorMsg='';
   AddnewProduct(data:any)
@@ -252,7 +252,7 @@ GetAllProduct(){
       this._uploadImageService.uploadImage(formDate).subscribe(
         data => {
          this.product.mainImage=this.imageFile.name;
-         console.log(this.imageFile);
+         console.log(this.imageFile.name);
         },
         error => {
           console.log(error)

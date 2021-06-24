@@ -57,7 +57,7 @@
 							<span  data-toggle="tooltip" title="small">{{product.size}}</span>
 						</h5>
 						<h5 class="colors" >color:
-							<span  style="display: inline-block;">{{product.color}}</span>
+							<span class='color' [ngStyle]="{'background-color':product.color }"></span>
 						</h5>
 						<div class="action">
 							<button class="add-to-cart btn btn-default"  (click)="addToCart(product.id)" type="button">add to cart</button>

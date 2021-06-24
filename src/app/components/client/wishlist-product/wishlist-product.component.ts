@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Classes/Product';
 import { wishListProduct } from 'src/app/models/Classes/whishListProduct';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
@@ -13,11 +14,12 @@ import { WishlistProductService } from 'src/app/services/wishlist-product.servic
 export class WishlistProductComponent implements OnInit {
   public Products: Product[] = [];
   public wishlistProducts:wishListProduct[]=[];
-  wishlistid = "53d9e636-b14f-4d65-844d-d93bdb037cba";
+  wishlistid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";
   mmsgerr = "";
-  constructor(private cartService:CartProductService ,private productservice:ProductService, private wishlistService:WishlistProductService) { }
+  constructor(private AuthService:AuthenticationService , private cartService:CartProductService ,private productservice:ProductService, private wishlistService:WishlistProductService) { }
 
   ngOnInit(): void {
+    this.wishlistid=this.AuthService.getUserId();
     this.getWishlistProducts()
   }
 

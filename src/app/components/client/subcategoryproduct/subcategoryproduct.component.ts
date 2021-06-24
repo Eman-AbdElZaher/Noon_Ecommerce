@@ -216,19 +216,4 @@ getAllProductsInSupplier(SupplierId:number)
      this.errorMsg=errorResponse;
     })
   }
-
-  addToWishist(productid:number)
-  {
-    this.whislistservice.addWishlistProduct(productid).subscribe
-    (
-      data=>
-      {
-        console.log(data)
-      },
-      error=>
-      {
-        console.log(error)
-      }
-    )
-  }
 }

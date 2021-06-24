@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -17,7 +17,14 @@ export class UserService {
   registerAdmin(user:Iuser)
   {
     let url="http://localhost:61135/api/Account/AdminRegister";
-    return this.http.post(url,user);
+    return this.http.post(url,user,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('token')})}).pipe(
+      catchError(
+        (err) => {
+          return throwError(err.message);
+        }
+      )
+      )
   }
   getUserByid(id:string):Observable<Iuser>
   {

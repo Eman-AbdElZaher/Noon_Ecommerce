@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 import{OrderService} from 'src/app/services/order.service';
 import { ConditionalExpr } from '@angular/compiler';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -21,14 +22,15 @@ export class ShowCartProductsComponent implements OnInit {
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
   
-  constructor(private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
+  constructor(private AuthService:AuthenticationService, private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];
-  cartid = "53d9e636-b14f-4d65-844d-d93bdb037cba";//this.cart.userID;//
+  cartid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";//this.cart.userID;//
   mmsgerr = "";
   ngOnInit(): void {
 
+    this.cartid=this.AuthService.getUserId();
     this.getCartProducts();
 
     this.cartservice.getCart(this.cartid).subscribe(
@@ -167,7 +169,7 @@ export class ShowCartProductsComponent implements OnInit {
         return error;
       }
     )
-    
+    localStorage.setItem('count',JSON.stringify(0));
   }
 
 }

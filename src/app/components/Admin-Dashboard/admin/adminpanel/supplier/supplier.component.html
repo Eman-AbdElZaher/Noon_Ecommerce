@@ -82,7 +82,7 @@
 							<label >Email</label>
 							<input type="Email" name="txtEmail" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [class.is-invalid]="email.invalid && email.touched" required #email="ngModel" [(ngModel)]="supplier.email"  class="form-control" >
 							<div *ngIf="email.errors && (email.invalid || email.touched)">
-								<small class="text-danger" *ngIf="email.errors.required" >Email is required</small>
+								<small class="text-danger" *ngIf="email.errors.required" >Email is required   </small>
 								<small class="text-danger" *ngIf="email.errors.pattern" >Email must be like test@gmail.com</small>
 							 
 							</div>

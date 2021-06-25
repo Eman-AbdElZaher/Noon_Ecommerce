@@ -58,9 +58,13 @@ brandForm: FormGroup;
   {
      this.brandService.addNewBrand(this.brand).subscribe(
       data => {
-        this.brand=data;
-        this.getBrandCount();
-        this.getSelectedPage(this.numberOfPages);
+       
+          this.brand=data;
+          this.getBrandCount();
+          this.getSelectedPage(this.numberOfPages);
+          
+        
+       
       },
       error=>
       {

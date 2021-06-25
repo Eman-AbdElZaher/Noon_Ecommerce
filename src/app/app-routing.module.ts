@@ -13,6 +13,7 @@ import { SubcategoryproductComponent } from './components/client/subcategoryprod
 import { PaymentComponent } from './components/client/payment/payment.component';
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowAidsComponent} from './components/client/show-aids/show-aids.component';
 const routes: Routes = [ 
   {  
     path: 'login', 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'unathorized',component:UnathorizedPageComponent},
   {path:'check',component: CheckoutOrderComponent},
   {path:'payment',component:PaymentComponent},
+  {path:'ads',component:ShowAidsComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./components/Admin-Dashboard/admin/admin.module')

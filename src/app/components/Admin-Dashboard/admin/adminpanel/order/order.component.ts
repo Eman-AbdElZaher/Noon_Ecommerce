@@ -13,6 +13,7 @@ import {Iuser} from 'src/app/models/Interfaces/iuser';
 })
 export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
+ names:string[];
  isLoading:boolean=true;
   //errorMsg="";
  OrderList:Order[]=[];
@@ -22,6 +23,7 @@ export class OrderComponent implements OnInit {
   password:"",
   confirmpassword:""
 }
+users:Iuser[]=[];
 
   constructor(private orderService:OrderService,private userservice:UserService) { }
   
@@ -31,44 +33,32 @@ export class OrderComponent implements OnInit {
     //   this.GetAllOrders();
     // })
     this.GetAllOrders();
-    this.reserform();
+ 
+    
   }
   GetAllOrders(){
     this.orderService.getAllOrders().subscribe(
-      serviceData=>
-      {
-        this.OrderList=serviceData;
-        this.isLoading=false;
-      
-      serviceData.forEach(element => {
-        this.getUserByid(element.userID);
+data => {
+this.OrderList = data
+this.isLoading=false;
+data.forEach(element => {
+
+ this.userservice.getUserByid(element.userID).subscribe(
+data => {this.users.push(data)},
+error => {console.log(error)}
+);
 
 
-        
-        // serviceData=this.getUserByid(userID)
-
-      });
-     
-    },
-      errorResponse=>
-      {
-       this.errorMsg=errorResponse;
-      })
+ });
+},
+error => {console.log(error)}
+);
+    
   }
   
-    reserform(form? : NgForm){
-      if(form !=null)
-        form.reset();
-      this.order= {
-        id:0,
-        userID:'',
-        orderDate:'',
-        totalPrice:0
-      }
-    }
+    
     errorMsg='';
     getUserByid(userID:string) {
-
       this.userservice.getUserByid(userID).subscribe(
         data => {
           this.User=data;
@@ -79,6 +69,17 @@ export class OrderComponent implements OnInit {
         }
       )
     }
-  
-
+    getUsername(userID:string) {
+      let name;
+      this.userservice.getUserName(userID).subscribe(
+        data => {
+          name=data;
+          console.log(data);
+        },
+        error => {
+          return error;
+        }
+      )
+      return name;
+    }
 }

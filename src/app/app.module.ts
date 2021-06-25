@@ -30,6 +30,7 @@ import { ShowReviewComponent } from './components/client/review/show-review/show
 import { SubcategoryproductComponent } from './components/client/subcategoryproduct/subcategoryproduct.component';
 import { PaymentComponent } from './components/client/payment/payment.component';
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
+import { ShowAidsComponent } from './components/client/show-aids/show-aids.component';
 import { HeaderadminComponent } from './components/sharedComponent/headeradmin/headeradmin.component';
 import { NewarrivalComponent } from './components/client/newarrival/newarrival.component';
 
@@ -54,6 +55,7 @@ import { NewarrivalComponent } from './components/client/newarrival/newarrival.c
   SubcategoryproductComponent,
   PaymentComponent,
   AllProductsComponent,
+  ShowAidsComponent,
   HeaderadminComponent,
   NewarrivalComponent
   ],

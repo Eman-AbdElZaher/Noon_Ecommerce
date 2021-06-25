@@ -39,14 +39,14 @@
 						</span>
 						</tr>
 					</thead>
-					<tbody *ngFor="let Product of Products">
+					<tbody >
 						 
-							<tr>
+							<tr *ngFor="let Product of Products">
 								<td>{{Product.name}}</td>
-								<td><img src="https://i.imgur.com/1eq5kmC.png" width="100px" height="auto"/></td>
-							 	<span style="margin-left:40px;" *ngFor="let item of orderDetailsList">
+								<td><img src="http://localhost:61135/Resources/Images/{{Product.mainImage}}" width="100px" height="auto"/></td>
+							 	<span  *ngFor="let item of orderDetailsList">
 								 <td *ngIf="item.productID==Product.id">{{item.quantity}}</td>
-							<span style="margin-left:20px;"><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}</td> </span> 							      
+							<span ><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}</td> </span> 							      
 								 </span>
 							</tr>
 						</tbody>

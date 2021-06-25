@@ -29,6 +29,7 @@ export class ShowCartProductsComponent implements OnInit {
   cartProducts: CartProduct[] = [];
   cartid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";//this.cart.userID;//
   mmsgerr = "";
+  public disable:boolean=false;
   ngOnInit(): void {
 
     this.cartid=this.AuthService.getUserId();
@@ -48,6 +49,10 @@ export class ShowCartProductsComponent implements OnInit {
     this.cartProductsevice.getAllCartProduct(this.cartid).subscribe(
       data => {
         this.cartProducts = data;
+        if(this.cartProducts.length==0)
+        {
+          this.disable=true;
+        }
         this.isLoading=false;
         data.forEach(element => {
           this.getProduct(element.productId);

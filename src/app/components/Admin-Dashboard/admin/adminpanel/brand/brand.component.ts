@@ -53,18 +53,18 @@ brandForm: FormGroup;
       id:0
     }
   }
+  init(){
+    this.getBrandCount();
+    this.getSelectedPage(this.currentPageNumber);
+    this.resetform();
+  }
   errorMsg='';
   AddnewBrandt(form : NgForm)
   {
      this.brandService.addNewBrand(this.brand).subscribe(
       data => {
-       
-          this.brand=data;
-          this.getBrandCount();
-          this.getSelectedPage(this.numberOfPages);
-          
-        
-       
+        this.brand=data;
+        this.init();
       },
       error=>
       {
@@ -74,22 +74,26 @@ brandForm: FormGroup;
   }
   deleteBrand(brandId)
   {
-     this.brandService.deleteBrand(brandId).subscribe(
-      data => {
-        this.brandService.getAllBrands().subscribe(
-          brands=>
-          {
-            this.brandtList=brands;
-            console.log(brands.length);
-            console.log(brands[0]);
-          }
-        )
-      },
-      error=>
-      {
-       this.errorMsg = error;
-      }
-     )
+    if (confirm("Are you sure you want to delete this Brand ?")) {
+      this.brandService.deleteBrand(brandId).subscribe(
+        data => {
+          this.brandService.getAllBrands().subscribe(
+            brands=>
+            {
+              this.brandtList=brands;
+              this.init();
+              console.log(brands.length);
+              console.log(brands[0]);
+            }
+          )
+        },
+        error=>
+        {
+         this.errorMsg = error;
+        }
+       )
+    }
+     
   }
   updateBrand(brandId:number, brands:Ibrand)
   {
@@ -113,7 +117,7 @@ brandForm: FormGroup;
      this.brandService.updateBrand(this.brand.id,this.brand).subscribe(
       data => {
         this.brand=data;
-        this.getSelectedPage(this.currentPageNumber);
+        this.init();
       },
       error=>
       {

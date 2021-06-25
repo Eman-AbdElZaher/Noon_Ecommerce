@@ -40,7 +40,7 @@ export class AdvertisementComponent implements OnInit {
   init(){
     this.getAdvertisementCount();
     this.getSelectedPage(this.currentPageNumber);
-    $('.close').click();
+    this.reserform();
   }
   GetAllAdvertisements(){
     this.AdvertisementService.getAllAdvertisement().subscribe(
@@ -84,16 +84,18 @@ export class AdvertisementComponent implements OnInit {
     }
     DeleteAdverisement(AdvertisId:number)
     {
-      this.AdvertisementService.deleteAdvertisement(AdvertisId).subscribe(
-        data => {
-          this.advertisement=data;
-          this.init();
-        },
-        error=>
-        {
-         this.errorMsg = error;
-        }
-      )
+      if (confirm("Are you sure you want to delete this Advertisement ?")) {
+        this.AdvertisementService.deleteAdvertisement(AdvertisId).subscribe(
+          data => {
+            this.advertisement=data;
+            this.init();
+          },
+          error=>
+          {
+           this.errorMsg = error;
+          }
+        )
+      }
     }
     EditAdverisement(AdverisementId:number,adverisement:IAdvertisement)
     {

@@ -45,6 +45,11 @@ export class OfferComponent implements OnInit {
        this.errorMsg=errorResponse;
       })
   }
+  init(){
+        this.reserform();
+        this.getOfferCount();
+        this.getSelectedPage(this.currentPageNumber);
+  }
   reserform(form? : NgForm){
     if(form !=null)
       form.reset();
@@ -60,9 +65,7 @@ export class OfferComponent implements OnInit {
      this.offerService.addNewOffer(this.offer).subscribe(
       data => {
         this.offer=data;
-        this.reserform();
-        this.getOfferCount();
-        this.getSelectedPage(this.currentPageNumber);
+        this.init();
       },
       error=>
       {
@@ -72,12 +75,14 @@ export class OfferComponent implements OnInit {
   }
   DeleteOffer(offerId:number)
   {
+    if (confirm("Are you sure you want to delete this Offer?")) {
     this.offerService.deleteOffer(offerId).subscribe(
       data => {
         this.offerService.getAllOffer().subscribe(
           offers=>
           {
             this.offerList=offers;
+            this.init();
             console.log(offers.length);
             console.log(offers[0]);
           }
@@ -88,6 +93,7 @@ export class OfferComponent implements OnInit {
        this.errorMsg = error;
       }
     )
+    }
   }
   EditOffer(offerId:number,offer:IOffer)
   {
@@ -113,9 +119,7 @@ export class OfferComponent implements OnInit {
      this.offerService.updateOffer(this.offer.id,this.offer).subscribe(
       data => {
                 this.offer=data;
-                this.getOfferCount();
-                this.getSelectedPage(this.currentPageNumber);
-                this.reserform();
+                this.init();
               },
       error=>
       {

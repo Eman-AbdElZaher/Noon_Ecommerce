@@ -32,5 +32,12 @@ export class UserService {
     {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));  
-  } 
+  }
+  getUserName(id:string) 
+  {
+    return this.http.get(`http://localhost:61135/api/Account/GetUserName/${id}`).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));  
+  }  
 }

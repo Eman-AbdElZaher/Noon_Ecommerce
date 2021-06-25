@@ -66,7 +66,7 @@
                
                 <div class="row p-2 bg-white border rounded mt-2" >
                     <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
-                            src="https://i.imgur.com/HO8e9b8.jpg"></div>
+                            src="http://localhost:61135/Resources/Images/{{Product.mainImage}}"></div>
                     <div class="col-md-6 mt-1">
                         <h5>{{Product.name}}</h5>
                         <div class="d-flex flex-row">
@@ -103,6 +103,9 @@
             </div>
         </div>
     </div>
+    <div class="loader-container" *ngIf='isLoading'>
+        <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
+      </div>
 </body>
 
 </html>

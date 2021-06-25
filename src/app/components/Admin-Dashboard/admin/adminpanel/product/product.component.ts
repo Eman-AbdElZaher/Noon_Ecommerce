@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   currentPageNumber:number = 1;
   numberOfPages:number; 
   imageFile!: File;
+  isLoading:boolean=true;
   constructor(
     private productService:ProductService,
     private brandService:BrandService,
@@ -148,7 +149,7 @@ GetAllProduct(){
   init(){
     this.getProductsCount();
     this.getSelectedPage(1);
-    $('#close').click();
+    this.reserform();
   }
   errorMsg='';
   AddnewProduct(data:any)
@@ -233,6 +234,7 @@ GetAllProduct(){
       this.productService.getProductByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.productList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)
@@ -252,7 +254,7 @@ GetAllProduct(){
       this._uploadImageService.uploadImage(formDate).subscribe(
         data => {
          this.product.mainImage=this.imageFile.name;
-         console.log(this.imageFile);
+         console.log(this.imageFile.name);
         },
         error => {
           console.log(error)

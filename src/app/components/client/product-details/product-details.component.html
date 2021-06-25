@@ -24,18 +24,18 @@
 						
 						<div class="preview-pic tab-content">
 						  <div style="width: 386px;height: 244px;" class="tab-pane active" id="pic-1"><img src="http://localhost:61135/Resources/Images/{{product.mainImage}}" /></div>
-              <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+              <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
+						<!-- <ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						</ul>
+						</ul> -->
 						
 					</div>
 					<div class="details col-md-6">
@@ -57,7 +57,7 @@
 							<span  data-toggle="tooltip" title="small">{{product.size}}</span>
 						</h5>
 						<h5 class="colors" >color:
-							<span  style="display: inline-block;">{{product.color}}</span>
+							<span class='color' [ngStyle]="{'background-color':product.color }"></span>
 						</h5>
 						<div class="action">
 							<button class="add-to-cart btn btn-default"  (click)="addToCart(product.id)" type="button">add to cart</button>
@@ -67,6 +67,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="loader-container" *ngIf='isLoading'>
+			<div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
+		  </div>
   </body>
 </html>
 

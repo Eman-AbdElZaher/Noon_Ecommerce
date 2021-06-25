@@ -66,7 +66,7 @@ $(document).ready(function(){
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody *ngFor="let order of OrderList">
+				<tbody *ngFor="let order of OrderList;let i=index">
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -75,7 +75,7 @@ $(document).ready(function(){
 							</span>
 						</td>
 						<td>{{order.id}}</td>
-						<td>{{User.userName}}</td>
+						 <td>{{users[i].userName}}</td> 
 						<td>{{order.orderDate}}</td>
 						<td>{{order.totalPrice}}</td>					
 						<td> <a class="nav-link" routerLink="/dashboard/panel/orderdetails/{{order.id}}">Details</a></td>
@@ -97,7 +97,9 @@ $(document).ready(function(){
 		</div>
 	</div>        
 </div>
-
+<div class="loader-container" *ngIf='isLoading'>
+    <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
+  </div>
 
 
 

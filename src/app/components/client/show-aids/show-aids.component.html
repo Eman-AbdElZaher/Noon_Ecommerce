@@ -1,0 +1,23 @@
+<p>show-aids works!</p>
+
+<div *ngFor="let Ads of AdsList"  class="main">
+
+   <img  id="asd" src='http://localhost:61135/Resources/Images/{{Ads.image}}' alt="safaa" width="500" height="100">
+   <span class="remove">x</span>
+</div>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $('#click-to-show, #div-to-toggle').click(function (e) {
+        if ($(e.target).attr('id') != 'close-btn') {
+            $('#div-to-toggle').show();
+            event.stopPropagation();
+        }
+    });
+    $('body, #close-btn').click(function () {
+        $('#div-to-toggle').hide();
+        event.stopPropagation();
+    })
+</script> -->
+ 

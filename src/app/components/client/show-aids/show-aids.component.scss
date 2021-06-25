@@ -1,0 +1,31 @@
+  .main
+ {
+     margin:20px;
+     position: relative;
+     background: red;   
+ }
+ 
+ 
+ .remove
+ {
+     position:absolute;
+     top:-10px;
+     right:5px;
+     font-size: 17px;
+     background-color: white;
+     color: rgb(84, 138, 199);
+
+ }
+ img
+ {
+     width: 100%;
+ }
+ .remove:hover
+ {
+     position:absolute;
+     top:-10px;
+     right:5px;
+     font-size: 17px;
+     background-color:black;
+     color:white;
+ }            

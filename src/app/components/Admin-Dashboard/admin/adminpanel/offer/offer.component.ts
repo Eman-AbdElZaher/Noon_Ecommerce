@@ -14,6 +14,7 @@ export class OfferComponent implements OnInit {
   constructor(private offerService:OfferService) { }
   offerList:IOffer[]=[];
   hasOffers:boolean=false;
+  isLoading:boolean=true;
   OffersCount:number;
   pageSize:number = 4;
   currentPageNumber:number = 1;
@@ -143,6 +144,7 @@ export class OfferComponent implements OnInit {
       this.offerService.getOfferByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.offerList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)

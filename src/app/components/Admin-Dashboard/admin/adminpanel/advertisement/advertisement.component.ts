@@ -22,6 +22,7 @@ export class AdvertisementComponent implements OnInit {
   currentPageNumber:number = 1;
   numberOfPages:number; 
   updateAdvertisementClicked: boolean=false;
+  isLoading:boolean=true;
   constructor(
     private AdvertisementService:AdvertisementService,
     private _uploadImageService:UploadImageService) { }
@@ -142,7 +143,8 @@ export class AdvertisementComponent implements OnInit {
           data => {
             this.AdvertisementList= data;
             this.currentPageNumber = currentPageNumber;
-            console.log(this.currentPageNumber)
+            console.log(this.currentPageNumber);
+            this.isLoading=false;
             if(data.length != 0)
               this.hasAdvertisements = true;
             else

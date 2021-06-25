@@ -34,7 +34,7 @@ export class AdvertisementService {
       return throwError(err.message ||"Server Has Error Plz Try Again");
     }));
   }
-  getSupplierById(id: number): Observable<IAdvertisement> {
+  getAdvertisementById(id: number): Observable<IAdvertisement> {
     let url = `http://localhost:61135/api/Advertisements/${id}`;
     return this.http.get<IAdvertisement>(url).pipe(catchError((err) => {
       return throwError(err.message || "Internal Server error contact site adminstarator");

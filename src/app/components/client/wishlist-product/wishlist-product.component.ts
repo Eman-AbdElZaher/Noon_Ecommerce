@@ -13,6 +13,7 @@ import { WishlistProductService } from 'src/app/services/wishlist-product.servic
 })
 export class WishlistProductComponent implements OnInit {
   public Products: Product[] = [];
+  isLoading:boolean=true;
   public wishlistProducts:wishListProduct[]=[];
   wishlistid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";
   mmsgerr = "";
@@ -28,6 +29,7 @@ export class WishlistProductComponent implements OnInit {
     this.wishlistService.getAllWishlistProduct(this.wishlistid).subscribe(
       data => {
         this.wishlistProducts = data;
+        this.isLoading=false;
         console.log(data)
         data.forEach(element => {
           this.getProduct(element.productId);

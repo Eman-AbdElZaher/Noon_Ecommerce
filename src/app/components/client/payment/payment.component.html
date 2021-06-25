@@ -112,38 +112,41 @@
                     CVV is required</small>
             </div> 
 
-                   </div>
+                   </div>   
         </div>
-    </div>
-    <div class="card-footer"> <button type="submit" [disabled]="PayForm.invalid"  class="subscribe btn btn-primary btn-block shadow-sm third" (click)="CheckOut()" data-toggle="modal" data-target="#myModal" > Confirm Payment </button>
-        <!--data-toggle="modal" data-target="#myModal" -->
+    </div> <!--[disabled]="PayForm.invalid" data-toggle="modal" data-target="#myModal"-->
+    <div class="card-footer"> <button type="submit"   class="subscribe btn btn-primary btn-block shadow-sm third" (click)="CheckOut()"[disabled]="PayForm.invalid" data-toggle="modal" data-target="#myModal"  > Confirm Payment </button> 
+       
 
 </div></form>
 
   <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+  <div  class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
-        <!-- Modal Header -->
+         <!-- Modal Header  -->
         <div class="modal-header">
           <h4 class="modal-title">Proceed Order</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
-        <!-- Modal body -->
-        <div class="modal-body">
-         Success Order
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <!-- Modal body  -->
+         <div *ngIf="Isvaild;then elseblock; else thenblock;"></div>
+        <ng-template  #elseblock class="modal-body">
+         Success success Order
+        </ng-template>
+        <ng-template #thenblock class="modal-body" >
+            faild order
+        </ng-template> 
+         <!-- Modal footer  -->
+         <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" routerLink='/home'>Close</button>
         </div>
         
       </div>
     </div>
-  </div>
+  </div> 
 
 
 
@@ -182,6 +185,46 @@
 </div>
 </div>
 </div>
+<div class="col-md-5">
+    <div class="right border">
+        <div class="header">Order Summary</div>
+        <p>{{count}} items</p>
+        <div style="max-height:200px; overflow-y:scroll;" >
+        <div *ngFor="let Product of Products"   > 
+        <div  style="display: flex; margin:5px;" >  <div><!--'http://localhost:61135/Resources/Images/{{Product.image}}'-->
+            <div class=""> <img  class="" src="http://localhost:61135/Resources/Images/{{Product.mainImage}}" width='80' height='80'> </div>
+    </div>  <br><br>
+        
+            <div  *ngFor="let cartProduct of cartProducts" >
+                <div style='margin-left:20px'  *ngIf="cartProduct.productId==Product.id"> <b> {{Product.name}}</b></div>
+                <div style='margin-left:20px'  *ngIf="cartProduct.productId==Product.id" >{{cartProduct.netPrice}}$ </div>
+                <div style='margin-left:20px'  *ngIf="cartProduct.productId==Product.id"> Qty:{{cartProduct.quintity}}</div>
+ 
+            </div>
+        </div>
+    </div>
+</div>
+         
+        <hr>
+        <div class="row lower">
+            <div class="col text-left">Subtotal</div>
+            <div class="col text-right">${{cart.totalPrice}}</div>
+        </div>
+        <div class="row lower">
+            <div class="col text-left">Delivery</div>
+            <div class="col text-right">Free</div>
+        </div>
+        <div class="row lower">
+            <div class="col text-left"><b>Total to pay</b></div>
+            <div class="col text-right"><b>${{cart.totalPrice}}</b></div>
+        </div>
+        <div class="row lower">
+            <div class="col text-left"><a href="#"><u>Add promo code</u></a></div>
+        </div> <button class="btn"  routerLink="/cartproduct/show" >update order</button>
+        <p class="text-muted text-center">Complimentary Shipping & Returns</p>
+    </div>
+</div>
+ 
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">$(function() {
 $('[data-toggle="tooltip"]').tooltip()

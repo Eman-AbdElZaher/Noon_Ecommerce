@@ -12,13 +12,14 @@ export class MaincategoryComponent implements OnInit {
   constructor(
     private _maincategoryservice:MainCategoryService,
     private fb:FormBuilder
-  ) { }
+  ) { 
+  }
   hasMainCategories:boolean = false;
   MainCategoryList:IMainCategory[]=[]; 
   errorMsg:string;
   categoryId:number;
   maincategoryForm :FormGroup;
-  loading = false;
+  isLoading = true;
   newmainCategory:IMainCategory;
   MaincategoriesCount:number;
   pageSize:number = 4;
@@ -152,7 +153,10 @@ getSelectedPage(currentPageNumber:number){
       this.currentPageNumber = currentPageNumber;
       console.log(this.currentPageNumber)
       if(data.length != 0)
+      {
         this.hasMainCategories = true;
+        this.isLoading=false;
+      } 
       else
         this.hasMainCategories = false;
 

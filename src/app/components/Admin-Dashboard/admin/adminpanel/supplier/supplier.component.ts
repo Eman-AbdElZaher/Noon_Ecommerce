@@ -18,6 +18,7 @@ export class SupplierComponent implements OnInit {
   pageSize:number = 4;
   currentPageNumber:number = 1;
   numberOfPages:number; 
+  isLoading:boolean=true;
   constructor(private supplierService:SupplierService) { }
 
   ngOnInit(): void {
@@ -26,14 +27,16 @@ export class SupplierComponent implements OnInit {
       this.GetAllSupplier()
     })
     this.GetAllSupplier();
+    this.getProductsCount();
+    this.getSelectedPage(1);
     this.reserform();
-
   }
 
 GetAllSupplier(){
   this.supplierService.getAllSupplier().subscribe(
     serviceData=>
     {
+      this.isLoading=false;
       if(serviceData.length>0)
       {
         this.supplierList=serviceData;
@@ -144,6 +147,7 @@ GetAllSupplier(){
       this.supplierService.getSupplierByPage(this.pageSize,currentPageNumber).subscribe(
         data => {
           this.supplierList= data;
+          this.isLoading=false;
           this.currentPageNumber = currentPageNumber;
           console.log(this.currentPageNumber)
           if(data.length != 0)

@@ -208,11 +208,12 @@ export class CategoryComponent implements OnInit {
     this._categoryService.getCategoriesByPage(this.pageSize,currentPageNumber).subscribe(
       data => {
         this.CategoryList= data;
+        this.isLoading=false;
         this.CategoryList.forEach(cat => {
           this._maincategoryservice.getMainCategoryById(cat.mainCategoryID).subscribe(
             data => {
-               this.categories.push(data.name) 
-               this.isLoading=false;
+               this.categories.push(data.name);
+               console.log(this.categories);
             }
           )});
         this.currentPageNumber = currentPageNumber;

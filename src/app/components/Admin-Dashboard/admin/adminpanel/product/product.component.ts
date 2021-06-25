@@ -169,6 +169,7 @@ GetAllProduct(){
   }
   DeleteProduct(productId:number)
   {
+    if (confirm("Are you sure you want to delete this Advertisement ?")) {
     this.productService.deleteProduct(productId).subscribe(
       data => {
         this.productService.getAllProduct().subscribe(
@@ -187,7 +188,7 @@ GetAllProduct(){
       }
     )
   }
-  
+}
   EditProduct(productId:number,product:IProduct)
   {
     this.productService.updateProduct(productId,product).subscribe(

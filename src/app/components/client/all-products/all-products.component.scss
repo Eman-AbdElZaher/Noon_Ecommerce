@@ -880,13 +880,24 @@ img {
     padding-top: 8px;
 }
 .VwxqG.grid .productContainer {
-    flex: 0 0 33.3333%;
+    flex: 0 0 20%;
     padding-left: 8px;
 }
-@media only screen and (min-width: 992px)
+@media only screen and (max-width: 992px)
 {
     .VwxqG.grid .productContainer {
         flex: 0 0 25%;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .VwxqG.grid .productContainer {
+        flex: 0 0 33%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .VwxqG.grid .productContainer {
+        flex: 0 0 90%;
+        margin:10px auto;
     }
 }
 .diNcmV {

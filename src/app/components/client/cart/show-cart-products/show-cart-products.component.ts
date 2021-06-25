@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 import{OrderService} from 'src/app/services/order.service';
 import { ConditionalExpr } from '@angular/compiler';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -20,16 +21,18 @@ export class ShowCartProductsComponent implements OnInit {
   public Products: Product[] = [];
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
+  isLoading:boolean=true;
   
-  constructor(private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
+  constructor(private AuthService:AuthenticationService, private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)
   }
   cartProducts: CartProduct[] = [];
-  cartid = "237a4ada-8333-459e-ada0-32d689c0527f";//this.cart.userID;//
+  cartid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";//this.cart.userID;//
   mmsgerr = "";
   public disable:boolean=false;
   ngOnInit(): void {
 
+    this.cartid=this.AuthService.getUserId();
     this.getCartProducts();
 
     this.cartservice.getCart(this.cartid).subscribe(
@@ -50,6 +53,7 @@ export class ShowCartProductsComponent implements OnInit {
         {
           this.disable=true;
         }
+        this.isLoading=false;
         data.forEach(element => {
           this.getProduct(element.productId);
 
@@ -166,10 +170,12 @@ export class ShowCartProductsComponent implements OnInit {
   clearCart(cartID:string)
   {
     this.cartservice.ClearCart(cartID).subscribe(
+
       error => {
         return error;
       }
     )
+    localStorage.setItem('count',JSON.stringify(0));
   }
 
 }

@@ -28,7 +28,7 @@
                             <td>{{category.name}}</td>
                             <td>{{categories[i]}}</td>
                             <td>
-                                <img src='http://localhost:61135/Resources/Images/{{category.image}}' width="50" height="50"/>
+                                <img  src='http://localhost:61135/Resources/Images/{{category.image}}' width="50" height="50"/>
                             </td>
                             <td>
                                 <a href="#editEmployeeModal"  (click)="assignFormControlsToCategoryData(category.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -139,4 +139,6 @@
         </div>
     </div>
     </div>
-
+    <div class="loader-container" *ngIf='isLoading'>
+        <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
+      </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ProductService } from 'src/app/services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { WishlistProductService } from 'src/app/services/wishlist-product.service';
+declare var $:any;
 @Component({
   selector: 'app-productshome',
   templateUrl: './productshome.component.html',
@@ -10,13 +12,13 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ProductshomeComponent implements OnInit {
   productList:IProduct[]=[];
   errorMsg="";
-  constructor(private serviceProduct:ProductService) { }
+  constructor(private serviceProduct:ProductService,private whishlistservice:WishlistProductService) { }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    stagePadding:330,
+    stagePadding:310,
     margin:0,
     autoplayTimeout: 3000,
 		autoplayHoverPause: true,
@@ -50,6 +52,7 @@ export class ProductshomeComponent implements OnInit {
     })
     this.getallProduct();
   }
+ 
 getallProduct()
 {
   this.serviceProduct.getAllProduct().subscribe(
@@ -65,4 +68,19 @@ getallProduct()
       })  
 }
 
+addToWishist(productid:number)
+{
+  this.whishlistservice.addWishlistProduct(productid).subscribe
+  (
+    data=>
+    {
+      console.log(data);
+      console.log(productid);
+    },
+    error=>
+    {
+      console.log(error);
+    }
+  )
+}
 }

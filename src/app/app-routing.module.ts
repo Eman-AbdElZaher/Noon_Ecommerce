@@ -44,6 +44,9 @@ const routes: Routes = [
       .then(mod => mod.CartModule)
   },
   {path:'AllProduct',component:AllProductsComponent},
+// children:[
+//   {path:'AllProduct/:id',component:AllProductsComponent}
+// ]},
   {
     path: 'client',
     loadChildren: () => import('./components/client/client/client.module')

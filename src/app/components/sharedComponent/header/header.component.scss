@@ -103,8 +103,9 @@ input, button, textarea, select {
     padding: 0;
     margin: 0;
     border: 0;
-    box-sizing: border-box;
+    // box-sizing: border-box;
     border-radius: 0;
+    border-color: aliceblue;
 }
 
 .iNDQa-d img {
@@ -135,7 +136,7 @@ img {
     height: 0px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid black;
+    // border-top: 6px solid black;
 }
 .gjoLGR {
     padding-right: 15px;
@@ -189,7 +190,7 @@ button {
     -webkit-box-align: center;
     align-items: center;
     padding: 0px 15px;
-    border-left: 1px solid rgba(64, 69, 83, 0.2);
+    // border-left: 1px solid rgba(64, 69, 83, 0.2);
     transition: opacity 0.2s ease-in-out 0s;
 }
 .ijQAcc .cartTitle {
@@ -215,7 +216,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    box-sizing: border-box;
+    // box-sizing: border-box;
 }
 
 .dropbtn {

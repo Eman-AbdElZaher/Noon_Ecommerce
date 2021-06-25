@@ -14,6 +14,7 @@ import {Iuser} from 'src/app/models/Interfaces/iuser';
 export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
  names:string[];
+ isLoading:boolean=true;
   //errorMsg="";
  OrderList:Order[]=[];
  User:Iuser= {
@@ -39,6 +40,7 @@ users:Iuser[]=[];
     this.orderService.getAllOrders().subscribe(
 data => {
 this.OrderList = data
+this.isLoading=false;
 data.forEach(element => {
 
  this.userservice.getUserByid(element.userID).subscribe(

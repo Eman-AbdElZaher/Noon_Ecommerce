@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { ApiController } from '../controller/ApiController';
 import { ILogin } from '../models/Interfaces/ILogin';
+import { ResetPasswordDto } from '../models/Interfaces/resetPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +49,8 @@ export class AuthenticationService {
 
    logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("count");
+    localStorage.removeItem("countwishlist");
     localStorage.removeItem("expires_at");
     this.router.navigate(['/login/login']);
 }
@@ -131,7 +135,15 @@ public isLoggedIn() {
     let email=decodedJwtData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
     return email;
 }
-return null;
+  return null;
  }
+ ChangePassword(userPassword){
+   let url=`${environment.API_URL}/api/Account/ResetPassword`;
+  return this._http.post<ResetPasswordDto>(url,userPassword).pipe(catchError(err=>
+    {
+        console.log(err);
+        return throwError(err.message||"an error occur")})
+  );
+}
 
 }

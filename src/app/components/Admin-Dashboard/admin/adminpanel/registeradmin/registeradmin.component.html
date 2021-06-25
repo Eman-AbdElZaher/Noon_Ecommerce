@@ -1,0 +1,53 @@
+<div class="wrapper-container" >
+    <div class="wrapper">
+     <div id="logo" class="logoLink"></div>
+     <div id="title" class="jsx-1465782726">Create A New Admin To Manage noon account</div>
+     <div class="formContainer" style="margin-bottom: 100px;">
+         <div id="formContainer">
+             <form #userform="ngForm" (ngSubmit)="OnSubmit(userform)">
+                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                     <input class="input100 form-control" type="text" required [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="userModel.userName" name="name" >
+                     <span class="focus-input100" data-placeholder="UserName"></span>
+                     <small class="text-danger validation"[class.d-none]="name.untouched || name.valid">User Name is required</small>
+                 </div>
+                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                     <input
+                      class="input100 form-control"
+                       type="email" 
+                       name="email"
+                       required
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                         [class.is-invalid]="email.invalid && email.touched"
+                           #email="ngModel" [(ngModel)]="userModel.email">
+                     <span class="focus-input100" data-placeholder="Email"></span>
+                         <small class="text-danger validation" [class.d-none]="email.untouched || email.valid" >Email requires & must be like test@gmail.com</small>
+                 </div>
+                 <div class="wrap-input100 validate-input" data-validate="Enter password">
+                     <span class="btn-show-pass">
+                         <i class="far fa-eye"></i>
+                     </span>
+                     <input 
+                     class="input100"
+                      type="password"
+                       [class.is-invalid]="password.invalid && password.touched "
+                        required #password="ngModel" [(ngModel)]="userModel.password" name="password">
+                     <span class="focus-input100" data-placeholder="Password"></span>
+                     <small class="text-danger validation"[class.d-none]="password.untouched || password.valid">Password is required</small>
+                 </div>
+                 <div class="wrap-input100 validate-input" data-validate="confirm password">
+                     <input 
+                     class="input100" 
+                     type="password" 
+                     [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched " 
+                     required #confirmpassword="ngModel" [(ngModel)]="userModel.confirmpassword" name="confirmpassword">
+                     <span class="focus-input100" data-placeholder="Confirm Password"></span>
+                 </div>
+                 <button type="submit" [disabled]="!userform.valid" aria-label="Create an account" id='register-btn'>
+                  Create an account</button>
+             </form>
+         </div>
+     </div>
+    </div>
+ </div>
+         
+ 

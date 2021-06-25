@@ -154,7 +154,7 @@
                                 <tr>
                                     <td routerLink="/home/productPage/{{Product.id}}">
                                         <figure class="itemside align-items-center">
-                                            <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png"
+                                            <div class="aside"><img src="http://localhost:61135/Resources/Images/{{Product.mainImage}}"
                                                     class="img-sm"></div>
                                             <figcaption class="info" > <a  class="title text-dark"
                                                     data-abc="true">{{Product.name}}</a>
@@ -225,7 +225,7 @@
                         <hr> <button  type="button" class="btn btn-out btn-primary btn-square btn-main" data-abc="true" [disabled]='disable'  routerLink="/payment"> Make
                             Purchase </button> <a routerLink="/home" class="btn btn-out btn-success btn-square btn-main mt-2"
                             data-abc="true">Continue Shopping</a>
-                            <a style="color: aliceblue;" (click)="clearCart(cart.userID)" class="btn btn-out btn-success btn-square btn-main mt-2"
+                            <a style="color: aliceblue;"  (click)="clearCart(cart.userID)" class="btn btn-out btn-success btn-square btn-main mt-2"
                             data-abc="true">Clear Cart</a>
                             <!-- <button type="button" class="btn btn-success btn-lg btn-block" (click)="CheckOut()">Pay</button> -->
                     </div>
@@ -235,6 +235,9 @@
             </aside>
         </div>
     </div>
+    <div class="loader-container" *ngIf='isLoading'>
+        <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
+      </div>
 </body>
 
 </html>

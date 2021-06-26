@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HubConnection } from '@aspnet/signalr';
+
 
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/models/Classes/Review';
@@ -13,6 +14,9 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ShowReviewComponent implements OnInit {
  public produtReviews: Review[] = [];
+ @Output() reviwesNumber=new EventEmitter();
+
+ @Input() productID:number;
 
   constructor(private reviewservice: ReviewService, private rout:Router) {
     console.log(this.produtReviews)
@@ -21,11 +25,12 @@ export class ShowReviewComponent implements OnInit {
  
   msgerror = "";
   ngOnInit() {
-    this.reviewservice.getAllReview(2).subscribe(
+    console.log("Product ID"+this.productID);
+    this.reviewservice.getAllReview(this.productID).subscribe(
       data => {
         this.produtReviews = data;
-        console.log(data);
-        console.log(this.produtReviews)
+        this.reviwesNumber.emit(data.length);
+        console.log(this.reviwesNumber);
 
       },
       error => {
@@ -44,7 +49,7 @@ export class ShowReviewComponent implements OnInit {
         
       }
     )
-    this.ngOnInit();
+    this.rout.navigate(["/home/productPage",this.productID]);
   }
 
  

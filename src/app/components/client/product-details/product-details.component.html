@@ -49,7 +49,7 @@
 								<span class="fa fa-star"></span>
 								<span class="fa fa-star"></span>
 							</div>
-							<span class="review-no">41 reviews</span>
+							<span class="review-no">{{reviewsNumber}} reviews</span>
 						</div>
 						<p class="product-description">{{product.description}}</p>
 						<h4 class="price">current price: <span>${{product.price}}</span></h4>
@@ -75,6 +75,6 @@
 </html>
 
 
-<app-create-review ></app-create-review>
-<app-show-review></app-show-review>
+<app-create-review [productID]="productId"></app-create-review>
+<app-show-review (reviwesNumber)="reviewsNumber=$event" [productID]="productId"></app-show-review>
 <router-outlet></router-outlet> 

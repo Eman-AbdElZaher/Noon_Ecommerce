@@ -13,8 +13,9 @@ declare var $:any;
 })
 
 export class ProductDetailsComponent implements OnInit {
- public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
-  productId:number;
+  public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
+  public productId:number;
+  reviewsNumber:number=0;
   isLoading:boolean=true;
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService,private whislistservice:WishlistProductService) { 
     console.log(this.product)

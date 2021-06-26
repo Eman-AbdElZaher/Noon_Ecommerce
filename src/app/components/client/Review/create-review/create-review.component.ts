@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 import { Review } from 'src/app/models/Classes/Review';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
@@ -11,15 +13,20 @@ import { ReviewService } from 'src/app/services/review.service';
   styleUrls: ['./create-review.component.scss']
 })
 export class CreateReviewComponent implements OnInit {
-  review=new Review(0,"","",2,"5025ae85-b5f2-432a-8573-4667b7ce7e11");
-  review_r=new Review(0,"","",0,"");
+  userID:string="";
+  @Input() productID:number=0;
+  public review:Review;
+  review_r=new Review(0,"",0,0,"");
   isChecked=false;
   private _hubConnection: HubConnection;
   showimage:boolean=false;
-  constructor(private reviewservice:ReviewService) { 
+ 
+  constructor(private reviewservice:ReviewService,private AuthService:AuthenticationService,private rout:Router ) { 
     
   }
   ngOnInit(): void {
+    this.userID=this.AuthService.getUserId();
+
     this._hubConnection = new HubConnectionBuilder().withUrl('http://localhost:61135/review').build();
     this._hubConnection.start()
     .then(()=>
@@ -27,10 +34,12 @@ export class CreateReviewComponent implements OnInit {
     .catch(err=>{
       console.log('Error while establishing the connection')
     });
+    this.review= new Review(0,"",0,this.productID,this.userID);
   }
-  Checked(checked)
+
+  setRating(rating:number)
   {
-    this.isChecked=checked;
+    this.review.rating=rating;
   }
   errorMsg='';
   writeComment()
@@ -39,11 +48,12 @@ export class CreateReviewComponent implements OnInit {
     this.reviewservice.postReview(this.review).subscribe(
       reviewdata=>
       {
-        console.log(reviewdata);      
+        console.log(reviewdata);  
+        this.rout.navigate(["/home/productPage",this.productID]);    
         this._hubConnection.on('BroadcastMessage', (message)=>{     
           this.review_r=message;     
         this.showimage=true;
-        this.ngOnInit();
+       
        })
       },
       errorrespone=>
@@ -51,6 +61,7 @@ export class CreateReviewComponent implements OnInit {
         console.log(errorrespone);
       }
     )
+   
   }
  
 }

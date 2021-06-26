@@ -44,10 +44,12 @@
 							<tr *ngFor="let Product of Products">
 								<td>{{Product.name}}</td>
 								<td><img src="http://localhost:61135/Resources/Images/{{Product.mainImage}}" width="100px" height="auto"/></td>
+								<span style=" display: inline-flex;margin:40x ;">
 							 	<span  *ngFor="let item of orderDetailsList">
 								 <td *ngIf="item.productID==Product.id">{{item.quantity}}</td>
-							<span ><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}</td> </span> 							      
+							     <td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}$</td>							      
 								 </span>
+								</span>
 							</tr>
 						</tbody>
 						</table>

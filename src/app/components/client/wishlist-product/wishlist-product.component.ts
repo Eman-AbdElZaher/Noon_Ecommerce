@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Ibrand } from 'src/app/models/Classes/Brand';
 import { Product } from 'src/app/models/Classes/Product';
 import { wishListProduct } from 'src/app/models/Classes/whishListProduct';
+import { ISupplier } from 'src/app/models/Interfaces/ISupplier';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { BrandService } from 'src/app/services/brand.service';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
-
+import {SupplierService} from 'src/app/services/supplier.service';
 @Component({
   selector: 'app-wishlist-product',
   templateUrl: './wishlist-product.component.html',
@@ -17,7 +20,8 @@ export class WishlistProductComponent implements OnInit {
   public wishlistProducts:wishListProduct[]=[];
   wishlistid:string; //= "a8433eac-5dc1-4041-8972-8f5fd930fb6c";
   mmsgerr = "";
-  constructor(private AuthService:AuthenticationService , private cartService:CartProductService ,private productservice:ProductService, private wishlistService:WishlistProductService) { }
+ 
+  constructor(private AuthService:AuthenticationService, private cartService:CartProductService ,private productservice:ProductService, private wishlistService:WishlistProductService) { }
 
   ngOnInit(): void {
     this.wishlistid=this.AuthService.getUserId();
@@ -82,4 +86,5 @@ export class WishlistProductComponent implements OnInit {
     )
   }
 
+  
 }

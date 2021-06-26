@@ -14,6 +14,7 @@ import { PaymentComponent } from './components/client/payment/payment.component'
 import { AllProductsComponent } from './components/client/all-products/all-products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowAidsComponent} from './components/client/show-aids/show-aids.component';
+import { UserOrdersComponent } from './components/client/user-orders/user-orders.component';
 const routes: Routes = [ 
   {  
     path: 'login', 
@@ -21,6 +22,7 @@ const routes: Routes = [
       .then(mod => mod.LoginModule)
   },
   {path:'register',component:RegisterComponent},
+  {path:'userorders',component:UserOrdersComponent},
   {path:'wishlist',component:WishlistProductComponent,canActivate: [AuthGuard]},
   {path:'home/productPage/:id',component:ProductDetailsComponent},
   {path:'subcategoryProduct/:id',component:SubcategoryproductComponent},

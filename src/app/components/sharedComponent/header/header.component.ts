@@ -3,6 +3,7 @@ import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

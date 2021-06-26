@@ -189,4 +189,21 @@ export class ProductService {
        return throwError(err.message ||"Server Has Error Plz Try Again");
      }));
   }
+  UpdateDiscount(idProduct:number,DisountValue:any)
+  {
+    let url=`http://localhost:61135/api/Product/PutDiscount?idProduct=${idProduct}&Discount=${DisountValue}`;
+     return this.http.put(url,idProduct)
+      .pipe(catchError((err) => {
+        return throwError(err.message || "Internal Server error contact site adminstarator");
+      }
+      ));
+  }
+  getProductOfferBySubCategoryAndOfferValue(subCategoryid:number,offerValue:any):Observable<IProduct[]>
+  {
+    let url=`http://localhost:61135/api/Product/GetAllProductInOffer?subcategoryid=${subCategoryid}&discount=${offerValue}`;
+    return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
+      return throwError(err.message || "Internal Server error contact site adminstarator");
+    })
+    )
+}
 }

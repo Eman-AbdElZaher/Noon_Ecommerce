@@ -12,10 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubcategoryproductComponent } from '../subcategoryproduct/subcategoryproduct.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
+import { MaincategorydetailsComponent } from '../maincategorydetails/maincategorydetails.component';
+import { ProductofferComponent } from '../productoffer/productoffer.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
-  {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]}
+  {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
+  {path:'maincategory',component:MaincategorydetailsComponent},
+  {path:'productoffer/:subcategoryid/:offervalue',component:ProductofferComponent}
 ];
 @NgModule({
   declarations: [
@@ -24,6 +28,8 @@ const routes:Routes=[
     CarouselComponent,
     ShowsubcategoryComponent,
     ProfileComponent,
+    MaincategorydetailsComponent,
+    ProductofferComponent,
   ],
   imports: [
     CommonModule,

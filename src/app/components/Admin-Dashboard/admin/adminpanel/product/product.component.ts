@@ -30,6 +30,7 @@ export class ProductComponent implements OnInit {
   numberOfPages:number; 
   imageFile!: File;
   isLoading:boolean=true;
+  productId:number;
   constructor(
     private productService:ProductService,
     private brandService:BrandService,
@@ -143,7 +144,9 @@ GetAllProduct(){
       brandID:0,
       supplierID:0,
      averageRating:0,
-     mainImage:''
+     mainImage:'',
+     discount:0,
+     afterDiscount:0
     }
   }
   init(){
@@ -187,7 +190,23 @@ GetAllProduct(){
       }
     )
   }
-  
+  getProduct(idProduct:number)
+  {
+    this.productId=idProduct;
+  }
+  updateDiscount(discount:any)
+  {
+    this.productService.UpdateDiscount(this.productId,discount).subscribe(
+      data => 
+      {
+        console.log(data);
+      },
+      error=>
+      {
+       this.errorMsg = error;
+      }
+    )
+  }
   EditProduct(productId:number,product:IProduct)
   {
     this.productService.updateProduct(productId,product).subscribe(

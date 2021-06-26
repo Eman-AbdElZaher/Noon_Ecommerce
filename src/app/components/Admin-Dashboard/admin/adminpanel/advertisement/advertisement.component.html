@@ -8,7 +8,6 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addAdvertisementModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Advertisement</span></a>
-						<a href="#deleteAdvertisementModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
@@ -97,7 +96,7 @@
 					 
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="AddnewAdvertisement(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
+					<input type="submit" data-dismiss="modal" (click)="AddnewAdvertisement(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
 				</div>
 			</form>
 		</div>
@@ -141,7 +140,7 @@
 					 
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="SaveEditAdvertisement(userform)" class="btn btn-info"  value="Save">
+					<input type="submit" data-dismiss="modal" (click)="SaveEditAdvertisement(userform)" class="btn btn-info"  value="Save">
 				</div>
 			</form>
             <!-- //[disabled]="!userform.valid" -->
@@ -163,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="submit" data-dismiss="modal" class="btn btn-danger" value="Delete">
 				</div>
 			</form>
 		</div>

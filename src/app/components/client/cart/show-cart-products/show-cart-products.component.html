@@ -181,7 +181,7 @@
                                     </td>
                                     <td> 
                                         <div *ngFor="let cartProduct of cartProducts" class="price-wrap"> <var class="price"*ngIf="cartProduct.productId==Product.id" >{{cartProduct.netPrice}}</var> <small
-                                                class="text-muted" *ngIf="cartProduct.productId==Product.id"> ${{Product.price}} each </small> </div>
+                                                class="text-muted" *ngIf="cartProduct.productId==Product.id"> ${{Product.afterDiscount}} each </small> </div>
                                     </td>
                                     <td class="text-right d-none d-md-block"> <a (click)="addToWishlist(Product.id)" style="color: aliceblue;" data-original-title="Save to Wishlist"
                                             title="" class="btn btn-light" data-toggle="tooltip"
@@ -198,30 +198,14 @@
             </aside>
             <aside class="col-lg-3">
                 <div class="card mb-3">
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group"> <label>Have coupon?</label>
-                                <div class="input-group"> <input type="text" class="form-control coupon" name=""
-                                        placeholder="Coupon code"> <span class="input-group-append"> <button
-                                            class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
-                            </div>
-                        </form>
-                    </div>
+                    
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <dl class="dlist-align">
                             <dt>Total price:</dt>
                             <dd class="text-right ml-3">${{cart.totalPrice}}</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>Discount:</dt>
-                            <dd class="text-right text-danger ml-3">- $10.00</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong>${{cart.totalPrice}}</strong></dd>
-                        </dl>
+                        </dl>             
                         <hr> <button  type="button" class="btn btn-out btn-primary btn-square btn-main" data-abc="true" [disabled]='disable'  routerLink="/payment"> Make
                             Purchase </button> <a routerLink="/home" class="btn btn-out btn-success btn-square btn-main mt-2"
                             data-abc="true">Continue Shopping</a>

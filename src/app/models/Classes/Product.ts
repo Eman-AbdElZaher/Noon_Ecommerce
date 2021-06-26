@@ -11,6 +11,7 @@ export class Product {
         public  subCategoryID :number,
         public  brandID :number,
         public supplierID :number,
-        public averageRating :number
+        public averageRating :number,
+        public afterDiscount:any
     ) { }
 }

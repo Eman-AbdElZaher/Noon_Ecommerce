@@ -33,6 +33,7 @@ import { AllProductsComponent } from './components/client/all-products/all-produ
 import { ShowAidsComponent } from './components/client/show-aids/show-aids.component';
 import { HeaderadminComponent } from './components/sharedComponent/headeradmin/headeradmin.component';
 import { NewarrivalComponent } from './components/client/newarrival/newarrival.component';
+import { UserOrdersComponent } from './components/client/user-orders/user-orders.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -57,7 +58,8 @@ import { NewarrivalComponent } from './components/client/newarrival/newarrival.c
   AllProductsComponent,
   ShowAidsComponent,
   HeaderadminComponent,
-  NewarrivalComponent
+  NewarrivalComponent,
+  UserOrdersComponent
   ],
   imports: [
     BrowserAnimationsModule,

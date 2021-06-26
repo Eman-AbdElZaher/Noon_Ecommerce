@@ -21,7 +21,7 @@ export class AllProductsComponent implements OnInit {
   productList2:IProduct[]=[];
   subcategoryList:ISubCategory[]=[];
   brandList:Ibrand[]=[];
-  public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0};
+  public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0,discount:0,afterDiscount:0};
   hasSubCayegoryProduct:boolean=false;
   content:string='';
   products:boolean=false;

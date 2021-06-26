@@ -10,5 +10,7 @@ export class IProduct {
       public brandID:number;
       public supplierID:number;
       public averageRating:number;
-      public mainImage:string;   
+      public discount:any=0;
+      public mainImage:string;  
+      public afterDiscount:any; 
 }

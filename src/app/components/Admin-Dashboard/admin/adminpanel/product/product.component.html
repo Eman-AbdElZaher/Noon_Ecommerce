@@ -21,6 +21,7 @@
 						<th>Price</th>
 						<th>Color</th>
                         <th>Size</th>
+						<th>Price After Discount</th>
                         <th>Actions</th>
 					</tr>
 				</thead>
@@ -33,9 +34,11 @@
                         <td>{{product.price}}</td>
 						<td><span class='color' [ngStyle]="{'background-color':product.color }"></span></td>
 					    <td>{{product.size}}</td>
+						<td>{{product.afterDiscount}}</td>
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+						    <button href="#ProductModal" (click)="getProduct(product.id)" class="btn btn-success" data-toggle="modal">Add Offer</button>
 						</td>
 					</tr>	
 				</tbody>
@@ -248,7 +251,54 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" data-dismiss="modal" (click)="SaveEditProduct(userform)" data-dismiss="modal" class="btn btn-info" [disabled]="!userform.valid" value="Save">
+					<input type="submit" (click)="SaveEditProduct(userform)" data-dismiss="modal" class="btn btn-info" [disabled]="!userform.valid" value="Save">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--Add Discount Modal-->
+
+<div id="ProductModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form #formuser="ngForm"  novalidate>
+				<div class="modal-header">						
+					<h4 class="modal-title">Add Discount</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+                <div class="modal-body">					
+					<div class="form-group">
+						<label>Discount Value</label>
+						<input type="number" #discount class="form-control" required name="Discount" >
+						<small class="text-danger">Enter Product Discount</small>
+					</div>		                    
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit"  data-dismiss="modal" (click)="updateDiscount(discount.value)" class="btn btn-info"  value="Save">
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--End Discount Modal-->
+<!-- Delete Modal HTML -->
+<div id="deleteProductModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Delete Product</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Are you sure you want to delete these Records?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit" class="btn btn-danger" value="Delete">
 				</div>
 			</form>
 		</div>

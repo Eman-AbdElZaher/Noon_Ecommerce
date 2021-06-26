@@ -58,7 +58,6 @@ export class ShowCartProductsComponent implements OnInit {
           this.getProduct(element.productId);
 
         });
-
       },
       error => {
         this.mmsgerr = error;

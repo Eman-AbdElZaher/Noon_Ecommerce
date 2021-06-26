@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>   orders </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+ 
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section"> {{User.userName}} orders</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-primary">
+						    <tr>
+						      <th>#</th>
+						      <th>DateTime</th>
+							  <th> quantity</th>
+						      <th>Total Price</th>
+                             
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr *ngFor="let item of UserOrders;let i=index">
+						      <th scope="row">{{i+1}}</th>
+						      <td>{{item.orderDate}}</td>
+						     
+							  <span *ngFor="let a of q">
+                              <td  *ngIf="item.id==a.orderd"> {{a.qty}}</td>
+							</span>
+							<td>{{item.totalPrice}}$</td>
+						    </tr>
+						    <tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+ 
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+ 
+
+	</body>
+</html>
+

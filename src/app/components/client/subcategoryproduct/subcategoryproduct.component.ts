@@ -26,7 +26,7 @@ export class SubcategoryproductComponent implements OnInit {
   productList2:IProduct[]=[];
   subcategoryList:ISubCategory[]=[];
   brandList:Ibrand[]=[];
-  public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0};
+  public  product :IProduct={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",SubCategoryID:0,supplierID:0,discount:0,afterDiscount:0};
   hasSubCayegoryProduct:boolean=false;
   content:string='';
   products:boolean=false;
@@ -36,6 +36,7 @@ export class SubcategoryproductComponent implements OnInit {
   Allcolor:string[]=[];
   UniqeColor:string[]=[];
   isLoading:boolean=true;
+  
   constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService,private whislistservice:WishlistProductService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
@@ -61,6 +62,8 @@ getAllProductInaSpecificSaubCategory()
       this.productList2=data;
       if(data.length!=0)
       {
+        this.isfound=true;
+          
           console.log(this.subCategoryId);
           data.forEach(element=>{
           this.Allsize.push(element.size);
@@ -68,10 +71,11 @@ getAllProductInaSpecificSaubCategory()
       })
       this.UniqeSize = this.Allsize.filter((x, i, a) => a.indexOf(x) === i);
       this.UniqeColor=this.Allcolor.filter((x, i, a) => a.indexOf(x) === i);
-        this.hasSubCayegoryProduct=true;
+      this.hasSubCayegoryProduct=true;
       }
       else
       {
+       
         this.hasSubCayegoryProduct=false;
         this.content='There is No Product in This SubCategory';
       }
@@ -93,14 +97,16 @@ getProductbuSubCategory(minprice,maxprice)
       this.isLoading=false;
       if(data.length==0)
       {
-        this.hasSubCayegoryProduct=false;
-        this.content=`There is No Product Between ${minprice} And ${maxprice}` ;
+        this.isfound=false;
+       // this.hasSubCayegoryProduct=false;
+        this.content=`between ${minprice} And ${maxprice}` ;
         console.log(this.hasSubCayegoryProduct);
         console.log(this.content);
       }
       else
       {
-        this.hasSubCayegoryProduct=true;
+        this.isfound=true;
+       // this.hasSubCayegoryProduct=true;
       }
       console.log(data);
       console.log(this.productList);
@@ -133,6 +139,7 @@ getAllBrand(){
       if(data.length>0)
       {
          this.brandList=data;
+         
       }
     },
     errorResponse=>
@@ -148,13 +155,15 @@ getProductsInBrand( brandID:number){
       this.productList=serviceData;
       if(serviceData.length==0)
       {
-        this.hasSubCayegoryProduct=false;
-          this.content=`There is No Product in This Brand` ;
+        //this.hasSubCayegoryProduct=false;
+        this.isfound=false;
+          this.content=`Brand` ;
       }
         else
         {
+          this.isfound=true;
          
-          this.hasSubCayegoryProduct=true;
+         // this.hasSubCayegoryProduct=true;
       }
     },
     errorResponse=>
@@ -169,9 +178,15 @@ getProductInSize(productSize:any)
     {
       if(serviceData.length>0)
       {
+        this.isfound=true;
         this.productList=serviceData;
+       
        console.log(productSize);
        console.log(this.subCategoryId);
+      }
+      else{
+        this.isfound=false;
+        this.content="Size";
       }
     },
     errorResponse=>
@@ -205,13 +220,14 @@ getAllProductsInSupplier(SupplierId:number)
       console.log(SupplierId);
       if(serviceData.length==0)
       {
-        this.hasSubCayegoryProduct=false;
-          this.content=`There is No Product in This Supplier` ;
+        this.isfound=false;
+       // this.hasSubCayegoryProduct=false;
+          this.content=`Supplier` ;
       }
         else
         {
-         
-          this.hasSubCayegoryProduct=true;
+          this.isfound=true;
+        //  this.hasSubCayegoryProduct=true;
       }
     },
     errorResponse=>

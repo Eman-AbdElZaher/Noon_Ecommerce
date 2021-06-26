@@ -17,10 +17,13 @@
   .contain{
       display: flex;
       margin: 5%;
+      width:95%;
+      margin:20px auto;
+      overflow-x: auto;
   }
   h2
   {
     color: rgb(87, 85, 85);
-   
+    font-size: 19px;
 
   }

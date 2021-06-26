@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Product } from 'src/app/models/Classes/Product';
+import { IImage } from 'src/app/models/Interfaces/IImage';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductService } from 'src/app/services/product.service';
 import { WishlistProductService } from 'src/app/services/wishlist-product.service';
+import { ImageService } from './../../../services/image.service';
 declare var $:any;
 @Component({
   selector: 'app-product-details',
@@ -16,7 +18,13 @@ export class ProductDetailsComponent implements OnInit {
  public  product :Product={id:0,name:"",averageRating:0,brandID:0,color:"",description:"",mainImage:"",price:0,quantity:0,size:"",subCategoryID:0,supplierID:0};
   productId:number;
   isLoading:boolean=true;
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private cartService:CartProductService,private whislistservice:WishlistProductService) { 
+  ImageList:IImage[]=[];
+  constructor(
+    private productservice:ProductService
+    ,private activatedRoute:ActivatedRoute,
+    private cartService:CartProductService,
+    private whislistservice:WishlistProductService,
+    private _imageservice:ImageService) { 
     console.log(this.product)
   }
  
@@ -25,6 +33,7 @@ export class ProductDetailsComponent implements OnInit {
     {
       this.productId=parseInt(params.get('id'));
     })
+    this.getAllProductImages();
  
     this.productservice.getProductById(this.productId).subscribe(
       data=>
@@ -41,6 +50,17 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
     console.log("local"+this.product);
+  }
+  getAllProductImages(){
+    this._imageservice.getImageProduct(this.productId).subscribe(
+      data=>{
+        this.ImageList=data;
+      },
+      error =>
+      {
+        console.log(error);
+      }
+    )
   }
 
   addToCart(ProductId:number)

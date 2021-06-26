@@ -46,7 +46,7 @@
 								<td><img src="http://localhost:61135/Resources/Images/{{Product.mainImage}}" width="100px" height="auto"/></td>
 							 	<span  *ngFor="let item of orderDetailsList">
 								 <td *ngIf="item.productID==Product.id">{{item.quantity}}</td>
-							<span ><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}</td> </span> 							      
+							<span ><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.afterDiscount}}</td> </span> 							      
 								 </span>
 							</tr>
 						</tbody>

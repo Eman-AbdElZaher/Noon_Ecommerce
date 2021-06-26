@@ -6,30 +6,6 @@
                 <div class="sc-1be8ju5-4 cuGhQB">
                     <div data-qa="filter-container">
                         <div class="sc-1y4n57f-0 juQrmL">
-                            <div data-qa="Fulfillment" class="sc-1fy0rx2-0 eSqSED"><button type="button"
-                                    class="sc-1fy0rx2-1 liJOhO">
-                                    <div class="sc-1fy0rx2-3 cfEypk">
-                                        <div class="sc-1fy0rx2-3 cfEypk">
-                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Fulfillment</span></div><img
-                                                class="open"
-                                                src="https://z.nooncdn.com/s/app/com/noon/icons/down-chevron.svg"
-                                                alt="Fulfillment">
-                                        </div>
-                                    </div>
-                                </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div class="sc-6mc8i3-0 bRBWNx"><label for="is_fbn_1">
-                                            <input id="is_fbn_1" type="checkbox">
-                                            <img src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                alt="">
-                                            <div class="u8zs36-0 kRPdZJ"><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/images/fulfilment_express_v2-en.svg"
-                                                    alt="noon-express" class="fbn" height="20px" width="80px"></div>
-                                        </label></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sc-1y4n57f-0 juQrmL">
                             <div data-qa="Category" class="sc-1fy0rx2-0 eSqSED"><button type="button"
                                     class="sc-1fy0rx2-1 liJOhO">
                                     <div class="sc-1fy0rx2-3 cfEypk">
@@ -71,19 +47,9 @@
                                 </button>
                                 <div open="" class="sc-1fy0rx2-2 jiOBmh">
                                     <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG">
-                                        <div class="searchContainer">
-                                            <div class="vcf78e-1 dOHyug"><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/search.svg"
-                                                    alt="search"></div><input type="text" placeholder="Search "
-                                                value="">
-                                        </div><label for="brand_adidas" data-qa="brand_adidas" *ngFor="let brand of brandList"
+                                        <label for="brand_adidas" data-qa="brand_adidas" *ngFor="let brand of brandList"
                                             class="vcf78e-2 bXceLU"><span 
-                                                style="display: flex; align-items: center;"><input id="brand_adidas"
-                                                    type="checkbox" value="adidas" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt=""><span (click)="getAllProductsInBrand(brand.id)">{{brand.name}}</span></span><span>&nbsp;(70)</span></label><button
-                                            type="button" data-qa="btn-see-all" class="limitToggle"
-                                            aria-label="See All">See All</button>
+                                                style="display: flex; align-items: center;"><span (click)="getAllProductsInBrand(brand.id)">{{brand.name}}</span></span></label>
                                     </div>            
                                 </div>
                             </div>
@@ -113,46 +79,6 @@
                             </div>
                         </div>
                         <div class="sc-1y4n57f-0 juQrmL">
-                            <div data-qa="Product Rating" class="sc-1fy0rx2-0 eSqSED"><button type="button"
-                                    class="sc-1fy0rx2-1 liJOhO">
-                                    <div class="sc-1fy0rx2-3 cfEypk">
-                                        <div class="sc-1fy0rx2-3 cfEypk">
-                                            <div class="sc-1fy0rx2-3 cfEypk"><span>Product Rating</span>
-                                                <div class="sc-1fy0rx2-4 rdgvn">Clear</div>
-                                            </div><img class="open"
-                                                src="https://z.nooncdn.com/s/app/com/noon/icons/down-chevron.svg"
-                                                alt="Product Rating">
-                                        </div>
-                                    </div>
-                                </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div class="sc-909yfc-0 dIgdNu">
-                                        <div class="selectedRatings"><span class="selectedText">1.8 Stars or
-                                                More</span><span class="selectedNumber"><svg width="42" height="144"
-                                                    viewBox="0 0 42 144" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    class="leftbrackets">
-                                                    <path
-                                                        d="M39.185 2.14125C36.33 -0.71375 31.706 -0.71375 28.851 2.14125C-9.617 40.6092 -9.617 103.201 28.851 141.668C30.279 143.097 32.149 143.811 34.018 143.811C35.887 143.811 37.757 143.097 39.185 141.671C42.04 138.817 42.04 134.19 39.185 131.334C6.417 98.5632 6.417 45.2453 39.185 12.4753C42.039 9.62325 42.039 4.99625 39.185 2.14125Z"
-                                                        fill="black"></path>
-                                                </svg>2990<svg width="42" height="144" viewBox="0 0 42 144" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg" class="rightbrackets">
-                                                    <path
-                                                        d="M2.539 141.673C3.966 143.098 5.837 143.812 7.705 143.812C9.574 143.812 11.444 143.098 12.872 141.669C51.341 103.201 51.341 40.6103 12.872 2.14226C10.018 -0.712744 5.393 -0.712744 2.539 2.14226C-0.315002 4.99526 -0.315002 9.62326 2.539 12.4763C35.308 45.2463 35.308 98.5633 2.539 131.335C-0.315002 134.188 -0.315002 138.816 2.539 141.673Z"
-                                                        fill="black"></path>
-                                                </svg></span></div>
-                                        <div class="rateCover">
-                                            <div class="rateSubCover">
-                                                <div class="ratingValues"><input type="range" min="0" max="40"
-                                                        class="slider" value="8"></div>
-                                                <div class="maxNmin"><span class="minVal">1 Star</span><span
-                                                        class="maxVal">5 Star</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sc-1y4n57f-0 juQrmL">
                             <div data-qa="Size" class="sc-1fy0rx2-0 eSqSED"><button type="button"
                                     class="sc-1fy0rx2-1 liJOhO">
                                     <div class="sc-1fy0rx2-3 cfEypk">
@@ -171,10 +97,8 @@
                                                         class="sc-1idsysv-3 iDKSuK"></span>
                                                     <div class="displayLableWrapper" (click)="getAllProductsInsize(size)">
                                                         <div class="displayLabel" >{{size}}</div>
-                                                        <div class="countWrapper">(405)</div>
                                                     </div>
-                                                </span></label></div><button type="button" data-qa="btn-see-all"
-                                            class="limitToggle" aria-label="See All">See All</button>
+                                                </span></label></div>
                                     </div>
                                 </div>
                             </div>
@@ -191,26 +115,7 @@
                                         </div>
                                     </div>
                                 </button>
-                                <div open="" class="sc-1fy0rx2-2 jiOBmh">
-                                    <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG"><label
-                                            for="new_arrivals_30_days" data-qa="new_arrivals_Last 30 Days"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="new_arrivals_30_days" type="checkbox" value="30_days"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Last 30 Days</span><span>&nbsp;(90)</span></label><label
-                                            for="new_arrivals_60_days" data-qa="new_arrivals_Last 60 Days"
-                                            class="vcf78e-2 bXceLU"><span
-                                                style="display: flex; align-items: center;"><input
-                                                    id="new_arrivals_60_days" type="checkbox" value="60_days"
-                                                    checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt="">Last 60 Days</span><span>&nbsp;(152)</span></label></div>
-                                </div>
-                            </div>
-                        </div>
-                      
+                                
                         <div class="sc-1y4n57f-0 juQrmL">
                             <div data-qa="Colour" class="sc-1fy0rx2-0 eSqSED"><button type="button"
                                     class="sc-1fy0rx2-1 liJOhO">
@@ -230,10 +135,8 @@
                                                         class="sc-1idsysv-3 iDKSuK"></span>
                                                     <div class="displayLableWrapper" (click)="getAllProductsInColor(color)">
                                                         <div class="displayLabel" [ngStyle]="{'background-color':color}"></div>
-                                                        <div class="countWrapper">(405)</div>
                                                     </div>
-                                                </span></label></div><button type="button" data-qa="btn-see-all"
-                                            class="limitToggle" aria-label="See All">See All</button>
+                                                </span></label></div>
                                     </div>
                                 </div>
                             </div>
@@ -253,13 +156,8 @@
                                     <div>
                                     <div data-qa="brand-filter-list" class="vcf78e-0 gKInrG" *ngFor="let supplier of supplierList"><label for="partner_p_1"
                                             data-qa="partner_noon" class="vcf78e-2 bXceLU" ><span 
-                                                style="display: flex; align-items: center;"><input id="partner_p_1"
-                                                    type="checkbox" value="p_1" checked=""><img
-                                                    src="https://z.nooncdn.com/s/app/com/noon/icons/checkbox-square_unchecked.svg"
-                                                    alt=""><span (click)="getAllProductsInSupplier(supplier.id)"> {{supplier.name}}</span></span><span>&nbsp;(323)</span></label></div>
-                                                    <button type="button"
-                                            data-qa="btn-see-all" class="limitToggle" aria-label="See All">See
-                                            All</button></div>
+                                                style="display: flex; align-items: center;"><span (click)="getAllProductsInSupplier(supplier.id)"> {{supplier.name}}</span></span></label></div>
+                                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +165,8 @@
                 </div>
             </div>
         </div>
-
+        </div>
+        </div>
     </section>
    <div class='ikCHFE'>
      <div class='VwxqG grid'>
@@ -301,13 +200,13 @@
                         <div class="e3js0d-8 jtiosv">
                             <div class="sxpmji-0 cZUObc">
                                 <div class="sxpmji-1 dCYttU">
-                                    <span class="currency">EGP </span>
-                                    <strong>{{product.price}}</strong>
+                                    <span class="currency">EGP </span><strong *ngIf="product.Discount!=0">{{product.afterDiscount}}$</strong>
+                                    <strong *ngIf="product.Discount==0">{{product.price}}$</strong>
                                 </div>
-                                <div class="sxpmji-2 fCLCee">
-                                    <span class="oldPrice">EGP 999</span>
-                                    <span class="discount">19% Off</span>
-                                </div></div></div>
+                                <div *ngIf="product.Discount!=0" class="sxpmji-2 fCLCee"><span class="oldPrice">EGP {{product.price}}</span>
+                                    <span class="discount">{{product.discount}}% Off</span>
+                                </div>
+                            </div></div>
                                 <div class="e3js0d-9 kDpjlW"> 
                                     <div data-qa="product-noon-express" class="e3js0d-10 dSISfG">
                                         <div class="u8zs36-0 kRPdZJ">
@@ -341,18 +240,3 @@
 <div class="loader-container" *ngIf='isLoading'>
     <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
   </div>
-
-
-
-
-
-
-
-<!-- <section *ngIf="!hasSubCayegoryProduct" class="wp1b4p-1 gcGfip">
-    <div class="srmyyt-0 elsAqw"><img src="https://z.nooncdn.com/s/app/com/noon/images/empty-state-cart.svg"
-            alt="Your shopping cart looks empty" class="srmyyt-1 fvQlVB">
-        <p class="srmyyt-2 gsMyLW">{{content}} </p>
-        <p class="srmyyt-3 bKKIna">What are you waiting for?</p><button routerLink="/home" type="button" aria-label="Start Shopping"
-            class="srmyyt-4 euzQzm">Start Shopping</button>
-    </div>
-</section> -->

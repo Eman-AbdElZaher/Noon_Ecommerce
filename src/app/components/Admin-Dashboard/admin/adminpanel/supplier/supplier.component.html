@@ -8,7 +8,6 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Supplier</span></a>
-						<a href="#deleteSupplierModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
@@ -82,7 +81,7 @@
 							<label >Email</label>
 							<input type="Email" name="txtEmail" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [class.is-invalid]="email.invalid && email.touched" required #email="ngModel" [(ngModel)]="supplier.email"  class="form-control" >
 							<div *ngIf="email.errors && (email.invalid || email.touched)">
-								<small class="text-danger" *ngIf="email.errors.required" >Email is required</small>
+								<small class="text-danger" *ngIf="email.errors.required" >Email is required   </small>
 								<small class="text-danger" *ngIf="email.errors.pattern" >Email must be like test@gmail.com</small>
 							 
 							</div>
@@ -96,7 +95,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit"  (click)="AddnewSupplier(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
+					<input type="submit" data-dismiss="modal"  (click)="AddnewSupplier(userform)" class="btn btn-success" [disabled]="!userform.valid" value="Add">
 				</div>
 			</form>
 		</div>
@@ -136,28 +135,7 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" (click)="SaveEditSupplier(userform)" class="btn btn-info" [disabled]="!userform.valid" value="Save">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteSupplierModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Delete Supplier</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="submit"  data-dismiss="modal" (click)="SaveEditSupplier(userform)" class="btn btn-info" [disabled]="!userform.valid" value="Save">
 				</div>
 			</form>
 		</div>

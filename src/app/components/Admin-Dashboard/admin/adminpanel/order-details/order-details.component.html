@@ -47,7 +47,7 @@
 								<span style=" display: inline-flex;margin:40x ;">
 							 	<span  *ngFor="let item of orderDetailsList">
 								 <td *ngIf="item.productID==Product.id">{{item.quantity}}</td>
-							     <td  *ngIf="item.productID==Product.id">{{item.quantity*Product.price}}$</td>							      
+							<span ><td  *ngIf="item.productID==Product.id">{{item.quantity*Product.afterDiscount}}</td> </span> 							      
 								 </span>
 								</span>
 							</tr>

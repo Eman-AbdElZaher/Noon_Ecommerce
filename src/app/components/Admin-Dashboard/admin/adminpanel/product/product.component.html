@@ -8,7 +8,6 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-						<a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
@@ -22,6 +21,7 @@
 						<th>Price</th>
 						<th>Color</th>
                         <th>Size</th>
+						<th>Price After Discount</th>
                         <th>Actions</th>
 					</tr>
 				</thead>
@@ -34,9 +34,11 @@
                         <td>{{product.price}}</td>
 						<td><span class='color' [ngStyle]="{'background-color':product.color }"></span></td>
 					    <td>{{product.size}}</td>
+						<td>{{product.afterDiscount}}</td>
 						<td>
 							<a href="#editProductModal" (click)="EditProduct(product.id,product)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal"  (click)="DeleteProduct(product.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+						    <button href="#ProductModal" (click)="getProduct(product.id)" class="btn btn-success" data-toggle="modal">Add Offer</button>
 						</td>
 					</tr>	
 				</tbody>
@@ -155,7 +157,7 @@
 					</div>
 				<div class="modal-footer">
 					<input type="button" id='close' class="btn btn-default"  data-dismiss="modal" value="Cancel">
-					<input type="submit"  (click)="AddnewProduct(userform)" data-dismiss="modal" class="btn btn-success" [disabled]="!userform.valid" value="Add">
+					<input type="submit" data-dismiss="modal" (click)="AddnewProduct(userform)" data-dismiss="modal" class="btn btn-success" [disabled]="!userform.valid" value="Add">
 				</div>
 			</form>
 		</div>
@@ -255,6 +257,32 @@
 		</div>
 	</div>
 </div>
+<!--Add Discount Modal-->
+
+<div id="ProductModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form #formuser="ngForm"  novalidate>
+				<div class="modal-header">						
+					<h4 class="modal-title">Add Discount</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+                <div class="modal-body">					
+					<div class="form-group">
+						<label>Discount Value</label>
+						<input type="number" #discount class="form-control" required name="Discount" >
+						<small class="text-danger">Enter Product Discount</small>
+					</div>		                    
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit"  data-dismiss="modal" (click)="updateDiscount(discount.value)" class="btn btn-info"  value="Save">
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--End Discount Modal-->
 <!-- Delete Modal HTML -->
 <div id="deleteProductModal" class="modal fade">
 	<div class="modal-dialog">
@@ -276,6 +304,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="loader-container" *ngIf='isLoading'>
     <div class="loader"><img src="assets/images/noon-loader.gif" alt="loader"></div>
   </div>

@@ -23,13 +23,11 @@ export class SupplierComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.supplierService.refreshNeeded$.subscribe(()=>{
-      this.GetAllSupplier()
-    })
+    // this.supplierService.refreshNeeded$.subscribe(()=>{
+    //   this.GetAllSupplier()
+    // })
     this.GetAllSupplier();
-    this.getProductsCount();
-    this.getSelectedPage(1);
-    this.reserform();
+    this.init();
   }
 
 GetAllSupplier(){
@@ -47,6 +45,11 @@ GetAllSupplier(){
     {
      this.errorMsg=errorResponse;
     })
+}
+init(){
+  this.getProductsCount();
+  this.getSelectedPage(this.currentPageNumber);
+  this.reserform();
 }
 
   reserform(form? : NgForm){
@@ -71,9 +74,11 @@ GetAllSupplier(){
        this.errorMsg = error;
       }
      )
+     this.init();
   }
   DeleteSupplier(supplierId:number)
   {
+    if (confirm("Are you sure you want to delete this Advertisement ?")) {
     this.supplierService.deleteSupplier(supplierId).subscribe(
       data => {
         this.supplierService.getAllSupplier().subscribe(
@@ -90,7 +95,9 @@ GetAllSupplier(){
        this.errorMsg = error;
       }
     )
+    this.init();
   }
+}
   EditSupplier(supplierId:number,supplier:ISupplier)
   {
     this.supplierService.updateSupplier(supplierId,supplier).subscribe(

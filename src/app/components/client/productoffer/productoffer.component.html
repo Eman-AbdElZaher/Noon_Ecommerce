@@ -1,0 +1,68 @@
+<div class='ikCHFE'>
+    <div class='VwxqG grid'>
+       <div class="productContainer" *ngFor="let product of productOfferList">
+           <a routerLink="/home/productPage/{{product.id}}">
+               <div class='diNcmV grid'>
+                   <!---------product-image-container-->
+                 <div class='cVjNKv'>
+                    <div>
+                        <div class=jRkpWF>
+                            <div class='lgLLLe'>
+                               <img width="100%" height="100%" src="http://localhost:61135/Resources/Images/{{product.mainImage}}" alt="product-img ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="e3js0d-1 efqIDW">
+                     <button type="button" class="e3js0d-3 yzKfW">
+                         <img src="https://z.nooncdn.com/s/app/com/noon/icons/wishlist.svg" alt="wishlist">
+                       </button>
+                   </div>
+                   <div class="e3js0d-4 gXZEZv"></div>
+                 </div>
+                 <!------------product-details----------------->
+                 <div class="e3js0d-6 iKEZJh">
+                     <div data-qa="product-name" class="e3js0d-7 jULUCI">
+                         <span width="0"><span>
+                             <span>{{product.name}}</span><br>
+                           </span>
+                           <span style="position: fixed; visibility: hidden; top: 0px; left: 0px;">…</span></span>
+                       </div>
+                       <div class="e3js0d-8 jtiosv">
+                           <div class="sxpmji-0 cZUObc">
+                               <div class="sxpmji-1 dCYttU">
+                                   <span class="currency">EGP </span><strong *ngIf="product.Discount!=0">{{product.afterDiscount}}$</strong>
+                                   <strong *ngIf="product.Discount==0">{{product.price}}$</strong>
+                               </div>
+                               <div *ngIf="product.Discount!=0" class="sxpmji-2 fCLCee"><span class="oldPrice">EGP {{product.price}}</span>
+                                   <span class="discount">{{product.discount}}% Off</span>
+                               </div>
+                           </div></div>
+                               <div class="e3js0d-9 kDpjlW"> 
+                                   <div data-qa="product-noon-express" class="e3js0d-10 dSISfG">
+                                       <div class="u8zs36-0 kRPdZJ">
+                                           <img src="https://z.nooncdn.com/s/app/com/noon/images/fulfilment_express_v2-en.svg" alt="noon-express" height="20px" width="80px">
+                                       </div>
+                                       <div class="e3js0d-11 ktDxXK">
+                                       </div></div></div></div>
+                           </div>
+               </a>
+       </div>
+    </div>
+    <!-- <nav aria-label="..." *ngIf="hasProducts">
+       <ul class="pagination justify-content-center">
+           <li class="page-item" [ngClass]="{disabled:currentPageNumber <=1, cursorNotAllowed:currentPageNumber <=1}">
+               <button class="page-link" [disabled]="currentPageNumber <=1"
+                   (click)="getSelectedPage(currentPageNumber-1)"><<</button>
+           </li>
+           <li class="page-item" *ngFor='let x of counter(numberOfPages) ;let i = index'
+               [class.active]="currentPageNumber == (i+1)">
+               <a class="page-link" (click)="getSelectedPage(i+1)">{{i+1}} </a>
+           </li>
+           <li class="page-item"
+               [ngClass]="{disabled:currentPageNumber >=numberOfPages, cursorNotAllowed:currentPageNumber >=numberOfPages}">
+               <button class="page-link" [disabled]="currentPageNumber >= numberOfPages"
+                   (click)="getSelectedPage(currentPageNumber+1)">>></button>
+           </li>
+       </ul>
+   </nav> -->
+  </div>

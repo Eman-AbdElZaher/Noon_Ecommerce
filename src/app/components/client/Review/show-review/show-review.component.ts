@@ -6,6 +6,7 @@ import { HubConnection } from '@aspnet/signalr';
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/models/Classes/Review';
 import { ReviewService } from 'src/app/services/review.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-show-review',
@@ -17,8 +18,10 @@ export class ShowReviewComponent implements OnInit {
  @Output() reviwesNumber=new EventEmitter();
 
  @Input() productID:number;
+ userNames:any[]=[];
+ 
 
-  constructor(private reviewservice: ReviewService, private rout:Router) {
+  constructor(private userService:UserService ,private reviewservice: ReviewService, private rout:Router) {
     console.log(this.produtReviews)
 
   }
@@ -30,7 +33,21 @@ export class ShowReviewComponent implements OnInit {
       data => {
         this.produtReviews = data;
         this.reviwesNumber.emit(data.length);
-        console.log(this.reviwesNumber);
+        data.forEach(element => {
+          this.userService.getUserByid(element.userID).subscribe(
+            data=>
+            {
+             
+              let userreview={
+                rev_ID:element.id,
+                username:data.userName
+              }
+              this.userNames.push(userreview);
+            }
+          )
+          
+        });
+        console.log("USSSS",this.userNames)
 
       },
       error => {

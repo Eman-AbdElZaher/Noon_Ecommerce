@@ -13,7 +13,10 @@
 
     <div class="media border p-3" style="width: 300px;">
         <div class="media-body">
-            <h4 style="color: rgb(172, 168, 168);font-weight: bold;">John Doe</h4>
+            <span *ngFor="let item of userNames">
+               
+                <h4 style="color: rgb(172, 168, 168);font-weight: bold;" *ngIf="item.rev_ID==review.id">{{item.username}}</h4>
+            </span>
             <p style="font-weight: bold;">{{review.comment}}</p>
             
         </div>

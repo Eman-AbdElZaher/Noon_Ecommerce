@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Review } from 'src/app/models/Classes/Review';
 import { ReviewService } from 'src/app/services/review.service';
 
@@ -10,9 +10,9 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class UpdateReviewComponent implements OnInit {
   reviewId:number;
-  public reviewe:Review={id:0,comment:"",productID:0,rating:"",userID:""};
+  public reviewe:Review={id:0,comment:"",productID:0,rating:0,userID:""};
   errormsg="";
-  constructor(private activatedRoute:ActivatedRoute,private reviweSrvice:ReviewService) { }
+  constructor(private activatedRoute:ActivatedRoute,private reviweSrvice:ReviewService,private rout:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
@@ -32,11 +32,13 @@ export class UpdateReviewComponent implements OnInit {
       }
     )
   }
-
+  setRating(rating:number)
+  {
+    this.reviewe.rating=rating;
+  }
   updateReview()
   {
-    console.log(this.reviewe)
-    console.log(this.reviewe.id)
+    
     this.reviweSrvice.updateReview(this.reviewe.id,this.reviewe).subscribe(
 
     error=>
@@ -46,6 +48,7 @@ export class UpdateReviewComponent implements OnInit {
     }
       
     )
+    this.rout.navigate(["/home/productPage",this.reviewe.productID]);
   }
 
 

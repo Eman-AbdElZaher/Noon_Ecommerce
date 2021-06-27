@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HubConnection } from '@aspnet/signalr';
+
 
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/models/Classes/Review';
 import { ReviewService } from 'src/app/services/review.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-show-review',
@@ -13,19 +15,39 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ShowReviewComponent implements OnInit {
  public produtReviews: Review[] = [];
+ @Output() reviwesNumber=new EventEmitter();
 
-  constructor(private reviewservice: ReviewService, private rout:Router) {
+ @Input() productID:number;
+ userNames:any[]=[];
+ 
+
+  constructor(private userService:UserService ,private reviewservice: ReviewService, private rout:Router) {
     console.log(this.produtReviews)
 
   }
  
   msgerror = "";
   ngOnInit() {
-    this.reviewservice.getAllReview(2).subscribe(
+    console.log("Product ID"+this.productID);
+    this.reviewservice.getAllReview(this.productID).subscribe(
       data => {
         this.produtReviews = data;
-        console.log(data);
-        console.log(this.produtReviews)
+        this.reviwesNumber.emit(data.length);
+        data.forEach(element => {
+          this.userService.getUserByid(element.userID).subscribe(
+            data=>
+            {
+             
+              let userreview={
+                rev_ID:element.id,
+                username:data.userName
+              }
+              this.userNames.push(userreview);
+            }
+          )
+          
+        });
+        console.log("USSSS",this.userNames)
 
       },
       error => {
@@ -44,7 +66,7 @@ export class ShowReviewComponent implements OnInit {
         
       }
     )
-    this.ngOnInit();
+    this.rout.navigate(["/home/productPage",this.productID]);
   }
 
  

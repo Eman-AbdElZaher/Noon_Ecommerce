@@ -11,6 +11,7 @@ import { WishlistProductService } from 'src/app/services/wishlist-product.servic
 import{OrderService} from 'src/app/services/order.service';
 import { ConditionalExpr } from '@angular/compiler';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-show-cart-products',
@@ -22,6 +23,7 @@ export class ShowCartProductsComponent implements OnInit {
   public Brands:Ibrand[]=[];
   public cart:Cart={userID:"",totalPrice:0};
   isLoading:boolean=true;
+  
   
   constructor(private AuthService:AuthenticationService, private brandService:BrandService, private cartProductsevice: CartProductService, private wishlistServicr: WishlistProductService, private productservice: ProductService,private cartservice:CartService,private orderService:OrderService) {
     console.log(this.cartProducts)

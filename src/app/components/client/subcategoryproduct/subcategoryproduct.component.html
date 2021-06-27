@@ -173,19 +173,20 @@
     <div class='ikCHFE'>
         <div class='VwxqG grid'>
            <div class="productContainer" *ngFor="let product of productList">
-               <a routerLink="/home/productPage/{{product.id}}">
                 <div class='diNcmV grid'>
                     <!---------product-image-container-->
                   <div class='cVjNKv'>
                      <div>
                          <div class=jRkpWF>
+                            <a routerLink="/home/productPage/{{product.id}}">
                              <div class='lgLLLe'>
                                 <img width="100%" height="100%" src="http://localhost:61135/Resources/Images/{{product.mainImage}}" alt="product-img ">
                              </div>
+                             </a>
                          </div>
                      </div>
                      <div class="e3js0d-1 efqIDW">
-                      <button type="button" class="e3js0d-3 yzKfW">
+                      <button type="button" (click)='addToWishist(product.id)' class="e3js0d-3 yzKfW">
                           <img src="https://z.nooncdn.com/s/app/com/noon/icons/wishlist.svg" alt="wishlist">
                         </button>
                     </div>
@@ -212,7 +213,6 @@
                                 <div class="e3js0d-9 kDpjlW"> 
                                     </div></div>
                             </div>
-                        </a>
            </div>
         </div>
         <div class="row" *ngIf="!isfound">

@@ -45,7 +45,6 @@ body {
   .tab-content {
     overflow: hidden; }
     .tab-content img {
-      width: 100%;
       -webkit-animation-name: opacity;
               animation-name: opacity;
       -webkit-animation-duration: .3s;
@@ -56,7 +55,16 @@ body {
     background: #fff;
     padding: 3em;
     line-height: 1.7em; }
-  
+    .tab-pane{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+    .tab-content>.active {
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+  }
   @media screen and (min-width: 997px) {
     .wrapper {
       display: -webkit-box;

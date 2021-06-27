@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/Interfaces/IProduct';
 import { ProductService } from 'src/app/services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { WishlistProductService } from 'src/app/services/wishlist-product.service';
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.component.html',
@@ -10,7 +11,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class OffersComponent implements OnInit {
   productList:IProduct[]=[];
   errorMsg="";
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private whishlistservice:WishlistProductService) { }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -61,5 +62,20 @@ getAllProductDevices()
     {
      this.errorMsg=errorResponse;
     })
+}
+addToWishist(productid:number)
+{
+  this.whishlistservice.addWishlistProduct(productid).subscribe
+  (
+    data=>
+    {
+      console.log(data);
+      console.log(productid);
+    },
+    error=>
+    {
+      console.log(error);
+    }
+  )
 }
 }

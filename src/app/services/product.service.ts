@@ -200,11 +200,19 @@ export class ProductService {
   }
   getProductOfferBySubCategoryAndOfferValue(subCategoryid:number,offerValue:any):Observable<IProduct[]>
   {
-    let url=`http://localhost:61135/api/Product/GetAllProductInOffer?subcategoryid=${subCategoryid}&discount=${offerValue}`;
+    let url=`http://localhost:61135/api/Product/GetAllProductInOffer?subcategoryid=${subCategoryid}&Discount=${offerValue}`;
     return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
       return throwError(err.message || "Internal Server error contact site adminstarator");
     })
     )
+}
+getProductOfferCategoryAndOfferVale(subCategoryid:number,offerValue:any):Observable<IProduct[]>
+{
+  let url=`http://localhost:61135/api/Product/GetAllProductInOfferCategory?categoryid=${subCategoryid}&Discount=${offerValue}`;
+  return this.http.get<IProduct[]>(url).pipe(catchError((err) => {
+    return throwError(err.message || "Internal Server error contact site adminstarator");
+  })
+  )
 }
 getProductBySearch(searchKeyWord:string):Observable<IProduct[]>
   {

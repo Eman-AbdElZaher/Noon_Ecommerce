@@ -37,7 +37,13 @@ export class SubcategoryproductComponent implements OnInit {
   UniqeColor:string[]=[];
   isLoading:boolean=true;
   
-  constructor(private productservice:ProductService,private activatedRoute:ActivatedRoute,private subcategoryservice:SubcategoryService,private brandservice:BrandService,private supplierService:SupplierService,private whislistservice:WishlistProductService) { }
+  constructor(
+    private productservice:ProductService,
+    private activatedRoute:ActivatedRoute,
+    private subcategoryservice:SubcategoryService,
+    private brandservice:BrandService,
+    private supplierService:SupplierService,
+    private whishlistservice:WishlistProductService) { }
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>
     {
@@ -235,4 +241,19 @@ getAllProductsInSupplier(SupplierId:number)
      this.errorMsg=errorResponse;
     })
   }
+  addToWishist(productid:number)
+{
+  this.whishlistservice.addWishlistProduct(productid).subscribe
+  (
+    data=>
+    {
+      console.log(data);
+      console.log(productid);
+    },
+    error=>
+    {
+      console.log(error);
+    }
+  )
+}
 }

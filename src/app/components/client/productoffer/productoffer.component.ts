@@ -21,11 +21,28 @@ export class ProductofferComponent implements OnInit {
       this.offerValue=parseInt(params.get('offervalue'));
     })
     this.gotoProduct();
+    this.gotoProductCategory();
   }
  gotoProduct()
  {
 
    this.productsevice.getProductOfferBySubCategoryAndOfferValue(this.subCategoryId,this.offerValue)
+   .subscribe(
+     data=>
+     {
+        this.productOfferList=data;
+     },
+     error=>
+     {
+         return error;
+     }
+
+   )
+ }
+ gotoProductCategory()
+ {
+
+   this.productsevice.getProductOfferCategoryAndOfferVale(this.subCategoryId,this.offerValue)
    .subscribe(
      data=>
      {

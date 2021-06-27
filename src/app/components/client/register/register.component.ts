@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
       userData=>
       {
         console.log(userData);
-        this.router.navigate(['home']);
+        this.router.navigate(['/login/login']);
       },
       errorResponse=>
       {

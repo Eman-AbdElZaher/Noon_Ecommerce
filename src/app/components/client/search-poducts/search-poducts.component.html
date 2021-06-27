@@ -30,8 +30,8 @@
                        <div class="e3js0d-8 jtiosv">
                            <div class="sxpmji-0 cZUObc">
                                <div class="sxpmji-1 dCYttU">
-                                   <span class="currency">EGP </span><strong *ngIf="product.Discount!=0">{{product.afterDiscount}}$</strong>
-                                   <strong *ngIf="product.Discount==0">{{product.price}}$</strong>
+                                   <span class="currency">EG</span><strong *ngIf="product.Discount!=0">{{product.afterDiscount|number}}</strong>
+                                   <strong *ngIf="product.Discount==0">{{product.price}}EG</strong>
                                </div>
                                <div *ngIf="product.Discount!=0" class="sxpmji-2 fCLCee"><span class="oldPrice">EGP {{product.price}}</span>
                                    <span class="discount">{{product.discount}}% Off</span>

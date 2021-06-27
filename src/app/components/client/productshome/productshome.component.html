@@ -34,7 +34,7 @@
 												</span></div><div class="e3js0d-8 jtiosv">
 													<div class="sxpmji-0 cZUObc">
 														<div class="sxpmji-1 dCYttU">
-															<span class="currency">EGP </span><strong *ngIf="product.Discount!=0">{{product.afterDiscount}}$</strong>
+															<span class="currency">EGP </span><strong *ngIf="product.Discount!=0">{{product.afterDiscount| number}}</strong>
 															<strong *ngIf="product.Discount==0">{{product.price}}$</strong>
 														</div>
 														<div *ngIf="product.Discount!=0" class="sxpmji-2 fCLCee"><span class="oldPrice">EGP {{product.price}}</span>

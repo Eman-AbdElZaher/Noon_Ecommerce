@@ -46,7 +46,6 @@ export class ImageComponent implements OnInit {
     this.reserform();
     this.getImageCount();
     this.getSelectedPage(1);
-    $('.close').click();
   }
 
 GetAllImage(){

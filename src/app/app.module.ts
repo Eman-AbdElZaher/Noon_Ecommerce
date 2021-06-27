@@ -59,7 +59,7 @@ import { UserOrdersComponent } from './components/client/user-orders/user-orders
   ShowAidsComponent,
   HeaderadminComponent,
   NewarrivalComponent,
-  UserOrdersComponent
+  UserOrdersComponent,
   ],
   imports: [
     BrowserAnimationsModule,

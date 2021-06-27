@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit {
 
   CategoryList:ICategory[]=[];
   Maincategories:IMainCategory[]=[];
-  categories:string[]=[];
+  categories:IMainCategory[]=[];
   errorMsg:string;
   hasCategories:boolean=false;
   categoryForm: FormGroup;
@@ -34,6 +34,7 @@ export class CategoryComponent implements OnInit {
   currentPageNumber:number = 1;
   numberOfPages:number; 
   isLoading:boolean=true;
+  found:boolean=false;
   get formFields() { return this.categoryForm.controls;}
   constructor(
     private fb: FormBuilder,
@@ -75,11 +76,7 @@ export class CategoryComponent implements OnInit {
            this.hasCategories=true;
          }
          this.CategoryList.forEach(cat => {
-          this._maincategoryservice.getMainCategoryById(cat.mainCategoryID).subscribe(
-            data => {
-               this.categories.push(data.name) 
-            }
-          );
+          this.getMinCategory(cat.mainCategoryID);
         });
       },
       err =>
@@ -128,6 +125,7 @@ export class CategoryComponent implements OnInit {
     this._categoryService.addNewCategory(category).subscribe(
       data => {
         this.getSelectedPage(1);
+        this.categoryForm.reset();
       },
       error => {
         console.log(error)
@@ -180,7 +178,17 @@ export class CategoryComponent implements OnInit {
     });  
   }  
 }  
-
+ getMainCategoryName(id:number){
+   let Name='';
+   this._maincategoryservice.getMainCategoryById(id).subscribe(
+     data =>{
+       Name=data.name;
+       console.log(data.name);
+     },
+     err=> console.log(err)
+   )
+   return Name;
+ }
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.imageFile = event.target.files[0];
@@ -210,12 +218,8 @@ export class CategoryComponent implements OnInit {
         this.CategoryList= data;
         this.isLoading=false;
         this.CategoryList.forEach(cat => {
-          this._maincategoryservice.getMainCategoryById(cat.mainCategoryID).subscribe(
-            data => {
-               this.categories.push(data.name);
-               console.log(this.categories);
-            }
-          )});
+          this.getMinCategory(cat.mainCategoryID);
+          });
         this.currentPageNumber = currentPageNumber;
         console.log(this.currentPageNumber)
         if(data.length != 0)
@@ -229,5 +233,44 @@ export class CategoryComponent implements OnInit {
        this.errorMsg = error;
       }
     ) 
+  }
+  getMinCategory(MinID:number)
+  {
+    this.found=false
+    this._maincategoryservice.getMainCategoryById(MinID).subscribe(
+  
+ 
+      data => {
+       
+       
+        if(this.categories.length==0)
+        {
+          this.categories.push(data);
+          console.log("frist time") 
+        }
+        else 
+        {
+          this.categories.forEach(min=>
+            {
+              if(data.name==min.name)
+              {
+                this.found=true
+                console.log("asd")
+              }
+            
+              
+            })
+ 
+            if(this.found==false)
+            {
+              this.categories.push(data);
+                console.log("second time")
+                
+            }
+          
+        } 
+  },
+ 
+    )
   }
 }

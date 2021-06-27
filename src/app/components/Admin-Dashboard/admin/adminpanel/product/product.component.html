@@ -203,7 +203,7 @@
 
                     <div class="form-group">
 						<label>Color</label>
-						<input type="text" class="form-control" [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
+						<input type="color" class="form-control" [class.is-invalid]="color.invalid && color.touched " required #color="ngModel" [(ngModel)]="product.color" name="color" >
 						<small class="text-danger"[class.d-none]="color.untouched || color.valid">Product Color is required</small>
 					</div>
 

@@ -152,10 +152,10 @@ getSelectedPage(currentPageNumber:number){
       this.MainCategoryList= data
       this.currentPageNumber = currentPageNumber;
       console.log(this.currentPageNumber)
+      this.isLoading=false;
       if(data.length != 0)
       {
         this.hasMainCategories = true;
-        this.isLoading=false;
       } 
       else
         this.hasMainCategories = false;

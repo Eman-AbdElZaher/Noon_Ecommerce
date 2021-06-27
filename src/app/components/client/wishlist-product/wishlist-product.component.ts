@@ -62,12 +62,13 @@ export class WishlistProductComponent implements OnInit {
   deletewishlistProduct(wishlistProductID: number) {
     console.log(wishlistProductID);
     this.wishlistService.deleteWishlistProduct(wishlistProductID).subscribe(
+      sucess =>{
+        this.ngOnInit();
+      },
       error => {
         return error;
       }
-
     )
-    
   }
   addToCart(ProductId:number)
   {

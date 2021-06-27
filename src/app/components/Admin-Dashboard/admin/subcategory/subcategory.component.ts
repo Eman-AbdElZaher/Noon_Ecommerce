@@ -17,7 +17,6 @@ import { SubcategoryService } from './../../../../services/subcategory.service';
 export class SubcategoryComponent implements OnInit {
   CategoryList:ICategory[]=[];
   Subcategories:ISubCategory[]=[];
-  categories:string[]=[];
   errorMsg:string;
   updatesubCategoryClicked:boolean=false;
   hasCategories:boolean=false;
@@ -31,11 +30,13 @@ export class SubcategoryComponent implements OnInit {
   imageFile!: File;
   imagePath:any;
   subCategoryId: any;
+  categories:ICategory[]=[];
   updatedCategory:ISubCategory;
   SubcategoriesCount:number;
   pageSize:number = 4;
   currentPageNumber:number = 1;
   numberOfPages:number; 
+  found:boolean=false;
   constructor(
     private fb: FormBuilder,
     private _SubcategoryService:SubcategoryService,
@@ -72,6 +73,17 @@ export class SubcategoryComponent implements OnInit {
       }
     )
   }
+  getCategoryName(id:number){
+    let Name;
+    this._categoryservice.getCategoryById(id).subscribe(
+      data =>{
+        Name=data.name;
+        console.log(data.name);
+      },
+      err=> console.log(err)
+    )
+    return Name;
+  }
   loadAllSubCategories(){
     this._SubcategoryService.getAllSubCategories().subscribe(
       data =>
@@ -82,11 +94,7 @@ export class SubcategoryComponent implements OnInit {
            this.hasCategories=true;
          }
          this.Subcategories.forEach(cat => {
-          this._categoryservice.getCategoryById(cat.categoryID).subscribe(
-            data => {
-               this.categories.push(data.name) 
-            }
-          );
+          this.getMinCategory(cat.categoryID)
         });
       },
       err =>
@@ -95,9 +103,14 @@ export class SubcategoryComponent implements OnInit {
       }
     )
   }
+  init(){
+    this.getCategoriesCount();
+    this.getSelectedPage(this.currentPageNumber);
+  }
   submitButtonClicked() {
       this.uploadFile(this.imageFile);
       this.getCategoriesCount();
+      this.getSelectedPage(this.currentPageNumber)
   }
  updateButtonClicked(){
    if (this.imageFile == undefined)
@@ -136,7 +149,9 @@ export class SubcategoryComponent implements OnInit {
     }
     this._SubcategoryService.addNewSubCategory(category).subscribe(
       data => {
+        this.SubcategoryForm.reset();
         this.getCategoriesCount();
+        this.getSelectedPage(this.currentPageNumber);
       },
       error => {
         console.log(error)
@@ -183,8 +198,9 @@ export class SubcategoryComponent implements OnInit {
   deleteCategory(categoryId: number) {  
     if (confirm("Are you sure you want to delete this category ?")) {   
     this._SubcategoryService.deleteSubCategory(categoryId).subscribe(() => {  
-      this.message = 'Record Deleted Succefully';  
-      this.getSelectedPage(1);
+      this.message = 'Record Deleted Succefully';
+      this.getCategoriesCount(); 
+      this.getSelectedPage(this.currentPageNumber);
     });  
   }  
 }  
@@ -215,13 +231,9 @@ export class SubcategoryComponent implements OnInit {
     this._SubcategoryService.getSubCategoriesByPage(this.pageSize,currentPageNumber).subscribe(
       data => {
         this.Subcategories= data;
+        this.isLoading=false;
         this.Subcategories.forEach(cat => {
-          this._categoryservice.getCategoryById(cat.categoryID).subscribe(
-            data => {
-               this.categories.push(data.name) 
-               this.isLoading=false;
-            }
-          );
+           this.getMinCategory(cat.categoryID)
         });
         this.currentPageNumber = currentPageNumber;
         console.log(this.currentPageNumber)
@@ -236,6 +248,45 @@ export class SubcategoryComponent implements OnInit {
        this.errorMsg = error;
       }
     ) 
+  }
+  getMinCategory(MinID:number)
+  {
+    this.found=false
+    this._categoryservice.getCategoryById(MinID).subscribe(
+  
+ 
+      data => {
+       
+       
+        if(this.categories.length==0)
+        {
+          this.categories.push(data);
+          console.log("frist time") 
+        }
+        else 
+        {
+          this.categories.forEach(min=>
+            {
+              if(data.name==min.name)
+              {
+                this.found=true
+                console.log("asd")
+              }
+            
+              
+            })
+ 
+            if(this.found==false)
+            {
+              this.categories.push(data);
+                console.log("second time")
+                
+            }
+          
+        } 
+  },
+ 
+    )
   }
   
 }

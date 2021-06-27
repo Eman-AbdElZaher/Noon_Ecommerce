@@ -206,4 +206,12 @@ export class ProductService {
     })
     )
 }
+getProductBySearch(searchKeyWord:string):Observable<IProduct[]>
+  {
+    let _url=`http://localhost:61135/api/Product/search/${searchKeyWord}`;
+    return this.http.get<IProduct[]>(_url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Server Has Error Plz Try Again");
+    }));
+  }
 }

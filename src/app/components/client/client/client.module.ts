@@ -14,12 +14,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { MaincategorydetailsComponent } from '../maincategorydetails/maincategorydetails.component';
 import { ProductofferComponent } from '../productoffer/productoffer.component';
+import { SearchPoductsComponent } from '../search-poducts/search-poducts.component';
 const routes:Routes=[ 
   {path:'offers',component:OffersComponent},
   {path:'producthome',component:ProductshomeComponent},
   {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
   {path:'maincategory',component:MaincategorydetailsComponent},
-  {path:'productoffer/:subcategoryid/:offervalue',component:ProductofferComponent}
+  {path:'productoffer/:subcategoryid/:offervalue',component:ProductofferComponent},
+  {path:'SearchProduct/:searchKeyProduct',component:SearchPoductsComponent}
 ];
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ const routes:Routes=[
     ProfileComponent,
     MaincategorydetailsComponent,
     ProductofferComponent,
+    SearchPoductsComponent
   ],
   imports: [
     CommonModule,

@@ -25,7 +25,9 @@
                         <tr *ngFor="let category of Subcategories;let i= index">
                             <th scope="row">{{i+(pageSize*(currentPageNumber-1))+1}}</th>
                             <td>{{category.name}}</td>
-                            <td>{{categories[i]}}</td>
+                            <span *ngFor="let item of categories">
+                                <td *ngIf="item.id==category.categoryID">{{item.name}}</td>
+                            </span>
                             <td>
                                 <img  src='http://localhost:61135/Resources/Images/{{category.image}}' width="50" height="50"/>
                             </td>

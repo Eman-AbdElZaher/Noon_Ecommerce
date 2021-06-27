@@ -107,10 +107,10 @@ export class PaymentComponent implements OnInit {
     this.orderService.CheckoutOrder().subscribe(
      data=>{console.log(data);
       this.Isvaild=true;
-      
-
+      localStorage.setItem('count',JSON.stringify(0));
      }
     )
+    
     // }
   }
 

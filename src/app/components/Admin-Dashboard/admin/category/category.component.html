@@ -25,7 +25,9 @@
                         <tr *ngFor="let category of CategoryList;let i= index">
                             <th scope="row">{{i+(pageSize*(currentPageNumber-1))+1}}</th>
                             <td>{{category.name}}</td>
-                            <td>{{categories[i]}}</td>
+                            <span *ngFor="let item of categories">
+                                <td *ngIf="item.id==category.mainCategoryID">{{item.name}}</td>
+                            </span>
                             <td><img src='http://localhost:61135/Resources/Images/{{category.image}}' width="50" height="50"/></td>
                             <td>
                                 <a href="#editEmployeeModal"  (click)="assignFormControlsToCategoryData(category.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

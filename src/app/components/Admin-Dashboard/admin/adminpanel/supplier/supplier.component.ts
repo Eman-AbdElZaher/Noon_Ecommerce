@@ -68,6 +68,7 @@ init(){
      this.supplierService.addNewSupplier(this.supplier).subscribe(
       data => {
         this.supplier=data;
+        this.init();
       },
       error=>
       {
@@ -87,6 +88,7 @@ init(){
             this.supplierList=supplires;
             console.log(supplires.length);
             console.log(supplires[0]);
+            this.init();
           }
         )
       },
@@ -123,9 +125,7 @@ init(){
      this.supplierService.updateSupplier(this.supplier.id,this.supplier).subscribe(
       data => {
         this.supplier=data;
-        this.getProductsCount();
-        this.getSelectedPage(this.currentPageNumber);
-        this.reserform();
+        this.init();
       },
       error=>
       {

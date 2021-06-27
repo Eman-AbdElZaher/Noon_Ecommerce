@@ -15,6 +15,11 @@ export class OrderComponent implements OnInit {
  order=new Order (0,'','',0);
  names:string[];
  isLoading:boolean=true;
+ hasOrders:boolean=false;
+  ordersCount:number;
+  pageSize:number = 4;
+  currentPageNumber:number = 1;
+  numberOfPages:number; 
   //errorMsg="";
  OrderList:Order[]=[];
  User:Iuser= {
